@@ -1,5 +1,5 @@
 # Praxis Studio — Demo Work Generation
-*The studio's real client work is under NDA. The website therefore launches with generated concept projects that prove the design language, until the designers' own demo projects swap in. Generate them at portfolio quality — a visitor must feel "this is how it turned out, this is what they do, this is their design language."*
+*The studio's real client work is under NDA. The website therefore launches with generated concept projects that prove the design language. Treat the generated set as the site's real portfolio — complete and final, not a stopgap. Generate them at portfolio quality — a visitor must feel "this is how it turned out, this is what they do, this is their design language."*
 
 ## The rule
 **4 projects per service category — 16 total — each from a DIFFERENT subcategory** of that category, so every category shows its full range. Never fewer than 3 per category. Three concepts already exist and hold their slots (KOFFA, LEDGERLY, VELOUR); invent the other 13: names, scenario clients, industries, cities. Vary industries and scales — cafés to fintech, local to international. You have the final say on names and scenarios.
@@ -47,5 +47,5 @@
 ## Image direction
 Generate images as part of the build, per project, in a consistent art direction: warm Bone/cream backgrounds, black, Inchworm accents, pixel details where the brand calls for them. Screens (websites, apps) should look like real designed product shots, not grey wireframes. People, when used, are scenario-based (a barista for KOFFA, a shopkeeper for LEDGERLY) — natural, unstaged feeling. Nothing may look like a stock library pull.
 
-## Swap-readiness
-Build each project as a self-contained data block (name, question, meta, texts, metric, image set) so the studio can replace a concept project with a real one by editing one block. Say in your delivery notes how a swap works.
+## Editability
+Build each project as a self-contained data block (name, question, meta, texts, metric, image set) so the founders can edit or replace any project later by changing one block — their choice, on their timeline. Say in your delivery notes how a block is edited.

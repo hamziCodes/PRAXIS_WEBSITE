@@ -25,8 +25,10 @@ Praxis brand and rewritten in our words. Faithful rebuild, not
 "inspired by". Their text, orange, photos and content never carry
 over. Pages: Home / Services index / 4 service pages / Work index /
 16 project pages (one template) / About / Journal index + article
-template (3 starter articles) / Contact / footer system. Glossary
-is phase 2 — skip it.
+template (3 complete articles) / Contact / Glossary (the full
+A-Z glossary, ~45 terms in our voice, like the reference's) /
+footer system. Build EVERYTHING — nothing is phase 2, nothing
+is skipped, nothing is a placeholder.
 
 BRAND, IN SHORT (detail in the Brand Book)
 Light, Bone-led (#DFE0D0), black text, Inchworm (#B1FA63) the one
@@ -34,7 +36,7 @@ hero accent; Gunmetal only for galleries/closing; Orange + Pale
 Violet as rare sparks inside pixel graphics and work images. Max 2
 accents per screen. Helvetica Neue everywhere main; Handjet (file
 attached) for pixel labels/tags only; a serif for ONE display word
-in big headlines only — propose the serif. Logo: pixel-X blob mark
+in big headlines only — choose the serif, it is your call. Logo: pixel-X blob mark
 with its 8 satellite squares (Brand Book plates) + wordmark whose x is a chunky 4-petal star at
 full x weight (geometry plated in the Brand Book. RECREATE the
 logo from those plates as a finished, production-quality SVG —
@@ -54,8 +56,11 @@ file: 4 per category, each a different subcategory, full case pages
 where it fits, 7–10 generated gallery images per project in our art
 direction). KOFFA, LEDGERLY and VELOUR hold their slots. Small
 concept note on the Work page: real client work is under NDA.
-Projects as self-contained data blocks so we can swap in real work
-later — explain the swap in your delivery notes.
+The generated set is the site's portfolio — complete and final.
+Build projects as self-contained data blocks so the founders can
+edit or replace one easily later, by their own choice — explain
+the block structure in your delivery notes. Contact email
+everywhere: hello@praxis.studio.
 
 MOTION & QUALITY
 This is a design studio's own shop window — Bitwip-level polish is
@@ -71,8 +76,9 @@ You have the final say. Nothing we gave you is the last word:
 research best practice, and where you find a better way that honours
 the vision, take it and note what you changed and why. If a missing
 detail is cheap to decide, decide it in line with the vision and
-note it; if it truly changes direction, ask — one short question at
-a time. Do not invent facts about the studio beyond what the Context
+note it. Never ask, never wait: if anything is missing or
+undecided, decide it yourself in line with the vision and deliver
+complete — the founders will change what they don't like. Do not invent facts about the studio beyond what the Context
 file gives you (no fake history, clients, awards or numbers).
 
 DELIVER
@@ -80,7 +86,7 @@ The complete website, ready to host, committed to the repo
 github.com/hamziCodes/PRAXIS_WEBSITE (site files in the repo root;
 this prereq package lives in its docs/ folder — never overwrite
 docs/), plus brief delivery notes:
-structure, how to swap a project, how to swap the placeholder logo,
+structure, how a project block is edited or replaced, how the logo component is built,
 and every decision you made for us. Build it like our clients are
 watching — they are.
 
