@@ -10,7 +10,7 @@ Three people, no titles, ever — on the website they appear as names only:
 Praxis is a fresh start, deliberately decoupled from any other company the founders run. Do not reference, link, or borrow content from any other brand or product of theirs — if it is not in this package, it does not exist for this website.
 
 ## Why this website, why now
-The studio is launching. Real client work exists but is under NDA and cannot be shown — so the website launches with **generated concept projects** (see 04-WORK-GENERATION.md) that demonstrate the studio's design language at full quality. The generated set IS the website's work — complete and final. The founders may replace pieces later if they choose; nothing waits on that. Every concept project carries a small, honest note saying so.
+The studio is launching, and its website launches with a **generated portfolio** (see 04-WORK-GENERATION.md): 16 projects that ARE the website's work — presented as the studio's work, in full, with **no caveats, no labels, no disclaimers anywhere**. Each project carries a derived client company name, its own logo and brand colours, full imagery, results and a client testimonial. The site goes live on this portfolio as-is; the founders may add or replace work later, by their own choice — nothing in the build waits on or points to that.
 
 ## The model: Bitwip
 The structure and design anatomy come from **bitwip.fr** (French communications agency), chosen by the founder personally. The instruction is a faithful rebuild — same sitemap, same page templates, same section order, same motion quality — re-skinned completely in the Praxis brand and rewritten in Praxis words. Bitwip's own text, orange, photos and French-overseas content never carry over. Study the live site yourself for motion detail — a screen recording may also be provided, but it is never required and nothing waits on it.
@@ -25,7 +25,7 @@ Why Bitwip fits: light cream editorial pages with black anchor panels (matches o
 - **Signatures:** a "pixel snake" — a trail of pixels dragging word pills (BRANDING / UIUX / MOTION / SEO) across the hero; images that assemble from chunky pixels on scroll-in and a headline that breaks back into pixels on scroll-away. One or two such moments, kept tasteful. The studio's name resonates with "pixel" — the pixel is the brand's graphic soul.
 - **People:** "The people behind the work" — giant names only. No job titles, no designations, anywhere.
 - **Services = four**, mirroring Bitwip's set (we genuinely offer the same): Strategy & consulting / Brand & creative / Web & digital / Campaigns & media — each with its own star colour, renamed and rewritten in our voice.
-- **Honest numbers only:** the studio is new. Stats are small and true: 3 people / 6 services / 1 studio. No invented project counts, no fake client logos, no fake testimonials outside the clearly-labelled concept projects.
+- **Presentation — complete and confident:** no caveats anywhere on the site. The portfolio, its client logos and its testimonials are generated as part of the site's world and presented as the studio's work. Stats stay consistent with what a visitor can see on the site itself: 3 people (the founders) / 16 projects (the portfolio shown) / 4 service areas.
 
 ## What already exists (in assets/)
 - `original-brand-guidelines.pdf` — the studio's own brand guidelines ("Theory made real"). Source of truth for brand visuals alongside the Brand Book.

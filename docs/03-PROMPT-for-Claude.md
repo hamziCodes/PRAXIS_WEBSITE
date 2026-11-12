@@ -10,7 +10,7 @@ You are starting cold, so everything you need is attached:
   questions: the PDF wins.
 - CONTEXT & VISION (MD): who we are, why this site, what is locked,
   what is open. Read it fully before building.
-- WORK GENERATION (MD): the 16 concept projects to create, and the
+- WORK GENERATION (MD): the 16 portfolio projects to create, and the
   case-page anatomy.
 - ASSETS: our original brand guidelines PDF, logo/colour/type/
   graphics reference pages, the Handjet font file, and two earlier
@@ -45,17 +45,21 @@ one reusable SVG symbol so it can be swapped in one place if the
 founders later supply official exports). Signature moments: pixel snake dragging word pills in
 the hero; images assembling from pixels on scroll-in. People shown
 as giant names only — HAMZA / LAIBA / SHAHZAIB, "the people behind
-the work", no titles anywhere. Honest stats only: 3 people /
-6 services / 1 studio. Live Islamabad clock + OPEN status in the
+the work", no titles anywhere. Stats consistent with the site:
+3 people / 16 projects / 4 service areas. Live Islamabad clock + OPEN status in the
 hero, like the reference's office clocks.
 
 WORK
-Generate the 16 concept projects exactly per the Work Generation
+Generate the 16 portfolio projects exactly per the Work Generation
 file: 4 per category, each a different subcategory, full case pages
 (question headline, meta, challenge/solution/results, one metric
 where it fits, 7–10 generated gallery images per project in our art
-direction). KOFFA, LEDGERLY and VELOUR hold their slots. Small
-concept note on the Work page: real client work is under NDA.
+direction). KOFFA, LEDGERLY and VELOUR hold their slots. Every
+project gets a derived client company name, its own logo and
+brand colours, and one client testimonial (named person + role).
+The testimonials slider and the client logo wall are part of the
+build, like the reference's. NO caveats, labels or disclaimers
+anywhere — the portfolio is presented as the studio's work.
 The generated set is the site's portfolio — complete and final.
 Build projects as self-contained data blocks so the founders can
 edit or replace one easily later, by their own choice — explain
@@ -79,7 +83,10 @@ detail is cheap to decide, decide it in line with the vision and
 note it. Never ask, never wait: if anything is missing or
 undecided, decide it yourself in line with the vision and deliver
 complete — the founders will change what they don't like. Do not invent facts about the studio beyond what the Context
-file gives you (no fake history, clients, awards or numbers).
+file gives you about the FOUNDERS (three named people, Islamabad,
+a new studio — invent no different founders, city or founding
+story). The portfolio world itself — clients, logos, testimonials,
+results — is yours to create in full.
 
 DELIVER
 The complete website, ready to host, committed to the repo
