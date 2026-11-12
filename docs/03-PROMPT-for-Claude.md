@@ -36,9 +36,11 @@ accents per screen. Helvetica Neue everywhere main; Handjet (file
 attached) for pixel labels/tags only; a serif for ONE display word
 in big headlines only — propose the serif. Logo: pixel-X blob mark
 with its 8 satellite squares (Brand Book plates) + wordmark whose x is a chunky 4-petal star at
-full x weight (geometry plated in the Brand Book; build it as one
-reusable SVG symbol marked PLACEHOLDER — final SVGs come from our
-designer). Signature moments: pixel snake dragging word pills in
+full x weight (geometry plated in the Brand Book. RECREATE the
+logo from those plates as a finished, production-quality SVG —
+best of your ability, do not wait for designer files. Build it as
+one reusable SVG symbol so it can be swapped in one place if the
+founders later supply official exports). Signature moments: pixel snake dragging word pills in
 the hero; images assembling from pixels on scroll-in. People shown
 as giant names only — HAMZA / LAIBA / SHAHZAIB, "the people behind
 the work", no titles anywhere. Honest stats only: 3 people /
