@@ -1,0 +1,31 @@
+COVER NOTE — send this with the package (edit freely)
+
+Hey — this is the full Praxis Studio website package. Everything
+Claude needs is inside, including the context from all the work
+we've done so far, so it doesn't start blind.
+
+FEED CLAUDE IN THIS ORDER:
+1. 01-BRAND-BOOK-v2.pdf — logo, colours, fonts, rules (visual bible)
+2. 02-CONTEXT-AND-VISION.md — who we are, the vision, what's locked
+3. 03-PROMPT-for-Claude.md — copy the prompt between the lines
+4. 04-WORK-GENERATION.md — the 16 demo projects to generate
+5. Everything in assets/ — original brand guidelines, reference
+   pages, the Handjet pixel font, and my free-Claude HTML sketches
+   (ideas only, the hero idea in them is the keeper)
+6. The Bitwip link: https://www.bitwip.fr/en — the site we are
+   rebuilding as ours. (A screen recording of it helps Claude copy
+   the motion properly.)
+
+Two things to know:
+- Claude has the final say — the package says so. If it asks
+  questions, answer from the Context file, or let it decide in
+  line with the vision.
+- The logo in the build will be a placeholder built to spec —
+  Laiba's final SVGs swap in later, in one place.
+
+Thanks for running this on your Max — this is the studio's shop
+window, it's the big one.
+
+REPO: the website is built in github.com/hamziCodes/PRAXIS_WEBSITE.
+This same package lives in that repo under docs/ — build the site in
+the repo root, and do not overwrite docs/.

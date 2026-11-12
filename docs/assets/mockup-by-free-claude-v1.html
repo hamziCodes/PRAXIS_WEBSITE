@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Praxis Studio — Theory made real.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Handjet:wght@400;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bone:#DFE0D0;--snow:#fff;--black:#000;--green:#B1FA63;--gun:#243837;--orange:#FE7733;--violet:#B2A1FF;--silver:#D1D1D1;
+--sans:"Helvetica Neue",Helvetica,Arial,sans-serif;--pix:"Handjet","Courier New",monospace;--serif:"Playfair Display",Georgia,serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bone);color:var(--black);font-family:var(--sans);line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+a{color:inherit;text-decoration:none}
+.pix{font-family:var(--pix);font-size:1.15rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.serif{font-family:var(--serif);font-style:italic;font-weight:500}
+.wrap{padding:0 clamp(20px,5vw,72px)}
+section{position:relative}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:20;padding:calc(14px + env(safe-area-inset-top,0px)) clamp(20px,5vw,72px) 14px;display:flex;justify-content:space-between;align-items:center;background:var(--bone);border-bottom:1px solid var(--black)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.25rem;letter-spacing:-.02em}
+.logo svg{display:block}
+nav{display:flex;gap:clamp(12px,2.5vw,32px)}
+nav a:hover{background:var(--green)}
+/* hero */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:90px;background:var(--bone)}
+#hero h1{font-size:clamp(3.2rem,12.5vw,13rem);line-height:.9;letter-spacing:-.045em;margin:.25em 0 0;font-weight:700;position:relative}
+mark{background:var(--green);color:var(--black);padding:0 .08em}
+#snake{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+.hero-sub{max-width:34ch;margin-top:2rem;font-size:1.15rem}
+.cover{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+/* manifesto */
+#manifesto{padding:20vh 0;background:var(--snow)}
+.mline{font-size:clamp(2rem,6vw,5.4rem);line-height:1.05;letter-spacing:-.035em;font-weight:700;color:var(--silver);margin:0 0 .15em;max-width:18ch}
+.mline em{font-family:var(--serif);font-weight:500;letter-spacing:-.02em}
+/* services */
+#services{padding:14vh 0;background:var(--bone)}
+.svc{display:grid;grid-template-columns:5rem 1fr 1fr;gap:1rem;align-items:baseline;padding:2rem 0;border-top:1px solid var(--black)}
+.svc:last-child{border-bottom:1px solid var(--black)}
+.svc h3{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,4.5vw,4rem);letter-spacing:-.02em;line-height:1}
+.svc p{margin:0;max-width:34ch}
+/* lab */
+#lab{padding:14vh 0;background:var(--snow)}
+h2{font-size:clamp(2.2rem,6vw,5rem);letter-spacing:-.04em;line-height:.95;margin:.3em 0 .6em;font-weight:700}
+.blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.blk{min-height:150px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--silver);font-size:.9rem}
+.blk b{font-size:1.4rem;letter-spacing:-.02em}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px}
+.card{background:var(--bone);padding:24px;border:1px solid var(--black)}
+.card h4{margin:.4em 0;font-size:1.6rem;letter-spacing:-.02em}
+.btn{display:inline-block;background:var(--green);color:var(--black);padding:.9em 1.6em;font-weight:700;border:1px solid var(--black);cursor:pointer;font:inherit;font-weight:700}
+.btn:hover{background:var(--black);color:var(--green)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+.tests{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px}
+.test{min-height:260px;position:relative;overflow:hidden;border:1px solid var(--silver);padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+.t1{background:linear-gradient(90deg,var(--green),var(--bone) 85%)}
+.test h5{margin:0;font-size:2.2rem;line-height:1;letter-spacing:-.03em;position:relative;z-index:2}
+.test canvas{position:absolute;inset:0;width:100%;height:100%}
+.t3 .pgrid{display:grid;grid-template-columns:repeat(14,1fr);gap:2px;margin-top:10px}
+.t3 .pgrid i{aspect-ratio:1;display:block}
+/* work */
+#work{padding:14vh 0;background:var(--bone)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,64px)}
+.proj:nth-child(even){margin-top:12vw}
+.img{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--snow);display:flex;align-items:flex-end;padding:20px}
+.img h3{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,4vw,3.4rem);line-height:1;position:relative;z-index:1}
+.meta{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--black)}
+.img .s{position:absolute}
+.p1{background:var(--green)}.p1 .s:nth-child(1){width:46%;aspect-ratio:1;background:var(--black);top:8%;left:8%}.p1 .s:nth-child(2){width:22%;aspect-ratio:1;background:var(--orange);top:30%;right:12%}
+.p2{background:var(--snow)}.p2 .s:nth-child(1){inset:8% 8% 40% 8%;background:linear-gradient(90deg,var(--orange),var(--violet))}.p2 .s:nth-child(2){width:16%;aspect-ratio:1;background:var(--black);right:8%;top:62%}
+.p3{background:var(--black);color:var(--bone)}.p3 .s:nth-child(1){width:60%;aspect-ratio:1;border:14px solid var(--green);top:6%;left:20%}.p3 .s:nth-child(2){width:14%;aspect-ratio:1;background:var(--violet);top:48%;left:12%}
+.p4{background:var(--violet)}.p4 .s:nth-child(1){width:30%;aspect-ratio:1;background:var(--snow);top:10%;left:10%}.p4 .s:nth-child(2){width:50%;height:12%;background:var(--black);top:34%;left:10%}
+/* pixel panel */
+#panel{background:var(--black);color:var(--bone);padding:16vh 0;overflow:hidden;position:relative}
+#panel h2{max-width:11ch;position:relative;z-index:2}
+#panel h2 span{font-family:var(--serif);font-weight:500}
+#px{position:absolute;right:0;top:0;width:min(55%,640px);height:100%;opacity:.95}
+/* people */
+#people{padding:14vh 0;background:var(--bone)}
+.person{font-size:clamp(3.4rem,13vw,13rem);font-weight:700;letter-spacing:-.05em;line-height:1;padding:.08em 0;border-top:1px solid var(--black)}
+.person:last-child{border-bottom:1px solid var(--black)}
+.person:hover{background:var(--green)}
+/* contact */
+#contact{background:var(--gun);color:var(--bone);padding:16vh 0 0;overflow:hidden}
+#contact h2{font-size:clamp(3.4rem,13vw,13rem);margin:0 0 .4em}
+.marq{overflow:hidden;border-top:1px solid rgba(223,224,208,.3);border-bottom:1px solid rgba(223,224,208,.3);margin-top:12vh;padding:1rem 0;white-space:nowrap}
+.marq div{display:inline-block;animation:mq 30s linear infinite;font-family:var(--pix);font-size:2rem;letter-spacing:.08em}
+@keyframes mq{to{transform:translateX(-50%)}}
+footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:2rem 0;font-size:.85rem}
+footer .logo{color:var(--bone)}
+@media (max-width:700px){.grid{grid-template-columns:1fr}.proj:nth-child(even){margin-top:0}.svc{grid-template-columns:2.5rem 1fr}.svc p{grid-column:2}nav{gap:12px}nav a{font-size:.95rem}.logo span{font-size:1.05rem}#px{opacity:.4;width:80%}}
+@media (prefers-reduced-motion:reduce){.marq div{animation:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<!-- PLACEHOLDER LOGO: pixel starburst + star-x wordmark. Final SVGs come from Laiba. -->
+<symbol id="burst" viewBox="0 0 9 9"><g id="bg">
+<rect x="0" y="0" width="2" height="2"/><rect x="7" y="0" width="2" height="2"/><rect x="0" y="7" width="2" height="2"/><rect x="7" y="7" width="2" height="2"/>
+<rect x="2" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/>
+<rect x="3" y="3" width="3" height="3"/><rect x="4" y="0" width="1" height="1"/><rect x="4" y="8" width="1" height="1"/><rect x="0" y="4" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/></g></symbol>
+<symbol id="star" viewBox="0 0 10 10"><path d="M5 0 6.2 3.8 10 5 6.2 6.2 5 10 3.8 6.2 0 5 3.8 3.8Z"/></symbol>
+</svg>
+
+<header>
+  <a href="#hero" class="logo" aria-label="Praxis Studio">
+    <svg width="30" height="30" fill="currentColor"><use href="#burst"/></svg>
+    <span>Pra<svg width="16" height="16" fill="currentColor" style="display:inline;vertical-align:-1px;margin:0 1px"><use href="#star"/></svg>is Studio</span>
+  </a>
+  <nav class="pix"><a href="#work">Work</a><a href="#services">Services</a><a href="#people">About</a><a href="#contact">Contact</a></nav>
+</header>
+
+<section id="hero" class="wrap">
+  <div class="pix">Design studio — Est. 2026</div>
+  <h1 id="h1">Theory<br><mark>made</mark> real.<canvas class="cover" id="hcover"></canvas></h1>
+  <p class="hero-sub">A design-first studio. Branding, interfaces, web, motion and growth.</p>
+  <canvas id="snake"></canvas>
+</section>
+
+<section id="manifesto" class="wrap">
+  <p class="mline">We start with <em>clarity</em>.</p>
+  <p class="mline">We leave <em>space</em> for the idea.</p>
+  <p class="mline">We add <em>motion</em> only when it helps.</p>
+  <p class="mline">We say it plainly.</p>
+  <p class="mline">Then we ship it.</p>
+</section>
+
+<section id="services" class="wrap">
+  <div class="pix">Services</div>
+  <div style="height:2rem"></div>
+  <div class="svc"><span class="pix">01</span><h3>Brand Identity</h3><p>Name, logo, type and colour that people remember.</p></div>
+  <div class="svc"><span class="pix">02</span><h3>Digital &amp; Web</h3><p>Interfaces and websites that are quick and easy to use.</p></div>
+  <div class="svc"><span class="pix">03</span><h3>Growth — SEO, AEO, Marketing</h3><p>Help people find you, in search and in AI answers.</p></div>
+</section>
+
+<section id="lab" class="wrap">
+  <div class="pix">Colour lab</div>
+  <h2>The colours, in use.</h2>
+  <div class="blocks">
+    <div class="blk" style="background:var(--bone)"><b>Bone</b><span>#DFE0D0<br>Black text</span></div>
+    <div class="blk" style="background:var(--snow)"><b>Bright Snow</b><span>#FFFFFF<br>Black text</span></div>
+    <div class="blk" style="background:var(--green)"><b>Inchworm</b><span>#B1FA63<br>Black text</span></div>
+    <div class="blk" style="background:var(--gun);color:var(--bone)"><b>Gunmetal</b><span>#243837<br>Bone text</span></div>
+    <div class="blk" style="background:var(--orange)"><b>Orange</b><span>#FE7733<br>Black text</span></div>
+    <div class="blk" style="background:var(--violet)"><b>Pale Violet</b><span>#B2A1FF<br>Black text</span></div>
+    <div class="blk" style="background:var(--silver)"><b>Silver</b><span>#D1D1D1<br>Lines, labels</span></div>
+  </div>
+  <div class="row">
+    <div class="card"><span class="pix" style="background:var(--green);padding:0 .4em">Branding</span><h4>A card on Bone</h4><p>Plain text sits on warm neutral. Green marks what matters.</p><button class="btn">Start a project</button></div>
+    <div class="card" style="background:var(--snow)"><span class="pix">Brand identity</span><h4>A card on white</h4><p>Same type, second light background.</p><button class="btn">See the work</button></div>
+  </div>
+  <div class="tests">
+    <div class="test t1"><span class="pix">Test 1</span><h5>Green into Bone, behind a headline.</h5></div>
+    <div class="test" style="background:var(--bone)"><canvas id="dither"></canvas><span class="pix" style="position:relative">Test 2</span><h5>Pixel dither fade into Bone.</h5></div>
+    <div class="test t3" style="background:var(--snow)"><span class="pix">Test 3</span><div class="pgrid" id="pgrid"></div><h5>Orange to violet, in pixels only.</h5></div>
+  </div>
+</section>
+
+<section id="work" class="wrap">
+  <div class="pix">Selected work</div>
+  <h2>Work</h2>
+  <div class="grid">
+    <article class="proj"><div class="img p1"><i class="s"></i><i class="s"></i><h3>Lumen Coffee</h3><canvas class="cover"></canvas></div><div class="meta pix"><span>Brand identity</span><span>2026</span></div></article>
+    <article class="proj"><div class="img p2"><i class="s"></i><i class="s"></i><h3>Northline</h3><canvas class="cover"></canvas></div><div class="meta pix"><span>Web design</span><span>2026</span></div></article>
+    <article class="proj"><div class="img p3"><i class="s"></i><i class="s"></i><h3>Orbit Fit</h3><canvas class="cover"></canvas></div><div class="meta pix"><span>Mobile UI</span><span>2025</span></div></article>
+    <article class="proj"><div class="img p4"><i class="s"></i><i class="s"></i><h3>Field &amp; Fern</h3><canvas class="cover"></canvas></div><div class="meta pix"><span>Motion</span><span>2025</span></div></article>
+  </div>
+</section>
+
+<section id="panel">
+  <canvas id="px"></canvas>
+  <div class="wrap"><h2>Made of pixels. <span>Built with intent.</span></h2></div>
+</section>
+
+<section id="people" class="wrap">
+  <div class="pix">The trifecta</div>
+  <h2>The people behind the work</h2>
+  <div class="person">HAMZA</div><div class="person">LAIBA</div><div class="person">SHAHZAIB</div>
+</section>
+
+<section id="contact">
+  <div class="wrap"><h2>Start a project</h2><a class="btn" href="#contact">Tell us what you're making</a></div>
+  <div class="marq" aria-hidden="true"><div>PRAXIS STUDIO — THEORY MADE REAL — PRAXIS STUDIO — THEORY MADE REAL — PRAXIS STUDIO — THEORY MADE REAL — PRAXIS STUDIO — THEORY MADE REAL — </div></div>
+  <div class="wrap"><footer>
+    <span class="logo"><svg width="26" height="26" fill="currentColor"><use href="#burst"/></svg><span>Pra<svg width="14" height="14" fill="currentColor" style="display:inline;vertical-align:-1px"><use href="#star"/></svg>is Studio</span></span>
+    <small>© 2026 Praxis Studio — Mockup</small></footer></div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+gsap.registerPlugin(ScrollTrigger);
+if(!RM && window.Lenis){const l=new Lenis({lerp:.09});l.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>l.raf(t*1000));gsap.ticker.lagSmoothing(0);}
+
+/* pixel cover: bone cells over an element; set(p) reveals p = 0 (covered) .. 1 (clear) */
+function pixelCover(cv,color,cell){
+  const par=cv.parentElement,ctx=cv.getContext('2d');let w,h,cols,rows,rnd=[];
+  function size(){const r=par.getBoundingClientRect();w=cv.width=Math.ceil(r.width);h=cv.height=Math.ceil(r.height);cols=Math.ceil(w/cell);rows=Math.ceil(h/cell);rnd=Array.from({length:cols*rows},Math.random);}
+  size();addEventListener('resize',size);
+  return {set(p){ctx.clearRect(0,0,w,h);ctx.fillStyle=color;for(let i=0;i<rnd.length;i++){if(rnd[i]>=p){ctx.fillRect((i%cols)*cell,Math.floor(i/cols)*cell,cell+.5,cell+.5)}}}};
+}
+
+/* hero headline breaks into pixels on scroll */
+const hc=pixelCover(document.getElementById('hcover'),'#DFE0D0',14);hc.set(1);
+if(!RM) ScrollTrigger.create({trigger:'#hero',start:'top top',end:'bottom 30%',scrub:true,onUpdate:s=>{hc.set(1-s.progress);document.getElementById('h1').style.opacity=1-s.progress*.6}});
+
+/* snake */
+(function(){
+  const cv=document.getElementById('snake'),ctx=cv.getContext('2d'),host=document.getElementById('hero');
+  let W,H;function size(){const r=host.getBoundingClientRect();W=cv.width=r.width;H=cv.height=r.height}size();addEventListener('resize',size);
+  const S=12,N=16,words=['BRANDING','UIUX','MOTION','SEO'],seg=[];
+  let tx=W*.7,ty=H*.6,hx=tx,hy=ty,lastMove=0;
+  for(let i=0;i<N;i++)seg.push({x:hx,y:hy});
+  host.addEventListener('pointermove',e=>{const r=host.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;lastMove=performance.now()});
+  let step=0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    seg.forEach((s,i)=>{ctx.fillStyle=i%5==0?'#B1FA63':'#000';ctx.fillRect(s.x-S/2,s.y-S/2,S,S);if(i%5==0)ctx.strokeStyle='#000',ctx.strokeRect(s.x-S/2,s.y-S/2,S,S)});
+    ctx.font='600 18px Handjet, monospace';
+    [4,8,12,15].forEach((si,k)=>{const s=seg[si],t=words[k],w=ctx.measureText(t).width+12;
+      ctx.fillStyle='#fff';ctx.fillRect(s.x+10,s.y-26,w,20);ctx.strokeStyle='#000';ctx.strokeRect(s.x+10,s.y-26,w,20);ctx.fillStyle='#000';ctx.fillText(t,s.x+16,s.y-10)});
+  }
+  if(RM){seg.forEach((s,i)=>{s.x=W*.7-i*S*1.4;s.y=H*.6});draw();return}
+  let acc=0;
+  gsap.ticker.add((t,dt)=>{
+    acc+=dt;if(acc<70)return;acc=0; // moves in steps
+    if(performance.now()-lastMove<400){
+      const dx=tx-seg[0].x,dy=ty-seg[0].y;
+      if(Math.hypot(dx,dy)>S){ // snap to grid, one square per step
+        const nx=seg[0].x+Math.sign(Math.round(dx/S))*S*(Math.abs(dx)>=Math.abs(dy)?1:0),ny=seg[0].y+Math.sign(Math.round(dy/S))*S*(Math.abs(dy)>Math.abs(dx)?1:0);
+        for(let i=N-1;i>0;i--){seg[i].x=seg[i-1].x;seg[i].y=seg[i-1].y}
+        seg[0].x=nx;seg[0].y=ny;
+      }
+    }
+    draw();
+  });
+  size();draw();
+})();
+
+/* manifesto */
+gsap.utils.toArray('.mline').forEach(l=>{
+  if(RM){l.style.color='#000';return}
+  gsap.to(l,{color:'#000',ease:'none',scrollTrigger:{trigger:l,start:'top 80%',end:'top 45%',scrub:true}});
+});
+
+/* gentle reveals */
+if(!RM){
+  gsap.utils.toArray('.svc,.person,.card,.blk,.test,#people h2,#lab h2,#work h2').forEach(el=>
+    gsap.from(el,{opacity:0,y:24,duration:1.1,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 90%'}}));
+}
+
+/* work cards assemble from pixels; hover pixelates */
+document.querySelectorAll('.proj').forEach(card=>{
+  const cv=card.querySelector('canvas'),bg=getComputedStyle(document.documentElement).getPropertyValue('--bone').trim();
+  const pc=pixelCover(cv,'#DFE0D0',18);const o={p:RM?1:0};pc.set(o.p);
+  if(!RM){
+    gsap.to(o,{p:1,duration:1.4,ease:'steps(14)',scrollTrigger:{trigger:card,start:'top 85%'},onUpdate:()=>pc.set(o.p)});
+    card.addEventListener('mouseenter',()=>{const h={p:.35};pc.set(h.p);gsap.to(h,{p:1,duration:.5,ease:'steps(6)',onUpdate:()=>pc.set(h.p)})});
+  }
+});
+
+/* test 2: dither from green to bone */
+(function(){const c=document.getElementById('dither'),x=c.getContext('2d'),r=c.getBoundingClientRect(),w=c.width=r.width||300,h=c.height=r.height||260,cs=10;
+  x.fillStyle='#B1FA63';for(let i=0;i<Math.ceil(w/cs);i++)for(let j=0;j<Math.ceil(h/cs);j++){if(Math.random()>i/(w/cs)*1.15)x.fillRect(i*cs,j*cs,cs,cs)}})();
+/* test 3: orange→violet pixel graphic */
+(function(){const g=document.getElementById('pgrid'),a=[254,119,51],b=[178,161,255];
+  for(let j=0;j<6;j++)for(let i=0;i<14;i++){const e=document.createElement('i'),t=i/13;
+    const on=(i+j)%2==0||(i%3==0&&j%2);e.style.background=on?`rgb(${a.map((v,k)=>Math.round(v+(b[k]-v)*t)).join(',')})`:'transparent';g.appendChild(e)}})();
+
+/* dark pixel panel: starburst, blocks, sparkles */
+(function(){const c=document.getElementById('px'),x=c.getContext('2d');
+  function draw(){const r=c.getBoundingClientRect(),w=c.width=r.width,h=c.height=r.height,u=Math.max(14,Math.round(w/28));
+    x.clearRect(0,0,w,h);const cx=Math.round(w*.55/u)*u,cy=Math.round(h*.5/u)*u;
+    x.fillStyle='#B1FA63';for(let k=-7;k<=7;k++){[[k,k],[k,-k]].forEach(([i,j])=>{if(Math.abs(k)>1||k==0)x.fillRect(cx+i*u,cy+j*u,u,u)});x.fillRect(cx+k*u,cy,u,u);x.fillRect(cx,cy+k*u,u,u)}
+    x.fillStyle='#FE7733';[[-9,-5],[-8,-5],[-9,-4],[9,5],[10,5]].forEach(([i,j])=>x.fillRect(cx+i*u,cy+j*u,u,u));
+    x.fillStyle='#B2A1FF';[[9,-6],[10,-6],[10,-5],[-10,6],[-9,6],[-9,7]].forEach(([i,j])=>x.fillRect(cx+i*u,cy+j*u,u,u));
+    x.fillStyle='#DFE0D0';[[-3,-8],[4,8],[-11,1]].forEach(([i,j])=>{x.fillRect(cx+i*u,cy+j*u,u,u);x.fillRect(cx+(i-1)*u,cy+j*u,u,u);x.fillRect(cx+(i+1)*u,cy+j*u,u,u);x.fillRect(cx+i*u,cy+(j-1)*u,u,u);x.fillRect(cx+i*u,cy+(j+1)*u,u,u)})}
+  draw();addEventListener('resize',draw)})();
+</script>
+</body>
+</html>
