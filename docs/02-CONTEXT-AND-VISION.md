@@ -27,7 +27,7 @@ Why Bitwip fits: light cream editorial pages with black anchor panels (matches o
 - **Services = four**, mirroring Bitwip's set (we genuinely offer the same): Strategy & consulting / Brand & creative / Web & digital / Campaigns & media — each with its own star colour, renamed and rewritten in our voice.
 - **Presentation — complete and confident:** no caveats anywhere on the site. The portfolio, its client logos and its testimonials are generated as part of the site's world and presented as the studio's work. Stats stay consistent with what a visitor can see on the site itself: 3 people (the founders) / 16 projects (the portfolio shown) / 4 service areas.
 
-## What already exists (in assets/)
+## What already exists (in this repo, under docs/assets/)
 - `original-brand-guidelines.pdf` — the studio's own brand guidelines ("Theory made real"). Source of truth for brand visuals alongside the Brand Book.
 - `reference-logo-options.png` — the four logo options; the final is Option 3's mark + Option 4's wordmark.
 - `reference-colour-page.png`, `reference-typography-page.png`, `reference-graphics-page.png` — guideline pages: palette, type, and the pixel-graphic language.

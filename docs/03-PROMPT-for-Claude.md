@@ -1,11 +1,12 @@
 # Praxis Studio — Master Prompt
-*Give Claude, in this order: (1) the Brand Book PDF (01), (2) the Context & Vision MD (02), (3) this prompt, (4) the Work Generation MD (04), (5) the assets folder contents, (6) the Bitwip link — or a screen recording of it.*
+*You are reading this inside the PRAXIS_WEBSITE repo. Read in this order: (1) docs/01 Brand Book PDF, (2) docs/02 Context & Vision, (3) this prompt, (4) docs/04 Work Generation, (5) everything in docs/assets/. The reference site is bitwip.fr — study the live site yourself.*
 
 ==================== COPY FROM HERE ====================
 
 BUILD — the Praxis Studio website. Complete build, not a mockup.
 
-You are starting cold, so everything you need is attached:
+You are starting cold, so everything you need is in this repo
+under docs/:
 - BRAND BOOK (PDF): logo geometry, colours, type, rules. Visual
   questions: the PDF wins.
 - CONTEXT & VISION (MD): who we are, why this site, what is locked,
@@ -15,8 +16,8 @@ You are starting cold, so everything you need is attached:
 - ASSETS: our original brand guidelines PDF, logo/colour/type/
   graphics reference pages, the Handjet font file, and two earlier
   HTML sketches (ideas only — see Context file).
-- REFERENCE SITE: bitwip.fr — link or screen recording provided in
-  this chat.
+- REFERENCE SITE: bitwip.fr — study the live site yourself;
+  nobody needs to send you anything.
 
 THE JOB
 Rebuild Bitwip as our site: same sitemap, same page templates, same
