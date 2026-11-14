@@ -1,0 +1,11 @@
+{
+  "name": "praxis-website",
+  "private": true,
+  "description": "Praxis Studio website. Static HTML generated from src/.",
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "serve": "node src/tools/serve.mjs 4321"
+  },
+  "engines": { "node": ">=20" }
+}

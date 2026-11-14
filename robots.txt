@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /docs/
+Disallow: /src/
+
+Sitemap: https://praxis.studio/sitemap.xml

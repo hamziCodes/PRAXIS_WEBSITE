@@ -1,0 +1,20 @@
+{
+  "name": "Praxis Studio",
+  "short_name": "Praxis",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#DFE0D0",
+  "theme_color": "#DFE0D0",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ]
+}
