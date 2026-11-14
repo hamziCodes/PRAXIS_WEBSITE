@@ -26,15 +26,19 @@ Source: designer's review, relayed 14 Nov 2026 — voice notes, the current-site
 
 ---
 
-## Part 2 — The prompt for Claude
+## Part 2 — The working brief for Claude
 
-Copy everything between the lines into Claude, in the PRAXIS_WEBSITE repo session.
+This is the brief Claude implements in the repo. It is governed by the reading rule in §0: vision first, letter second.
 
 ---
 
 You are reworking the Praxis Studio website in this repo (github.com/hamziCodes/PRAXIS_WEBSITE). The site is already built and live at praxisstudio.vercel.app; this is iteration 2 of the HOMEPAGE, driven by the designer's audit. Read `docs/01-BRAND-BOOK-v5.pdf` and the files under `docs/` first — the brand system there (palette, logo, Handjet pixel font, Helvetica Neue) is fixed and does not change. Edit in `src/`, run the project build (`node src/build.mjs`), and never overwrite anything under `docs/`.
 
-Implement exactly the changes below. Do not add sections, features, pages or copy that this prompt does not ask for, and do not remove or rewrite anything it does not mention. Where this prompt gives copy word for word, use it word for word. Everything else — all existing text, services data (`src/data/services.mjs`) and project data (`src/data/projects.mjs`) — stays as it is unless a change below says otherwise. The stack stays dependency-free vanilla HTML/CSS/JS, like the current build: no new libraries or frameworks.
+### §0 — Reading rule: understand the vision, don't just follow the letter
+
+The sections below describe what the designer wants and why (Part 1 is her audit in digest). They are direction, not a cage. Where a section names a specific technique, that is our best guess at the effect we want — if you find a better way to land the same effect inside the brand system, take it. Where two readings are possible, choose the one that better serves the feeling the audit describes: grand, fun, revealing, pixel-native. Study the references named in the brief (uncommondesign.group, ouiwill.com) and the current live site, and combine them into one harmonious design in the Praxis pixel language — do not copy any single reference. Where this brief gives copy word for word (the closing speak-line), use it word for word. In your final report, flag every place you used your own judgment instead of the brief's letter, so the designer can review the taste calls.
+
+The hard lines, which judgment does not override: `docs/` is never edited. The brand system stays exactly as the brand book sets it. The homepage contains only the four sections in §1 — no people section, no names on the homepage. No serif italic anywhere; Handjet is the accent font. The stack stays dependency-free vanilla HTML/CSS/JS, like the current build: no new libraries or frameworks. Everything else — all existing text, services data (`src/data/services.mjs`) and project data (`src/data/projects.mjs`) — stays as it is unless a change below replaces it.
 
 ### §1 — Homepage structure: four sections, nothing else
 
@@ -98,7 +102,7 @@ As the visitor scrolls out of the hero into Services, the page background transi
 
 ### Definition of done
 
-The build (`node src/build.mjs`) passes; the homepage contains exactly the four sections in order; no person's name appears on the homepage; no serif italic appears on the homepage; the hero is black with the cycling pixel reveal; the scroll transition reaches the light background by Services; every service icon animates; every work row shows its tags and its hover/tap preview; the closing section carries the speak line word for word. Report what you changed section by section against this prompt, and flag anything in this prompt you could not implement as specified instead of improvising around it.
+The build (`node src/build.mjs`) passes; the homepage contains exactly the four sections in order; no person's name appears on the homepage; no serif italic appears on the homepage; the hero is black with the cycling pixel reveal; the scroll transition reaches the light background by Services; every service icon animates; every work row shows its tags and its hover/tap preview; the closing section carries the speak line word for word. Report what you changed section by section against this brief, and flag every place you used your own judgment instead of the brief's letter, so the designer can review the taste calls.
 
 ---
 
