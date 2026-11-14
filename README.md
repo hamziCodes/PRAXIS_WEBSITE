@@ -201,3 +201,9 @@ docs/                     the original brand brief package
   <strong>Praxis Studio</strong> · Islamabad, Pakistan · working worldwide<br>
   <a href="mailto:hello@praxis.studio">hello@praxis.studio</a>
 </p>
+
+---
+
+## Iteration 2 — homepage rework (designer audit, 2026-11-14)
+
+**Claude: the current task is in [briefs/Praxis-Claude-Rework-Pack-v5-2026-11-14.md](briefs/Praxis-Claude-Rework-Pack-v5-2026-11-14.md).** Part 2 of that file is the complete prompt: the homepage is rebuilt to four sections (hero → services → work → contact) with a black hero and pixel work-reveal, a black-to-white scroll transition, animated service icons, and an OuiWill-style work index. Read `docs/` first, implement in `src/`, rebuild with `node src/build.mjs`. `docs/` stays untouched.
