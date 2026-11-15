@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Lottie sheet</title>
+<style>body{margin:0;background:#DFE0D0;font:12px sans-serif}.row{display:flex}canvas{width:150px;height:150px;color:#000;border:1px solid #0001}</style></head><body>
+<!-- Dev tool: every service icon at 8 points in its loop. Serve the repo and open /src/tools/lottie-sheet.html -->
+<script>
+window.__ready = false;
+const names = ['strategy-consulting','brand-creative','web-digital','campaigns-media'];
+for (const n of names) { const r = document.createElement('div'); r.className = 'row'; for (let i = 0; i < 8; i++) { const c = document.createElement('canvas'); c.dataset.lottie = '../../assets/icons/' + n + '.json'; c.dataset.k = i; c.dataset.static = ''; r.appendChild(c); } document.body.appendChild(r); }
+</script>
+<script src="../../assets/js/lottie-lite.js"></script>
+<script>
+setTimeout(() => { document.querySelectorAll('canvas').forEach((c) => { if (!c.__draw) return; const d = c.__data; c.__draw(d.ip + (d.op - d.ip) * (+c.dataset.k / 8)); }); window.__ready = true; }, 1500);
+</script>
+</body></html>

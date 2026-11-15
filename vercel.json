@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    {
+      "source": "/services/strategy-consulting",
+      "destination": "/services/#strategy-consulting",
+      "permanent": true
+    },
+    {
+      "source": "/services/strategy-consulting/",
+      "destination": "/services/#strategy-consulting",
+      "permanent": true
+    },
+    {
+      "source": "/services/brand-creative",
+      "destination": "/services/#brand-creative",
+      "permanent": true
+    },
+    {
+      "source": "/services/brand-creative/",
+      "destination": "/services/#brand-creative",
+      "permanent": true
+    },
+    {
+      "source": "/services/web-digital",
+      "destination": "/services/#web-digital",
+      "permanent": true
+    },
+    {
+      "source": "/services/web-digital/",
+      "destination": "/services/#web-digital",
+      "permanent": true
+    },
+    {
+      "source": "/services/campaigns-media",
+      "destination": "/services/#campaigns-media",
+      "permanent": true
+    },
+    {
+      "source": "/services/campaigns-media/",
+      "destination": "/services/#campaigns-media",
+      "permanent": true
+    }
+  ]
+}

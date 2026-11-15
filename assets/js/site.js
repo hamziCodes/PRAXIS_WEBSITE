@@ -48,7 +48,7 @@
       if (y < lastY - 4 || y < 400) hdr.classList.remove('is-hidden');
       const probe = 40;
       const overDark = darks.some((d) => { const r = d.getBoundingClientRect(); return r.top <= probe && r.bottom >= probe; });
-      const heroDark = doc.classList.contains('is-home') && (window.__pxMelt == null ? scrollY < innerHeight * 0.6 : window.__pxMelt < 0.5);
+      const heroDark = doc.classList.contains('is-home') && (window.__pxMelt == null || window.__pxMelt < 0.5);
       hdr.classList.toggle('on-dark', overDark || heroDark);
     }
     lastY = y; ticking = false;
@@ -228,110 +228,100 @@
     }
   }
 
-  // ═════ HOMEPAGE v5 ═════
-  const PAL = ['#B1FA63', '#FE7733', '#B2A1FF', '#FFFFFF', '#243837', '#D1D1D1'];
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  // ═════ HOMEPAGE v6 ═════
+  const PAL = ['#B1FA63', '#FE7733', '#B2A1FF', '#FFFFFF'];
+  const isHome = doc.classList.contains('is-home');
 
-  // ── THE MELT: the page runs from black to Bone as the hero scrolls away (scroll-linked, not timed)
-  const hx = $('[data-hero]');
-  if (hx && doc.classList.contains('is-home')) {
+  // ── MENU ON SCROLL (C4): the header waits off-screen over the opening frame
+  if (isHome && hdr) {
+    const top = () => hdr.classList.toggle('at-top', scrollY < 40 && !doc.classList.contains('menu-open'));
+    addEventListener('scroll', top, { passive: true }); top();
+  }
+
+  // ── THE REEL (C1–C3): plays muted (never with reduced motion), opens in pixels, dims into the black stage
+  const reel = $('[data-reel]');
+  if (reel) {
+    const v = $('[data-reel-v]', reel), btn = $('[data-reel-btn]', reel), lbl = $('[data-reel-label]', reel), cv = $('[data-reel-px]', reel);
+    let userPaused = RM, inView = true;
+    const setBtn = () => { const paused = v.paused; btn.setAttribute('aria-pressed', String(paused)); lbl.textContent = paused ? 'Play' : 'Pause'; };
+    const tryPlay = () => { if (userPaused || !inView || document.hidden) return; const p = v.play(); if (p && p.catch) p.catch(() => setBtn()); };
+    v.addEventListener('play', setBtn); v.addEventListener('pause', setBtn);
+    btn.addEventListener('click', () => { if (v.paused) { userPaused = false; inView = true; tryPlay(); } else { userPaused = true; v.pause(); } });
+    if (io) new IntersectionObserver((es) => { inView = es[0].isIntersecting; if (inView) tryPlay(); else v.pause(); }, { threshold: 0.05 }).observe(reel);
+    document.addEventListener('visibilitychange', () => (document.hidden ? v.pause() : tryPlay()));
+    if (RM) { cv.remove(); setBtn(); }
+    else {
+      v.preload = 'auto';
+      // pixel open: the frame starts as a black field of square pixels; they open from the centre out,
+      // a few flashing brand colours on their way, until the whole picture is there.
+      const ctx = cv.getContext('2d');
+      const dpr = Math.min(2, devicePixelRatio || 1);
+      const W = (cv.width = Math.round(reel.clientWidth * dpr)), H = (cv.height = Math.round(reel.clientHeight * dpr));
+      const u = Math.ceil(Math.max(W, H) / (innerWidth < 760 ? 14 : 26));
+      const cols = Math.ceil(W / u), rows = Math.ceil(H / u), cx = cols / 2, cy = rows / 2, maxd = Math.hypot(cx, cy);
+      const cells = [];
+      for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+        const d = Math.hypot(i + 0.5 - cx, j + 0.5 - cy) / maxd;
+        cells.push({ i, j, t: d * 0.62 + Math.random() * 0.38, c: Math.random() < 0.16 ? pick(PAL) : null });
+      }
+      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+      const T = 1500;
+      const open = () => {
+        const t0 = performance.now();
+        const step = (now) => {
+          const p = Math.min(1, (now - t0) / T);
+          ctx.clearRect(0, 0, W, H);
+          for (const c of cells) {
+            if (p >= c.t) continue; // open
+            const near = c.t - p;
+            ctx.fillStyle = c.c && near < 0.09 ? c.c : '#000'; // a brand colour flashes just before the pixel opens
+            ctx.fillRect(c.i * u, c.j * u, u + 1, u + 1);
+          }
+          if (p < 1) requestAnimationFrame(step); else cv.remove();
+        };
+        requestAnimationFrame(step);
+      };
+      let opened = false; const go = () => { if (opened) return; opened = true; tryPlay(); setTimeout(open, 120); };
+      if (v.readyState >= 2) go(); else { v.addEventListener('loadeddata', go, { once: true }); setTimeout(go, 1600); }
+      v.load();
+    }
+    // scroll-linked dim: the reel recedes as the black stage arrives
+    const rp = () => { const r = Math.min(1, Math.max(0, scrollY / (reel.offsetHeight || 1))); reel.style.setProperty('--rp', r.toFixed(3)); };
+    addEventListener('scroll', () => requestAnimationFrame(rp), { passive: true }); rp();
+  }
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+
+  // ── MAJOR WORKS (C6–C8): one at a time on scroll; straight at rest, a slight tilt under the cursor
+  $$('.work').forEach((w) => {
+    if (!io || RM) { w.classList.add('is-in'); return; }
+    const o = new IntersectionObserver((es) => { if (es[0].isIntersecting) { w.classList.add('is-in'); o.disconnect(); } }, { threshold: 0.18 });
+    o.observe(w);
+  });
+  if (FINE && !RM) $$('[data-tilt]').forEach((el) => {
+    const host = el.closest('a') || el;
+    let tx = 0, ty = 0, x = 0, y = 0, ts = 1, s = 1, raf = 0;
+    const loop = () => {
+      x += (tx - x) * 0.12; y += (ty - y) * 0.12; s += (ts - s) * 0.12;
+      el.style.setProperty('--rx', `${y.toFixed(2)}deg`); el.style.setProperty('--ry', `${x.toFixed(2)}deg`); el.style.setProperty('--ts', s.toFixed(4));
+      raf = Math.abs(tx - x) + Math.abs(ty - y) + Math.abs(ts - s) > 0.01 ? requestAnimationFrame(loop) : 0;
+    };
+    host.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect(); const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+      tx = px * 5; ty = -py * 4; ts = 1.012; if (!raf) raf = requestAnimationFrame(loop);
+    });
+    host.addEventListener('pointerleave', () => { tx = 0; ty = 0; ts = 1; if (!raf) raf = requestAnimationFrame(loop); });
+  });
+
+  // ── THE MELT: black runs to Bone as Services arrives (scroll-linked, not timed)
+  const sv = $('#services');
+  if (isHome && sv) {
     doc.classList.add('js-melt');
     const melt = () => {
-      const h = hx.offsetHeight; const raw = (scrollY - h * 0.3) / (h * 0.62);
-      const t = Math.min(1, Math.max(0, raw)); const m = t * t * (3 - 2 * t); // smoothstep: passes the grey middle quickly
+      const top = sv.getBoundingClientRect().top; const raw = (innerHeight * 0.95 - top) / (innerHeight * 0.6);
+      const t = Math.min(1, Math.max(0, raw)); const m = t * t * (3 - 2 * t);
       doc.style.setProperty('--m', m.toFixed(3)); window.__pxMelt = m;
     };
     addEventListener('scroll', () => requestAnimationFrame(melt), { passive: true }); addEventListener('resize', melt); melt();
-  }
-
-  // ── THE REVEAL: tiles close over the work in a wave, the image changes, tiles open again
-  const stage = $('[data-rv]');
-  if (stage) {
-    const tilesEl = $('[data-rv-tiles]', stage); const label = $('[data-rv-label]', stage);
-    const im = $$('.rv-img', stage); let cur = 0, timer = 0, visible = true, busy = false;
-    const small = innerWidth < 640; const C = small ? 6 : 10, Rw = small ? 4 : 7;
-    tilesEl.style.setProperty('--c', C); tilesEl.style.setProperty('--r', Rw);
-    let html = ''; for (let j = 0; j < Rw; j++) for (let i = 0; i < C; i++) html += `<i style="--d:${(i + j) * 34}ms;--d2:${(C - 1 - i + Rw - 1 - j) * 34}ms"></i>`;
-    tilesEl.innerHTML = html; const tiles = $$('i', tilesEl);
-    const span = (C + Rw) * 34 + 420;
-    const paint = () => tiles.forEach((t) => t.style.setProperty('--t', Math.random() < 0.55 ? '#000' : pick(PAL)));
-    if (RM) { tilesEl.hidden = true; }
-    else {
-      // start covered, then open: the first image reveals itself on load
-      paint(); tilesEl.classList.add('instant', 'closed'); void tilesEl.offsetWidth; tilesEl.classList.remove('instant');
-      setTimeout(() => tilesEl.classList.remove('closed'), plDelay ? plDelay + 250 : 450);
-      const cycle = () => {
-        if (!visible || document.hidden || busy) { timer = setTimeout(cycle, 1200); return; }
-        busy = true; paint(); label.classList.add('out'); tilesEl.classList.add('closed');
-        setTimeout(() => {
-          im[cur].classList.remove('on'); cur = (cur + 1) % im.length; im[cur].classList.add('on');
-          label.textContent = im[cur].dataset.name;
-          setTimeout(() => { tilesEl.classList.remove('closed'); label.classList.remove('out'); }, 160);
-          setTimeout(() => { busy = false; timer = setTimeout(cycle, 4000); }, span + 200);
-        }, span);
-      };
-      timer = setTimeout(cycle, 4000 + (plDelay || 0));
-      if (io) new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(stage);
-    }
-  }
-
-  // ── LIVING ICONS: run only while the services row is on screen
-  $$('[data-icons]').forEach((row) => {
-    if (!io) { row.classList.add('is-live'); return; }
-    new IntersectionObserver((es) => row.classList.toggle('is-live', es[0].isIntersecting)).observe(row);
-  });
-
-  // ── PIXEL RULE: the work section's divider assembles from blocks on scroll-in
-  $$('[data-pxrule]').forEach((el) => {
-    const n = Math.max(24, Math.round(el.clientWidth / 15)); el.style.setProperty('--n', n); let s = '';
-    for (let i = 0; i < n; i++) { const c = Math.random() < 0.16 ? ` class="c" style="--c:${pick(PAL.slice(0, 3))};--d:${Math.round(Math.random() * 600)}ms"` : ` style="--d:${Math.round(Math.random() * 600)}ms"`; s += `<i${c}></i>`; }
-    el.innerHTML = s;
-    if (io) { const o = new IntersectionObserver((es) => { if (es[0].isIntersecting) { el.classList.add('is-in'); o.disconnect(); } }, { threshold: 0.5 }); o.observe(el); } else el.classList.add('is-in');
-  });
-
-  // ── WORK INDEX: cursor preview (pixel-dissolve or motion), pixel burst, tap-to-expand on touch
-  const list = $('[data-worklist]');
-  if (list) {
-    const peek = $('[data-peek]'), media = $('[data-peek-media]'), ptiles = $('[data-peek-tiles]');
-    let ph = ''; for (let k = 0; k < 48; k++) ph += `<i style="--d:${Math.round(Math.random() * 260)}ms"></i>`; ptiles.innerHTML = ph;
-    const pt = $$('i', ptiles);
-    let tx = 0, ty = 0, x = 0, y = 0, raf = 0, active = null;
-    const follow = () => { x += (tx - x) * 0.16; y += (ty - y) * 0.16; peek.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`; raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.5 ? requestAnimationFrame(follow) : 0; };
-    const place = (e) => { tx = e.clientX + 28; ty = e.clientY - peek.offsetHeight / 2; if (tx + peek.offsetWidth > innerWidth - 12) tx = e.clientX - peek.offsetWidth - 28; if (!raf) raf = requestAnimationFrame(follow); };
-    const burst = (row, color) => {
-      if (RM) return; const w = row.offsetWidth, h = row.offsetHeight;
-      for (let k = 0; k < 12; k++) {
-        const b = document.createElement('i'); b.className = 'burst'; b.style.background = color;
-        const edge = Math.random() < 0.5; const bx = edge ? Math.random() * w : (Math.random() < 0.5 ? 0 : w - 8); const by = edge ? (Math.random() < 0.5 ? 0 : h - 8) : Math.random() * h;
-        b.style.left = bx + 'px'; b.style.top = by + 'px'; row.appendChild(b);
-        const dx = (bx / w - 0.5) * 60 + (Math.random() - 0.5) * 40, dy = (by / h - 0.5) * 60 + (Math.random() - 0.5) * 30;
-        b.animate([{ transform: 'translate(0,0) scale(1)', opacity: 1 }, { transform: `translate(${Math.round(dx / 8) * 8}px, ${Math.round(dy / 8) * 8}px) scale(.4)`, opacity: 0 }], { duration: 650 + Math.random() * 250, easing: 'steps(6)' }).onfinish = () => b.remove();
-      }
-    };
-    const accentOf = (row) => getComputedStyle(row).getPropertyValue('--a').trim();
-    $$('[data-row]', list).forEach((a) => {
-      const row = a.closest('.wrow');
-      a.addEventListener('mouseenter', (e) => {
-        if (!FINE) return;
-        active = a; const col = accentOf(row);
-        media.innerHTML = a.dataset.motion ? `<video src="${a.dataset.motion}" muted loop playsinline autoplay></video>` : `<img src="${a.dataset.img}" alt="">`;
-        pt.forEach((t) => t.style.setProperty('--t', Math.random() < 0.5 ? col : '#000'));
-        peek.classList.remove('open'); peek.classList.add('on'); place(e); x = tx; y = ty;
-        requestAnimationFrame(() => requestAnimationFrame(() => { if (active === a) peek.classList.add('open'); }));
-        burst(row, col);
-      });
-      a.addEventListener('mousemove', place);
-      a.addEventListener('mouseleave', () => { if (active !== a) return; active = null; peek.classList.remove('open'); setTimeout(() => { if (!active) { peek.classList.remove('on'); media.innerHTML = ''; } }, 360); });
-      // touch: the first tap opens the preview inline under the row; the link inside goes to the case study
-      a.addEventListener('click', (e) => {
-        if (FINE) return;
-        const prev = $('.wrow-prev', row); if (!prev || row.classList.contains('is-open')) return;
-        e.preventDefault();
-        $$('.wrow.is-open', list).forEach((o) => { o.classList.remove('is-open'); $('.wrow-prev', o).hidden = true; $('video', o) && $('video', o).pause(); });
-        row.classList.add('is-open'); prev.hidden = false; burst(row, accentOf(row));
-        const v = $('video', prev); if (v && !RM) v.play().catch(() => {});
-      });
-    });
   }
 
   // ── contact form: validates, then sends to an endpoint if one is set (data-endpoint), otherwise opens a filled email
