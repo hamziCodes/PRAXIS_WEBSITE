@@ -299,8 +299,13 @@
         };
         requestAnimationFrame(step);
       };
-      let opened = false; const go = () => { if (opened) return; opened = true; tryPlay(); setTimeout(open, 120); };
-      if (v.readyState >= 2) go(); else { v.addEventListener('loadeddata', go, { once: true }); setTimeout(go, 1600); }
+      // The trailer's first second is its own fade up from black (the loop seam). On first play, start just past it,
+      // wait until the picture can actually play, and only then open the pixels, so they never open onto black.
+      let opened = false; const go = () => { if (opened) return; opened = true; setTimeout(open, 60); };
+      v.addEventListener('loadedmetadata', () => { try { if (v.currentTime < 1) v.currentTime = 1.1; } catch (e) { /* not seekable yet */ } }, { once: true });
+      v.addEventListener('canplay', tryPlay, { once: true });
+      v.addEventListener('playing', go, { once: true });
+      setTimeout(go, 3200); // slow connection: open onto the poster frame instead
       v.load();
     }
     // scroll-linked dim: the reel recedes as the black stage arrives
