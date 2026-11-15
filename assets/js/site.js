@@ -47,7 +47,9 @@
       hdr.classList.toggle('is-hidden', !menuOpen && y > 400 && y > lastY + 4);
       if (y < lastY - 4 || y < 400) hdr.classList.remove('is-hidden');
       const probe = 40;
-      hdr.classList.toggle('on-dark', darks.some((d) => { const r = d.getBoundingClientRect(); return r.top <= probe && r.bottom >= probe; }));
+      const overDark = darks.some((d) => { const r = d.getBoundingClientRect(); return r.top <= probe && r.bottom >= probe; });
+      const heroDark = doc.classList.contains('is-home') && (window.__pxMelt == null ? scrollY < innerHeight * 0.6 : window.__pxMelt < 0.5);
+      hdr.classList.toggle('on-dark', overDark || heroDark);
     }
     lastY = y; ticking = false;
   };
@@ -191,13 +193,6 @@
     el.innerHTML = s;
   });
 
-  // ── hero card stack
-  const stack = $('[data-stack]');
-  if (stack && !RM) {
-    const im = $$('img', stack); let k = 0;
-    setInterval(() => { if (document.hidden) return; const cur = im[k]; k = (k + 1) % im.length; cur.classList.add('out'); im[k].classList.remove('off', 'out'); setTimeout(() => { cur.classList.remove('out'); cur.classList.add('off'); }, 700); }, 1700);
-  }
-
   // ── count-up stats
   $$('[data-count-to]').forEach((el) => {
     if (RM || !io) return; const to = +el.dataset.countTo; el.textContent = '0';
@@ -233,75 +228,110 @@
     }
   }
 
-  // ── PIXEL SNAKE: a trail of pixels roams the hero, dragging the word pills
-  const hero = $('[data-hero]'); const snakeCv = $('[data-snake]');
-  if (hero && snakeCv) {
-    const ctx = snakeCv.getContext('2d'); const pills = $$('.spill', hero);
-    let W = 0, H = 0, U = 14, dpr = 1, cols = 0, rows = 0;
-    const size = () => { dpr = Math.min(2, devicePixelRatio || 1); W = hero.clientWidth; H = hero.clientHeight; U = W < 640 ? 10 : 14; snakeCv.width = W * dpr; snakeCv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); cols = Math.floor(W / U); rows = Math.floor(H / U); };
-    size(); addEventListener('resize', size);
-    const LEN = 64; const trail = []; let hx = Math.floor(cols * 0.15), hy = Math.floor(rows * 0.3);
-    for (let i = 0; i < LEN; i++) trail.push([hx - i, hy]);
-    const PILL_AT = [10, 25, 40, 55];
-    let t = Math.random() * 100, ptr = null, last = 0, visible = true, running = false;
-    hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); ptr = [(e.clientX - r.left) / U, (e.clientY - r.top) / U]; });
-    hero.addEventListener('pointerleave', () => (ptr = null));
-    const target = () => { const tx = cols * (0.5 + 0.44 * Math.sin(t * 0.23)); const ty = rows * (0.48 + 0.36 * Math.sin(t * 0.37 + 1.3)); return ptr ? [ptr[0] * 0.7 + tx * 0.3, ptr[1] * 0.7 + ty * 0.3] : [tx, ty]; };
-    const draw = () => {
-      ctx.clearRect(0, 0, W, H);
-      for (let i = trail.length - 1; i >= 0; i--) {
-        const [x, y] = trail[i]; const a = 1 - i / trail.length;
-        ctx.globalAlpha = Math.max(0.12, a);
-        ctx.fillStyle = i === 0 ? '#000' : i % 9 === 0 ? '#000' : '#B1FA63';
-        const s = i === 0 ? U : U - 2; ctx.fillRect(x * U + (U - s) / 2, y * U + (U - s) / 2, s, s);
-      }
-      ctx.globalAlpha = 1;
-      pills.forEach((p, k) => { const c = trail[Math.min(PILL_AT[k], trail.length - 1)]; p.style.transform = `translate(${c[0] * U + U * 0.6}px, ${c[1] * U - 34}px)`; });
+  // ═════ HOMEPAGE v5 ═════
+  const PAL = ['#B1FA63', '#FE7733', '#B2A1FF', '#FFFFFF', '#243837', '#D1D1D1'];
+  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+
+  // ── THE MELT: the page runs from black to Bone as the hero scrolls away (scroll-linked, not timed)
+  const hx = $('[data-hero]');
+  if (hx && doc.classList.contains('is-home')) {
+    doc.classList.add('js-melt');
+    const melt = () => {
+      const h = hx.offsetHeight; const raw = (scrollY - h * 0.3) / (h * 0.62);
+      const t = Math.min(1, Math.max(0, raw)); const m = t * t * (3 - 2 * t); // smoothstep: passes the grey middle quickly
+      doc.style.setProperty('--m', m.toFixed(3)); window.__pxMelt = m;
     };
-    const stepSnake = () => {
-      const [tx, ty] = target(); const dx = tx - hx, dy = ty - hy;
-      if (Math.abs(dx) > Math.abs(dy) ? true : Math.abs(dy) < 0.5) hx += Math.sign(dx) || 1; else hy += Math.sign(dy);
-      hx = Math.max(0, Math.min(cols - 1, hx)); hy = Math.max(0, Math.min(rows - 1, hy));
-      const [px, py] = trail[0]; if (px !== hx || py !== hy) { trail.unshift([hx, hy]); trail.length = LEN; }
-    };
-    const loop = (now) => {
-      if (!visible || document.hidden) { running = false; return; }
-      if (now - last > 42) { t += 0.042; stepSnake(); draw(); last = now; }
-      requestAnimationFrame(loop);
-    };
-    hero.classList.add('snake-on');
-    if (RM) { for (let i = 0; i < 400; i++) { t += 0.042; stepSnake(); } draw(); }
+    addEventListener('scroll', () => requestAnimationFrame(melt), { passive: true }); addEventListener('resize', melt); melt();
+  }
+
+  // ── THE REVEAL: tiles close over the work in a wave, the image changes, tiles open again
+  const stage = $('[data-rv]');
+  if (stage) {
+    const tilesEl = $('[data-rv-tiles]', stage); const label = $('[data-rv-label]', stage);
+    const im = $$('.rv-img', stage); let cur = 0, timer = 0, visible = true, busy = false;
+    const small = innerWidth < 640; const C = small ? 6 : 10, Rw = small ? 4 : 7;
+    tilesEl.style.setProperty('--c', C); tilesEl.style.setProperty('--r', Rw);
+    let html = ''; for (let j = 0; j < Rw; j++) for (let i = 0; i < C; i++) html += `<i style="--d:${(i + j) * 34}ms;--d2:${(C - 1 - i + Rw - 1 - j) * 34}ms"></i>`;
+    tilesEl.innerHTML = html; const tiles = $$('i', tilesEl);
+    const span = (C + Rw) * 34 + 420;
+    const paint = () => tiles.forEach((t) => t.style.setProperty('--t', Math.random() < 0.55 ? '#000' : pick(PAL)));
+    if (RM) { tilesEl.hidden = true; }
     else {
-      const start = () => { if (!running && visible) { running = true; requestAnimationFrame(loop); } };
-      if (io) new IntersectionObserver((es) => { visible = es[0].isIntersecting; start(); }).observe(hero);
-      document.addEventListener('visibilitychange', start); start();
+      // start covered, then open: the first image reveals itself on load
+      paint(); tilesEl.classList.add('instant', 'closed'); void tilesEl.offsetWidth; tilesEl.classList.remove('instant');
+      setTimeout(() => tilesEl.classList.remove('closed'), plDelay ? plDelay + 250 : 450);
+      const cycle = () => {
+        if (!visible || document.hidden || busy) { timer = setTimeout(cycle, 1200); return; }
+        busy = true; paint(); label.classList.add('out'); tilesEl.classList.add('closed');
+        setTimeout(() => {
+          im[cur].classList.remove('on'); cur = (cur + 1) % im.length; im[cur].classList.add('on');
+          label.textContent = im[cur].dataset.name;
+          setTimeout(() => { tilesEl.classList.remove('closed'); label.classList.remove('out'); }, 160);
+          setTimeout(() => { busy = false; timer = setTimeout(cycle, 4000); }, span + 200);
+        }, span);
+      };
+      timer = setTimeout(cycle, 4000 + (plDelay || 0));
+      if (io) new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(stage);
     }
   }
 
-  // ── HEADLINE PIXEL BREAK: the hero headline breaks back into pixels as it scrolls away
-  const pb = $('[data-pixelbreak]');
-  if (pb && !RM && FINE && innerWidth > 900) {
-    const setup = () => {
-      const C = 12, Rr = 4; const clones = []; const host = pb; const tmp = host.cloneNode(true); tmp.querySelectorAll(".stack img.off").forEach((n) => n.remove()); const html = tmp.innerHTML;
-      for (let j = 0; j < Rr; j++) for (let i = 0; i < C; i++) {
-        const c = document.createElement('div'); c.className = 'pb-clone d1'; c.setAttribute('aria-hidden', 'true');
-        c.innerHTML = html; c.style.clipPath = `inset(${(j / Rr) * 100}% ${100 - ((i + 1) / C) * 100}% ${100 - ((j + 1) / Rr) * 100}% ${(i / C) * 100}%)`;
-        c.style.visibility = 'hidden';
-        const ang = Math.random() * Math.PI * 2; clones.push({ c, vx: Math.cos(ang) * (60 + Math.random() * 160), vy: -80 - Math.random() * 260, r: (Math.random() - 0.5) * 30, d: Math.random() * 0.35 });
-        host.appendChild(c);
+  // ── LIVING ICONS: run only while the services row is on screen
+  $$('[data-icons]').forEach((row) => {
+    if (!io) { row.classList.add('is-live'); return; }
+    new IntersectionObserver((es) => row.classList.toggle('is-live', es[0].isIntersecting)).observe(row);
+  });
+
+  // ── PIXEL RULE: the work section's divider assembles from blocks on scroll-in
+  $$('[data-pxrule]').forEach((el) => {
+    const n = Math.max(24, Math.round(el.clientWidth / 15)); el.style.setProperty('--n', n); let s = '';
+    for (let i = 0; i < n; i++) { const c = Math.random() < 0.16 ? ` class="c" style="--c:${pick(PAL.slice(0, 3))};--d:${Math.round(Math.random() * 600)}ms"` : ` style="--d:${Math.round(Math.random() * 600)}ms"`; s += `<i${c}></i>`; }
+    el.innerHTML = s;
+    if (io) { const o = new IntersectionObserver((es) => { if (es[0].isIntersecting) { el.classList.add('is-in'); o.disconnect(); } }, { threshold: 0.5 }); o.observe(el); } else el.classList.add('is-in');
+  });
+
+  // ── WORK INDEX: cursor preview (pixel-dissolve or motion), pixel burst, tap-to-expand on touch
+  const list = $('[data-worklist]');
+  if (list) {
+    const peek = $('[data-peek]'), media = $('[data-peek-media]'), ptiles = $('[data-peek-tiles]');
+    let ph = ''; for (let k = 0; k < 48; k++) ph += `<i style="--d:${Math.round(Math.random() * 260)}ms"></i>`; ptiles.innerHTML = ph;
+    const pt = $$('i', ptiles);
+    let tx = 0, ty = 0, x = 0, y = 0, raf = 0, active = null;
+    const follow = () => { x += (tx - x) * 0.16; y += (ty - y) * 0.16; peek.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`; raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.5 ? requestAnimationFrame(follow) : 0; };
+    const place = (e) => { tx = e.clientX + 28; ty = e.clientY - peek.offsetHeight / 2; if (tx + peek.offsetWidth > innerWidth - 12) tx = e.clientX - peek.offsetWidth - 28; if (!raf) raf = requestAnimationFrame(follow); };
+    const burst = (row, color) => {
+      if (RM) return; const w = row.offsetWidth, h = row.offsetHeight;
+      for (let k = 0; k < 12; k++) {
+        const b = document.createElement('i'); b.className = 'burst'; b.style.background = color;
+        const edge = Math.random() < 0.5; const bx = edge ? Math.random() * w : (Math.random() < 0.5 ? 0 : w - 8); const by = edge ? (Math.random() < 0.5 ? 0 : h - 8) : Math.random() * h;
+        b.style.left = bx + 'px'; b.style.top = by + 'px'; row.appendChild(b);
+        const dx = (bx / w - 0.5) * 60 + (Math.random() - 0.5) * 40, dy = (by / h - 0.5) * 60 + (Math.random() - 0.5) * 30;
+        b.animate([{ transform: 'translate(0,0) scale(1)', opacity: 1 }, { transform: `translate(${Math.round(dx / 8) * 8}px, ${Math.round(dy / 8) * 8}px) scale(.4)`, opacity: 0 }], { duration: 650 + Math.random() * 250, easing: 'steps(6)' }).onfinish = () => b.remove();
       }
-      const stackIm = $$('.pb-clone .stack img', host); stackIm.forEach((im) => im.removeAttribute('loading'));
-      let active = false;
-      const upd = () => {
-        const r = hero.getBoundingClientRect(); const p = Math.min(1, Math.max(0, -r.top / (r.height * 0.55)));
-        if (p > 0.02) {
-          if (!active) { active = true; $$('.hl-line', host).forEach((l) => { if (l.parentElement === host) l.style.visibility = 'hidden'; }); clones.forEach((o) => (o.c.style.visibility = 'visible')); }
-          clones.forEach((o) => { const q = Math.max(0, (p - o.d) / (1 - o.d)); const s = Math.round(q * 8) / 8; o.c.style.transform = `translate(${(o.vx * s).toFixed(0)}px, ${(o.vy * s).toFixed(0)}px)`; o.c.style.opacity = String(1 - s); });
-        } else if (active) { active = false; clones.forEach((o) => { o.c.style.visibility = 'hidden'; o.c.style.transform = ''; o.c.style.opacity = ''; }); $$('.hl-line', host).forEach((l) => (l.style.visibility = '')); }
-      };
-      addEventListener('scroll', () => requestAnimationFrame(upd), { passive: true });
     };
-    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => setTimeout(setup, 1600));
+    const accentOf = (row) => getComputedStyle(row).getPropertyValue('--a').trim();
+    $$('[data-row]', list).forEach((a) => {
+      const row = a.closest('.wrow');
+      a.addEventListener('mouseenter', (e) => {
+        if (!FINE) return;
+        active = a; const col = accentOf(row);
+        media.innerHTML = a.dataset.motion ? `<video src="${a.dataset.motion}" muted loop playsinline autoplay></video>` : `<img src="${a.dataset.img}" alt="">`;
+        pt.forEach((t) => t.style.setProperty('--t', Math.random() < 0.5 ? col : '#000'));
+        peek.classList.remove('open'); peek.classList.add('on'); place(e); x = tx; y = ty;
+        requestAnimationFrame(() => requestAnimationFrame(() => { if (active === a) peek.classList.add('open'); }));
+        burst(row, col);
+      });
+      a.addEventListener('mousemove', place);
+      a.addEventListener('mouseleave', () => { if (active !== a) return; active = null; peek.classList.remove('open'); setTimeout(() => { if (!active) { peek.classList.remove('on'); media.innerHTML = ''; } }, 360); });
+      // touch: the first tap opens the preview inline under the row; the link inside goes to the case study
+      a.addEventListener('click', (e) => {
+        if (FINE) return;
+        const prev = $('.wrow-prev', row); if (!prev || row.classList.contains('is-open')) return;
+        e.preventDefault();
+        $$('.wrow.is-open', list).forEach((o) => { o.classList.remove('is-open'); $('.wrow-prev', o).hidden = true; $('video', o) && $('video', o).pause(); });
+        row.classList.add('is-open'); prev.hidden = false; burst(row, accentOf(row));
+        const v = $('video', prev); if (v && !RM) v.play().catch(() => {});
+      });
+    });
   }
 
   // ── contact form: validates, then sends to an endpoint if one is set (data-endpoint), otherwise opens a filled email

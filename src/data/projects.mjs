@@ -4,6 +4,10 @@
 // (e.g. images: ['hero.jpg', '01.jpg', ...]); `gallery` is only used to generate artwork when `images` is absent.
 // `service` must be one of: strategy-consulting | brand-creative | web-digital | campaigns-media
 //
+// motion: optional path to a short muted video (e.g. 'assets/video/koffa.mp4'). When set, it plays in the homepage
+//         work index on hover/tap instead of the pixel-dissolve preview. No other code change needed.
+// note:   optional small line shown under the row on the homepage (e.g. an NDA note).
+//
 // brand: the client's identity. mark = logo style (pixel | ring | arch | stack | leaf | wave | sun | grid | drop | bolt | key | peak)
 //        font = 'sans' | 'serif' | 'mono'; colours: bg (main), ink (text on bg), accent (detail), paper (light ground).
 
@@ -27,6 +31,7 @@ export const projects = [
     brand: { mark: 'grid', font: 'sans', bg: '#0F5B3A', ink: '#F4F1E6', accent: '#F2C230', paper: '#F4F1E6', tagline: 'Your street. Your store.' },
     testimonial: { quote: 'We thought we needed a new logo. Praxis showed us we needed one rule for price tags and a loyalty card people could find. The audit paid for itself before the rebrand conversation even started.', name: 'Usman Tariq', role: 'Director of Operations' },
     gallery: ['report', 'deck', 'sign', 'pattern', 'cards', 'social', 'swatch', 'poster'],
+    motion: null,
   },
   {
     slug: 'kisima',
@@ -46,6 +51,7 @@ export const projects = [
     brand: { mark: 'drop', font: 'sans', bg: '#1D4E89', ink: '#FFFFFF', accent: '#7FD1F7', paper: '#EEF2EA', tagline: 'Water you can count on.' },
     testimonial: { quote: 'They understood that trust was the product. Every piece of the plan answered one question people kept asking us: is this real? By launch day, people were already queuing.', name: 'Wanjiru Kamau', role: 'Programme Director' },
     gallery: ['deck', 'poster', 'phone', 'report', 'pattern', 'cards', 'social', 'swatch'],
+    motion: null,
   },
   {
     slug: 'costa-lume',
@@ -65,6 +71,7 @@ export const projects = [
     brand: { mark: 'sun', font: 'serif', bg: '#C8553D', ink: '#FFF8EE', accent: '#F2D0A4', paper: '#FFF8EE', tagline: 'The coast, out of season.' },
     testimonial: { quote: 'For twenty years we fought for August. Praxis moved our money to the months we actually needed to fill, and the hotels noticed by the second week of November.', name: 'Inês Carvalho', role: 'Head of Marketing' },
     gallery: ['billboard', 'deck', 'report', 'phone', 'poster', 'social', 'swatch', 'pattern'],
+    motion: null,
   },
   {
     slug: 'kitepay',
@@ -84,6 +91,7 @@ export const projects = [
     brand: { mark: 'bolt', font: 'sans', bg: '#14213D', ink: '#FFFFFF', accent: '#9EF0C8', paper: '#F3F5F2', tagline: 'On time, every time.' },
     testimonial: { quote: 'The platform document is the most-opened file in our company drive. Product, support and marketing finally describe Kitepay the same way.', name: 'Rizwan Siddiqui', role: 'Co-founder and CEO' },
     gallery: ['deck', 'phone', 'swatch', 'report', 'cards', 'billboard', 'pattern', 'social'],
+    motion: null,
   },
 
   // ───────────── BRAND & CREATIVE ─────────────
@@ -105,6 +113,7 @@ export const projects = [
     brand: { mark: 'stack', font: 'sans', bg: '#2B1D14', ink: '#EFE4D0', accent: '#C9772B', paper: '#EFE4D0', tagline: 'Roasted on Printers Street.' },
     testimonial: { quote: 'On opening day, a customer told us he remembered our old shop. We never had one. That was exactly the brief.', name: 'Sana Mirza', role: 'Co-founder' },
     gallery: ['bag', 'cups', 'sign', 'cards', 'poster', 'swatch', 'social', 'tote', 'pattern'],
+    motion: null,
   },
   {
     slug: 'aurel-hotels',
@@ -124,6 +133,7 @@ export const projects = [
     brand: { mark: 'arch', font: 'serif', bg: '#5A2E3A', ink: '#F6EEE3', accent: '#D8B26E', paper: '#F6EEE3', tagline: 'Seven houses. One host.' },
     testimonial: { quote: 'Our general managers stopped asking for designers. They open the guidelines, take a template and it looks like Aurel. That is what we paid for.', name: 'Elif Demir', role: 'Group Brand Manager' },
     gallery: ['browser', 'cards', 'sign', 'swatch', 'deck', 'poster', 'social', 'pattern'],
+    motion: null,
   },
   {
     slug: 'tarazu-bank',
@@ -143,6 +153,7 @@ export const projects = [
     brand: { mark: 'key', font: 'sans', bg: '#0B3D3A', ink: '#FFFFFF', accent: '#FFC857', paper: '#F2F4EF', tagline: 'Your first bank, done right.' },
     testimonial: { quote: 'Praxis tested every screen with the people we were building for. Our onboarding numbers are the best in the market and we know exactly why.', name: 'Hira Baloch', role: 'Head of Product' },
     gallery: ['phones', 'phone', 'swatch', 'browser', 'cards', 'billboard', 'social', 'pattern'],
+    motion: null,
   },
   {
     slug: 'lowtide',
@@ -162,6 +173,7 @@ export const projects = [
     brand: { mark: 'wave', font: 'sans', bg: '#101820', ink: '#F5F0E6', accent: '#FF6B4A', paper: '#F5F0E6', tagline: 'Three days. Two tides.' },
     testimonial: { quote: 'People framed our programme. Our programme. We have never had print that did that, or that sold tickets as well as this did.', name: 'Dilan Perera', role: 'Festival Director' },
     gallery: ['poster', 'pass', 'sign', 'tote', 'social', 'swatch', 'billboard', 'pattern'],
+    motion: null,
   },
 
   // ───────────── WEB & DIGITAL ─────────────
@@ -183,6 +195,7 @@ export const projects = [
     brand: { mark: 'leaf', font: 'sans', bg: '#1E5631', ink: '#FFFFFF', accent: '#A4DE02', paper: '#F4F6F1', tagline: 'Care, close to home.' },
     testimonial: { quote: 'Our front desks noticed it before our analytics did. Fewer calls asking how to book, more patients arriving already booked.', name: 'Dr. Priya Raman', role: 'Medical Director' },
     gallery: ['laptop', 'browser', 'phones', 'sign', 'swatch', 'report', 'social', 'pattern'],
+    motion: null,
   },
   {
     slug: 'oleum',
@@ -202,6 +215,7 @@ export const projects = [
     brand: { mark: 'drop', font: 'serif', bg: '#E8DCC8', ink: '#2F3A2F', accent: '#8A9A5B', paper: '#F7F2E9', tagline: 'Oils, honestly.' },
     testimonial: { quote: 'Our store finally feels like our stall. People buy the sample box, then come back for the bottle. The numbers speak for themselves.', name: 'Amelia Hart', role: 'Founder' },
     gallery: ['bottle', 'browser', 'phone', 'cards', 'swatch', 'social', 'tote', 'pattern'],
+    motion: null,
   },
   {
     slug: 'ledgerly',
@@ -221,6 +235,7 @@ export const projects = [
     brand: { mark: 'pixel', font: 'sans', bg: '#2F4BFF', ink: '#FFFFFF', accent: '#FFD84D', paper: '#F3F3EE', tagline: 'Books, by chat.' },
     testimonial: { quote: 'I tell it what I sold and what I paid, and it does the rest. My accountant says my books are the tidiest she gets.', name: 'Farah Hussain', role: 'Owner, Hussain\'s Corner Shop, and LEDGERLY pilot user' },
     gallery: ['phones', 'phone', 'browser', 'chat', 'swatch', 'billboard', 'social', 'pattern', 'cards'],
+    motion: null,
   },
   {
     slug: 'kestrel-hotels',
@@ -240,6 +255,7 @@ export const projects = [
     brand: { mark: 'peak', font: 'sans', bg: '#23395B', ink: '#FFFFFF', accent: '#E4B363', paper: '#F5F3EE', tagline: 'Stay above the city.' },
     testimonial: { quote: 'Guests think they are talking to our front desk. In a way they are: it says what our best people would say, and it knows when to call one of them.', name: 'Daniel Lim', role: 'Director of Digital' },
     gallery: ['chat', 'browser', 'phone', 'report', 'swatch', 'cards', 'social', 'pattern'],
+    motion: null,
   },
 
   // ───────────── CAMPAIGNS & MEDIA ─────────────
@@ -261,6 +277,7 @@ export const projects = [
     brand: { mark: 'grid', font: 'serif', bg: '#F1ECE2', ink: '#33302B', accent: '#B65C3A', paper: '#F1ECE2', tagline: 'Woven where cotton grows.' },
     testimonial: { quote: 'We doubled the target in two months, then kept going. And for the first time I understand where every dollar goes.', name: 'Bilal Ahmed', role: 'Founder' },
     gallery: ['social', 'phone', 'report', 'browser', 'swatch', 'billboard', 'cards', 'pattern'],
+    motion: null,
   },
   {
     slug: 'fixwell',
@@ -280,6 +297,7 @@ export const projects = [
     brand: { mark: 'bolt', font: 'sans', bg: '#FFB703', ink: '#14213D', accent: '#14213D', paper: '#FBF8F1', tagline: 'Fixed well, first time.' },
     testimonial: { quote: 'We cut our ad budget in half and the phone rings more. People tell our technicians they found us by asking their phone.', name: 'Omar Haddad', role: 'Managing Director' },
     gallery: ['search', 'phone', 'report', 'browser', 'swatch', 'billboard', 'cards', 'pattern'],
+    motion: null,
   },
   {
     slug: 'velour',
@@ -299,6 +317,7 @@ export const projects = [
     brand: { mark: 'ring', font: 'serif', bg: '#4A1C2C', ink: '#F3E7DD', accent: '#D9A5B3', paper: '#F3E7DD', tagline: 'Made slow. Sold out.' },
     testimonial: { quote: 'No ads, no store, sold out in a day and a half. Praxis gave me a rhythm I could keep up on my own, which is the part nobody talks about.', name: 'Chloé Martin', role: 'Founder and Designer' },
     gallery: ['social', 'phones', 'poster', 'tote', 'swatch', 'cards', 'phone', 'pattern'],
+    motion: null,
   },
   {
     slug: 'kora-home',
@@ -318,6 +337,7 @@ export const projects = [
     brand: { mark: 'arch', font: 'sans', bg: '#3D405B', ink: '#F4F1DE', accent: '#E07A5F', paper: '#F4F1DE', tagline: 'Furnish a room in one visit.' },
     testimonial: { quote: 'The billboards counted people all the way to our door. We had queues on a Friday morning at a furniture store.', name: 'Khalid Al-Mansoori', role: 'General Manager' },
     gallery: ['billboard', 'report', 'radio', 'phone', 'sign', 'swatch', 'social', 'pattern'],
+    motion: null,
   },
 ];
 

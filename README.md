@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <img src=".github/readme/01-hero.jpg" alt="Praxis Studio home page: Theory made real, with the pixel snake crossing the hero" width="100%">
+  <img src=".github/readme/01-hero.jpg" alt="Praxis Studio home page on black: Theory made real, with the pixel reveal stage" width="100%">
 </p>
 
 ---
@@ -42,13 +42,12 @@ The layout follows a proven editorial agency structure. Everything is re-skinned
 
 | | |
 |---|---|
-| **Pixel snake** | A grid-snapped trail of pixels roams the hero, dragging the word pills BRANDING · UIUX · MOTION · SEO. It chases your cursor. |
-| **Headline pixel break** | As you scroll away, *Theory made real.* breaks into drifting blocks, then reassembles on the way back. |
-| **Pixel assemble** | Every project image builds itself from chunky pixels as it scrolls into view. |
-| **The trifecta** | The people behind the work, as giant names. No titles, anywhere. |
-| **Live studio clock** | Islamabad time with OPEN / CLOSED status, plus a line telling you the time where you are. |
-| **Services accordion** | A dark panel where each service has its own star colour, and the case-study visual swaps as you open each one. |
-| **Drag carousel** | Featured work you can throw sideways with momentum. It also works with touch and arrow keys, and includes a metric card. |
+| **Black-to-light melt** | The homepage opens on black. As you scroll, the whole page melts from black to Bone, driven by scroll position. |
+| **The pixel reveal** | Beside *Theory made real.*, the work opens and closes in a wave of chunky, brand-coloured tiles inside a pixel-stepped frame, cycling through the portfolio. |
+| **Living service icons** | Four thin-line icons in numbered columns, always gently moving: routes drawing, a star turning, a cursor blinking, a signal pulsing. |
+| **The work index** | Sixteen brand names with the disciplines built for each. Hover one and a preview follows your cursor, dissolving in from pixels while a burst of squares pops in that project's colour. On touch, a tap opens the preview inline. |
+| **Pixel divider** | The work index's top rule assembles itself from coloured blocks as it scrolls into view. |
+| **Live studio clock** | Islamabad time with OPEN / CLOSED status in the hero. |
 
 ---
 
@@ -56,16 +55,16 @@ The layout follows a proven editorial agency structure. Everything is re-skinned
 
 <table>
   <tr>
-    <td width="50%"><img src=".github/readme/02-manifesto.jpg" alt="Manifesto with the big pixel mark"></td>
-    <td width="50%"><img src=".github/readme/03-services.jpg" alt="Services accordion on the black panel"></td>
+    <td width="50%"><img src=".github/readme/02-manifesto.jpg" alt="The page melting from black to Bone as you scroll"></td>
+    <td width="50%"><img src=".github/readme/03-services.jpg" alt="Services in numbered columns with living icons"></td>
   </tr>
   <tr>
-    <td><img src=".github/readme/04-work-rail.jpg" alt="Drag carousel of featured work"></td>
-    <td><img src=".github/readme/05-testimonials.jpg" alt="Client logo wall"></td>
+    <td><img src=".github/readme/04-work-rail.jpg" alt="The work index with a pixel-dissolve hover preview"></td>
+    <td><img src=".github/readme/05-testimonials.jpg" alt="Client logo wall (v4 homepage)"></td>
   </tr>
   <tr>
-    <td><img src=".github/readme/06-people.jpg" alt="The people behind the work: HAMZA, LAIBA, SHAHZAIB"></td>
-    <td><img src=".github/readme/07-closing-footer.jpg" alt="Gunmetal closing panel and the giant wordmark footer"></td>
+    <td><img src=".github/readme/06-people.jpg" alt="The people behind the work, now on the About page"></td>
+    <td><img src=".github/readme/07-closing-footer.jpg" alt="Closing: We speak English, Arabic and Design at Praxis."></td>
   </tr>
   <tr>
     <td><img src=".github/readme/08-work-index.jpg" alt="Work index with service filters"></td>
@@ -133,8 +132,8 @@ Sixteen client worlds. Each has its own name, logo, palette, imagery and testimo
 |---|---|
 | **Logo** | Pixel starburst mark plus a wordmark whose **x is a chunky 4-petal star**. Traced from the brand plates and shipped as one reusable SVG component. |
 | **Main type** | Helvetica Neue, falling back to TeX Gyre Heros (a free Helvetica-class face) so the site looks the same on Windows and Android. |
-| **Pixel labels** | Handjet, used only for tags, kickers and word pills. |
-| **Display word** | Instrument Serif Italic, exactly one word inside a big headline. |
+| **Pixel labels** | Handjet, also used for tags, labels and small display. |
+| **Accent word** | Handjet, the pixel face, for the one accent word in a big headline. No serif anywhere. |
 | **Colour rules** | Light Bone pages, black text, Inchworm as the single accent. Gunmetal only for galleries and closing panels. Orange and Pale Violet only as sparks inside imagery. Never more than two accents on one screen. |
 
 ---
@@ -145,7 +144,7 @@ Sixteen client worlds. Each has its own name, logo, palette, imagery and testimo
 |---|---|---|
 | **Pages** | Hand-written semantic HTML5, generated by a zero-dependency Node script (`src/build.mjs`) | Fast, cacheable, works on any host, and content lives in plain data files |
 | **Styles** | One CSS file with design tokens in custom properties. Fluid `clamp()` type, CSS Grid, `:has()`, `backdrop-filter` | No framework weight, one system |
-| **Motion** | Vanilla JavaScript: `IntersectionObserver`, `requestAnimationFrame`, Canvas 2D for the snake and pixel effects | Every effect is progressive: content is fully visible without JS |
+| **Motion** | Vanilla JavaScript: `IntersectionObserver`, `requestAnimationFrame`, CSS keyframes for the icons, scroll-linked colour mixing for the melt, Canvas 2D for pixel effects on inner pages | Every effect is progressive: content is fully visible without JS |
 | **Smooth scroll** | [Lenis](https://github.com/darkroomengineering/lenis), self-hosted and optional | If it fails to load, native scrolling takes over |
 | **Artwork** | `src/art.mjs`, a procedural SVG generator for 16 client logos and 146 project images | Crisp at every size, tiny files, consistent art direction |
 | **Logo** | Python + fontTools outline the wordmark; the star-x and mark are drawn from plate measurements | Production vector, identical everywhere |

@@ -24,7 +24,7 @@ const arrow = '<span class="btn-ico" aria-hidden="true"><svg><use href="#i-arrow
 const star = (cls = '') => `<svg class="star ${cls}" aria-hidden="true" focusable="false"><use href="#px-star"/></svg>`;
 const btn = (href, label, cls = 'btn-ink') => `<a class="btn ${cls}" href="${href}"><span>${label}</span>${arrow}</a>`;
 const link = (href, label) => `<a class="ulink" href="${href}">${label}<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>`;
-const sf = (w) => `<em class="sf">${w}</em>`; // the one serif display word
+const sf = (w) => `<span class="acc">${w}</span>`; // accent word: Handjet pixel face (no serif anywhere)
 const fmtDate = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 const pad = (n) => String(n).padStart(2, '0');
 const imgs = (p) => {
@@ -68,7 +68,6 @@ function page({ depth, path, title, desc, body, cls = '', preload = false, ld = 
 <link rel="apple-touch-icon" href="${R}assets/apple-touch-icon.png">
 <link rel="manifest" href="${R}site.webmanifest">
 <link rel="preload" href="${R}assets/fonts/handjet.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="${R}assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${R}assets/css/site.css">
 <script src="${R}assets/js/vendor/lenis.min.js" defer></script>
 <script src="${R}assets/js/site.js" defer></script>${ld}
@@ -101,7 +100,7 @@ ${preload ? `<div class="preload" aria-hidden="true"><svg class="pl-mark" viewBo
 <main id="main">
 ${b}
 </main>
-${footer(R)}
+${footer(R, cls === "is-home")}
 </body>
 </html>`;
 }
@@ -117,7 +116,7 @@ function closing(R, headline = `Ready to make it ${sf('real')}?`) {
 </section>`;
 }
 
-function footer(R) {
+function footer(R, isHome = false) {
   return `<footer class="ftr">
   <div class="wrap">
     <div class="ftr-grid">
@@ -130,7 +129,7 @@ function footer(R) {
       <nav class="ftr-col" aria-label="Studio"><h2 class="tag">Studio</h2><ul><li><a href="${R}work/">Work</a></li><li><a href="${R}about/">About</a></li><li><a href="${R}journal/">Journal</a></li><li><a href="${R}glossary/">Glossary</a></li><li><a href="${R}contact/">Contact</a></li></ul></nav>
     </div>
     <a class="ftr-word" href="${R}" aria-label="Praxis Studio, home">${use('px-word', 'ftr-word-svg')}</a>
-    <div class="ftr-base"><span>© ${YEAR} Praxis Studio</span><span>Hamza · Laiba · Shahzaib</span><a href="#main" data-top>Back to top</a></div>
+    <div class="ftr-base"><span>© ${YEAR} Praxis Studio</span><span>${isHome ? "Islamabad · working worldwide" : "Hamza · Laiba · Shahzaib"}</span><a href="#main" data-top>Back to top</a></div>
   </div>
 </footer>`;
 }
@@ -209,118 +208,103 @@ function articleCard(a, R) {
   return `<article class="acard"><a href="${R}journal/${a.slug}/"><p class="tag">${a.read} min read · ${fmtDate(a.date)}</p><h3>${esc(a.title)}</h3><p>${esc(a.dek)}</p><span class="ulink" aria-hidden="true">Read<svg><use href="#i-arrow"/></svg></span></a></article>`;
 }
 
-// ───────── HOME
+// ───────── HOME (v5: hero → services → work → contact)
+// Per-item accents rotate through the brand palette (never Bone on the light page).
+const ACCENTS = ['#B1FA63', '#FE7733', '#B2A1FF', '#243837', '#FFFFFF', '#000000', '#D1D1D1'];
+const onAcc = (c) => (['#243837', '#000000'].includes(c) ? '#DFE0D0' : '#000000');
+const svcAccent = (s) => (s.color === '#FFFFFF' ? '#243837' : s.color);
+// Thin-line service icons (64×64). Accent parts use var(--a); motion lives in CSS.
+const ICONS = {
+  'strategy-consulting': `<circle class="ring" cx="32" cy="32" r="26"/><path class="draw" pathLength="100" d="M10 48L25 31l12 9 17-24"/><rect class="n" style="--i:0" x="7" y="45" width="6" height="6"/><rect class="n" style="--i:1" x="22" y="28" width="6" height="6"/><rect class="n" style="--i:2" x="34" y="37" width="6" height="6"/><rect class="n" style="--i:3" x="51" y="13" width="6" height="6"/>`,
+  'brand-creative': (() => { const P = [[0, 0], [-39, -9.6], [-48.7, -37.8], [-22, -50]]; const k = 0.42; const d = [[1, 1], [-1, 1], [1, -1], [-1, -1]].map(([a, b]) => 'M' + P.map(([x, y]) => `${(32 + a * x * k).toFixed(1)} ${(32 + b * y * k).toFixed(1)}`).join('L') + 'Z').join(''); return `<g class="spin"><path d="${d}"/></g><g class="orbit"><rect class="fill" x="29" y="2" width="6" height="6"/></g><rect class="n" style="--i:1" x="29" y="29" width="6" height="6"/>`; })(),
+  'web-digital': `<rect x="7" y="11" width="50" height="42" rx="3"/><path d="M7 21h50"/><rect class="n" style="--i:0" x="11" y="14" width="4" height="4"/><path class="draw" pathLength="100" d="M14 30h26"/><path class="draw d2" pathLength="100" d="M14 37h18"/><rect class="slide fill" x="14" y="43" width="12" height="5"/><rect class="blink fill" x="44" y="28" width="4" height="9"/>`,
+  'campaigns-media': `<rect class="fill" x="9" y="28" width="8" height="8"/><path class="arc" style="--i:0" d="M24 22a14 14 0 0 1 0 20"/><path class="arc" style="--i:1" d="M32 15a24 24 0 0 1 0 34"/><path class="arc" style="--i:2" d="M40 8a34 34 0 0 1 0 48"/><rect class="n" style="--i:2" x="50" y="29" width="6" height="6"/>`,
+};
+function homeClosing() {
+  return `<section class="closing closing-speak" id="contact" aria-labelledby="close-h">
+  <div class="wrap closing-in">
+    <h2 class="speak" id="close-h" data-reveal>We speak English, Arabic and <span class="acc">Design</span> at Praxis.</h2>
+    <p class="lead">Tell us what you are trying to do and by when. We reply within two working days.</p>
+    <div class="closing-cta">${btn('{R}contact/', 'Start a project', 'btn-inch')}<a class="mail-xl" href="mailto:${EMAIL}">${EMAIL}</a></div>
+  </div>
+  <div class="closing-px" aria-hidden="true" data-pixfield></div>
+</section>`;
+}
 function home() {
   const R = './';
-  const featured = ['koffa', 'ledgerly', 'thread-and-loom', 'velour', 'cedarline-clinics', 'kitepay'].map((s) => projects.find((p) => p.slug === s));
-  const stack = ['koffa', 'velour', 'ledgerly', 'lowtide', 'oleum'].map((s) => projects.find((p) => p.slug === s));
+  const reel = projects.slice(0, 3);
+  const tagsOf = (p) => [p.sub, ...p.services.map(svcName)].filter((t, i, a) => a.indexOf(t) === i);
   const body = `
-<section class="hero" data-hero aria-labelledby="hero-h">
-  <canvas class="snake" data-snake aria-hidden="true"></canvas>
-  <div class="snake-pills" aria-hidden="true"><span class="spill">Branding</span><span class="spill">UIUX</span><span class="spill">Motion</span><span class="spill">SEO</span></div>
-  <div class="wrap hero-in">
-    <p class="hero-pre" data-enter>The design-first studio for strategy, brand, web and campaigns.</p>
-    <h1 class="d1 hero-h" id="hero-h" data-pixelbreak data-enter><span class="hl-line">Theory <span class="stack" data-stack aria-hidden="true">${stack.map((p, i) => `<img src="${R}${imgs(p).hero}" alt="" width="1600" height="1100"${i ? ' class="off"' : ''}>`).join('')}</span></span> <span class="hl-line"><span class="hl">made</span> ${sf('real.')}</span></h1>
-    <div class="hero-foot" data-enter>
-      <p class="hero-loc"><span class="tag">Islamabad</span>${clock()}</p>
-      <p class="hero-sum">Three people. Four service areas. Sixteen projects you can open and read.</p>
-      ${btn(R + 'work/', 'See the work')}
+<section class="hx" data-hero aria-labelledby="hero-h">
+  <div class="wrap hx-in">
+    <div class="hx-copy">
+      <p class="hx-pre" data-enter>The design-first studio for strategy, brand, web and campaigns.</p>
+      <h1 class="hx-h" id="hero-h" data-enter><span class="hx-l">Theory</span> <span class="hx-l"><span class="hl">made</span> <span class="acc">real.</span></span></h1>
     </div>
-  </div>
-</section>
-
-<section class="manifesto" aria-label="About Praxis">
-  <div class="wrap mani-in">
-    <p class="mani-text" data-words>Praxis is the step after theory. We think a problem through, then we make the answer: the strategy, the identity, the website and the campaign, built by the same three people from the first call to the last file.</p>
-    <div class="mani-px" aria-hidden="true" data-bigmark></div>
-  </div>
-</section>
-
-<section class="about-strip" aria-labelledby="about-h">
-  <div class="wrap about-in">
-    <div>
-      <h2 class="d2" id="about-h" data-reveal>We believe in work you can ${sf('point')} at.</h2>
-      <p class="lead">A new studio, and proud of it. No account layers, no hand-offs, no decks that never ship. You talk to the people doing the work, and the work goes live.</p>
-      ${link(R + 'about/', 'About the studio')}
-    </div>
-    <dl class="stats">
-      <div><dt class="tag">People</dt><dd data-count-to="3">3</dd></div>
-      <div><dt class="tag">Projects</dt><dd data-count-to="16">16</dd></div>
-      <div><dt class="tag">Service areas</dt><dd data-count-to="4">4</dd></div>
-    </dl>
-  </div>
-</section>
-
-<section class="svc-panel" aria-labelledby="svc-h">
-  <div class="wrap">
-    <h2 class="d2" id="svc-h" data-reveal>Our ${sf('services')}.</h2>
-    <div class="svc-grid">
-      <div class="acc acc-svc" data-acc data-acc-single data-svc-acc>
-        ${services.map((s, i) => {
-          const p = projects.find((x) => x.service === s.slug);
-          return `<div class="acc-i" style="--sc:${s.color}" data-svc-img="${R}${imgs(p).hero}" data-svc-name="${esc(p.name)}" data-svc-href="${R}work/${p.slug}/">
-          <h3><button type="button" class="acc-b" aria-expanded="${i === 0}" aria-controls="svc-${i}" id="svc-b${i}">${star('svc-star')}<span>${s.name}</span><span class="acc-ico" aria-hidden="true"><svg><use href="#i-plus"/></svg></span></button></h3>
-          <div class="acc-p" id="svc-${i}" role="region" aria-labelledby="svc-b${i}"><div>
-            <p class="svc-subs">${s.subs.map(([n]) => `<span>${n}</span>`).join('<i aria-hidden="true">/</i>')}</p>
-            <p class="svc-line">${s.line}</p>${link(R + 'services/' + s.slug + '/', 'Explore ' + s.name.toLowerCase())}
-          </div></div></div>`;
-        }).join('')}
+    <div class="rv" data-enter>
+      <div class="rv-stage" data-rv aria-label="Selected work" role="img">
+        ${reel.map((p, i) => `<img class="rv-img${i === 0 ? ' on' : ''}" src="${R}${imgs(p).hero}" alt="" width="1600" height="1100" data-name="${esc(p.name)}"${i ? ' decoding="async"' : ' fetchpriority="high"'}>`).join('')}
+        <div class="rv-tiles" data-rv-tiles aria-hidden="true"></div>
+        <span class="rv-label" data-rv-label aria-hidden="true">${esc(reel[0].name)}</span>
       </div>
-      <a class="svc-vis" href="${R}work/${projects[0].slug}/" data-svc-vis>
-        <img src="${R}${imgs(projects.find((x) => x.service === services[0].slug)).hero}" alt="" width="1600" height="1100" data-svc-visimg>
-        <span class="svc-vis-tag tag" data-svc-visname>${esc(projects[0].name)}</span>
-      </a>
+      <i class="rv-px rv-px1" aria-hidden="true"></i><i class="rv-px rv-px2" aria-hidden="true"></i><i class="rv-px rv-px3" aria-hidden="true"></i><i class="rv-px rv-px4" aria-hidden="true"></i>
+    </div>
+    <div class="hx-foot" data-enter>
+      <p class="hero-loc"><span class="tag">Islamabad</span>${clock()}</p>
+      <p class="hx-sum">Four service areas. Sixteen projects you can open and read.</p>
+      ${btn(R + 'work/', 'See the work', 'btn-inch')}
     </div>
   </div>
 </section>
 
-<section class="work-rail" aria-labelledby="wr-h">
-  <div class="wrap wr-in">
-    <div class="wr-side">
-      <h2 class="d2" id="wr-h" data-reveal>Work they ${sf('trusted')} us with.</h2>
-      <p class="lead">Sixteen clients in ten countries, from a coffee roaster in Lahore to a bank in Karachi and a festival in Colombo.</p>
+<section class="sv" id="services" aria-labelledby="svc-h">
+  <div class="wrap">
+    <h2 class="d2" id="svc-h" data-reveal>Our <span class="acc">services.</span></h2>
+    <ul class="sv-cols" data-icons>
+      ${services.map((s, i) => `<li class="sv-col" style="--a:${svcAccent(s)}">
+        <a href="${R}services/${s.slug}/">
+          <span class="sv-n tag">${String(i + 1).padStart(3, '0')}</span>
+          <svg class="ico" viewBox="0 0 64 64" aria-hidden="true" focusable="false">${ICONS[s.slug]}</svg>
+          <span class="sv-name">${s.name}</span>
+          <span class="sv-line">${esc(s.line)}</span>
+          <span class="sv-subs">${s.subs.map(([n]) => esc(n)).join(' · ')}</span>
+          <span class="ulink" aria-hidden="true">Explore<svg><use href="#i-arrow"/></svg></span>
+        </a>
+      </li>`).join('')}
+    </ul>
+  </div>
+</section>
+
+<section class="wk" id="work" aria-labelledby="wr-h">
+  <div class="wrap">
+    <div class="wk-head">
+      <h2 class="d2" id="wr-h" data-reveal>Work they <span class="acc">trusted</span> us with.</h2>
       ${link(R + 'work/', 'View all our work')}
     </div>
-    <div class="rail" data-drag tabindex="0" aria-label="Featured projects, scroll or drag sideways">
-      <div class="rail-track">
-        ${featured.slice(0, 2).map((p) => workCard(p, R)).join('')}
-        ${metricCard(featured[2], R)}
-        ${featured.slice(3).map((p) => workCard(p, R)).join('')}
-        <a class="rail-end" href="${R}work/"><span class="d3">All our work</span><span class="rbtn rbtn-inch" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span></a>
-      </div>
-    </div>
-    <div class="rail-bar" aria-hidden="true"><span data-rail-bar></span></div>
+    <div class="px-rule" data-pxrule aria-hidden="true"></div>
+    <ol class="wk-list" data-worklist>
+      ${projects.map((p, i) => { const a = ACCENTS[i % ACCENTS.length]; return `<li class="wrow" style="--a:${a};--at:${onAcc(a)}">
+        <a class="wrow-a" href="${R}work/${p.slug}/" data-row data-img="${R}${imgs(p).hero}"${p.motion ? ` data-motion="${R}${p.motion}"` : ''}>
+          <span class="wrow-n tag">${pad(i + 1)}</span>
+          <span class="wrow-name">${esc(p.name)}</span>
+          <span class="wrow-tags">${tagsOf(p).map((t) => `<span>${esc(t)}</span>`).join('')}</span>
+          <span class="wrow-loc">${esc(p.location)}</span>
+          <svg class="wrow-arr" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        ${p.note ? `<p class="wrow-note tag">${esc(p.note)}</p>` : ''}
+        <div class="wrow-prev" hidden>
+          <div class="wrow-media">${p.motion ? `<video src="${R}${p.motion}" muted loop playsinline preload="none" poster="${R}${imgs(p).hero}"></video>` : `<img src="${R}${imgs(p).hero}" alt="" loading="lazy" width="1600" height="1100">`}</div>
+          <p>${esc(p.question)}</p>
+          <a class="ulink" href="${R}work/${p.slug}/">View case study<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </li>`; }).join('')}
+    </ol>
   </div>
+  <div class="wpeek" data-peek aria-hidden="true"><div class="wpeek-media" data-peek-media></div><div class="wpeek-tiles" data-peek-tiles></div></div>
 </section>
 
-<section class="clients" aria-labelledby="cl-h">
-  <div class="wrap">
-    <h2 class="d3" id="cl-h">Sixteen clients, ten countries</h2>
-    <ul class="logo-wall">${projects.map((p) => `<li><a href="${R}work/${p.slug}/"><img src="${R}assets/img/clients/${p.slug}.svg" alt="${esc(p.name)}" width="200" height="40"></a></li>`).join('')}</ul>
-  </div>
-</section>
-
-${testimonials(R, projects)}
-
-<section class="people" aria-labelledby="people-h">
-  <div class="wrap">
-    <h2 class="d2" id="people-h" data-reveal>The people behind the ${sf('work')}.</h2>
-    <ul class="names">${['Hamza', 'Laiba', 'Shahzaib'].map((n) => `<li><span class="name">${n}</span></li>`).join('')}</ul>
-  </div>
-</section>
-
-${studio(R)}
-
-<section class="journal-strip" aria-labelledby="js-h">
-  <div class="wrap">
-    <div class="js-head"><h2 class="d2" id="js-h" data-reveal>Notes from the ${sf('studio')}.</h2>${link(R + 'journal/', 'All articles')}</div>
-    <div class="acards">${articles.map((a) => articleCard(a, R)).join('')}</div>
-  </div>
-</section>
-
-${faq(faqHome)}
-${closing(R)}`;
-  const ld = `\n<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Praxis Studio', slogan: 'Theory made real.', url: SITE, email: EMAIL, logo: SITE + '/assets/logo/praxis-lockup.svg', address: { '@type': 'PostalAddress', addressLocality: 'Islamabad', addressCountry: 'PK' }, founder: ['Hamza', 'Laiba', 'Shahzaib'].map((n) => ({ '@type': 'Person', name: n })) })}</script>`;
+${homeClosing()}`;
+  const ld = `\n<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Praxis Studio', slogan: 'Theory made real.', url: SITE, email: EMAIL, logo: SITE + '/assets/logo/praxis-lockup.svg', address: { '@type': 'PostalAddress', addressLocality: 'Islamabad', addressCountry: 'PK' } })}</script>`;
   out('index.html', page({ depth: 0, path: '/', title: '', desc: 'Praxis Studio is a design-first studio in Islamabad for strategy, brand, web and campaigns. Theory made real.', body, cls: 'is-home', preload: true, ld }));
 }
 

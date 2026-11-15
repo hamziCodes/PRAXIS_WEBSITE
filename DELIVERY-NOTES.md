@@ -12,7 +12,7 @@ about/  journal/  glossary/  contact/  404.html
 assets/css/site.css           All styles. Design tokens are at the top (:root)
 assets/js/site.js             Every interaction (vanilla JS)
 assets/js/vendor/lenis.min.js Smooth scroll, self-hosted and optional
-assets/fonts/                 Handjet, Instrument Serif Italic, TeX Gyre Heros (all subset to woff2)
+assets/fonts/                 Handjet and TeX Gyre Heros (subset to woff2)
 assets/logo/                  Production logo SVGs
 assets/img/work/<slug>/       Project hero and gallery artwork (generated)
 assets/img/clients/<slug>.svg Client logos (generated)
@@ -48,15 +48,15 @@ Each project is one self-contained block in `src/data/projects.mjs`: name, quest
 
 ## Decisions made for you
 
-1. **Serif: Instrument Serif Italic.** Its narrow, sharp italic sits well against Helvetica's mass and reads clearly as one display word. It appears only as a single word inside big headlines, never in titles or body text.
+1. **No serif (v5).** Accent words in headlines are set in Handjet, the brand pixel face. Instrument Serif was removed site-wide after the designer audit.
 2. **Helvetica Neue with a matching fallback.** Visitors who have Helvetica Neue (Mac, iPhone) get it. Everyone else, including most Windows and Android users in Pakistan, gets TeX Gyre Heros, a free Helvetica clone, instead of Arial. That keeps the brand looking the same on every device.
 3. **Service star colours:** Strategy uses Inchworm, Brand uses Pale Violet, Web uses Orange, Campaigns uses Bright Snow. To respect the two-accent rule, these stars only appear on black tiles and dark panels, and only the open service's star is coloured. Everywhere else the star is black.
 4. **Bitwip anatomy, in Praxis order.** The home page follows the same sequence: pill header, hero with live clock, scroll-lit statement, about plus stats, dark services accordion with a visual that swaps, work drag carousel with a metric card, client logo wall, testimonial slider, people, studio, journal, FAQ, closing panel and giant-wordmark footer. Case pages follow Bitwip's template: question headline, meta column, challenge / solution / results, metric, dark staggered gallery, testimonial, then previous and next.
 5. **Signatures.**
-   - The pixel snake: a grid-snapped trail that roams the hero, drags the BRANDING / UIUX / MOTION / SEO pills, and chases the cursor.
+   - The pixel reveal (v5 homepage): the work opens and closes in a wave of brand-coloured tiles inside a pixel-stepped frame.
    - The pixel assemble: images build up from chunky pixels as they scroll in.
-   - The pixel break: the hero headline breaks into drifting blocks as you scroll away. This runs on desktop only.
-   - The trifecta: giant names with an Inchworm sweep on hover.
+   - The melt (v5 homepage): the page runs from black to Bone with scroll.
+   - The trifecta: giant names with an Inchworm sweep on hover (About page only).
    - The big pixel mark: drawn from the logo's real geometry.
 6. **Studio hours: Monday to Friday, 10:00 to 19:00 Pakistan time.** These drive the live OPEN / CLOSED status. Change them in `assets/js/site.js` (search for "Mon–Fri").
 7. **Client countries:** Pakistan, Kenya, Portugal, UAE, Türkiye, Sri Lanka, Canada, UK, Malaysia and Qatar. That is ten, matching "Sixteen clients, ten countries" on the home page. The site-wide stats stay at 3 people, 16 projects and 4 service areas.
@@ -69,8 +69,8 @@ Each project is one self-contained block in `src/data/projects.mjs`: name, quest
 
 ## Robustness, accessibility and security
 
-- **Without JavaScript, or if a script fails,** all content is visible. Reveals, the snake, the pixel effects and the carousel momentum are layered on top of a complete page.
-- **With `prefers-reduced-motion`,** everything sits still and stays visible, and the snake draws once, frozen.
+- **Without JavaScript, or if a script fails,** all content is visible. Reveals, the hero reveal, the melt, the pixel effects and the carousel momentum are layered on top of a complete page.
+- **With `prefers-reduced-motion`,** everything sits still and stays visible, and the hero shows its first project, still.
 - **Mobile:** the header pill holds the logo, Contact and a menu button, and it does not wrap or overflow at 390px or 320px. The full-screen menu traps Escape and returns focus to the button.
 - **Keyboard and screen readers:**
   - A skip link comes first.
@@ -91,3 +91,10 @@ Each project is one self-contained block in `src/data/projects.mjs`: name, quest
 
 - **Any static host works** (Netlify, Cloudflare Pages, Vercel, GitHub Pages). Point it at the repo root; there is no build step on the host because the built pages are committed.
 - **Deploy at the domain root (praxis.studio).** Pages use relative links, so they also work under a sub-path, but `404.html` uses root links.
+
+## v5 homepage rework (designer audit, 14 Nov 2026)
+
+The homepage is now four sections: a black hero, services, the work index, and the speak-line closing. The brief is in `briefs/`.
+- **Motion on hover:** set `motion: 'assets/video/<file>.mp4'` on a project block to play a muted, looping video in the homepage work index on hover, or inline on tap. Without it, the cover artwork pixel-dissolves in.
+- **Note under a row:** set `note` on a project block (for example, an NDA line) to show it under that row.
+- **Accents:** per-item accents rotate through the brand palette (`ACCENTS` in `src/build.mjs`).
