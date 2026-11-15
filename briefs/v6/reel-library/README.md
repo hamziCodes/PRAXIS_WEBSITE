@@ -1,12 +1,12 @@
 # Reel Library — Appa's motion work, selected for the Praxis hero reel
 
 
-> **Repo copy:** the video files themselves live in Appa's Drive folder (linked below) and in Hamzi's hand-off bundle under these same paths — this manifest is the index. Two clips are Drive-only, permanently: GitHub refuses files over 100 MB.
+> **Repo copy:** 17 of the clips below are in this folder, in the repo. Two clips are Drive-only, permanently: GitHub refuses files over 100 MB — **2nd Video.mp4** (341 MB) and **With subtitles with changes.mp4** (139 MB). Both are linked below.
 
 Source: Appa's Google Drive folder "Videos" (24 clips, ~830 MB) —
 https://drive.google.com/drive/folders/13fARo0TDQZlfenUsNhp3eUJFTcjYoI5q
 Selected by Kai, 2026-11-15, on Hamzi's instruction: the clips that fit the studio's
-niche and show what Praxis does. Every clip below is in this folder AND at its Drive link.
+niche and show what Praxis does. Every clip below is at its Drive link; all except the two named above are also in this folder.
 
 ## Primary — reel-grade
 
@@ -43,12 +43,12 @@ With subtitles https://drive.google.com/file/d/1dNIu19OTdgEelPmlLWPeFmbYk663r_2J
 
 ## Secondary — texture, use if the cut needs air
 
-- **We are Horizon Health.mp4** — 1500×1500 · 11s — sage photo collage, calm. (1l5OsEiZNmk_Y6jNGHCpfpt_D3Zwi_11E)
-- **healed and happy_1.mp4** — 1080×1920 · 8s — photo mosaic wall. (1Qdkge8xjmpogDxKpbD-fr11aAf24IjxN)
-- **search final.mp4** — 1080×1920 · 5s — search-typing animation over a photo. (1wl-XFfAQjF6oq9Dyo1UIwZF1g1ySSOJO)
-- **Sign Up process Video.mp4** — 1080×1920 · 14s — consult / after-care icon cards. (1aXcCClG4rKIiJ7aPa2VyFBjMcqRohauq)
-- **Updated Price.mp4** — 1080×1920 · 15s — pricing cards over footage; price-specific ($29), use sparingly. (1ptiHjzBSFz4gmyyLWEWaKxQY5H5zLdAJ)
-- **2nd Video.mp4** — 2160×3840 · 71s — presenter-led Shamel explainer; UI segments only (~0:20–0:45), skip the talking head for the hero. (1KlIst2lwwTPQFQG88LHU360Hv6PI6F7V)
+- **We are Horizon Health.mp4** — 1500×1500 · 11s — sage photo collage, calm. (https://drive.google.com/file/d/1l5OsEiZNmk_Y6jNGHCpfpt_D3Zwi_11E/view)
+- **healed and happy_1.mp4** — 1080×1920 · 8s — photo mosaic wall. (https://drive.google.com/file/d/1Qdkge8xjmpogDxKpbD-fr11aAf24IjxN/view)
+- **search final.mp4** — 1080×1920 · 5s — search-typing animation over a photo. (https://drive.google.com/file/d/1wl-XFfAQjF6oq9Dyo1UIwZF1g1ySSOJO/view)
+- **Sign Up process Video.mp4** — 1080×1920 · 14s — consult / after-care icon cards. (https://drive.google.com/file/d/1aXcCClG4rKIiJ7aPa2VyFBjMcqRohauq/view)
+- **Updated Price.mp4** — 1080×1920 · 15s — pricing cards over footage; price-specific ($29), use sparingly. (https://drive.google.com/file/d/1ptiHjzBSFz4gmyyLWEWaKxQY5H5zLdAJ/view)
+- **2nd Video.mp4** — 2160×3840 · 71s — presenter-led Shamel explainer; UI segments only (~0:20–0:45), skip the talking head for the hero. (https://drive.google.com/file/d/1KlIst2lwwTPQFQG88LHU360Hv6PI6F7V/view)
 
 ## Excluded — and why
 

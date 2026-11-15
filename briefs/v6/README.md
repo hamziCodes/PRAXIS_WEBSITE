@@ -3,6 +3,7 @@
 **Read first:** `Praxis-Game-Plan-FINAL-2026-11-15.md` — the governing document (vision-first reading rule inside).
 **Then:** `Praxis-Rework-Report-v6-2026-11-15.md` — the evidence: Appa's seven walkthrough videos digested, change list C1–C19, the reference breakdown (OuiWill / Uncommon / iVentions), full transcripts.
 **Snapshot:** branch `version-2` = the site exactly as it was before this rework (from main, 2026-11-15). New work lands on `main`. `docs/` is never overwritten.
+**Synced 2026-11-15 (evening):** every file in this pack — text and binaries — is now in this repo at the paths below. Nothing arrives by hand-off bundle any more. Drive keeps the two oversized videos + all 24 originals.
 
 ## In this repo (text)
 
@@ -15,7 +16,7 @@
 | `icons/uncommon/*.lottie.json` | Uncommon's four animated service icons, extracted Lottie JSON (playable by any Lottie player), mapped in the plan §4 — USE THESE |
 | `covers-source/` | The 16 inspiration covers as HTML + `gen_covers.py` — re-render at 1920×1080 to view; inspiration only (plan §3) |
 
-## In Hamzi's hand-off bundle (binaries, same paths — they cannot pass Kai's GitHub route)
+## In this repo (binaries)
 
 | Path | What |
 |---|---|
@@ -24,7 +25,7 @@
 | `covers/<slug>.png` ×16 + `contact-sheet.png` | The inspiration covers, rendered |
 | `fonts/NeueMontreal-*.otf` ×8 | Light / Regular / Medium / Bold + italics — self-host, no CDN (licence check before public launch) |
 | `icons/uncommon/*.lottie` ×5 | The original dotLottie files, if the JSONs above are not enough |
-| `reel/hero-reel-placeholder.mp4` + `hero-reel-poster.jpg` | Kai's reference stitch (25 s, 1920×1080) — pacing reference for the library stitch (plan §5) |
+| `reel/hero-reel-placeholder.mp4` + `hero-reel-poster.jpg` | Kai's reference stitch (25 s, 1920×1080) — pacing reference for the finished trailer (plan §5) |
 | `reel-library/*.mp4` ×17 | The library videos under 100 MB each |
 
 ## Drive-only (GitHub's 100 MB per-file limit)
