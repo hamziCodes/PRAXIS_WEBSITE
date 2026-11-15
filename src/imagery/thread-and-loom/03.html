@@ -1,0 +1,134 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Thread &amp; Loom — the box that crosses the sea</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+html,body{margin:0;padding:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#b99a74;color:#33302B;font-family:NM}
+.abs{position:absolute}
+.serif{font-family:Georgia,serif}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="oak" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.05 0.003" numOctaves="4" seed="8"/><feColorMatrix type="matrix" values="0 0 0 0 .3  0 0 0 0 .18  0 0 0 0 .08  -2.6 0 0 0 1.6"/></filter>
+  <filter id="fiber" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.7 0.12" numOctaves="2" seed="11"/><feColorMatrix type="matrix" values="0 0 0 0 .3  0 0 0 0 .18  0 0 0 0 .08  0 0 0 -2 1.15"/></filter>
+  <filter id="tissue" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.011 0.011" numOctaves="4" seed="21" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="11" lighting-color="#fff" result="l0"><feDistantLight azimuth="225" elevation="40"/></feDiffuseLighting>
+    <feGaussianBlur in="l0" stdDeviation="1.2" result="l"/>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 .3  0 0 0 0 .1  0 0 0 0 .05  -2.4 0 0 0 1.55" result="sh"/>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 1  0 0 0 0 .92  0 0 0 0 .85  2 0 0 0 -1.4" result="hi"/>
+    <feMerge><feMergeNode in="sh"/><feMergeNode in="hi"/></feMerge>
+  </filter>
+  <filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4"/><feColorMatrix type="matrix" values="0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .2  0 0 0 -1.5 .85"/></filter>
+  <filter id="cloth" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9 0.9" numOctaves="1" seed="2"/><feColorMatrix type="matrix" values="0 0 0 0 .4  0 0 0 0 .35  0 0 0 0 .3  0 0 0 -1.6 .9"/></filter>
+  <filter id="b20" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="20"/></filter>
+  <filter id="b6" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+</defs></svg>
+
+<!-- oak floor boards -->
+<div class="abs" style="inset:0;background:linear-gradient(160deg,#d4b48c,#c0a07a 50%,#a2805a)"></div>
+<svg class="abs" style="left:0;top:0" width="1600" height="2000"><rect width="1600" height="2000" filter="url(#oak)"/>
+ <g stroke="#6a4a2a" stroke-width="2" opacity=".4"></g></svg>
+<svg id="seams" class="abs" style="left:0;top:0" width="1600" height="2000"></svg>
+
+<div id="box" class="abs" style="left:40px;top:120px;width:1520px;height:1760px;transform:rotate(-7deg)"></div>
+
+<!-- light: window from upper left -->
+<div class="abs" style="inset:0;background:linear-gradient(150deg,rgba(255,240,215,.32),rgba(255,240,215,0) 45%,rgba(40,20,5,.3))"></div>
+<div class="abs" style="inset:0;background:radial-gradient(1100px 1400px at 50% 50%,rgba(0,0,0,0) 60%,rgba(40,20,5,.4) 100%)"></div>
+<script>
+window.__ready=false;
+let sm='';for(let i=0;i<14;i++)sm+=`<line x1="${i*128-60}" y1="0" x2="${i*128-60}" y2="2000" stroke="#6a4a2a" stroke-width="2" opacity=".35"/>`;
+for(let i=0;i<14;i++){const x=i*128-60,y=(i*577)%1900;sm+=`<line x1="${x}" y1="${y}" x2="${x+128}" y2="${y}" stroke="#6a4a2a" stroke-width="2" opacity=".3"/>`}
+document.getElementById('seams').innerHTML=sm;
+
+const W=760,H=1000,F=380; // opening and flap depth
+const ox=F,oy=F;          // opening origin inside the #box (flaps around)
+const kr=(a,b,ang=135)=>`linear-gradient(${ang}deg,${a},${b})`;
+const fib=(w,h)=>`<svg class="abs" style="left:0;top:0" width="${w}" height="${h}"><rect width="${w}" height="${h}" filter="url(#fiber)" opacity=".6"/></svg>`;
+let h='';
+// shadow of whole box
+h+=`<div class="abs" style="left:${ox+30}px;top:${oy+40}px;width:${W}px;height:${H}px;background:#2a1806;opacity:.45;filter:blur(30px)"></div>`;
+// flaps (laid open, lifting slightly at the fold → gradient)
+const flap=(x,y,w,hh,grad,extra='')=>`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${hh}px;background:${grad};box-shadow:10px 14px 24px rgba(40,20,5,.35)">${fib(w,hh)}${extra}</div>`;
+// left & right long flaps (lie under the short ones)
+h+=flap(ox-F+10,oy+6,F-10,H-12,'linear-gradient(90deg,#b98a56,#c99c68 70%,#a87a48)');
+h+=flap(ox+W,oy+6,F-10,H-12,'linear-gradient(270deg,#a87a48,#c09060 70%,#9a6c3e)');
+// top flap: shipping label + cut tape
+h+=flap(ox,oy-F,W,F,'linear-gradient(180deg,#c99e6a,#bf9260 70%,#a97c4a)',`
+ <div class="abs" style="left:${W/2-55}px;top:${F-150}px;width:110px;height:150px;background:#B65C3A;clip-path:polygon(0 0,100% 0,100% 100%,92% 97%,84% 100%,74% 96%,62% 100%,50% 97%,38% 100%,26% 96%,14% 100%,6% 97%,0 100%)">
+  <div style="color:#F1ECE2;font-family:Georgia;font-weight:700;font-size:17px;text-align:center;margin-top:18px">Thread &amp;<br>Loom</div>
+  <div style="color:#F1ECE2;font-size:10px;letter-spacing:1px;text-align:center;margin-top:10px;font-style:italic">Woven where<br>cotton grows.</div></div>
+ <div class="abs" style="left:70px;top:40px;width:250px;height:250px;background:#fbfaf6;transform:rotate(-2deg);box-shadow:2px 3px 5px rgba(0,0,0,.2);font-size:12px;line-height:1.38;padding:14px;box-sizing:border-box;color:#222">
+  <div style="display:flex;justify-content:space-between;font-weight:500"><span>PRIORITY · DDP</span><span>2.4 kg</span></div>
+  <div style="height:1.5px;background:#222;margin:6px 0"></div>
+  <div style="font-size:10px;color:#666">FROM</div>Thread &amp; Loom, Plot 41, Susan Road<br>Faisalabad 38000, Pakistan
+  <div style="font-size:10px;color:#666;margin-top:6px">TO</div><b style="font-weight:500;font-size:15px">Emma Clarke</b><br>14 Elm Road, Redland<br>Bristol BS6 6AB, United Kingdom
+  <div style="margin-top:9px;height:34px;background:repeating-linear-gradient(90deg,#111 0 2px,#fff 2px 4px,#111 4px 5px,#fff 5px 8px,#111 8px 11px,#fff 11px 12px,#111 12px 13px,#fff 13px 17px)"></div>
+  <div style="font-family:Consolas,monospace;font-size:10px;text-align:center;margin-top:3px">TL 2611 0482 3397 PK</div></div>
+ <div class="abs" style="left:440px;top:60px;width:230px;height:150px;background:#f4e9c8;transform:rotate(3deg);box-shadow:2px 3px 5px rgba(0,0,0,.2);font-size:10.5px;line-height:1.35;padding:10px 12px;box-sizing:border-box;color:#333">
+  <b style="font-weight:500">CN22 · CUSTOMS DECLARATION</b><div style="height:1px;background:#999;margin:4px 0"></div>
+  ☑ Sale of goods<br>Cotton duvet set, 1 · HS 6302.31<br>Value: USD 148.00 · Origin: PK<br><span style="font-family:'Segoe Print';font-size:12px">B. Ahmed</span></div>`);
+// bottom flap: the other half of the cut tape
+h+=flap(ox,oy+H,W,F,'linear-gradient(0deg,#a97c4a,#c09060 65%,#b38552)',`
+ <div class="abs" style="left:${W/2-55}px;top:0;width:110px;height:170px;background:#B65C3A;clip-path:polygon(0 3%,8% 0,18% 3%,30% 0,42% 4%,54% 0,66% 3%,78% 0,90% 4%,100% 0,100% 100%,0 100%)">
+  <div style="color:#F1ECE2;font-family:Georgia;font-weight:700;font-size:17px;text-align:center;margin-top:46px">Thread &amp;<br>Loom</div></div>
+ <div class="abs" style="left:40px;top:${F-90}px;font-size:13px;letter-spacing:2px;color:#5a3a1a;opacity:.7">THIS SIDE UP ↑ · یہ رخ اوپر</div>`);
+// inner walls (depth) as trapezoids
+const d=90;
+h+=`<div class="abs" style="left:${ox}px;top:${oy}px;width:${W}px;height:${H}px;background:#8a6034"></div>
+<div class="abs" style="left:${ox}px;top:${oy}px;width:${W}px;height:${H}px;clip-path:polygon(0 0,100% 0,${(W-d)/W*100}% ${d/H*100}%,${d/W*100}% ${d/H*100}%);background:linear-gradient(#6e4a26,#8a6034)"></div>
+<div class="abs" style="left:${ox}px;top:${oy}px;width:${W}px;height:${H}px;clip-path:polygon(0 0,${d/W*100}% ${d/H*100}%,${d/W*100}% ${(H-d)/H*100}%,0 100%);background:linear-gradient(90deg,#5e3e1e,#7a5430)"></div>
+<div class="abs" style="left:${ox}px;top:${oy}px;width:${W}px;height:${H}px;clip-path:polygon(100% 0,100% 100%,${(W-d)/W*100}% ${(H-d)/H*100}%,${(W-d)/W*100}% ${d/H*100}%);background:linear-gradient(270deg,#b88a58,#a07444)"></div>
+<div class="abs" style="left:${ox}px;top:${oy}px;width:${W}px;height:${H}px;clip-path:polygon(0 100%,100% 100%,${(W-d)/W*100}% ${(H-d)/H*100}%,${d/W*100}% ${(H-d)/H*100}%);background:linear-gradient(0deg,#c29464,#a87c4c)"></div>
+<div class="abs" style="left:${ox-6}px;top:${oy-6}px;width:${W+12}px;height:${H+12}px;box-shadow:inset 0 0 0 6px #d2a676"></div>`;
+// tissue paper filling, draping over the rim
+h+=`<div class="abs" style="left:${ox+40}px;top:${oy+50}px;width:${W-80}px;height:${H-90}px;border-radius:40px;background:radial-gradient(ellipse at 40% 35%,#e6a383,#c97a58 60%,#a95a3a);box-shadow:inset 0 0 40px rgba(60,20,5,.4)"></div>
+<svg class="abs" style="left:${ox+40}px;top:${oy+50}px" width="${W-80}" height="${H-90}"><rect width="${W-80}" height="${H-90}" rx="40" filter="url(#tissue)"/></svg>`;
+// folded duvet set inside
+const dx=ox+120,dy=oy+250,dw=W-240,dh=600;
+h+=`<div class="abs" style="left:${dx}px;top:${dy}px;width:${dw}px;height:${dh}px;transform:rotate(3deg)">
+ <div class="abs" style="inset:0;background:#3a1a08;opacity:.4;filter:blur(18px);transform:translate(14px,18px)"></div>
+ <div class="abs" style="inset:0;border-radius:16px;background:linear-gradient(135deg,#fdfbf7,#f1ece2 55%,#e1d9ca)"></div>
+ <svg class="abs" style="left:0;top:0" width="${dw}" height="${dh}"><rect width="${dw}" height="${dh}" rx="16" filter="url(#cloth)" opacity=".5"/>
+  <path d="M10,${dh*.5} Q${dw/2},${dh*.5-8} ${dw-10},${dh*.5}" stroke="#bfb5a2" stroke-width="3" fill="none"/>
+  <path d="M10,${dh*.5+4} Q${dw/2},${dh*.5-4} ${dw-10},${dh*.5+4}" stroke="#fff" stroke-width="2" fill="none" opacity=".8"/></svg>
+ <!-- belly band -->
+ <div class="abs" style="left:${dw/2-80}px;top:-6px;width:160px;height:${dh+12}px;background:linear-gradient(90deg,#b98f60,#d2a676 30%,#c39462 70%,#9a7448);box-shadow:4px 0 10px rgba(0,0,0,.2)"></div>
+ <svg class="abs" style="left:${dw/2-80}px;top:-6px" width="160" height="${dh+12}"><rect width="160" height="${dh+12}" filter="url(#paper)" opacity=".5"/>
+  <g transform="translate(80 80)" fill="none" stroke="#B65C3A" stroke-width="4.5">${[0,1,2].map(r=>[0,1,2].map(c=>`<rect x="${c*20-28}" y="${r*20-28}" width="15" height="15" rx="2" ${r==1&&c==1?'fill="#B65C3A"':''}/>`).join('')).join('')}</g>
+  <text x="80" y="160" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="26" fill="#33302B">Thread &amp;</text>
+  <text x="80" y="192" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="26" fill="#33302B">Loom</text>
+  <line x1="24" y1="216" x2="136" y2="216" stroke="#33302B"/>
+  <text x="80" y="244" text-anchor="middle" font-family="NM" font-size="12" letter-spacing="1.8" fill="#33302B">PERCALE DUVET SET</text>
+  <text x="80" y="270" text-anchor="middle" font-family="NM" font-weight="500" font-size="17" fill="#33302B">King · Ash white</text>
+  <text x="80" y="294" text-anchor="middle" font-family="NM" font-size="12" fill="#7a3a22">300 thread count</text>
+  <text x="80" y="${dh-50}" text-anchor="middle" font-family="Dubai,'Segoe UI'" font-size="18" fill="#33302B">فیصل آباد میں بُنا گیا</text>
+  <text x="80" y="${dh-24}" text-anchor="middle" font-family="NM" font-size="11" letter-spacing="1.5" fill="#33302B">WOVEN IN FAISALABAD</text></svg>
+ <!-- swing tag lying on top -->
+ <div class="abs" style="left:${dw-170}px;top:${dh-330}px;width:170px;height:270px;transform:rotate(14deg)">
+  <svg class="abs" style="left:0;top:0;overflow:visible" width="170" height="270"><path d="M85,28 C40,-30 -60,-30 -120,20" stroke="#f6f1e6" stroke-width="3.5" fill="none"/>
+  <path d="M0,18 L18,0 L152,0 L170,18 L170,270 L0,270 Z" fill="#2a1806" opacity=".3" transform="translate(8 10)" filter="url(#b6)"/>
+  <path d="M0,18 L18,0 L152,0 L170,18 L170,270 L0,270 Z" fill="#c9a274"/><rect width="170" height="270" filter="url(#fiber)" opacity=".5"/>
+  <circle cx="85" cy="28" r="8" fill="#f1ece2"/>
+  <text x="85" y="80" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="23" fill="#33302B">Thread &amp;</text><text x="85" y="106" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="23" fill="#33302B">Loom</text>
+  <text x="85" y="130" text-anchor="middle" font-family="NM" font-size="12" font-style="italic" fill="#7a3a22">Woven where cotton grows.</text>
+  <line x1="20" y1="146" x2="150" y2="146" stroke="#33302B"/>
+  <text x="20" y="170" font-family="NM" font-size="12.5" fill="#33302B">300 TC percale · King</text>
+  <text x="20" y="190" font-family="NM" font-size="12.5" fill="#33302B">Cotton grown in Punjab</text>
+  <text x="20" y="240" font-family="NM" font-weight="500" font-size="26" fill="#33302B">$148</text></svg></div>
+</div>`;
+// thank-you card tucked at the top of the box
+h+=`<div class="abs" style="left:${ox+120}px;top:${oy+70}px;width:${W-240}px;height:190px;transform:rotate(-2deg)">
+ <div class="abs" style="inset:0;background:#3a1a08;opacity:.3;filter:blur(10px);transform:translate(8px,10px)"></div>
+ <div class="abs" style="inset:0;background:#F1ECE2"></div><svg class="abs" style="left:0;top:0" width="${W-240}" height="190"><rect width="${W-240}" height="190" filter="url(#paper)" opacity=".5"/></svg>
+ <div class="abs" style="left:26px;top:20px;right:26px">
+  <div class="serif" style="font-size:24px;font-weight:700">Thank you, Emma.</div>
+  <div style="font-size:14px;line-height:1.45;margin-top:8px">These sheets were woven 40 km from the fields where the cotton grows. Wash cool, line-dry, and they soften with every night.</div>
+  <div style="font-family:'Segoe Print',cursive;font-size:16px;margin-top:6px;color:#7a3a22">— Bilal, Faisalabad</div></div></div>`;
+document.getElementById('box').innerHTML=h;
+window.__ready=true;
+</script>
+</body></html>

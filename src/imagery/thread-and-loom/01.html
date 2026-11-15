@@ -1,0 +1,100 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Thread &amp; Loom — product page on a phone</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+html,body{margin:0;padding:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#e9e1d2;color:#33302B}
+.abs{position:absolute}
+.phone{position:absolute;width:433px;height:888px;border-radius:72px}
+.phone .frame{position:absolute;inset:0;border-radius:72px;background:linear-gradient(135deg,#efe9df,#b8b0a2 18%,#7d766a 45%,#c2baa9 70%,#5e584e)}
+.phone .bezel{position:absolute;inset:5px;border-radius:67px;background:#050506}
+.phone .screen{position:absolute;left:20px;top:20px;width:393px;height:848px;border-radius:54px;overflow:hidden;background:#F1ECE2}
+.phone .glass{position:absolute;inset:5px;border-radius:67px;background:linear-gradient(125deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,.03) 26%,rgba(255,255,255,0) 40%)}
+.phone .island{position:absolute;left:50%;top:14px;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000}
+.ui{position:absolute;inset:0;font-family:NM;font-size:14px;color:#33302B}
+.serif{font-family:Georgia,serif}
+.lbl{font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:#7a7368}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs id="D">
+  <filter id="drape" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0012 0.003" numOctaves="3" seed="4" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="40" lighting-color="#fff" result="l0"><feDistantLight azimuth="210" elevation="36"/></feDiffuseLighting>
+    <feGaussianBlur in="l0" stdDeviation="6" result="l"/>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 .18  0 0 0 0 .12  0 0 0 0 .06  -2.2 0 0 0 1.45" result="sh"/>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 1  0 0 0 0 .96  0 0 0 0 .88  1.8 0 0 0 -1.3" result="hi"/>
+    <feMerge><feMergeNode in="sh"/><feMergeNode in="hi"/></feMerge>
+  </filter>
+  <filter id="fuzz" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" seed="9"/><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -2.4 1.3"/></filter>
+  <filter id="b30" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="30"/></filter>
+</defs></svg>
+<svg id="cloth" class="abs" style="left:0;top:0" width="1600" height="2000"></svg>
+<div id="stage" class="abs" style="inset:0"></div>
+<div class="abs" style="inset:0;background:linear-gradient(140deg,rgba(255,236,200,.28),rgba(255,236,200,0) 45%,rgba(60,40,20,.25) 100%)"></div>
+<div class="abs" style="inset:0;background:radial-gradient(1100px 1400px at 50% 48%,rgba(0,0,0,0) 60%,rgba(40,25,10,.35) 100%)"></div>
+<script>
+window.__ready=false;
+const D=document.getElementById('D');let pid=0;
+function shade(hex,k){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;const f=k<0?0:255,a=Math.abs(k);r=Math.round(r+(f-r)*a);g=Math.round(g+(f-g)*a);b=Math.round(b+(f-b)*a);return `rgb(${r},${g},${b})`}
+function weave(draft,cell,warp,weft,opt={}){
+  const id='w'+(pid++),rows=draft.length,cols=draft[0].length,W=cols*cell,H=rows*cell;
+  const g=`<linearGradient id="${id}v" x1="0" x2="1"><stop offset="0" stop-color="${shade(warp,-.35)}"/><stop offset=".45" stop-color="${shade(warp,.18)}"/><stop offset=".6" stop-color="${warp}"/><stop offset="1" stop-color="${shade(warp,-.4)}"/></linearGradient><linearGradient id="${id}h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${shade(weft,-.35)}"/><stop offset=".4" stop-color="${shade(weft,.18)}"/><stop offset=".6" stop-color="${weft}"/><stop offset="1" stop-color="${shade(weft,-.42)}"/></linearGradient>`;
+  let t='';const gap=cell*(opt.gap??.08);
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const x=c*cell,y=r*cell;
+    if(draft[r][c]){const up=draft[(r-1+rows)%rows][c],dn=draft[(r+1)%rows][c];t+=`<rect x="${x+gap}" y="${y+(up?-1:gap)}" width="${cell-2*gap}" height="${cell+(up?1:-gap)+(dn?1:-gap)}" rx="${up&&dn?0:cell*.42}" fill="url(#${id}v)"/>`}
+    else{const lf=!draft[r][(c-1+cols)%cols],rt=!draft[r][(c+1)%cols];t+=`<rect x="${x+(lf?-1:gap)}" y="${y+gap}" width="${cell+(lf?1:-gap)+(rt?1:-gap)}" height="${cell-2*gap}" ry="${lf&&rt?0:cell*.42}" fill="url(#${id}h)"/>`}}
+  D.insertAdjacentHTML('beforeend',`${g}<pattern id="${id}" width="${W}" height="${H}" patternUnits="userSpaceOnUse" patternTransform="${opt.tf||''}"><rect width="${W}" height="${H}" fill="${shade(weft,opt.gapShade??-.4)}"/>${t}</pattern>`);return id}
+const plain=[[1,0],[0,1]];
+const herring=(()=>{const n=8,rows=4,d=[];for(let r=0;r<rows;r++){d.push([]);for(let c=0;c<n*2;c++){const cc=c<n?c:(2*n-1-c);d[r].push(((cc-r)%4+4)%4<2?1:0)}}return d})();
+const oat=weave(plain,10,'#efe8da','#e6dccb',{gap:.05,gapShade:-.15});
+const terra=weave(herring,9,'#B65C3A','#e2c2a8',{gap:.07});
+document.getElementById('cloth').innerHTML=`<rect width="1600" height="2000" fill="url(#${oat})"/>
+<g transform="rotate(-24 1600 2000)"><rect x="700" y="1360" width="1400" height="900" fill="#2a1a0a" opacity=".35" filter="url(#b30)"/><rect x="680" y="1340" width="1400" height="900" fill="url(#${terra})"/>
+${Array.from({length:40},(_,i)=>`<line x1="${690+i*35}" y1="1340" x2="${686+i*35}" y2="1300" stroke="#c97a58" stroke-width="5" stroke-linecap="round"/>`).join('')}</g>
+<rect width="1600" height="2000" filter="url(#fuzz)" opacity=".15"/><rect width="1600" height="2000" filter="url(#drape)"/>`;
+
+const icon={bag:`<svg width="22" height="22"><path d="M5,8 h12 l-1,12 h-10 Z M8,8 a3,3 0 0 1 6,0" fill="none" stroke="#33302B" stroke-width="1.6"/></svg>`};
+const bedImg=`<div style="position:relative;height:330px;background:linear-gradient(#d9cfbd,#cbbfa9);overflow:hidden">
+ <div style="position:absolute;left:0;right:0;top:0;height:120px;background:linear-gradient(90deg,#c9bda6,#ddd3c1 40%,#c4b79f)"></div>
+ <div style="position:absolute;left:60px;right:60px;top:60px;height:120px;border-radius:14px 14px 0 0;background:linear-gradient(#7a6650,#5e4c3a)"></div>
+ <div style="position:absolute;left:80px;top:120px;width:120px;height:70px;border-radius:18px;background:radial-gradient(ellipse at 40% 30%,#fbf8f2,#e3dccf)"></div>
+ <div style="position:absolute;left:192px;top:118px;width:120px;height:72px;border-radius:18px;background:radial-gradient(ellipse at 40% 30%,#fbf8f2,#e3dccf)"></div>
+ <div style="position:absolute;left:40px;right:40px;top:170px;height:200px;border-radius:12px 12px 0 0;background:linear-gradient(170deg,#fbf9f4,#ece6da 55%,#d8cfbf)"></div>
+ <div style="position:absolute;left:40px;right:40px;top:250px;height:120px;background:repeating-linear-gradient(100deg,rgba(0,0,0,0) 0 40px,rgba(120,100,70,.08) 40px 46px,rgba(0,0,0,0) 46px 90px)"></div>
+ <div style="position:absolute;left:40px;right:40px;top:290px;height:80px;background:repeating-linear-gradient(90deg,#B65C3A 0 6px,#d8a487 6px 9px)"></div>
+ <div style="position:absolute;left:14px;top:14px;background:rgba(241,236,226,.92);border-radius:12px;padding:5px 10px;font-size:11px">Woven in Faisalabad</div>
+ <div style="position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:6px">${[1,0,0,0,0].map(a=>`<i style="width:${a?18:6}px;height:6px;border-radius:3px;background:${a?'#33302B':'rgba(51,48,43,.35)'};display:block"></i>`).join('')}</div>
+</div>`;
+const page=`<div class="ui">
+ <div style="height:54px;display:flex;justify-content:space-between;align-items:center;padding:6px 34px 0 40px;font-weight:500;font-size:16px"><span>21:14</span><span>●●● ▮</span></div>
+ <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 18px 10px">
+  <span style="font-size:20px">☰</span><span class="serif" style="font-weight:700;font-size:20px">Thread &amp; Loom</span><span style="position:relative">${icon.bag}<i style="position:absolute;right:-5px;top:-4px;width:16px;height:16px;border-radius:50%;background:#B65C3A;color:#fff;font-size:10px;display:grid;place-items:center;font-style:normal">1</i></span></div>
+ ${bedImg}
+ <div style="padding:16px 20px">
+  <div class="lbl">Bedding · Duvet sets</div>
+  <div class="serif" style="font-size:27px;font-weight:700;line-height:1.1;margin-top:6px">Percale Duvet Set</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px"><span style="font-size:22px;font-weight:500">$148 <span style="font-size:13px;color:#7a7368;font-weight:400;text-decoration:line-through">$178</span></span><span style="font-size:13px"><span style="color:#B65C3A">★★★★★</span> 4.8 · 1,204</span></div>
+  <div class="lbl" style="margin-top:16px">Colour · Ash white</div>
+  <div style="display:flex;gap:10px;margin-top:8px">${['#f4f0e8','#d9cfbd','#a3ad92','#3c4d6e','#B65C3A'].map((c,i)=>`<i style="width:34px;height:34px;border-radius:50%;background:${c};display:block;box-shadow:${i==0?'0 0 0 2px #F1ECE2,0 0 0 3.5px #33302B':'inset 0 0 0 1px rgba(0,0,0,.12)'}"></i>`).join('')}</div>
+  <div class="lbl" style="margin-top:16px">Size</div>
+  <div style="display:flex;gap:8px;margin-top:8px">${['Double','King','Super King'].map((s,i)=>`<span style="flex:1;text-align:center;padding:9px 0;border-radius:10px;border:1.5px solid ${i==1?'#33302B':'#d6cdbd'};font-size:13.5px;${i==1?'background:#33302B;color:#F1ECE2':''}">${s}</span>`).join('')}</div>
+  <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;font-size:12px;text-align:center">
+   <div style="background:#e7e0d2;border-radius:10px;padding:8px 4px"><b style="font-weight:500;font-size:14px;display:block">300</b>thread count</div>
+   <div style="background:#e7e0d2;border-radius:10px;padding:8px 4px"><b style="font-weight:500;font-size:14px;display:block">Percale</b>cool, crisp</div>
+   <div style="background:#e7e0d2;border-radius:10px;padding:8px 4px"><b style="font-weight:500;font-size:14px;display:block">40 km</b>from the field</div>
+  </div>
+ </div>
+ <div style="position:absolute;left:16px;right:16px;bottom:24px">
+  <div style="font-size:12.5px;color:#5a554c;text-align:center;margin-bottom:8px">Free UK &amp; US delivery · arrives Tue 24 – Fri 27 Nov</div>
+  <div style="height:54px;border-radius:27px;background:#B65C3A;color:#fff;display:grid;place-items:center;font-size:16px;font-weight:500">Add to bag · $148</div>
+ </div>
+</div>`;
+document.getElementById('stage').innerHTML=`<div class="phone" style="left:584px;top:556px;transform:rotate(-9deg) scale(1.55)">
+ <div style="position:absolute;inset:0;border-radius:72px;background:#2a1a0a;opacity:.45;filter:blur(30px);transform:translate(30px,40px)"></div>
+ <div style="position:absolute;inset:6px;border-radius:72px;background:#2a1a0a;opacity:.5;filter:blur(6px);transform:translate(6px,8px)"></div>
+ <div class="frame"></div><div class="bezel"></div><div class="screen">${page}</div><div class="island"></div><div class="glass"></div></div>`;
+window.__ready=true;
+</script>
+</body></html>

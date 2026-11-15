@@ -1,0 +1,172 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Oleum — the try-it-first box</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-style:italic;src:url(../../../briefs/v6/fonts/NeueMontreal-Italic.otf)}
+html,body{margin:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#cbc5b9;perspective:2600px;perspective-origin:1200px -250px}
+#wall{position:absolute;left:0;top:0}
+.w3{position:absolute;inset:0;transform-style:preserve-3d}
+.floor{position:absolute;left:-1500px;top:560px;width:5400px;height:3200px;transform-origin:50% 0;transform:rotateX(90deg);transform-style:preserve-3d;background:#d9d2c4}
+.d{position:absolute;transform-style:preserve-3d}
+.wallF{transform-origin:50% 100%;transform:rotateX(-90deg)}
+.wallS{transform-origin:0 50%;transform:rotateY(-90deg)}
+.vial{position:absolute;width:76px;height:250px;transform-origin:50% 100%}
+.paper{background:#F7F2E9}
+.txt{font-family:NM;color:#2F3A2F}
+</style></head>
+<body>
+<svg id="wall" width="2400" height="640">
+  <defs><linearGradient id="w" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#dcd9d2"/><stop offset="1" stop-color="#b9b1a4"/></linearGradient>
+  <filter id="b"><feGaussianBlur stdDeviation="30"/></filter></defs>
+  <rect width="2400" height="640" fill="url(#w)"/>
+  <path d="M-100 -50 L700 -50 L600 660 L-100 660Z" fill="#f4f6f6" opacity=".6" filter="url(#b)"/>
+</svg>
+<div class="w3">
+  <div class="floor">
+    <svg width="5400" height="3200" style="position:absolute;inset:0">
+      <defs>
+        <filter id="lime" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency=".003 .02" numOctaves="5" seed="22" result="n"/>
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 .55 0 0 0 0 .52 0 0 0 0 .47 0 0 0 1.6 -.7" result="c"/>
+          <feTurbulence type="fractalNoise" baseFrequency=".3 .5" numOctaves="2" seed="5" result="sp"/>
+          <feColorMatrix in="sp" type="matrix" values="0 0 0 0 .45 0 0 0 0 .42 0 0 0 0 .38 0 0 0 -6 3.1" result="sp2"/>
+          <feMerge><feMergeNode in="c"/><feMergeNode in="sp2"/></feMerge>
+        </filter>
+        <radialGradient id="sun" cx=".25" cy=".1" r=".55"><stop offset="0" stop-color="#f6f8f6" stop-opacity=".75"/><stop offset="1" stop-color="#f6f8f6" stop-opacity="0"/></radialGradient>
+        <filter id="bl" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="26"/></filter>
+        <filter id="bl2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="8"/></filter>
+      </defs>
+      <rect width="5400" height="3200" fill="#dad3c5"/>
+      <rect width="5400" height="3200" filter="url(#lime)" opacity=".35"/>
+      <rect width="5400" height="3200" fill="url(#sun)"/>
+      <!-- box shadow (light from the left window) -->
+      <path d="M2340 790 L3240 790 L3540 650 L3540 110 L3240 180 L3230 790Z" fill="#3a3326" opacity=".35" filter="url(#bl)"/>
+      <rect x="2320" y="180" width="930" height="620" fill="#2a241b" opacity=".35" filter="url(#bl2)"/>
+      <!-- bottle shadow -->
+      <path d="M1910 365 L2090 365 L2330 280 L2230 260Z" fill="#2a241b" opacity=".35" filter="url(#bl2)"/><ellipse cx="2000" cy="362" rx="100" ry="14" fill="#2a241b" opacity=".45" filter="url(#bl2)"/>
+      <!-- lid shadow -->
+      <rect x="2300" y="70" width="960" height="60" fill="#2a241b" opacity=".35" filter="url(#bl2)"/>
+      <!-- card shadow -->
+      <rect x="2920" y="880" width="450" height="290" fill="#2a241b" opacity=".25" filter="url(#bl2)" transform="rotate(-6 3150 1030)"/>
+    </svg>
+
+    <!-- LID, inside up, lying beside the box -->
+    <div class="d" style="left:2300px;top:-520px;width:960px;height:660px;transform-origin:50% 100%;transform:rotateX(-76deg) scale(.86)">
+      <div style="position:absolute;inset:0;background:#2F3A2F;box-shadow:inset 0 0 0 34px #3a4639, inset 0 0 0 36px #263025"></div>
+      <div class="txt" style="position:absolute;left:110px;top:110px;right:110px;color:#F7F2E9">
+        <div style="font:500 22px NM;letter-spacing:6px;color:#b9c690">TRY IT FIRST</div>
+        <div style="font:700 66px/1.02 Georgia,serif;margin-top:22px">Four oils.<br>Five days each.</div>
+        <div style="font:italic 400 27px/1.45 NM;margin-top:26px;color:#e3ddcc">Use one at a time, morning and night. On day 20, tell us which your skin liked and we'll take £18 off the full bottle.</div>
+        <div style="font:400 26px 'Segoe Print';margin-top:26px;color:#d7cfb8">— Amelia, Oleum</div>
+      </div>
+    </div>
+
+    <!-- full-size face oil beside the box -->
+    <div class="d" style="left:1900px;top:-160px;width:200px;height:520px;transform-origin:50% 100%;transform:rotateX(-90deg)">
+      <svg width="200" height="520" viewBox="0 0 200 520">
+        <defs>
+          <linearGradient id="fg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d170c"/><stop offset=".12" stop-color="#9dbb88"/><stop offset=".18" stop-color="#365c2f"/><stop offset=".6" stop-color="#21401c"/><stop offset=".92" stop-color="#3d6233"/><stop offset="1" stop-color="#0b130a"/></linearGradient>
+          <linearGradient id="fo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1a1003"/><stop offset=".35" stop-color="#8a6512"/><stop offset=".55" stop-color="#5a420c"/><stop offset="1" stop-color="#140c02"/></linearGradient>
+          <linearGradient id="fl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".25" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity=".05"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+        </defs>
+        <path d="M70 0 C 70 -0 130 0 130 0 L130 110 L70 110Z" fill="#23241e"/>
+        <path d="M78 0 C 78 -40 122 -40 122 0Z" fill="#23241e"/>
+        <path d="M78 6 C 78 -36 122 -36 122 6 L122 70 L78 70Z" fill="#2c2d25"/>
+        <rect x="62" y="70" width="76" height="70" rx="5" fill="#141412"/><rect x="68" y="74" width="7" height="62" fill="#fff" opacity=".2"/>
+        <path d="M10 500 Q 10 520 30 520 L170 520 Q 190 520 190 500 L190 230 C 190 190 150 160 130 140 L70 140 C 50 160 10 190 10 230Z" fill="url(#fg)"/>
+        <path d="M14 300 L186 300 L186 500 Q 186 516 170 516 L30 516 Q 14 516 14 500Z" fill="url(#fo)" opacity=".6"/>
+        <rect x="26" y="330" width="148" height="140" fill="#f2ecdf"/>
+        <text x="100" y="368" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="28" fill="#2F3A2F">Oleum</text>
+        <text x="100" y="392" text-anchor="middle" font-family="NM" font-weight="500" font-size="10" letter-spacing="2.4" fill="#2F3A2F">FACE OIL · ROSEHIP</text>
+        <text x="100" y="414" text-anchor="middle" font-family="NM" font-style="italic" font-size="11" fill="#5a6a4a">Rosehip seed, Lesotho.</text>
+        <text x="100" y="450" text-anchor="middle" font-family="NM" font-size="10" fill="#2F3A2F">Pressed 08·2026 · 30 ml</text>
+        <rect x="26" y="330" width="148" height="140" fill="url(#fl)"/>
+        <rect x="32" y="200" width="10" height="290" rx="5" fill="#fff" opacity=".45"/>
+      </svg>
+    </div>
+    <!-- BOX -->
+    <div class="d" style="left:2330px;top:190px;width:900px;height:600px">
+      <!-- inside base, dark -->
+      <div class="d" style="left:0;top:0;width:900px;height:600px;background:#263025"></div>
+      <!-- back wall (inner face) -->
+      <div class="d wallF" style="left:0;top:-160px;width:900px;height:160px;background:linear-gradient(180deg,#3a4639,#2a3329)"></div>
+      <!-- side walls -->
+      <div class="d wallS" style="left:0;top:0;width:160px;height:600px;background:linear-gradient(90deg,#2a3329,#435040)"></div>
+      <div class="d wallS" style="left:900px;top:0;width:160px;height:600px;background:linear-gradient(90deg,#1f271e,#323d30)"></div>
+      <!-- insert: cream card with four holes and a slot for the card -->
+      <div class="d" style="left:0;top:0;width:900px;height:600px;transform:translateZ(104px)">
+        <svg width="900" height="600" style="position:absolute;inset:0">
+          <defs><radialGradient id="hole" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#0d0f0b"/><stop offset="1" stop-color="#3a3a30"/></radialGradient>
+          <filter id="pp" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" seed="4"/><feColorMatrix type="matrix" values="0 0 0 0 .5 0 0 0 0 .46 0 0 0 0 .38 0 0 0 .18 0"/></filter>
+          <linearGradient id="ins" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf8f1"/><stop offset="1" stop-color="#e7dfcd"/></linearGradient></defs>
+          <rect width="900" height="600" fill="url(#ins)"/><rect width="900" height="600" filter="url(#pp)"/>
+          <g fill="url(#hole)"><ellipse cx="150" cy="330" rx="44" ry="44"/><ellipse cx="350" cy="330" rx="44" ry="44"/><ellipse cx="550" cy="330" rx="44" ry="44"/><ellipse cx="750" cy="330" rx="44" ry="44"/></g>
+          <g font-family="NM" font-size="17" fill="#2F3A2F" text-anchor="middle" letter-spacing="2">
+            <text x="150" y="430">DAYS 1–5</text><text x="350" y="430">DAYS 6–10</text><text x="550" y="430">DAYS 11–15</text><text x="750" y="430">DAYS 16–20</text>
+          </g>
+          <g font-family="Georgia" font-weight="700" font-size="28" fill="#2F3A2F" text-anchor="middle">
+            <text x="150" y="470">Rosehip</text><text x="350" y="470">Marula</text><text x="550" y="470">Camellia</text><text x="750" y="470">Squalane</text>
+          </g>
+          <g font-family="NM" font-style="italic" font-size="17" fill="#6b7a4f" text-anchor="middle">
+            <text x="150" y="500">dull, tired skin</text><text x="350" y="500">dry, tight skin</text><text x="550" y="500">oily, busy skin</text><text x="750" y="500">sensitive skin</text>
+          </g>
+          
+          <path d="M0 0 H900 V600 H0Z" fill="none" stroke="#cfc4ad" stroke-width="4"/>
+        </svg>
+      </div>
+      <!-- the folded card standing in the slot -->
+      <div class="d wallF" style="left:80px;top:-150px;width:740px;height:235px;transform:translateZ(104px) rotateX(-104deg);transform-origin:50% 100%">
+        <div style="position:absolute;inset:0;background:#F7F2E9;box-shadow:inset 0 -30px 40px rgba(0,0,0,.08)"></div>
+        <div class="txt" style="position:absolute;left:44px;top:34px;right:44px;display:flex;justify-content:space-between;align-items:flex-start">
+          <div><div style="font:700 56px Georgia,serif">Oleum</div><div style="font:italic 400 24px NM;color:#8A9A5B;margin-top:4px">Oils, honestly.</div></div>
+          <div style="text-align:right;font:400 20px/1.5 NM">Your skin finder said <b style="font-weight:500">Rosehip</b>.<br>The other three are here in case.<br><span style="letter-spacing:2px;font-size:16px;color:#6b6b5c">BOX Nº 2207 · 4 × 5 ml</span></div>
+        </div>
+      </div>
+      <!-- vials, standing in their holes -->
+      <div class="d vial" id="v1" style="left:112px;top:80px;transform:translateZ(44px) rotateX(-90deg)"></div>
+      <div class="d vial" id="v2" style="left:312px;top:80px;transform:translateZ(44px) rotateX(-90deg)"></div>
+      <div class="d vial" id="v3" style="left:512px;top:80px;transform:translateZ(44px) rotateX(-90deg)"></div>
+      <div class="d vial" id="v4" style="left:712px;top:80px;transform:translateZ(44px) rotateX(-90deg)"></div>
+      <!-- front wall (outer face, printed) -->
+      <div class="d wallF" style="left:0;top:440px;width:900px;height:160px;background:linear-gradient(180deg,#F7F2E9,#e9e1d1)">
+        <div class="txt" style="position:absolute;left:40px;top:40px;font:700 52px Georgia,serif">Oleum</div>
+        <div class="txt" style="position:absolute;right:40px;top:58px;font:500 20px NM;letter-spacing:5px">TRY-IT-FIRST BOX · £18</div>
+        <div style="position:absolute;left:0;right:0;top:0;height:6px;background:#fffdf7"></div>
+      </div>
+      <!-- top rims of side/back walls -->
+      <div class="d" style="left:-6px;top:-6px;width:912px;height:12px;background:#efe7d6;transform:translateZ(160px)"></div>
+      <div class="d" style="left:-6px;top:0;width:12px;height:600px;background:#efe7d6;transform:translateZ(160px)"></div>
+      <div class="d" style="left:894px;top:0;width:12px;height:600px;background:#e2d9c6;transform:translateZ(160px)"></div>
+    </div>
+
+    <!-- a recipe card, lying in front -->
+    <div class="d" style="left:2900px;top:860px;width:520px;height:340px;transform:translateZ(1px) rotate(-6deg) scale(.85);background:#fbf8f1;box-shadow:0 0 0 1px #e6dfcf">
+      <div class="txt" style="position:absolute;left:36px;top:30px;right:36px">
+        <div style="font:500 16px NM;letter-spacing:4px;color:#8A9A5B">HOW TO USE</div>
+        <div style="font:400 22px/1.5 NM;margin-top:12px">Three drops on damp skin.<br>Press, don't rub.<br>Night: a fourth drop on the hands.</div>
+        <div style="font:italic 400 18px NM;margin-top:16px;color:#6b6b5c">Smell first. If you like it, your skin probably will too.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+// vials: small glass with oil, black dropper cap, tiny label
+const oils=[['#c2741c','#f2b54a','Rosehip'],['#b7932a','#efd27a','Marula'],['#c9b25a','#f4e6a4','Camellia'],['#d8cf9e','#fbf7e2','Squalane']];
+oils.forEach(([a,b,n],i)=>{document.getElementById('v'+(i+1)).innerHTML=`<svg width="76" height="250" viewBox="0 0 76 250">
+ <defs><linearGradient id="vo${i}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${a}"/><stop offset=".35" stop-color="${b}"/><stop offset=".7" stop-color="${a}"/><stop offset="1" stop-color="#3a2508"/></linearGradient>
+ <linearGradient id="vg${i}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".15" stop-color="#fff" stop-opacity=".75"/><stop offset=".24" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity=".0"/><stop offset=".93" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient></defs>
+ <rect x="10" y="100" width="56" height="150" rx="8" fill="#e8e6dc" opacity=".55"/>
+ <rect x="10" y="128" width="56" height="122" rx="7" fill="url(#vo${i})"/>
+ <ellipse cx="38" cy="128" rx="28" ry="4" fill="${b}"/>
+ <rect x="10" y="100" width="56" height="150" rx="8" fill="url(#vg${i})"/>
+ <rect x="14" y="160" width="48" height="44" fill="#F7F2E9"/>
+ <text x="38" y="178" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="9.5" fill="#2F3A2F">${n}</text>
+ <text x="38" y="194" text-anchor="middle" font-family="NM" font-size="7.5" fill="#2F3A2F">5 ml · 0${4-i}·26</text>
+ <rect x="16" y="70" width="44" height="36" rx="3" fill="#1a1a18"/><rect x="20" y="72" width="5" height="32" fill="#fff" opacity=".2"/>
+ <path d="M24 70 L24 22 C 24 4 52 4 52 22 L52 70Z" fill="#26261f"/><rect x="28" y="16" width="5" height="50" rx="2.5" fill="#fff" opacity=".18"/>
+</svg>`});
+</script>
+</body></html>

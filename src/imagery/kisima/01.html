@@ -1,0 +1,83 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Italic.otf');font-weight:400;font-style:italic}
+@font-face{font-family:'PX';src:url('../../../assets/fonts/handjet.woff2')}
+
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:2000px;overflow:hidden;background:#222}svg{display:block}
+.ph{position:absolute;left:300px;top:250px;width:620px;height:1420px;transform:rotate(-11deg);border-radius:90px 90px 110px 110px;
+ background:linear-gradient(105deg,#3b4652 0%,#222a33 18%,#161c22 60%,#2c343d 100%);
+ box-shadow:inset 0 0 0 3px rgba(255,255,255,.08),inset 6px 6px 10px rgba(255,255,255,.08),inset -8px -10px 16px rgba(0,0,0,.5),30px 40px 40px rgba(20,10,0,.45),60px 80px 110px rgba(20,10,0,.35)}
+.scr{position:absolute;left:62px;top:150px;width:496px;height:600px;background:#0a0d10;border-radius:14px;box-shadow:inset 0 3px 8px rgba(0,0,0,.9)}
+.lcd{position:absolute;left:24px;top:24px;right:24px;bottom:24px;background:linear-gradient(180deg,#d8e7ef,#c3d6e0);font-family:'PX';color:#10202c;overflow:hidden}
+.bar{display:flex;justify-content:space-between;padding:6px 12px;background:#1D4E89;color:#fff;font-size:28px}
+.msg{padding:10px 14px;font-size:34px;line-height:1.02;letter-spacing:.3px}
+.soft{display:flex;justify-content:space-between;position:absolute;left:0;right:0;bottom:0;padding:4px 12px;font-size:28px;background:rgba(16,32,44,.12)}
+.k{position:absolute;width:150px;height:84px;border-radius:30px 30px 40px 40px;background:linear-gradient(170deg,#4a5561,#2a323b);box-shadow:inset 0 2px 1px rgba(255,255,255,.18),0 5px 6px rgba(0,0,0,.5);color:#eef;font-family:'NM';display:flex;align-items:center;justify-content:center;gap:10px;font-size:40px;font-weight:500}
+.k small{font-size:18px;opacity:.7;font-weight:400}
+.card{position:absolute;left:990px;top:1100px;width:560px;height:353px;transform:rotate(14deg);border-radius:24px;background:linear-gradient(135deg,#2a63a8,#1D4E89 55%,#163d6d);box-shadow:20px 28px 30px rgba(20,10,0,.45),inset 0 0 0 2px rgba(255,255,255,.12);color:#fff;font-family:'NM';overflow:hidden}
+</style></head><body><svg style="position:absolute;inset:0" width="1600" height="2000"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .45  0 0 0 0 .4  0 0 0 .55 -.15"/></filter>
+<filter id="dirt" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="5" seed="12"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .22  0 0 0 0 .12  0 0 0 .7 -.1"/></filter>
+<filter id="pebbles" x="0" y="0" width="100%" height="100%"><feTurbulence type="turbulence" baseFrequency=".09" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 .95  0 0 0 0 .8  0 0 0 0 .65  0 0 0 2.2 -1.5"/></filter>
+<filter id="plaster" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="5" seed="8"/><feColorMatrix values="0 0 0 0 .3  0 0 0 0 .25  0 0 0 0 .2  0 0 0 .35 -.02"/></filter>
+<filter id="stain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".006 .04" numOctaves="4" seed="21"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .3  0 0 0 0 .18  0 0 0 1.4 -.55"/></filter>
+<filter id="paintwear" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="17"/><feColorMatrix values="0 0 0 0 .93  0 0 0 0 .9  0 0 0 0 .84  0 0 0 2.6 -1.9"/></filter>
+<filter id="b2"><feGaussianBlur stdDeviation="2"/></filter><filter id="b6"><feGaussianBlur stdDeviation="6"/></filter><filter id="b20"><feGaussianBlur stdDeviation="20"/></filter><filter id="b60"><feGaussianBlur stdDeviation="60"/></filter>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb3d8"/><stop offset=".7" stop-color="#cfe0e6"/><stop offset="1" stop-color="#ece6d8"/></linearGradient>
+<linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8e2d2" stop-opacity="0"/><stop offset="1" stop-color="#efe6d4" stop-opacity=".55"/></linearGradient>
+<linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9714a"/><stop offset="1" stop-color="#c98458"/></linearGradient>
+<linearGradient id="jcF" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd94a"/><stop offset=".55" stop-color="#f4c21f"/><stop offset="1" stop-color="#d9a812"/></linearGradient>
+<linearGradient id="jcS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b98a0e"/><stop offset="1" stop-color="#8f6a08"/></linearGradient>
+<linearGradient id="jcDirt" x1="0" y1="0" x2="0" y2="1"><stop offset=".6" stop-color="#7a4a20" stop-opacity="0"/><stop offset="1" stop-color="#7a4a20" stop-opacity=".45"/></linearGradient>
+<linearGradient id="tank" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a5d98"/><stop offset=".35" stop-color="#3f78b6"/><stop offset=".7" stop-color="#1f477c"/><stop offset="1" stop-color="#132e55"/></linearGradient>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9dcdc"/><stop offset=".5" stop-color="#9aa0a2"/><stop offset="1" stop-color="#6c7274"/></linearGradient>
+<linearGradient id="brass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2d58a"/><stop offset=".5" stop-color="#b98a35"/><stop offset="1" stop-color="#7a5418"/></linearGradient>
+<linearGradient id="water" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#bfe6f7" stop-opacity=".6"/><stop offset=".4" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#8fcbe6" stop-opacity=".6"/></linearGradient>
+<linearGradient id="frontLight" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff3d6" stop-opacity=".22"/><stop offset="1" stop-color="#3a2a1a" stop-opacity=".12"/></linearGradient>
+<linearGradient id="sunwash" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff6dc" stop-opacity=".35"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#5a3a20" stop-opacity=".18"/></linearGradient>
+
+<pattern id="kb" width="120" height="120" patternUnits="userSpaceOnUse"><rect width="120" height="120" fill="#1f2f6b"/><circle cx="60" cy="60" r="38" fill="#e9a628"/><circle cx="60" cy="60" r="24" fill="#1f2f6b"/><circle cx="60" cy="60" r="10" fill="#f4efe2"/><path d="M0 0 L20 0 L0 20Z M120 0 L100 0 L120 20Z M0 120 L20 120 L0 100Z M120 120 L100 120 L120 100Z" fill="#e9a628"/></pattern>
+<pattern id="kc" width="90" height="90" patternUnits="userSpaceOnUse"><rect width="90" height="90" fill="#f1e9d6"/><path d="M45 8 C60 30 70 40 45 82 C20 40 30 30 45 8Z" fill="#1f2f6b"/><circle cx="45" cy="50" r="7" fill="#e9a628"/></pattern>
+<filter id="cloth" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".004 .007" numOctaves="3" seed="4" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="40" xChannelSelector="R" yChannelSelector="G" result="d"/><feDiffuseLighting in="t" surfaceScale="9" lighting-color="#fff" result="l"><feDistantLight azimuth="225" elevation="50"/></feDiffuseLighting><feComposite in="d" in2="l" operator="arithmetic" k1="1.05" k2=".08" k3="0" k4="0"/></filter>
+<filter id="weave" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.1 .9" numOctaves="1" seed="2"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .5 -.15"/></filter>
+</defs>
+<g filter="url(#cloth)" transform="rotate(-8 800 1000)">
+ <rect x="-300" y="-300" width="2200" height="2600" fill="url(#kb)"/>
+ <rect x="80" y="160" width="1500" height="1700" fill="#e9a628"/>
+ <rect x="110" y="190" width="1440" height="1640" fill="url(#kc)"/>
+ <rect x="110" y="1660" width="1440" height="100" fill="#f1e9d6"/>
+ <text x="830" y="1728" text-anchor="middle" font-family="NM" font-weight="700" font-size="56" letter-spacing="4" fill="#1f2f6b">MAJI YAKIMWAGIKA HAYAZOLEKI</text>
+</g>
+<rect width="1600" height="2000" filter="url(#weave)"/>
+<rect width="1600" height="2000" fill="url(#sunwash)"/>
+</svg>
+<div class="card">
+ <svg style="position:absolute;right:-60px;top:-40px;opacity:.12" width="380" height="380" viewBox="-60 -70 120 130"><path d="M0 -60 C 18 -30, 38 -6, 38 18 A 38 38 0 0 1 -38 18 C -38 -6, -18 -30, 0 -60 Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"/><path d="M-20 14 A 22 22 0 0 0 -4 34" fill="none" stroke="#fff" stroke-width="4.800000000000001" stroke-linecap="round"/></svg>
+ <div style="position:absolute;left:36px;top:30px;display:flex;align-items:center;gap:14px"><svg width="44" height="54" viewBox="-45 -66 90 110"><path d="M0 -60 C 18 -30, 38 -6, 38 18 A 38 38 0 0 1 -38 18 C -38 -6, -18 -30, 0 -60 Z" fill="none" stroke="#7FD1F7" stroke-width="10" stroke-linejoin="round"/><path d="M-20 14 A 22 22 0 0 0 -4 34" fill="none" stroke="#7FD1F7" stroke-width="8" stroke-linecap="round"/></svg><div style="font-size:40px;font-weight:700;letter-spacing:-.5px">Kisima</div></div>
+ <div style="position:absolute;right:36px;top:40px;font-size:18px;letter-spacing:2px;color:#7FD1F7">KADI YA MAJI</div>
+ <div style="position:absolute;left:36px;top:150px;font-size:16px;letter-spacing:2px;opacity:.7">NAMBA YA KADI</div>
+ <div style="position:absolute;left:36px;top:172px;font-size:42px;font-weight:500;letter-spacing:3px">KS-04-1187</div>
+ <div style="position:absolute;left:36px;bottom:34px;font-size:18px;line-height:1.4">Kaya ya Otieno · Kayole Kusini<br><span style="opacity:.7">Water you can count on.</span></div>
+ <svg style="position:absolute;right:36px;bottom:34px" width="70" height="70" viewBox="0 0 70 70" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".85"><path d="M22 20a24 24 0 0 1 0 30M34 12a36 36 0 0 1 0 46M46 6a46 46 0 0 1 0 58"/></svg>
+ <div style="position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.14) 46%,transparent 60%)"></div>
+</div>
+<div class="ph">
+ <div style="position:absolute;left:50%;top:60px;width:120px;height:14px;margin-left:-60px;border-radius:7px;background:#0b0f13;box-shadow:inset 0 2px 3px #000"></div>
+ <div style="position:absolute;left:0;right:0;top:96px;text-align:center;font-family:'NM';font-weight:500;font-size:24px;letter-spacing:6px;color:#8a96a3">KITO</div>
+ <div class="scr"><div class="lcd">
+  <div class="bar"><span>Ujumbe 1/3</span><span>14:06</span></div>
+  <div style="padding:8px 14px 0;font-size:30px;color:#1D4E89">Kutoka: KISIMA</div>
+  <div class="msg">KISIMA: Kioski ya maji Kayole Kusini itafunguliwa Jumamosi 7 Machi, saa 2 asubuhi. Kamati: Grace Achieng 0722 418 306. Kadi yako: KS-04-1187. Jibu 1 kuthibitisha.</div>
+  <div class="soft"><span>Chaguo</span><span>Jibu</span><span>Nyuma</span></div>
+ </div><div style="position:absolute;inset:0;border-radius:14px;background:linear-gradient(125deg,rgba(255,255,255,.16),rgba(255,255,255,0) 40%)"></div></div>
+ <div style="position:absolute;left:62px;top:790px;width:496px;height:150px">
+  <div class="k" style="left:0;top:20px;width:120px;height:70px;border-radius:20px 40px 40px 20px"><small>—</small></div>
+  <div class="k" style="right:0;top:20px;width:120px;height:70px;border-radius:40px 20px 20px 40px"><small>—</small></div>
+  <div style="position:absolute;left:158px;top:0;width:180px;height:130px;border-radius:50%;background:linear-gradient(170deg,#56616d,#2a323b);box-shadow:inset 0 2px 1px rgba(255,255,255,.2),0 5px 6px rgba(0,0,0,.5)"><div style="position:absolute;left:55px;top:35px;width:70px;height:60px;border-radius:50%;background:linear-gradient(170deg,#3f4954,#252c34)"></div></div>
+ </div>
+ <div class="k" style="left:62px;top:960px">1<small>.,?</small></div><div class="k" style="left:235px;top:960px">2<small>abc</small></div><div class="k" style="left:408px;top:960px">3<small>def</small></div><div class="k" style="left:62px;top:1064px">4<small>ghi</small></div><div class="k" style="left:235px;top:1064px">5<small>jkl</small></div><div class="k" style="left:408px;top:1064px">6<small>mno</small></div><div class="k" style="left:62px;top:1168px">7<small>pqrs</small></div><div class="k" style="left:235px;top:1168px">8<small>tuv</small></div><div class="k" style="left:408px;top:1168px">9<small>wxyz</small></div><div class="k" style="left:62px;top:1272px">*<small>+</small></div><div class="k" style="left:235px;top:1272px">0<small>␣</small></div><div class="k" style="left:408px;top:1272px">#<small>⇧</small></div>
+ <div style="position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,.1),transparent 35%)"></div>
+</div>
+<div style="position:absolute;inset:0;background:radial-gradient(90% 75% at 42% 40%,transparent 55%,rgba(30,15,0,.45) 100%)"></div></body></html>

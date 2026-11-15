@@ -1,0 +1,120 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Cedarline Clinics — patient leaflets at reception</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-weight:700;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf)}
+html,body{margin:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#e7eae3;perspective:3000px;perspective-origin:800px 500px}
+#wall{position:absolute;left:0;top:0}
+.w3{position:absolute;inset:0;transform-style:preserve-3d}
+.counter{position:absolute;left:-1500px;top:1180px;width:4600px;height:2400px;transform-origin:50% 0;transform:rotateX(90deg);transform-style:preserve-3d;background:#f3f1ec}
+.edge{position:absolute;left:-1500px;top:1180px;width:4600px;height:20px;background:#d8d4cb}
+.stand{position:absolute;left:300px;top:1180px;width:1000px;height:0;transform-style:preserve-3d;transform:translateZ(380px) rotateY(-16deg)}
+.lf{position:absolute;width:300px;height:630px;font-family:NM;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.05)}
+.ac{position:absolute;background:linear-gradient(100deg,rgba(255,255,255,.28),rgba(255,255,255,.06) 30%,rgba(255,255,255,.0) 60%,rgba(255,255,255,.18));
+  border:2px solid rgba(255,255,255,.75);box-shadow:inset 0 0 0 1px rgba(150,170,160,.35);border-radius:3px}
+.lf h4{margin:0;font:700 40px/1.0 NM;letter-spacing:-.025em}
+.lf p{margin:14px 0 0;font:400 17px/1.4 NM}
+.lf .tag{font:500 13px NM;letter-spacing:.18em}
+.lf .ft{position:absolute;left:28px;right:28px;bottom:24px;display:flex;align-items:center;gap:8px;font:700 16px NM;letter-spacing:-.01em}
+.inner{position:absolute;font-family:NM;color:#14301e}
+</style></head>
+<body>
+<svg id="wall" width="1600" height="1200">
+  <defs>
+    <linearGradient id="wl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f4f5f1"/><stop offset="1" stop-color="#dfe3db"/></linearGradient>
+    <filter id="b" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="b2" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#wl)"/>
+  <!-- out-of-focus wayfinding wall behind reception -->
+  <g filter="url(#b)">
+    <rect x="980" y="140" width="660" height="520" fill="#1E5631"/>
+    <text x="1040" y="250" font-family="NM" font-weight="700" font-size="64" fill="#fff" letter-spacing="-2">Check in here</text>
+    <text x="1040" y="310" font-family="NM" font-size="34" fill="#dfeedd">Enregistrement</text>
+    <rect x="1040" y="360" width="520" height="4" fill="#A4DE02"/>
+    <text x="1040" y="430" font-family="NM" font-size="32" fill="#fff">Exam rooms 1–6  →</text>
+    <text x="1040" y="484" font-family="NM" font-size="32" fill="#fff">Lab &amp; vaccines  ↑</text>
+    <text x="1040" y="538" font-family="NM" font-size="32" fill="#fff">Washrooms  ←</text>
+    <rect x="60" y="260" width="420" height="300" rx="10" fill="#1a1d1b"/><rect x="72" y="272" width="396" height="276" fill="#2c6a40"/>
+    <text x="96" y="330" font-family="NM" font-weight="500" font-size="22" fill="#d6ecbd" letter-spacing="2">NOW SEEING</text>
+    <text x="96" y="420" font-family="NM" font-weight="700" font-size="84" fill="#fff">A‑14</text>
+    <text x="96" y="500" font-family="NM" font-size="26" fill="#d6ecbd">Walk-in wait 12 min</text>
+  </g>
+  <g fill="#62705f" opacity=".14" filter="url(#b2)"><path d="M0 1200 C 120 900 240 700 420 560 L470 600 C 300 740 190 940 120 1200Z"/><ellipse cx="300" cy="700" rx="140" ry="50" transform="rotate(-40 300 700)"/><ellipse cx="420" cy="560" rx="150" ry="46" transform="rotate(-20 420 560)"/><ellipse cx="180" cy="880" rx="130" ry="44" transform="rotate(-60 180 880)"/></g>
+</svg>
+<div class="w3">
+  <div class="counter">
+    <svg width="4600" height="2400" style="position:absolute;inset:0"><defs>
+      <filter id="cr" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix type="matrix" values="0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .48 0 0 0 .12 0"/></filter>
+      <radialGradient id="sun" cx=".3" cy=".05" r=".5"><stop offset="0" stop-color="#fffbe9" stop-opacity=".8"/><stop offset="1" stop-color="#fffbe9" stop-opacity="0"/></radialGradient>
+      <filter id="bl" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="22"/></filter></defs>
+      <rect width="4600" height="2400" fill="#f2f0eb"/><rect width="4600" height="2400" filter="url(#cr)"/><rect width="4600" height="2400" fill="url(#sun)"/>
+      <!-- stand shadow -->
+      <path d="M1790 330 L2760 50 L2900 380 L1900 640Z" fill="#46503f" opacity=".28" filter="url(#bl)"/>
+      <path d="M1840 250 L2760 0 L2790 90 L1860 330Z" fill="#46503f" opacity=".3" filter="url(#bl)"/>
+    </svg>
+    <!-- one leaflet opened flat on the counter -->
+    <div style="position:absolute;left:1980px;top:760px;width:900px;height:630px;transform:translateZ(1px) rotate(-9deg) scale(.8);display:flex;box-shadow:16px 24px 26px rgba(40,50,40,.22)">
+      <div style="flex:1;background:linear-gradient(90deg,#fbfbf8,#eef0ea);padding:34px 30px;font-family:NM;color:#14301e">
+        <div style="font:500 13px NM;letter-spacing:.18em;color:#1E5631">YOUR FIRST VISIT</div>
+        <div style="font:700 36px/1.02 NM;letter-spacing:-.02em;margin-top:12px">What happens, step by step</div>
+        <div style="font:400 17px/1.45 NM;margin-top:14px;color:#3c5446">Most visits take under 40 minutes from the door to the door.</div>
+      </div>
+      <div style="flex:1;background:linear-gradient(90deg,#e8ebe4,#fbfbf8 18%,#f2f4ef);padding:34px 26px;font-family:NM;color:#14301e">
+        <div style="display:grid;grid-template-columns:44px 1fr;gap:14px 12px;font:400 17px/1.35 NM;color:#3c5446">
+          <b style="width:40px;height:40px;border-radius:50%;background:#1E5631;color:#fff;display:flex;align-items:center;justify-content:center;font:700 20px NM">1</b><div><b style="font:700 20px NM;color:#14301e;display:block">Check in</b>At the desk or the screen. About 2 min.</div>
+          <b style="width:40px;height:40px;border-radius:50%;background:#1E5631;color:#fff;display:flex;align-items:center;justify-content:center;font:700 20px NM">2</b><div><b style="font:700 20px NM;color:#14301e;display:block">Wait</b>The screen shows your number and the wait.</div>
+          <b style="width:40px;height:40px;border-radius:50%;background:#1E5631;color:#fff;display:flex;align-items:center;justify-content:center;font:700 20px NM">3</b><div><b style="font:700 20px NM;color:#14301e;display:block">See the doctor</b>Usually 10 to 15 min.</div>
+        </div>
+      </div>
+      <div style="flex:1;background:linear-gradient(90deg,#e6e9e2,#1E5631 3%);padding:34px 28px;font-family:NM;color:#fff">
+        <div style="font:700 26px/1.15 NM">Bring</div>
+        <div style="font:400 18px/1.6 NM;margin-top:10px;color:#e1efd6">· OHIP card<br>· Your medications, or a photo of the labels<br>· Glasses, if you read with them</div>
+        <div style="position:absolute;bottom:34px;font:700 22px NM;color:#A4DE02">cedarline.ca</div>
+      </div>
+    </div>
+  </div>
+  <div class="edge"></div>
+
+  <!-- acrylic leaflet stand: two tiers, two pockets each -->
+  <div class="stand">
+    <!-- back tier (raised) -->
+    <div style="position:absolute;left:0;top:-860px;width:1000px;height:860px;transform-style:preserve-3d;transform:translateZ(-160px)">
+      <div class="lf" style="left:150px;top:0;background:#1E5631;color:#fff">
+        <div style="padding:30px 28px"><div class="tag" style="color:#A4DE02">FLU SEASON 2026–27</div><h4 style="margin-top:14px">Flu shots are free. Walk in.</h4><p style="color:#dfeedd">For everyone 6 months and older with an OHIP card. No appointment needed, every weekday 8:00–20:00.</p></div>
+        <svg style="position:absolute;right:-40px;bottom:60px" width="220" height="300" viewBox="0 0 52 72"><path d="M26 3 C 8 18 3 32 3 40 C 3 56 14 66 26 69 C 38 66 49 56 49 40 C 49 32 44 18 26 3Z" fill="none" stroke="#A4DE02" stroke-width="3" opacity=".5"/><path d="M26 16 V58" stroke="#A4DE02" stroke-width="3" opacity=".5"/></svg>
+        <div class="ft">Cedarline Clinics</div>
+      </div>
+      <div class="lf" style="left:550px;top:0;background:#A4DE02;color:#14301e">
+        <div style="padding:30px 28px"><div class="tag">FOR PARENTS</div><h4 style="margin-top:14px">The 18‑month checkup</h4><p>Growth, words, vaccines, and your questions. Book it with your family doctor, online in three steps.</p></div>
+        <svg style="position:absolute;left:28px;bottom:80px" width="240" height="160" viewBox="0 0 240 160"><circle cx="70" cy="80" r="56" fill="#1E5631"/><circle cx="160" cy="96" r="40" fill="#F4F6F1"/><path d="M60 64 a10 10 0 0 1 20 0" stroke="#A4DE02" stroke-width="6" fill="none"/></svg>
+        <div class="ft">Cedarline Clinics</div>
+      </div>
+      <div class="ac" style="left:130px;top:240px;width:340px;height:400px;transform:translateZ(30px)"></div>
+      <div class="ac" style="left:530px;top:240px;width:340px;height:400px;transform:translateZ(30px)"></div>
+      <div style="position:absolute;left:120px;top:0;width:760px;height:860px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.6);transform:translateZ(-6px)"></div>
+    </div>
+    <!-- front tier -->
+    <div style="position:absolute;left:0;top:-560px;width:1000px;height:560px;transform-style:preserve-3d;transform:translateZ(60px)">
+      <div class="lf" style="left:150px;top:0;background:#F4F6F1;color:#14301e;height:540px">
+        <div style="padding:30px 28px"><div class="tag" style="color:#1E5631">SAME-DAY CARE</div><h4 style="margin-top:14px">Walk in, call, or go to the ER?</h4><p style="color:#3c5446">A one-page guide for the moments you are not sure. Chest pain or trouble breathing: call 911.</p></div>
+        <div class="ft" style="color:#1E5631"><svg width="18" height="25" viewBox="0 0 52 72"><path d="M26 3 C 8 18 3 32 3 40 C 3 56 14 66 26 69 C 38 66 49 56 49 40 C 49 32 44 18 26 3Z" fill="none" stroke="#1E5631" stroke-width="7"/><path d="M26 16 V58" stroke="#1E5631" stroke-width="7"/></svg>Cedarline Clinics</div>
+      </div>
+      <div class="lf" style="left:550px;top:0;background:#14301e;color:#fff;height:540px">
+        <div style="padding:30px 28px"><div class="tag" style="color:#A4DE02">NEW PATIENTS</div><h4 style="margin-top:14px">Find a family doctor near home</h4><p style="color:#cfe0c6">Nine clinics across Toronto, from Etobicoke to Scarborough. See who is taking new patients today.</p></div>
+        <div class="ft" style="color:#A4DE02">cedarline.ca/doctors</div>
+      </div>
+      <div class="ac" style="left:130px;top:230px;width:340px;height:332px;transform:translateZ(30px)"></div>
+      <div class="ac" style="left:530px;top:230px;width:340px;height:332px;transform:translateZ(30px)"></div>
+      <div style="position:absolute;left:126px;top:556px;width:748px;height:10px;background:rgba(255,255,255,.6);transform:translateZ(30px)"></div>
+    </div>
+    <div style="position:absolute;left:110px;top:0;width:780px;height:300px;transform-origin:0 0;transform:translateZ(-170px) rotateX(90deg);background:rgba(255,255,255,.35);border:2px solid rgba(255,255,255,.9);box-shadow:0 0 30px rgba(60,70,60,.25)"></div>
+    <!-- acrylic side panels -->
+    <div style="position:absolute;left:120px;top:-860px;width:240px;height:860px;background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,.12));border:2px solid rgba(255,255,255,.75);transform-origin:0 0;transform:translateZ(-160px) rotateY(-90deg)"></div>
+    <div style="position:absolute;left:880px;top:-860px;width:240px;height:860px;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,.14));border:2px solid rgba(255,255,255,.8);transform-origin:0 0;transform:translateZ(-160px) rotateY(-90deg)"></div>
+  </div>
+</div>
+</body></html>

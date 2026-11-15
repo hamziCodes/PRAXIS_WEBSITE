@@ -1,0 +1,227 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Italic.otf');font-weight:400;font-style:italic}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;position:relative;font-family:'NM',sans-serif;background:linear-gradient(180deg,#101a34,#24365f 300px,#2c3a5c 400px)}
+.abs{position:absolute}
+.ur{font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl}
+#scene{position:absolute;left:0;top:0;width:2400px;height:1350px}
+</style></head>
+<body>
+<script>window.__ready=false</script>
+<div id="world" style="position:absolute;inset:0;width:2400px;height:1350px;transform:translate(-549px,353px) scale(.9);transform-origin:0 0">
+<div id="scene">
+<svg width="2400" height="1350" viewBox="0 0 2400 1350" id="s">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14203d"/><stop offset=".5" stop-color="#2c4374"/><stop offset="1" stop-color="#6a7fa8"/></linearGradient>
+  <linearGradient id="plaster" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f3754"/><stop offset=".6" stop-color="#454a66"/><stop offset="1" stop-color="#525370"/></linearGradient>
+  <filter id="stain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".004 .03" numOctaves="4" seed="12"/><feColorMatrix values="0 0 0 0 .12  0 0 0 0 .1  0 0 0 0 .12  0 0 0 1.1 -.35"/></filter>
+  <filter id="grit"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .3 0"/></filter>
+  <linearGradient id="fascia" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16774c"/><stop offset=".5" stop-color="#0F5B3A"/><stop offset="1" stop-color="#0a4a2e"/></linearGradient>
+  <linearGradient id="interior" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbe8"/><stop offset=".35" stop-color="#f4ecd0"/><stop offset="1" stop-color="#cfc3a0"/></linearGradient>
+  <linearGradient id="glassRef" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fb6e0" stop-opacity=".28"/><stop offset=".35" stop-color="#9fb6e0" stop-opacity=".05"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".14"/><stop offset=".56" stop-color="#ffffff" stop-opacity=".02"/><stop offset="1" stop-color="#2a3a60" stop-opacity=".25"/></linearGradient>
+  <linearGradient id="shutter" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6d7486"/><stop offset="1" stop-color="#3e4456"/></linearGradient>
+  <pattern id="corr" width="2400" height="12" patternUnits="userSpaceOnUse"><rect width="2400" height="6" fill="#7c8396"/><rect y="6" width="2400" height="6" fill="#4a5064"/></pattern>
+  <pattern id="tiles" width="80" height="40" patternUnits="userSpaceOnUse"><rect width="80" height="40" fill="#5a5560"/><path d="M0 0 H80 M0 0 V40" stroke="#3a3640" stroke-width="2"/></pattern>
+  <radialGradient id="lamp" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd08a" stop-opacity=".9"/><stop offset=".3" stop-color="#ffb060" stop-opacity=".35"/><stop offset="1" stop-color="#ffb060" stop-opacity="0"/></radialGradient>
+  <radialGradient id="spill" cx="50%" cy="0%" r="70%"><stop offset="0" stop-color="#fff6d8" stop-opacity=".55"/><stop offset="1" stop-color="#fff6d8" stop-opacity="0"/></radialGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
+  <filter id="glow"><feGaussianBlur stdDeviation="14"/></filter>
+</defs>
+<rect width="2400" height="1350" fill="url(#sky)"/>
+<!-- building mass -->
+<rect x="0" y="40" width="2400" height="1150" fill="url(#plaster)"/>
+<rect x="0" y="40" width="2400" height="1150" filter="url(#stain)"/>
+<!-- roofline parapets, water tanks -->
+<g fill="#262a3c"><rect x="0" y="20" width="640" height="40"/><rect x="640" y="0" width="1140" height="60"/><rect x="1780" y="30" width="620" height="30"/><rect x="760" y="-40" width="120" height="60" rx="10"/><rect x="1980" y="-10" width="110" height="50" rx="10"/></g>
+<g id="upper"></g>
+<!-- ===== left neighbour: pharmacy, older signage ===== -->
+<rect x="0" y="470" width="640" height="150" fill="#b3262c"/>
+<rect x="0" y="470" width="640" height="150" filter="url(#grit)"/>
+<text x="24" y="560" font-family="Impact" font-size="70" fill="#fff" letter-spacing="1">FAZAL MEDICAL</text>
+<text x="620" y="602" font-family="Segoe UI" font-size="38" font-weight="700" fill="#ffe25a" text-anchor="start" direction="rtl">فضل میڈیکل اسٹور</text>
+<rect x="24" y="578" width="250" height="30" fill="#ffe25a"/><text x="34" y="601" font-family="Arial" font-weight="700" font-size="20" fill="#b3262c">24 HOURS · 0300-4417</text>
+<rect x="0" y="620" width="640" height="560" fill="#2a2a34"/>
+<rect x="20" y="640" width="600" height="300" fill="url(#corr)"/>
+<rect x="20" y="940" width="600" height="240" fill="#e9dcb6" opacity=".85"/>
+<g id="pharm"></g>
+<!-- ===== right neighbour: mobile shop ===== -->
+<rect x="1780" y="470" width="620" height="150" fill="#1b4fbf"/>
+<rect x="1780" y="470" width="620" height="150" filter="url(#grit)"/>
+<text x="1800" y="548" font-family="Arial Black,Arial" font-weight="900" font-size="54" fill="#ffd500">AL-NOOR MOBILE</text>
+<text x="2380" y="604" font-family="Segoe UI" font-size="34" font-weight="700" fill="#fff" text-anchor="start" direction="rtl">النور موبائل اینڈ ایزی لوڈ</text>
+<rect x="1800" y="566" width="150" height="40" rx="6" fill="#e3262c"/><text x="1875" y="594" text-anchor="middle" font-family="Arial" font-weight="700" font-size="20" fill="#fff">LOAD · JAZZ</text>
+<rect x="1780" y="620" width="620" height="560" fill="#24242e"/>
+<rect x="1800" y="640" width="580" height="440" fill="url(#corr)"/>
+<rect x="1800" y="1080" width="580" height="100" fill="#d6e4ff" opacity=".55"/>
+
+<!-- ===== SAFFA STORE ===== -->
+<!-- fascia glow on wall -->
+<ellipse cx="1210" cy="540" rx="760" ry="200" fill="#e9ffe8" opacity=".12" filter="url(#glow)"/>
+<rect x="640" y="452" width="1140" height="196" fill="#0a3a25"/>
+<rect x="650" y="460" width="1120" height="180" fill="url(#fascia)"/>
+<!-- grid mark -->
+<g transform="translate(690 488)" fill="none" stroke="#F2C230" stroke-width="7">
+  <rect x="3" y="3" width="30" height="30" rx="4"/><rect x="45" y="3" width="30" height="30" rx="4"/><rect x="87" y="3" width="30" height="30" rx="4"/>
+  <rect x="3" y="45" width="30" height="30" rx="4"/><rect x="45" y="45" width="30" height="30" rx="4" fill="#F2C230"/><rect x="87" y="45" width="30" height="30" rx="4"/>
+  <rect x="3" y="87" width="30" height="30" rx="4"/><rect x="45" y="87" width="30" height="30" rx="4"/><rect x="87" y="87" width="30" height="30" rx="4"/>
+</g>
+<text x="842" y="568" font-family="NM" font-weight="700" font-size="96" fill="#F4F1E6" letter-spacing="-3">Saffa Stores</text>
+<text x="1740" y="560" font-family="Segoe UI" font-weight="700" font-size="58" fill="#F4F1E6" text-anchor="start" direction="rtl">صفا اسٹورز</text>
+<text x="1740" y="612" font-family="Segoe UI" font-size="26" fill="#F2C230" text-anchor="start" direction="rtl">آپ کی گلی۔ آپ کی دکان۔</text>
+<text x="846" y="616" font-family="NM" font-style="italic" font-size="28" fill="#F2C230">Your street. Your store.</text>
+<rect x="650" y="460" width="1120" height="12" fill="#ffffff" opacity=".18"/>
+<!-- store number plate -->
+<rect x="1500" y="414" width="270" height="38" fill="#F4F1E6"/><text x="1516" y="441" font-family="NM" font-weight="700" font-size="20" fill="#0F5B3A">STORE 27 · FAISAL TOWN</text>
+<!-- shutter housing -->
+<rect x="640" y="648" width="1140" height="46" fill="url(#corr)"/>
+<rect x="640" y="648" width="1140" height="46" fill="#000" opacity=".25"/>
+<!-- storefront frame -->
+<rect x="640" y="694" width="1140" height="476" fill="#1d2230"/>
+<!-- interior (through glass) -->
+<rect x="660" y="704" width="1100" height="456" fill="url(#interior)"/>
+<g id="interiorG"></g>
+<!-- tube lights inside -->
+<g id="tubes"></g>
+<!-- glass reflection and frames -->
+<rect x="660" y="704" width="1100" height="456" fill="url(#glassRef)"/>
+<g fill="#b9bfca">
+  <rect x="640" y="694" width="20" height="476"/><rect x="1760" y="694" width="20" height="476"/>
+  <rect x="1050" y="694" width="16" height="476"/><rect x="1354" y="694" width="16" height="476"/>
+  <rect x="1200" y="704" width="6" height="456" fill="#8a909c"/>
+  <rect x="660" y="694" width="1100" height="12"/>
+</g>
+<!-- door handles -->
+<rect x="1180" y="900" width="10" height="90" rx="4" fill="#d8dde6"/><rect x="1216" y="900" width="10" height="90" rx="4" fill="#d8dde6"/>
+<!-- window decals placed in HTML layer -->
+<!-- kerb, step, pavement, road -->
+<rect x="0" y="1170" width="2400" height="26" fill="#8a8a92"/>
+<rect x="0" y="1196" width="2400" height="70" fill="url(#tiles)"/>
+<rect x="0" y="1196" width="2400" height="70" fill="#000" opacity=".25"/>
+<rect x="0" y="1266" width="2400" height="12" fill="#a0a0a8"/>
+<rect x="0" y="1278" width="2400" height="72" fill="#23252e"/>
+<!-- light spill from shop onto pavement -->
+<ellipse cx="1210" cy="1210" rx="700" ry="110" fill="url(#spill)"/>
+<ellipse cx="1210" cy="1320" rx="500" ry="30" fill="#fff6d8" opacity=".12" filter="url(#soft)"/>
+<!-- street lamp, left -->
+<rect x="420" y="160" width="14" height="1110" fill="#20222c"/>
+<path d="M427 170 C 440 130 520 120 560 140" stroke="#20222c" stroke-width="10" fill="none"/>
+<rect x="540" y="138" width="60" height="18" rx="6" fill="#20222c"/>
+<ellipse cx="570" cy="170" rx="260" ry="260" fill="url(#lamp)"/>
+<circle cx="570" cy="158" r="10" fill="#fff1c8"/>
+<!-- wires -->
+<g id="wires" fill="none" stroke="#0e1018" stroke-linecap="round"></g>
+<!-- pole with transformer at far right -->
+<rect x="2260" y="0" width="22" height="1270" fill="#1a1c26"/>
+<rect x="2210" y="300" width="110" height="140" rx="8" fill="#2a2d3a"/>
+</svg>
+</div>
+
+<!-- HTML overlays: decals, crates, A-board -->
+<!-- loyalty card poster in left window -->
+<div class="abs" style="left:700px;top:742px;width:310px;height:330px;background:#0F5B3A;padding:22px 22px;color:#F4F1E6;box-shadow:0 2px 6px rgba(0,0,0,.25);opacity:.96">
+  <div class="ur" style="font-size:34px;font-weight:700;line-height:1.3;text-align:right">صفا کارڈ</div>
+  <div class="ur" style="font-size:20px;line-height:1.5;text-align:right;color:#F2C230">ہر خریداری پر پوائنٹس</div>
+  <div style="margin:16px 0 0;width:230px;height:145px;border-radius:12px;background:linear-gradient(135deg,#F2C230,#e8b81e);transform:rotate(-6deg);position:relative;box-shadow:0 8px 14px rgba(0,0,0,.35)">
+    <div class="abs" style="left:14px;top:12px;width:40px;height:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px">
+      <i style="border:3px solid #0F5B3A;border-radius:2px"></i><i style="border:3px solid #0F5B3A;border-radius:2px"></i><i style="border:3px solid #0F5B3A;border-radius:2px"></i><i style="border:3px solid #0F5B3A;border-radius:2px"></i><i style="background:#0F5B3A;border-radius:2px"></i><i style="border:3px solid #0F5B3A;border-radius:2px"></i><i style="border:3px solid #0F5B3A;border-radius:2px"></i><i style="border:3px solid #0F5B3A;border-radius:2px"></i><i style="border:3px solid #0F5B3A;border-radius:2px"></i></div>
+    <div class="abs" style="left:14px;bottom:12px;font-weight:700;font-size:22px;color:#0F5B3A">Saffa Card</div>
+  </div>
+  <div style="font-size:17px;margin-top:22px;line-height:1.3">Points on every purchase.<br><b>Ask at the till.</b></div>
+</div>
+<!-- open sticker on door -->
+<div class="abs" style="left:1226px;top:780px;width:116px;padding:10px 0;border-radius:8px;background:#F2C230;text-align:center;color:#0F5B3A;font-weight:700;font-size:18px;line-height:1.2;opacity:.95">OPEN<div class="ur" style="direction:rtl;font-size:20px;white-space:nowrap">کھلا ہے</div><div style="font-weight:500;font-size:13px">8 AM — 11 PM</div></div>
+<!-- right window: today's rates in the new tag standard -->
+<div class="abs" style="left:1400px;top:742px;width:330px;height:300px;background:#F4F1E6;padding:18px 20px;box-shadow:0 2px 6px rgba(0,0,0,.25);opacity:.97">
+  <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:4px solid #0F5B3A;padding-bottom:8px"><b style="font-size:20px;color:#0F5B3A">TODAY</b><span class="ur" style="font-size:24px;font-weight:700;color:#0F5B3A">آج کے ریٹ</span></div>
+  <div id="rates"></div>
+</div>
+<!-- produce crates outside left of door -->
+<div class="abs" id="crates" style="left:670px;top:1080px;width:360px;height:110px"></div>
+<!-- A-board on pavement -->
+<div class="abs" style="left:1560px;top:1010px;width:250px;height:250px;transform:perspective(900px) rotateY(-14deg);background:#0F5B3A;border:8px solid #0a3a25;box-shadow:20px 20px 30px rgba(0,0,0,.45);padding:16px;color:#F4F1E6">
+  <div class="ur" style="font-size:21px;font-weight:700;text-align:right;white-space:nowrap">نئی قیمت، صاف لکھی</div>
+  <div style="margin-top:10px;background:#F2C230;color:#0F5B3A;padding:10px 12px;border-radius:4px">
+    <div class="ur" style="font-size:20px;font-weight:700;text-align:right">چینی ۱ کلو</div>
+    <div style="font-size:14px;font-weight:500">Sugar, 1 kg</div>
+    <div style="font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.05">Rs 152</div>
+  </div>
+  <div style="font-size:14px;margin-top:10px;opacity:.85">Saffa Card: 2 points per Rs 100</div>
+</div>
+<div class="abs" style="left:560px;top:640px;width:1300px;height:640px;background:radial-gradient(ellipse 50% 50% at 50% 45%,rgba(255,246,214,.28),rgba(255,246,214,0) 70%);mix-blend-mode:screen;filter:blur(10px)"></div>
+<div class="abs" style="left:600px;top:400px;width:1220px;height:300px;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(120,240,170,.18),rgba(120,240,170,0) 70%);mix-blend-mode:screen"></div>
+<!-- cool dusk wash on the street-level neighbours -->
+<div class="abs" style="left:0;top:620px;width:640px;height:560px;background:rgba(20,30,70,.35)"></div>
+<div class="abs" style="left:1780px;top:620px;width:620px;height:560px;background:rgba(20,30,70,.35)"></div>
+<!-- grime + light falloff over the facade -->
+<svg class="abs" style="inset:0;mix-blend-mode:multiply;opacity:.55" width="2400" height="1350" style="left:0;top:0"><filter id="dirt"><feTurbulence type="fractalNoise" baseFrequency=".02 .006" numOctaves="4" seed="33"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .42  0 0 0 0 .45  0 0 0 1.4 -.3"/></filter><rect width="2400" height="1350" filter="url(#dirt)"/></svg>
+<div class="abs" style="left:0;top:0;width:2400px;height:1350px;background:linear-gradient(180deg,rgba(10,16,40,.45) 0%,rgba(10,16,40,.15) 35%,rgba(10,16,40,0) 50%)"></div>
+</div>
+<div class="abs" style="left:0;right:0;top:1600px;bottom:0;background:linear-gradient(180deg,#1d2030,#0c0e16)"></div>
+<div class="abs" style="left:-40px;top:1610px;width:1160px;height:150px;background:linear-gradient(180deg,rgba(15,91,58,.75),rgba(15,91,58,0));filter:blur(8px);transform:scaleY(.8)"></div>
+<div class="abs" style="left:-20px;top:1690px;width:1100px;height:200px;background:linear-gradient(180deg,rgba(255,246,214,.35),rgba(255,246,214,0));filter:blur(12px)"></div>
+<svg class="abs" style="left:0;top:1600px;mix-blend-mode:screen" width="1080" height="320" id="puddle"></svg>
+<div class="abs" style="left:0;right:0;top:1598px;height:6px;background:#a0a0a8;opacity:.6"></div>
+<svg class="abs" style="left:0;top:0" width="1080" height="560" id="topw"></svg>
+<!-- dusk ambience / vignette -->
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(0,0,0,0) 45%,rgba(8,12,28,.72) 100%)"></div>
+<svg class="abs" style="inset:0;opacity:.2;mix-blend-mode:overlay" width="1080" height="1920"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<script>
+const NS='http://www.w3.org/2000/svg';let s=17;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+// upper floors: windows, balconies, ACs
+const up=document.getElementById('upper');
+[[60,120],[60,290],[1840,120],[1840,290]].forEach(([x0,y])=>{for(let i=0;i<3;i++){const x=x0+i*180;const lit=R()<.55;el('rect',{x,y,width:120,height:120,fill:lit?'#f5c77a':'#2a3048',opacity:lit?.85:1},up);el('rect',{x,y,width:120,height:120,fill:'none',stroke:'#1a1e2c','stroke-width':6},up);el('path',{d:`M${x} ${y+60} H${x+120} M${x+60} ${y} V${y+120}`,stroke:'#1a1e2c','stroke-width':4},up)}});
+// Saffa upper: balcony with jaali railing, AC units, lit windows
+for(let i=0;i<4;i++){const x=720+i*270;const lit=i!==2;el('rect',{x,y:120,width:170,height:190,fill:lit?'#ffd590':'#2a3048',opacity:.9},up);el('rect',{x,y:120,width:170,height:190,fill:'none',stroke:'#1a1e2c','stroke-width':7},up);el('path',{d:`M${x+85} 120 V310`,stroke:'#1a1e2c','stroke-width':5},up)}
+el('rect',{x:690,y:330,width:1040,height:16,fill:'#2a2e40'},up);
+for(let x=700;x<1730;x+=26){el('rect',{x,y:346,width:6,height:70,fill:'#2a2e40'},up)}
+el('rect',{x:690,y:410,width:1040,height:10,fill:'#2a2e40'},up);
+[[905,250],[1445,250],[180,250],[2020,410]].forEach(([x,y])=>{el('rect',{x,y,width:110,height:60,rx:4,fill:'#c9ccd4'},up);for(let k=0;k<6;k++)el('rect',{x:x+8,y:y+8+k*8,width:94,height:3,fill:'#8a8e98'},up)});
+// pharmacy interior glimpses
+const ph=document.getElementById('pharm');for(let r=0;r<3;r++)for(let i=0;i<22;i++)el('rect',{x:30+i*26,y:960+r*70,width:20,height:44,fill:['#d64545','#3c78c8','#f0f0f0','#5aa05a','#e8c040'][Math.floor(R()*5)],opacity:.7},ph);
+// shop interior: back shelves (frontal), aisle in door
+const g=document.getElementById('interiorG');
+const pal=['#d8432f','#e8a630','#2f6fb5','#f2efe2','#3a8a4a','#7a3f9a','#e86a2a','#c9282e','#f5d84a','#1f5f8a','#a8c63a','#ffffff'];
+function shelfUnit(x0,x1,yTop,rows,rowH){for(let r=0;r<rows;r++){const y=yTop+r*rowH;let x=x0;while(x<x1-8){const w=14+R()*26,h=rowH*(.55+R()*.35),c=pal[Math.floor(R()*pal.length)];const bottle=R()<.25;
+  if(bottle){el('rect',{x,y:y+rowH-h,width:w*.8,height:h,rx:w*.25,fill:c},g);el('rect',{x:x+w*.25,y:y+rowH-h-8,width:w*.3,height:10,fill:'#333'},g)}else{el('rect',{x,y:y+rowH-h,width:w,height:h,fill:c},g);el('rect',{x:x+2,y:y+rowH-h*.7,width:w-4,height:h*.3,fill:'#fff',opacity:.35},g)}
+  const n=1+Math.floor(R()*3);for(let k=1;k<n;k++)el('rect',{x:x+k*3,y:y+rowH-h,width:w,height:h,fill:c,opacity:.0},g);x+=w+2}
+  el('rect',{x:x0,y:y+rowH,width:x1-x0,height:10,fill:'#e9e6dc'},g);
+  for(let tx=x0+20;tx<x1-50;tx+=70+R()*30){el('rect',{x:tx,y:y+rowH+1,width:40,height:14,fill:'#F2C230'},g);el('rect',{x:tx+4,y:y+rowH+5,width:22,height:3,fill:'#0F5B3A'},g)}}}
+shelfUnit(664,1050,760,4,88);shelfUnit(1370,1756,760,4,88);
+// door aisle with perspective: floor, side shelves converging, till counter
+el('rect',{x:1066,y:704,width:288,height:456,fill:'#f7f1da'},g);
+el('path',{d:'M1066 1160 L1180 960 L1240 960 L1354 1160Z',fill:'#d9d2bb'},g);
+el('path',{d:'M1066 704 L1180 860 L1180 960 L1066 1160Z',fill:'#c8bea0'},g);
+el('path',{d:'M1354 704 L1240 860 L1240 960 L1354 1160Z',fill:'#c8bea0'},g);
+for(let k=0;k<5;k++){const t=k/5;const y1=704+t*156,y2=1160-t*200;const xL=1066+t*114;el('rect',{x:xL,y:y1+20,width:6,height:(y2-y1)-30,fill:pal[k*2],opacity:.5},g);el('rect',{x:2420-xL-6-0,y:y1+20,width:6,height:(y2-y1)-30,fill:pal[k*2+1],opacity:.5},g)}
+for(let r=0;r<4;r++)for(let k=0;k<10;k++){const t=k/10;const xL=1070+t*104,yy=740+r*55+t*40;el('rect',{x:xL,y:yy,width:8,height:20-t*8,fill:pal[Math.floor(R()*pal.length)]},g);el('rect',{x:2420-xL-8,y:yy,width:8,height:20-t*8,fill:pal[Math.floor(R()*pal.length)]},g)}
+el('rect',{x:1180,y:860,width:60,height:100,fill:'#e8e0c4'},g);
+// till counter in the door (green front, with card machine)
+el('rect',{x:1250,y:990,width:104,height:170,fill:'#0F5B3A'},g);el('rect',{x:1246,y:980,width:108,height:14,fill:'#d8d2c0'},g);el('rect',{x:1280,y:950,width:30,height:30,rx:4,fill:'#222'},g);
+// tubes
+const tb=document.getElementById('tubes');[[700,740],[880,740],[1400,740],[1580,740]].forEach(([x,y])=>{el('rect',{x,y:y-24,width:150,height:9,rx:4,fill:'#ffffff'},tb);el('rect',{x:x-20,y:y-40,width:190,height:40,fill:'#ffffff',opacity:.35,filter:'url(#soft)'},tb)});
+// wires
+const w=document.getElementById('wires');
+for(let i=0;i<14;i++){const y1=100+R()*240,y2=80+R()*260;const sag=60+R()*140;el('path',{d:`M-20 ${y1} Q 1200 ${Math.max(y1,y2)+sag} 2290 ${y2}`,'stroke-width':1.5+R()*2.5},w)}
+for(let i=0;i<6;i++){el('path',{d:`M2270 ${300+R()*100} Q ${2000-R()*300} ${520+R()*80} ${1700+R()*200} ${460+R()*30}`,'stroke-width':2.5},w)}
+el('path',{d:'M430 200 Q 800 330 1180 300 T 2270 260','stroke-width':4},w);
+// rates (new standard)
+const rates=[['آٹا ۱۰ کلو','Atta, 10 kg','1,180'],['چینی ۱ کلو','Sugar, 1 kg','152'],['دودھ ۱ لیٹر','Milk, 1 litre','220'],['انڈے، درجن','Eggs, dozen','330']];
+document.getElementById('rates').innerHTML=rates.map(r=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(15,91,58,.2)"><div style="font-size:15px;color:#0F5B3A;font-weight:500">${r[1]}</div><div style="display:flex;align-items:center;gap:12px"><span class="ur" style="font-size:19px;font-weight:700;color:#0F5B3A">${r[0]}</span><span style="background:#F2C230;color:#0F5B3A;font-weight:700;font-size:22px;padding:3px 8px;border-radius:3px;min-width:92px;text-align:right">Rs ${r[2]}</span></div></div>`).join('');
+// crates
+const cr=document.getElementById('crates');let h='';
+[['#c8743a','#8a4a1e',0],['#d8b06a','#a87a3a',120],['#d0402e','#8a1e14',240]].forEach(([c,c2,x])=>{h+=`<div class="abs" style="left:${x}px;top:30px;width:112px;height:80px;background:repeating-linear-gradient(0deg,#9a7a4a 0 10px,#7a5a30 10px 14px);box-shadow:4px 8px 10px rgba(0,0,0,.4)"></div>`;
+  for(let k=0;k<16;k++){const cx=x+8+(k%6)*17+R()*4,cy=10+Math.floor(k/6)*14+R()*6;h+=`<div class="abs" style="left:${cx}px;top:${cy}px;width:24px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,${c},${c2})"></div>`}
+  h+=`<div class="abs" style="left:${x+22}px;top:62px;width:68px;height:30px;background:#F2C230;color:#0F5B3A;font:700 14px NM;display:grid;place-items:center;transform:rotate(-3deg)">Rs ${['140','90','180'][x/120]}/kg</div>`});
+cr.innerHTML=h;
+const tw=document.getElementById('topw');el('rect',{x:930,y:0,width:20,height:560,fill:'#141826'},tw);el('rect',{x:890,y:120,width:100,height:130,rx:8,fill:'#222634'},tw);for(let i=0;i<12;i++){const y1=60+R()*300,y2=140+R()*300;el('path',{d:`M-20 ${y1} Q 470 ${Math.max(y1,y2)+60+R()*120} 940 ${y2}`,fill:'none',stroke:'#0b0d16','stroke-width':1.5+R()*2.5},tw)}for(let i=0;i<5;i++){el('path',{d:`M940 ${180+R()*120} Q 1010 ${300+R()*100} 1100 ${260+R()*80}`,fill:'none',stroke:'#0b0d16','stroke-width':2},tw)}
+const pd=document.getElementById('puddle');for(let i=0;i<40;i++){const y=10+Math.pow(R(),1.5)*300,x=R()*1080,w=40+R()*200;el('rect',{x,y,width:w,height:2+R()*3,fill:R()<.5?'#F2C230':(R()<.5?'#3fae7a':'#fff4d8'),opacity:.15+R()*.3},pd)}
+window.__ready=true;
+</script>
+</body></html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Italic.otf');font-weight:400;font-style:italic}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;font-family:'NM',sans-serif;color:#1b1f1c;background:#2b3a34}
+.abs{position:absolute}
+.ur{font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl}
+.mono{font-family:Consolas,'Courier New',monospace}
+.rc{display:flex;justify-content:space-between}
+</style></head>
+<body>
+<script>window.__ready=false</script>
+<!-- counter top: speckled laminate -->
+<svg class="abs" style="inset:0" width="1600" height="2000">
+  <filter id="spk"><feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="2" seed="8"/><feColorMatrix values="0 0 0 0 .9  0 0 0 0 .92  0 0 0 0 .88  2.6 0 0 0 -1.55"/></filter>
+  <filter id="spk2"><feTurbulence type="fractalNoise" baseFrequency=".3" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 .05  0 0 0 0 .08  0 0 0 0 .06  2.4 0 0 0 -1.4"/></filter>
+  <rect width="1600" height="2000" fill="#cfd2cc"/>
+  <rect width="1600" height="2000" filter="url(#spk)" opacity=".7"/>
+  <rect width="1600" height="2000" filter="url(#spk2)" opacity=".5"/>
+</svg>
+<!-- counter front edge in Saffa green at the bottom -->
+<div class="abs" style="left:0;right:0;bottom:0;height:150px;background:linear-gradient(180deg,#e9ebe6 0,#e9ebe6 10px,#0F5B3A 10px,#0a4a2e)"></div>
+<div class="abs" style="left:60px;bottom:40px;font-weight:700;font-size:44px;color:#F4F1E6;letter-spacing:-.02em">Saffa Stores <span class="ur" style="font-size:36px;margin-left:16px">صفا اسٹورز</span></div>
+
+<!-- light: warm tube from above, cool dusk from the door on the left -->
+<div class="abs" style="inset:0;background:linear-gradient(90deg,rgba(90,130,220,.22),rgba(90,130,220,0) 35%);mix-blend-mode:multiply"></div>
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 70% 50% at 60% 30%,rgba(255,248,220,.35),rgba(255,248,220,0) 70%);mix-blend-mode:screen"></div>
+
+<!-- shopping bag corner -->
+<div class="abs" style="left:-120px;top:-80px;width:620px;height:560px;transform:rotate(-14deg);background:linear-gradient(135deg,#1a7a4e,#0F5B3A 60%,#0a4a2e);border-radius:10px;box-shadow:20px 30px 40px rgba(0,0,0,.35);overflow:hidden">
+  <div class="abs" style="inset:0;background:repeating-linear-gradient(100deg,rgba(255,255,255,0) 0 40px,rgba(255,255,255,.06) 40px 44px,rgba(0,0,0,.05) 44px 60px)"></div>
+  <svg class="abs" style="left:250px;top:250px" width="150" height="150" viewBox="0 0 120 120" fill="none" stroke="#F2C230" stroke-width="8"><rect x="5" y="5" width="30" height="30" rx="4"/><rect x="45" y="5" width="30" height="30" rx="4"/><rect x="85" y="5" width="30" height="30" rx="4"/><rect x="5" y="45" width="30" height="30" rx="4"/><rect x="45" y="45" width="30" height="30" rx="4" fill="#F2C230"/><rect x="85" y="45" width="30" height="30" rx="4"/><rect x="5" y="85" width="30" height="30" rx="4"/><rect x="45" y="85" width="30" height="30" rx="4"/><rect x="85" y="85" width="30" height="30" rx="4"/></svg>
+  <div class="abs" style="left:240px;top:420px;color:#F4F1E6;font-weight:700;font-size:38px;white-space:nowrap">Your street.</div>
+</div>
+
+<!-- sign-up stand (acrylic) -->
+<div class="abs" style="left:1060px;top:90px;width:440px;height:560px;transform:rotate(4deg)">
+  <div class="abs" style="left:40px;top:500px;width:360px;height:60px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.35),rgba(0,0,0,0))"></div>
+  <div class="abs" style="left:20px;top:0;width:400px;height:520px;background:#F2C230;padding:34px 34px;color:#0F5B3A;box-shadow:0 20px 30px rgba(0,0,0,.25)">
+    <div class="ur" style="font-size:40px;font-weight:700;text-align:right;line-height:1.2">صفا کارڈ بنوائیں<br><span style="font-size:26px">مفت، دو منٹ میں</span></div>
+    <div style="font-size:30px;font-weight:700;margin-top:14px;line-height:1.1">Get your Saffa Card.<br><span style="font-weight:500;font-size:22px">Free. Two minutes. At this till.</span></div>
+    <svg width="150" height="150" style="margin-top:26px;background:#fff;padding:8px" id="qr"></svg>
+    <div style="font-size:18px;margin-top:16px;font-weight:500">2 points on every Rs 100</div>
+  </div>
+  <div class="abs" style="left:20px;top:0;width:400px;height:520px;background:linear-gradient(115deg,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 70%,rgba(255,255,255,.18) 74%,rgba(255,255,255,0) 80%);border:3px solid rgba(255,255,255,.55)"></div>
+</div>
+
+<!-- receipt -->
+<div class="abs" style="left:300px;top:520px;width:560px;height:1260px;transform:rotate(-6deg);filter:drop-shadow(16px 24px 18px rgba(0,0,0,.3))">
+  <div class="abs mono" style="inset:0;background:linear-gradient(90deg,#f3f2ec,#fbfbf7 20%,#fbfbf7 80%,#eeede6);padding:44px 40px;font-size:21px;line-height:1.5;color:#2a2a2a;clip-path:polygon(0 0,100% 0,100% 100%,96% 99.3%,92% 100%,88% 99.3%,84% 100%,80% 99.3%,76% 100%,72% 99.3%,68% 100%,64% 99.3%,60% 100%,56% 99.3%,52% 100%,48% 99.3%,44% 100%,40% 99.3%,36% 100%,32% 99.3%,28% 100%,24% 99.3%,20% 100%,16% 99.3%,12% 100%,8% 99.3%,4% 100%,0 99.3%)">
+    <div style="text-align:center"><svg width="60" height="60" viewBox="0 0 120 120" fill="none" stroke="#222" stroke-width="10"><rect x="5" y="5" width="30" height="30" rx="4"/><rect x="45" y="5" width="30" height="30" rx="4"/><rect x="85" y="5" width="30" height="30" rx="4"/><rect x="5" y="45" width="30" height="30" rx="4"/><rect x="45" y="45" width="30" height="30" rx="4" fill="#222"/><rect x="85" y="45" width="30" height="30" rx="4"/><rect x="5" y="85" width="30" height="30" rx="4"/><rect x="45" y="85" width="30" height="30" rx="4"/><rect x="85" y="85" width="30" height="30" rx="4"/></svg></div>
+    <div style="text-align:center;font-family:NM;font-weight:700;font-size:34px;margin-top:6px">SAFFA STORES</div>
+    <div class="ur" style="text-align:center;font-size:24px;font-weight:700">صفا اسٹورز</div>
+    <div style="text-align:center;font-size:18px">Store 27 · 14-C Faisal Town, Lahore<br>NTN 4417203-6 · 042-35161127</div>
+    <div style="border-top:2px dashed #888;margin:16px 0"></div>
+    <div class="rc" style="font-size:18px"><span>14/03/2026  19:42</span><span>Till 2 · Rabia</span></div>
+    <div style="border-top:2px dashed #888;margin:16px 0"></div>
+    <div id="items"></div>
+    <div style="border-top:2px dashed #888;margin:16px 0"></div>
+    <div class="rc"><span>Items: 7</span><span>Subtotal  3,474</span></div>
+    <div class="rc" style="font-size:30px;font-weight:700;margin-top:6px"><span>TOTAL Rs</span><span>3,474</span></div>
+    <div class="rc"><span>Cash</span><span>3,500</span></div><div class="rc"><span>Change</span><span>26</span></div>
+    <div style="border-top:2px dashed #888;margin:16px 0"></div>
+    <div style="font-weight:700">SAFFA CARD •••• 0427</div>
+    <div class="rc"><span>Points this visit</span><span>+69</span></div>
+    <div class="rc"><span>Points balance</span><span>1,218</span></div>
+    <div style="font-size:18px">= Rs 121 off your next shop</div>
+    <div style="border-top:2px dashed #888;margin:16px 0"></div>
+    <div style="text-align:center;font-family:NM;font-style:italic;font-size:24px">Your street. Your store.</div>
+    <div class="ur" style="text-align:center;font-size:22px">آپ کی گلی۔ آپ کی دکان۔ شکریہ</div>
+    <svg width="480" height="70" style="margin-top:16px" id="bc"></svg>
+  </div>
+  <!-- curl shading -->
+  <div class="abs" style="left:0;right:0;bottom:0;height:220px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.08) 60%,rgba(255,255,255,.2) 85%,rgba(0,0,0,.1))"></div>
+</div>
+
+<!-- loyalty card resting on the receipt, lifted -->
+<div class="abs" style="left:700px;top:1330px;width:640px;height:404px;transform:rotate(-9deg)">
+  <div class="abs" style="inset:0;border-radius:30px;background:rgba(0,0,0,.35);filter:blur(18px);transform:translate(26px,34px)"></div>
+  <div class="abs" style="inset:0;border-radius:30px;background:linear-gradient(135deg,#f7cf45 0%,#F2C230 45%,#e2b018 100%);overflow:hidden;box-shadow:inset 0 2px 0 rgba(255,255,255,.6),inset 0 -2px 0 rgba(0,0,0,.15)">
+    <svg class="abs" style="left:44px;top:44px" width="96" height="96" viewBox="0 0 120 120" fill="none" stroke="#0F5B3A" stroke-width="9"><rect x="5" y="5" width="30" height="30" rx="4"/><rect x="45" y="5" width="30" height="30" rx="4"/><rect x="85" y="5" width="30" height="30" rx="4"/><rect x="5" y="45" width="30" height="30" rx="4"/><rect x="45" y="45" width="30" height="30" rx="4" fill="#0F5B3A"/><rect x="85" y="45" width="30" height="30" rx="4"/><rect x="5" y="85" width="30" height="30" rx="4"/><rect x="45" y="85" width="30" height="30" rx="4"/><rect x="85" y="85" width="30" height="30" rx="4"/></svg>
+    <div class="abs ur" style="right:44px;top:40px;font-size:52px;font-weight:700;color:#0F5B3A">صفا کارڈ</div>
+    <div class="abs" style="right:46px;top:120px;font-size:22px;font-weight:500;color:#0F5B3A">Saffa Card</div>
+    <div class="abs" style="left:-80px;top:200px;width:820px;height:120px;background:#0F5B3A;transform:rotate(-6deg)"></div>
+    <div class="abs" style="left:44px;top:240px;font-size:34px;font-weight:700;color:#F2C230;letter-spacing:.08em;font-variant-numeric:tabular-nums">4417 2900 0427</div>
+    <div class="abs" style="left:44px;bottom:26px;font-size:20px;font-style:italic;color:#0F5B3A">Your street. Your store.</div>
+    <div class="abs" style="right:44px;bottom:26px;font-size:18px;font-weight:700;color:#0F5B3A">42 STORES · LAHORE</div>
+    <div class="abs" style="inset:0;background:linear-gradient(110deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.35) 38%,rgba(255,255,255,0) 46%)"></div>
+  </div>
+</div>
+
+<!-- coins -->
+<div id="coins"></div>
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 85% 75% at 55% 40%,rgba(0,0,0,0) 55%,rgba(10,20,15,.45) 100%)"></div>
+<script>
+const items=[['Atta 10kg','آٹا','1,180'],['Cheeni 2kg','چینی','304'],['Doodh 1L x3','دودھ','660'],['Anday darjan','انڈے','330'],['Chai patti 475g','چائے','520'],['Daal masoor 1kg','دال','420'],['Namak','نمک','60']];
+document.getElementById('items').innerHTML=items.map(i=>`<div class="rc"><span>${i[0]}</span><span style="display:flex;gap:14px"><span class="ur" style="font-size:19px;color:#555">${i[1]}</span><span style="min-width:70px;text-align:right">${i[2]}</span></span></div>`).join('');
+let s=5;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+const bc=document.getElementById('bc');let x=0;let h='';while(x<480){const w=1+Math.floor(R()*4);if(R()<.55)h+=`<rect x="${x}" y="0" width="${w}" height="70" fill="#222"/>`;x+=w+1}bc.innerHTML=h;
+const q=document.getElementById('qr');h='';for(let y=0;y<21;y++)for(let x=0;x<21;x++){const f=(x<7&&y<7)||(x>13&&y<7)||(x<7&&y>13);let on;if(f){const fx=x<7?0:14,fy=y<7?0:14,dx=x-fx,dy=y-fy;on=dx===0||dx===6||dy===0||dy===6||(dx>1&&dx<5&&dy>1&&dy<5)}else on=R()<.5;if(on)h+=`<rect x="${x*6.4}" y="${y*6.4}" width="6.4" height="6.4" fill="#0F5B3A"/>`}q.innerHTML=h;
+const cs=document.getElementById('coins');h='';[[1080,800,0],[1190,860,1],[1110,920,2],[1250,760,3]].forEach(([x,y,i])=>{const big=i%2===0;const r=big?62:52;h+=`<div class="abs" style="left:${x+10}px;top:${y+14}px;width:${r*2}px;height:${r*2}px;border-radius:50%;background:rgba(0,0,0,.35);filter:blur(8px)"></div><div class="abs" style="left:${x}px;top:${y}px;width:${r*2}px;height:${r*2}px;border-radius:50%;background:radial-gradient(circle at 35% 30%,${big?'#f5e7b8,#c9a95a 45%,#8a6a28':'#f0f0f0,#b8bcc0 45%,#7a7e84'});box-shadow:inset 0 0 0 5px rgba(0,0,0,.08),inset 0 0 0 9px rgba(255,255,255,.25);display:grid;place-items:center;font-weight:700;font-size:${big?40:32}px;color:rgba(80,60,20,.55);text-shadow:0 1px 0 rgba(255,255,255,.5)">${big?'10':'5'}</div>`});cs.innerHTML=h;
+window.__ready=true;
+</script>
+</body></html>

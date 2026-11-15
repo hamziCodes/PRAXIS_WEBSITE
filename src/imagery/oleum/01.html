@@ -1,0 +1,142 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Oleum — label macro</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-style:italic;src:url(../../../briefs/v6/fonts/NeueMontreal-Italic.otf)}
+html,body{margin:0}
+body{width:1600px;height:2000px;overflow:hidden;background:#1f2a1d}
+</style></head>
+<body>
+<svg width="1600" height="2000" viewBox="0 0 1600 2000" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- green glass body: cylinder seen very close, light from the left window -->
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#0b1409"/><stop offset=".05" stop-color="#2b4a24"/><stop offset=".1" stop-color="#9fbf86"/><stop offset=".13" stop-color="#3f6a33"/>
+    <stop offset=".35" stop-color="#2f5427"/><stop offset=".7" stop-color="#1d3818"/><stop offset=".9" stop-color="#132810"/><stop offset=".96" stop-color="#3d5e33"/><stop offset="1" stop-color="#0a1208"/>
+  </linearGradient>
+  <linearGradient id="oil" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#140c02"/><stop offset=".15" stop-color="#6a5210"/><stop offset=".35" stop-color="#9a7a18"/><stop offset=".6" stop-color="#5a4610"/><stop offset="1" stop-color="#110a02"/>
+  </linearGradient>
+  <linearGradient id="curve" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#2a2414" stop-opacity=".55"/><stop offset=".12" stop-color="#2a2414" stop-opacity=".12"/><stop offset=".3" stop-color="#fff" stop-opacity=".08"/>
+    <stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset=".85" stop-color="#2a2414" stop-opacity=".18"/><stop offset="1" stop-color="#2a2414" stop-opacity=".6"/>
+  </linearGradient>
+  <filter id="paper" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="4" seed="7" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="1.4" lighting-color="#fff" result="l"><feDistantLight azimuth="190" elevation="38"/></feDiffuseLighting>
+    <feComposite in="l" in2="SourceGraphic" operator="arithmetic" k1=".42" k2="0" k3=".66" k4="0" result="m"/>
+    <feComposite in="m" in2="SourceAlpha" operator="in"/>
+  </filter>
+  <filter id="fibres" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".004 .25" numOctaves="2" seed="12"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .55 0 0 0 0 .5 0 0 0 0 .4 0 0 0 -10 5.4"/>
+  </filter>
+  <!-- letterpress: ink sits slightly into the paper -->
+  <filter id="press" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" result="b"/>
+    <feSpecularLighting in="b" surfaceScale="-2.5" specularConstant=".22" specularExponent="18" lighting-color="#fff" result="sp"><feDistantLight azimuth="200" elevation="40"/></feSpecularLighting>
+    <feComposite in="sp" in2="SourceAlpha" operator="in" result="sp2"/>
+    <feOffset in="SourceAlpha" dx="-1.2" dy="-1.4" result="o"/><feComposite in="o" in2="SourceAlpha" operator="out" result="rim"/>
+    <feFlood flood-color="#000" flood-opacity=".25"/><feComposite in2="rim" operator="in" result="rimc"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3" result="t"/>
+    <feColorMatrix in="t" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.7 1.35" result="tm"/>
+    <feComposite in="SourceGraphic" in2="tm" operator="in" result="ink"/>
+    <feMerge><feMergeNode in="rimc"/><feMergeNode in="ink"/><feMergeNode in="sp2"/></feMerge>
+  </filter>
+  <filter id="stamp" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".12" numOctaves="3" seed="8" result="t"/>
+    <feColorMatrix in="t" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.2 2.3" result="tm"/>
+    <feComposite in="SourceGraphic" in2="tm" operator="in"/>
+  </filter>
+  <filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
+  <filter id="b14" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+  <filter id="b40" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="40"/></filter>
+  <clipPath id="body"><path d="M60 -40 L1540 -40 L1540 2040 L60 2040Z"/></clipPath>
+</defs>
+
+<!-- out-of-focus background either side of the bottle -->
+<rect width="1600" height="2000" fill="#6e6a62"/>
+<rect x="0" y="0" width="1600" height="2000" fill="#c9c4b9" opacity=".4"/>
+<!-- the bottle fills the frame -->
+<g clip-path="url(#body)">
+  <rect x="60" y="-40" width="1480" height="2080" fill="url(#glass)"/>
+  <!-- oil inside, seen through green glass -->
+  <rect x="60" y="300" width="1480" height="1800" fill="url(#oil)" opacity=".72"/>
+  <!-- meniscus line, slightly curved -->
+  <path d="M60 300 Q 800 352 1540 300" stroke="#c9b45a" stroke-width="6" fill="none" opacity=".75"/>
+  <path d="M60 312 Q 800 366 1540 312" stroke="#000" stroke-width="10" fill="none" opacity=".2" filter="url(#b3)"/>
+  <!-- tiny air bubbles clinging to the glass -->
+  <g fill="none" stroke="#e8e3a6" stroke-width="1.6" opacity=".7">
+    <circle cx="260" cy="1720" r="6"/><circle cx="282" cy="1742" r="3.5"/><circle cx="1380" cy="1690" r="5"/><circle cx="1410" cy="1840" r="7"/><circle cx="230" cy="1880" r="4"/>
+  </g>
+  <!-- window reflected on the glass: two soft vertical panes with a glazing bar -->
+  <rect x="190" y="-40" width="54" height="2080" fill="#eef5ee" opacity=".55" filter="url(#b14)"/>
+  <rect x="268" y="-40" width="20" height="2080" fill="#eef5ee" opacity=".35" filter="url(#b3)"/>
+  <rect x="1420" y="-40" width="30" height="2080" fill="#dfeadb" opacity=".22" filter="url(#b14)"/>
+</g>
+
+<!-- the label -->
+<g id="label">
+  <clipPath id="lc"><path d="M330 530 Q 865 506 1400 530 L1400 1690 Q 865 1714 330 1690Z"/></clipPath><path d="M330 530 Q 865 506 1400 530 L1400 1690 Q 865 1714 330 1690Z" fill="#f2ecdf"/>
+  <path d="M330 530 Q 865 506 1400 530 L1400 1690 Q 865 1714 330 1690Z" fill="#f2ecdf" filter="url(#paper)"/>
+  <rect x="330" y="520" width="1070" height="1180" filter="url(#fibres)" opacity=".1"/>
+  <!-- deckled top edge -->
+  <path id="deckle" d="" fill="#2b4a24"/>
+  <g font-family="NM" fill="#2F3A2F" filter="url(#press)">
+    <text x="865" y="700" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="150" letter-spacing="-2">Oleum</text>
+    <text x="865" y="784" text-anchor="middle" font-weight="500" font-size="30" letter-spacing="11">FACE OIL · ROSEHIP</text>
+  </g>
+  <g fill="none" stroke="#8A9A5B" stroke-width="5" filter="url(#press)"><path d="M865 820 C 880 842 890 856 890 868 a 25 25 0 0 1 -50 0 C 840 856 850 842 865 820Z"/><path d="M852 870 a12 12 0 0 0 10 12" stroke-linecap="round"/></g>
+  <line x1="420" x2="1310" y1="930" y2="930" stroke="#2F3A2F" stroke-width="2" opacity=".55"/>
+  <!-- the honest part -->
+  <g font-family="NM" fill="#2F3A2F" filter="url(#press)">
+    <text x="420" y="990" font-weight="500" font-size="24" letter-spacing="5">WHAT'S IN IT</text>
+    <text x="420" y="1040" font-family="Georgia" font-size="38">Rosehip seed oil 80%</text>
+    <text x="420" y="1086" font-family="Georgia" font-size="38">Sea buckthorn oil 19%</text>
+    <text x="420" y="1132" font-family="Georgia" font-size="38">Vitamin E 1%</text>
+    <text x="420" y="1172" font-style="italic" font-size="25" fill="#5a6a4a">That's all. No fragrance, no fillers.</text>
+
+    <text x="420" y="1250" font-weight="500" font-size="24" letter-spacing="5">HOW IT SMELLS</text>
+    <text x="420" y="1296" font-size="29">Top · green rosehip, cut tomato leaf</text>
+    <text x="420" y="1336" font-size="29">Heart · dried apricot</text>
+    <text x="420" y="1376" font-size="29">Base · warm hay, a little earth</text>
+
+    <text x="420" y="1454" font-weight="500" font-size="24" letter-spacing="5">WHERE AND WHEN</text>
+    <text x="420" y="1498" font-size="29">Seeds from the Maloti highlands, Lesotho.</text>
+    <text x="420" y="1538" font-size="29">Cold-pressed once, unrefined.</text>
+    <text x="420" y="1578" font-size="29">Acid value 0.6 — the lower, the fresher.</text>
+    <text x="420" y="1640" font-weight="500" font-size="25" letter-spacing="2">30 ml · 1 fl oz · Made in London E8</text>
+  </g>
+  <!-- right column: pressed / best-before, rubber-stamped batch -->
+  <g font-family="NM" fill="#2F3A2F" filter="url(#press)">
+    <text x="1310" y="990" text-anchor="end" font-weight="500" font-size="22" letter-spacing="4">PRESSED</text>
+    <text x="1310" y="1060" text-anchor="end" font-family="Georgia" font-weight="700" font-size="64">08·26</text>
+    <text x="1310" y="1120" text-anchor="end" font-weight="500" font-size="22" letter-spacing="4">BEST BEFORE</text>
+    <text x="1310" y="1170" text-anchor="end" font-family="Georgia" font-size="40">08·27</text>
+  </g>
+  <g transform="rotate(-7 1180 1300)" filter="url(#stamp)">
+    <rect x="1060" y="1236" width="250" height="118" rx="10" fill="none" stroke="#7b2d26" stroke-width="5"/>
+    <text x="1185" y="1282" text-anchor="middle" font-family="Consolas" font-size="26" fill="#7b2d26" letter-spacing="3">BATCH</text>
+    <text x="1185" y="1334" text-anchor="middle" font-family="Consolas" font-weight="700" font-size="46" fill="#7b2d26" letter-spacing="4">0412</text>
+  </g>
+  <!-- pencilled initials of whoever bottled it -->
+  <text x="1180" y="1450" font-family="'Segoe Print'" font-size="40" fill="#5b5b56" opacity=".75" transform="rotate(-4 1180 1450)">— A.H.</text>
+  <!-- cylindrical shading over the label + glare from the window -->
+  <rect x="330" y="500" width="1070" height="1220" fill="url(#curve)" clip-path="url(#lc)"/>
+  <rect x="440" y="520" width="90" height="1180" fill="#fff" opacity=".12" filter="url(#b14)"/>
+  <!-- the label's edge lifts a hair: shadow line -->
+  <path d="M330 1690 Q 865 1714 1400 1690" stroke="#000" stroke-width="6" opacity=".35" fill="none" filter="url(#b3)"/>
+  <path d="M330 527 Q 865 503 1400 527" stroke="#000" stroke-width="5" opacity=".3" fill="none" filter="url(#b3)"/>
+</g>
+<!-- a drip of oil that ran down the glass and over the label edge -->
+<path d="M1232 120 C 1226 200 1240 300 1236 380 C 1232 440 1246 470 1244 500 C 1243 530 1222 534 1220 506 C 1216 450 1226 400 1222 330 C 1218 260 1222 180 1232 120Z" fill="#b8902a" opacity=".75"/>
+<path d="M1229 150 C 1228 240 1234 360 1232 490" stroke="#fff3b0" stroke-width="3" fill="none" opacity=".8"/>
+<ellipse cx="1232" cy="508" rx="12" ry="8" fill="#d9b040" opacity=".8"/><ellipse cx="1228" cy="504" rx="4" ry="3" fill="#fff" opacity=".8"/>
+<!-- focus falloff top/bottom (macro depth of field) -->
+<rect width="1600" height="2000" fill="none"/>
+<rect x="0" y="0" width="1600" height="240" fill="#1f2a1d" opacity=".25" filter="url(#b40)"/>
+<rect x="0" y="1860" width="1600" height="200" fill="#1f2a1d" opacity=".35" filter="url(#b40)"/>
+</svg>
+</body></html>

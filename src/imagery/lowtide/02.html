@@ -1,0 +1,133 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+@font-face{font-family:'HJ';src:url('../../../assets/fonts/handjet.woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#070b12;font-family:'NM',sans-serif;color:#101820}
+.abs{position:absolute}
+.panel{position:absolute;display:flex;align-items:center;font-weight:700;letter-spacing:-.02em;box-shadow:0 2px 0 rgba(255,255,255,.15) inset,0 20px 40px rgba(0,0,0,.6)}
+.beam{position:absolute;transform-origin:50% 100%;filter:blur(10px);mix-blend-mode:screen}
+</style></head>
+<body>
+<script>window.__ready=false</script>
+<!-- sky -->
+<div class="abs" style="inset:0;background:linear-gradient(180deg,#05080f 0%,#0b1424 34%,#1a1f33 40%,#2a2033 41.5%,#0a0f18 42%)"></div>
+<svg class="abs" id="stars" style="left:0;top:0" width="2400" height="700"></svg>
+<!-- stage glow -->
+<div class="abs" style="left:400px;top:220px;width:1100px;height:560px;background:radial-gradient(ellipse 50% 50% at 50% 70%,rgba(255,107,74,.55),rgba(255,107,74,.15) 45%,rgba(255,107,74,0) 70%);mix-blend-mode:screen"></div>
+<!-- beams -->
+<div class="beam" style="left:760px;top:-120px;width:120px;height:700px;background:linear-gradient(0deg,rgba(255,150,120,.55),rgba(255,150,120,0));clip-path:polygon(45% 100%,55% 100%,100% 0,0 0);transform:rotate(-24deg)"></div>
+<div class="beam" style="left:900px;top:-160px;width:140px;height:740px;background:linear-gradient(0deg,rgba(120,240,225,.5),rgba(120,240,225,0));clip-path:polygon(45% 100%,55% 100%,100% 0,0 0);transform:rotate(8deg)"></div>
+<div class="beam" style="left:1020px;top:-120px;width:120px;height:700px;background:linear-gradient(0deg,rgba(255,150,120,.5),rgba(255,150,120,0));clip-path:polygon(45% 100%,55% 100%,100% 0,0 0);transform:rotate(30deg)"></div>
+<div class="beam" style="left:680px;top:-100px;width:110px;height:680px;background:linear-gradient(0deg,rgba(150,160,255,.45),rgba(150,160,255,0));clip-path:polygon(45% 100%,55% 100%,100% 0,0 0);transform:rotate(-46deg)"></div>
+
+<!-- stage structure + banner -->
+<svg class="abs" style="left:0;top:0" width="2400" height="1350">
+  <defs>
+    <pattern id="truss" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M0 0 L28 28 M28 0 L0 28" stroke="#1a1a24" stroke-width="2.5"/><rect width="28" height="28" fill="none" stroke="#1a1a24" stroke-width="3"/></pattern>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#121a2a"/><stop offset="1" stop-color="#070b14"/></linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3a36"/><stop offset=".35" stop-color="#3e2f2a"/><stop offset="1" stop-color="#140e0c"/></linearGradient>
+    <filter id="sandtex" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9 1.4" numOctaves="2" seed="4" result="n"/><feColorMatrix in="n" values="0 0 0 0 .9  0 0 0 0 .8  0 0 0 0 .7  0 0 0 .25 0" result="g"/><feTurbulence type="fractalNoise" baseFrequency="0.004 0.03" numOctaves="3" seed="8" result="r"/><feDiffuseLighting in="r" surfaceScale="6" lighting-color="#ffb08c" result="l"><feDistantLight azimuth="250" elevation="20"/></feDiffuseLighting><feComposite in="l" in2="SourceGraphic" operator="arithmetic" k1="1" result="lit"/><feMerge><feMergeNode in="lit"/><feMergeNode in="g"/></feMerge></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <!-- sea -->
+  <rect x="0" y="562" width="2400" height="340" fill="url(#sea)"/>
+  <g id="waves"></g>
+  <!-- stage: platform, towers, roof truss, banner -->
+  <g transform="translate(-300 0)">
+    <rect x="860" y="290" width="70" height="320" fill="url(#truss)"/>
+    <rect x="1530" y="290" width="70" height="320" fill="url(#truss)"/>
+    <rect x="860" y="250" width="740" height="56" fill="url(#truss)"/>
+    <rect x="840" y="580" width="780" height="50" fill="#0d0d14"/>
+    <rect x="930" y="310" width="600" height="270" fill="#120c12"/>
+    <!-- banner -->
+    <g transform="translate(960 318)">
+      <rect width="540" height="150" fill="#F5F0E6"/>
+      <text x="22" y="112" font-family="NM" font-weight="700" font-size="132" letter-spacing="-8" fill="#101820">LOWTIDE</text>
+      <g fill="none" stroke="#FF6B4A" stroke-width="7" stroke-linecap="round" transform="translate(30 126)"><path d="M0 8 q20 -16 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0"/></g>
+      <rect width="540" height="150" fill="url(#bannerShade)"/>
+      <linearGradient id="bannerShade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".5" stop-color="#ff8060" stop-opacity=".1"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></linearGradient>
+    </g>
+    <!-- LED wall below banner, pixel waves -->
+    <g id="ledwall" transform="translate(960 480)"></g>
+    <!-- crowd silhouettes, tiny, backlit -->
+  </g>
+  <!-- palms -->
+  <g fill="#04060a">
+    <path d="M150 840 C 170 640 200 460 260 300 L 272 304 C 214 466 186 650 172 840 Z"/>
+    <g transform="translate(262 300)"><path d="M0 0 C -80 -30 -170 0 -230 70 C -160 20 -80 10 0 10Z"/><path d="M0 0 C -40 -80 -120 -120 -200 -110 C -120 -90 -50 -50 0 8Z"/><path d="M0 0 C 50 -90 140 -110 210 -80 C 130 -70 60 -40 2 8Z"/><path d="M0 0 C 80 -10 170 30 220 110 C 150 50 70 30 0 10Z"/><path d="M0 0 C 20 -70 10 -140 -30 -190 C 0 -130 0 -60 -4 6Z"/></g>
+    <path d="M2240 860 C 2220 680 2180 520 2110 380 L 2122 374 C 2196 516 2238 676 2262 860 Z"/>
+    <g transform="translate(2114 378)"><path d="M0 0 C -80 -30 -170 0 -230 70 C -160 20 -80 10 0 10Z"/><path d="M0 0 C -40 -80 -120 -120 -200 -110 C -120 -90 -50 -50 0 8Z"/><path d="M0 0 C 50 -90 140 -110 210 -80 C 130 -70 60 -40 2 8Z"/><path d="M0 0 C 80 -10 170 30 220 110 C 150 50 70 30 0 10Z"/></g>
+  </g>
+  <!-- festoon string -->
+  <path id="fest" d="M262 300 Q 420 430 560 290" fill="none" stroke="#1a1410" stroke-width="2"/>
+  <path id="fest2" d="M1300 290 Q 1700 470 2114 378" fill="none" stroke="#1a1410" stroke-width="2"/>
+  <g id="bulbs"></g>
+  <!-- sand -->
+  <path d="M0 800 C 200 770 360 660 480 618 C 900 606 1800 608 2400 612 V1350 H0 Z" fill="url(#sand)"/>
+  <path d="M0 800 C 200 770 360 660 480 618 C 900 606 1800 608 2400 612 V1350 H0 Z" fill="#4a3832" filter="url(#sandtex)" opacity=".6"/>
+  <path d="M0 800 C 200 770 360 660 480 618 C 900 606 1800 608 2400 612" fill="none" stroke="#e8f0ff" stroke-opacity=".55" stroke-width="4"/><path d="M0 812 C 200 784 350 680 470 634" fill="none" stroke="#e8f0ff" stroke-opacity=".18" stroke-width="10"/><g id="ripples"></g><g id="crowd" fill="#08080d" transform="translate(-300 0)"></g>
+</svg>
+
+<!-- warm sign-light pool on sand -->
+<div class="abs" style="left:1220px;top:950px;width:900px;height:400px;background:radial-gradient(ellipse 50% 40% at 50% 50%,rgba(255,170,120,.35),rgba(255,170,120,0));mix-blend-mode:screen"></div>
+
+<!-- main wayfinding post -->
+<div class="abs" style="left:1650px;top:500px;width:34px;height:760px;background:linear-gradient(90deg,#2a1d14,#6a4a30 40%,#3a281b);box-shadow:18px 30px 30px rgba(0,0,0,.6)"></div>
+<!-- spotlight head on post -->
+<div class="abs" style="left:1612px;top:470px;width:110px;height:40px;border-radius:8px;background:#151515;box-shadow:0 30px 60px 10px rgba(255,220,170,.18)"></div>
+<div class="abs" style="left:1290px;top:500px;width:760px;height:620px;background:linear-gradient(180deg,rgba(255,230,190,.16),rgba(255,230,190,0) 80%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);mix-blend-mode:screen;z-index:5"></div>
+
+<div class="panel" style="left:1380px;top:540px;width:580px;height:112px;background:#FF6B4A;padding:0 30px;font-size:60px;white-space:nowrap;justify-content:space-between;z-index:3">SHORE STAGE <svg width="80" height="56" viewBox="0 0 80 56"><path d="M4 28 H70 M46 6 L72 28 L46 50" fill="none" stroke="#101820" stroke-width="12" stroke-linejoin="miter"/></svg></div>
+<div class="panel" style="left:1340px;top:666px;width:620px;height:112px;background:#18B2A6;padding:0 30px;font-size:60px;gap:22px;white-space:nowrap;z-index:3"><svg width="80" height="56" viewBox="0 0 80 56"><path d="M76 28 H10 M34 6 L8 28 L34 50" fill="none" stroke="#101820" stroke-width="12"/></svg>REEF STAGE <span style="font-weight:500;font-size:40px;margin-left:auto">400 M</span></div>
+<div class="panel" style="left:1380px;top:792px;width:580px;height:150px;background:#0a0a0c;padding:0;overflow:hidden;z-index:3;border:6px solid #1c1c22"><canvas id="led" width="568" height="138"></canvas></div>
+<div class="panel" style="left:1410px;top:956px;width:520px;height:80px;background:#F5F0E6;padding:0 28px;font-size:34px;justify-content:space-between;z-index:3"><span>FIRST AID · WATER</span><svg width="44" height="44" viewBox="0 0 44 44"><path d="M22 40 V6 M6 22 L22 6 L38 22" fill="none" stroke="#101820" stroke-width="7"/></svg></div>
+<!-- sign shading from overhead light -->
+<div class="abs" style="left:1330px;top:530px;width:640px;height:520px;background:linear-gradient(180deg,rgba(255,240,210,.12),rgba(0,0,0,.28));mix-blend-mode:multiply;z-index:4;clip-path:polygon(2% 0,98% 0,98% 100%,2% 100%)"></div>
+
+<!-- A-frame tide board, left -->
+<div class="abs" style="left:640px;top:820px;width:420px;height:420px;transform:perspective(1200px) rotateY(18deg);z-index:3">
+  <div class="abs" style="inset:0;background:#101820;border:10px solid #2a1d14;box-shadow:20px 30px 40px rgba(0,0,0,.6)"></div>
+  <div class="abs" style="left:32px;top:30px;color:#F5F0E6;font-weight:700;font-size:44px;letter-spacing:-.03em;line-height:1">TIDE NOW</div>
+  <div class="abs" style="left:32px;top:84px;color:#18B2A6;font-weight:700;font-size:30px">SATURDAY 21.02</div>
+  <svg class="abs" style="left:30px;top:140px" width="360" height="170"><defs><pattern id="hp" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="3" fill="#18B2A6"/></pattern></defs><path id="tc" fill="url(#hp)"/><path id="tcl" fill="none" stroke="#18B2A6" stroke-width="4"/><line id="now" stroke="#FF6B4A" stroke-width="4"/><circle id="nowd" r="9" fill="#FF6B4A"/></svg>
+  <div class="abs" style="left:32px;bottom:34px;right:32px;color:#F5F0E6;font-size:22px;font-weight:500;display:flex;justify-content:space-between"><span>LOW 12:44</span><span style="color:#FF6B4A">NOW 17:52</span><span>HIGH 19:03</span></div>
+</div>
+<div class="abs" style="left:600px;top:1220px;width:520px;height:60px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.6),rgba(0,0,0,0));z-index:2"></div>
+
+<div class="abs" style="left:0;right:0;bottom:0;height:420px;background:linear-gradient(180deg,rgba(5,4,6,0),rgba(5,4,6,.65));z-index:8"></div>
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 70% 75% at 55% 45%,rgba(0,0,0,0) 50%,rgba(3,5,10,.75) 100%);z-index:9"></div>
+<svg class="abs" style="inset:0;opacity:.22;mix-blend-mode:overlay;z-index:10" width="2400" height="1350"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<script>
+const NS='http://www.w3.org/2000/svg';let s=13;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+const st=document.getElementById('stars');for(let i=0;i<220;i++)el('circle',{cx:R()*2400,cy:R()*520,r:R()*1.4+.3,fill:'#fff',opacity:R()*.7},st);
+// waves: foam lines catching stage light
+const wv=document.getElementById('waves');
+for(let i=0;i<60;i++){const y=566+Math.pow(R(),.9)*200,x=R()*560,w=60+R()*300;const near=Math.abs(x-900)<450;
+  el('rect',{x,y,width:w,height:1.5+R()*2,fill:near?(R()<.5?'#ff9a7a':'#9ff0e2'):'#c8d6ff',opacity:(near?.5:.18)*R()+.05},wv)}
+
+const rp=document.getElementById('ripples');for(let i=0;i<60;i++){const y=700+Math.pow(R(),1.3)*640,x=R()*2400,w=80+R()*260;el('path',{d:`M${x} ${y} q${w/2} ${-6-R()*6} ${w} 0`,fill:'none',stroke:R()<.5?'#000':'#ffcfae','stroke-opacity':.12+R()*.1,'stroke-width':2+R()*2},rp)}
+// LED wall pixel waves
+const lw=document.getElementById('ledwall');const cols=['#FF6B4A','#18B2A6','#3043C2'];
+for(let y=0;y<10;y++)for(let x=0;x<54;x++){const h=Math.sin(x/54*Math.PI*4)*2.5+4;if(y>h){el('rect',{x:x*10,y:y*10,width:8.5,height:8.5,fill:cols[Math.min(2,Math.floor((y-h)/2.2))],opacity:.95},lw)}}
+// crowd
+const cr=document.getElementById('crowd');for(let i=0;i<120;i++){const x=820+R()*820,h=22+R()*14,y=612+R()*8;el('ellipse',{cx:x,cy:y-h,rx:5.5,ry:6.5},cr);el('rect',{x:x-8,y:y-h+5,width:16,height:h,rx:6},cr);if(R()<.15)el('rect',{x:x-2+(R()<.5?-10:8),y:y-h-24,width:4,height:26,rx:2,transform:`rotate(${(R()-.5)*40} ${x} ${y-h})`},cr)}
+// festoon bulbs
+const bl=document.getElementById('bulbs');[['fest',14],['fest2',12]].forEach(([id,n])=>{const p=document.getElementById(id),L=p.getTotalLength();for(let i=1;i<n;i++){const pt=p.getPointAtLength(L*i/n);el('circle',{cx:pt.x,cy:pt.y+8,r:14,fill:'#ffc98a',opacity:.35,filter:'url(#glow)'},bl);el('circle',{cx:pt.x,cy:pt.y+8,r:4.5,fill:'#fff1d0'},bl)}});
+// tide board curve
+(()=>{const W=360,H=170,hi=6.52,X=t=>(t-12)/12*W,lv=t=>H*.55-Math.cos((t-hi)/12.42*Math.PI*2)*H*.36;let d=`M0 ${H}`;for(let t=12;t<=24.01;t+=.2)d+=` L${X(t)} ${lv(t)}`;document.getElementById('tc').setAttribute('d',d+` L${W} ${H} Z`);document.getElementById('tcl').setAttribute('d',d.replace(/^M0 \d+ L/,'M'));const nt=17.87;const n=document.getElementById('now');n.setAttribute('x1',X(nt));n.setAttribute('x2',X(nt));n.setAttribute('y1',0);n.setAttribute('y2',H);const nd=document.getElementById('nowd');nd.setAttribute('cx',X(nt));nd.setAttribute('cy',lv(nt))})();
+// LED matrix sign: rasterise text then draw lit dots
+(async()=>{await document.fonts.ready;const c=document.getElementById('led'),x=c.getContext('2d');x.fillStyle='#050505';x.fillRect(0,0,568,138);
+  const F={H:'10001100011000111111100011000110001',I:'01110001000010000100001000010001110',G:'01110100011000010111100011000101111',W:'10001100011000110101101011010101010',A:'01110100011000111111100011000110001',T:'11111001000010000100001000010000100',E:'11111100001000011110100001000011111',R:'11110100011000111110101001001010001',F:'11111100001000011110100001000010000',C:'01110100011000010000100001000101110',L:'10000100001000010000100001000011111',O:'01110100011000110001100011000101110',S:'01111100001000001110000010000111110','1':'00100011000010000100001000010001110','9':'01110100011000101111000010001001100','0':'01110100011001110101110011000101110','3':'11110000010000101110000010000111110','8':'01110100011000101110100011000101110',':':'00000011000110000000011000110000000',' ':'00000000000000000000000000000000000'};
+  const lines=[['HIGH WATER 19:03',0],['REEF CLOSES 18:33',1]];const P=5.3,ox=8,oy=12;const cols=Math.floor((568-ox)/P),rows=Math.floor((138-oy)/P);
+  const grid=[];for(let j=0;j<rows;j++){grid.push(new Array(cols).fill(0))}
+  lines.forEach(([str,red],li)=>{let cx=1;const cy=1+li*9;for(const ch of str){const g=F[ch]||F[' '];for(let r=0;r<7;r++)for(let c=0;c<5;c++)if(g[r*5+c]==='1'&&grid[cy+r]&&cx+c<cols)grid[cy+r][cx+c]=red?2:1;cx+=6}});
+  for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const v=grid[j][i];x.beginPath();x.arc(ox+i*P,oy+j*P,2.1,0,7);
+    if(v){x.shadowColor=v===2?'#FF6B4A':'#ffd28a';x.shadowBlur=8;x.fillStyle=v===2?'#ff7a5a':'#ffdca6'}else{x.shadowBlur=0;x.fillStyle='#1a130e'}x.fill()}
+  window.__ready=true})();
+</script>
+</body></html>

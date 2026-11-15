@@ -163,7 +163,12 @@
     const still = Math.round(data.ip + total * +(cv.dataset.still || 0.5));
     draw(still);
     cv.classList.add('is-ready');
-    if (RM || 'static' in cv.dataset) return;
+    if (RM || 'static' in cv.dataset) {
+      // still icons: redraw only when the surrounding colour changes (the homepage melts from black to Bone)
+      let col = getComputedStyle(cv).color;
+      addEventListener('scroll', () => { const c = getComputedStyle(cv).color; if (c !== col) { col = c; draw(still); } }, { passive: true });
+      return;
+    }
     const start = () => { if (!on) { on = true; t0 = 0; raf = requestAnimationFrame(tick); } };
     const stop = () => { on = false; cancelAnimationFrame(raf); };
     if ('IntersectionObserver' in window) new IntersectionObserver((es) => (es[0].isIntersecting ? start() : stop())).observe(cv); else start();

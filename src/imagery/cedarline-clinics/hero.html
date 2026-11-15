@@ -1,0 +1,219 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Cedarline Clinics — booking on the reception desk</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-weight:700;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf)}
+html,body{margin:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#e9ece5;
+  perspective:4200px;perspective-origin:1200px 160px}
+#wall{position:absolute;left:0;top:0;width:2400px;height:900px}
+.w3{position:absolute;left:0;top:0;width:2400px;height:1350px;transform-style:preserve-3d}
+.desk{position:absolute;left:-2400px;top:880px;width:7200px;height:2600px;transform-origin:50% 0;transform:rotateX(90deg);
+  transform-style:preserve-3d;background:#e8dfd0}
+.desk svg.tex{position:absolute;inset:0}
+.lap{position:absolute;left:470px;top:880px;width:1160px;height:0;transform-style:preserve-3d;transform:translateZ(120px) rotateY(-15deg)}
+.lid{position:absolute;left:0;top:-730px;width:1160px;height:730px;transform-origin:50% 100%;transform:rotateX(9deg);
+  background:linear-gradient(180deg,#26282b,#121315);border-radius:22px 22px 4px 4px;box-shadow:0 0 0 2px #9da1a5}
+.lidback{position:absolute;inset:0;transform:translateZ(-8px);background:#b9bdc1;border-radius:22px 22px 4px 4px}
+.scr{position:absolute;left:26px;top:26px;width:1108px;height:680px;overflow:hidden;background:#fff;border-radius:3px}
+.page{width:1440px;height:884px;transform:scale(.76944);transform-origin:0 0;background:#F4F6F1;font-family:NM;color:#14301e;position:relative}
+.base{position:absolute;left:0;top:0;width:1160px;height:780px;transform-origin:50% 0;transform:rotateX(90deg);
+  background:linear-gradient(180deg,#c9ccd0,#d8dbde 60%,#c3c6ca);border-radius:4px 4px 26px 26px}
+.base .kb{position:absolute;left:70px;right:70px;top:40px;height:330px;border-radius:6px;background:#bfc2c6}
+.base .tp{position:absolute;left:390px;width:380px;top:420px;height:250px;border-radius:12px;background:#cdd0d4;box-shadow:inset 0 0 0 1.5px #b2b5b9}
+.base .edge{position:absolute;left:0;right:0;bottom:-14px;height:14px;background:#9a9da1;border-radius:0 0 20px 20px}
+.lapshadow{position:absolute;left:-60px;top:-40px;width:1300px;height:900px;background:radial-gradient(closest-side,rgba(50,45,35,.45),rgba(50,45,35,0));transform:translateZ(1px);filter:blur(30px)}
+.glare{position:absolute;inset:0;background:linear-gradient(110deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.12) 47%,rgba(255,255,255,0) 60%);pointer-events:none}
+/* website */
+.nav{display:flex;align-items:center;height:76px;padding:0 44px;gap:34px;background:#fff;border-bottom:1px solid #dfe5dc;font:500 17px NM}
+.logo{display:flex;align-items:center;gap:12px;font:700 25px NM;letter-spacing:-.02em;margin-right:auto;color:#1E5631}
+.btn{background:#1E5631;color:#fff;border-radius:10px;padding:13px 22px;font:500 17px NM}
+.wrap{display:grid;grid-template-columns:520px 1fr;gap:34px;padding:34px 44px}
+h1{font:700 60px/1.0 NM;letter-spacing:-.03em;margin:0;color:#14301e}
+h1 em{font-style:normal;color:#1E5631;background:linear-gradient(transparent 62%,#A4DE02 62%,#A4DE02 92%,transparent 92%)}
+.lede{font:400 21px/1.4 NM;color:#3c5446;margin:18px 0 0}
+.live{display:inline-flex;align-items:center;gap:8px;font:500 15px NM;color:#1E5631;background:#e4f2c4;border-radius:99px;padding:7px 14px;margin-top:22px}
+.live i{width:10px;height:10px;border-radius:50%;background:#5cae00;box-shadow:0 0 0 4px rgba(92,174,0,.25)}
+.fld{margin-top:22px;background:#fff;border:2px solid #1E5631;border-radius:12px;padding:12px 18px;font:500 14px NM;color:#56705f}
+.fld b{display:block;font:500 22px NM;color:#14301e;margin-top:4px}
+.seg{display:flex;margin-top:14px;border-radius:12px;overflow:hidden;border:1.5px solid #c9d4c6;font:500 17px NM}
+.seg span{flex:1;text-align:center;padding:14px 0;background:#fff}.seg span.on{background:#1E5631;color:#fff}
+.map{margin-top:18px;height:200px;border-radius:12px;overflow:hidden;position:relative;background:#e3e9df}
+.list{background:#fff;border-radius:16px;box-shadow:0 1px 0 #dfe5dc,0 10px 30px rgba(20,48,30,.06);overflow:hidden}
+.lh{display:flex;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #e6ebe3;font:500 15px NM;color:#56705f}
+.row{display:grid;grid-template-columns:1fr 150px 140px 120px;align-items:center;padding:13px 24px;border-bottom:1px solid #eef1ec;font:400 15px NM;color:#56705f}
+.row b{display:block;font:700 20px NM;color:#14301e;letter-spacing:-.01em}
+.w{font:700 22px NM;color:#14301e}.w small{font:400 14px NM;color:#56705f;display:block}
+.w.ok{color:#2f7a00}.w.mid{color:#8a6a00}
+.slot{font:700 22px NM;color:#14301e}.slot small{display:block;font:400 14px NM;color:#56705f}
+.bk{justify-self:end;border:2px solid #1E5631;color:#1E5631;border-radius:10px;padding:9px 16px;font:500 16px NM}
+.row.first .bk{background:#1E5631;color:#fff}
+/* phone (lies on the desk) */
+.phone{position:absolute;width:372px;height:780px;border-radius:58px;background:#1b1c1e;box-shadow:0 0 0 3px #6f7377, 0 0 0 5px #2a2b2d;transform-style:preserve-3d}
+.phone .ps{position:absolute;left:14px;top:14px;right:14px;bottom:14px;border-radius:46px;overflow:hidden;background:#F4F6F1;font-family:NM;color:#14301e}
+.phone .isl{position:absolute;left:50%;top:12px;width:104px;height:30px;margin-left:-52px;background:#000;border-radius:20px}
+.sb{display:flex;justify-content:space-between;padding:16px 30px 0;font:600 15px 'Segoe UI';color:#14301e}
+.pshadow{display:none;position:absolute;left:10px;top:20px;width:372px;height:780px;border-radius:58px;background:rgba(40,40,30,.5);filter:blur(16px);transform:translateZ(-1px)}
+</style></head>
+<body>
+<svg id="wall" width="2400" height="900">
+  <defs>
+    <linearGradient id="wl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f3f4ef"/><stop offset=".55" stop-color="#e8ebe3"/><stop offset="1" stop-color="#dfe3da"/></linearGradient>
+    <filter id="lb" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="lb2" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="pl" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feColorMatrix type="matrix" values="0 0 0 0 .5 0 0 0 0 .52 0 0 0 0 .48 0 0 0 .25 0"/></filter>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffbe9" stop-opacity=".95"/><stop offset="1" stop-color="#fffbe9" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="2400" height="900" fill="url(#wl)"/>
+  <rect width="2400" height="900" filter="url(#pl)"/>
+  <!-- daylight patch from a tall window at left -->
+  <path d="M0 0 L980 0 L1460 900 L0 900Z" fill="url(#sun)" opacity=".5"/>
+  <!-- wall signage, out of focus: the clinic's name in vinyl -->
+  <g filter="url(#lb2)" opacity=".9">
+    <g transform="translate(1810,250)">
+      <path d="M0 70 C 0 30 26 4 52 0 C 78 4 104 30 104 70 C 104 110 78 136 52 140 C 26 136 0 110 0 70Z" fill="none" stroke="#1E5631" stroke-width="9"/>
+      <path d="M52 22 V118" stroke="#1E5631" stroke-width="9" stroke-linecap="round"/>
+      <text x="134" y="66" font-family="NM" font-weight="700" font-size="56" fill="#1E5631" letter-spacing="-1.5">Cedarline</text>
+      <text x="134" y="124" font-family="NM" font-weight="700" font-size="56" fill="#1E5631" letter-spacing="-1.5">Clinics</text>
+      <text x="136" y="168" font-family="NM" font-size="22" fill="#4b6b55">Leslieville · Family &amp; walk-in care</text>
+    </g>
+  </g>
+  <!-- plant shadow on the wall (fiddle-leaf fig, from the window) -->
+  <g id="wshadow" fill="#5c6a5a" opacity=".3" filter="url(#lb)"></g>
+  <rect y="868" width="2400" height="14" fill="#cfd3ca"/>
+</svg>
+
+<div class="w3">
+  <div class="desk">
+    <svg class="tex" width="7200" height="2600">
+      <defs>
+        <filter id="ash" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.0007 0.03" numOctaves="4" seed="17" result="n"/>
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 .55 0 0 0 0 .45 0 0 0 0 .33 0 0 0 1.1 -.5"/>
+        </filter>
+        <radialGradient id="dsun" cx=".3" cy=".1" r=".6"><stop offset="0" stop-color="#fff7e2" stop-opacity=".7"/><stop offset="1" stop-color="#fff7e2" stop-opacity="0"/></radialGradient>
+        <filter id="db" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="16"/></filter>
+      </defs>
+      <rect width="7200" height="2600" fill="#ece4d6"/>
+      <rect width="7200" height="2600" filter="url(#ash)" opacity=".35"/>
+      <rect width="7200" height="2600" fill="url(#dsun)"/>
+      <rect width="7200" height="40" fill="#8d8270" opacity=".25" filter="url(#db)"/>
+      <g id="dshadow" fill="#5c5a4a" opacity=".24" filter="url(#db)"></g>
+    </svg>
+  </div>
+
+  <!-- the laptop -->
+  <div class="lap">
+    <div class="base"><div class="lapshadow"></div><div class="kb" id="kb"></div><div class="tp"></div><div class="edge"></div></div>
+    <div class="lid">
+      <div class="scr"><div class="page">
+        <div class="nav">
+          <div class="logo"><svg width="26" height="36" viewBox="0 0 52 72"><path d="M26 3 C 8 18 3 32 3 40 C 3 56 14 66 26 69 C 38 66 49 56 49 40 C 49 32 44 18 26 3Z" fill="none" stroke="#1E5631" stroke-width="6"/><path d="M26 16 V58" stroke="#1E5631" stroke-width="6" stroke-linecap="round"/></svg>Cedarline Clinics</div>
+          <span>Find care</span><span>Clinics</span><span>Services</span><span>For patients</span><span style="color:#56705f">EN · FR</span><span class="btn">Book a visit</span>
+        </div>
+        <div class="wrap">
+          <div>
+            <h1>Can someone see me <em>today?</em></h1>
+            <p class="lede">Yes. Nine clinics across Toronto, with the wait at each one, right now.</p>
+            <div class="live"><i></i>Live · updated 1 min ago</div>
+            <div class="fld">Near<b>M4M 1H9 · Leslieville</b></div>
+            <div class="seg"><span class="on">Walk-in</span><span>Family doctor</span><span>Virtual</span></div>
+            <div class="map"><svg width="100%" height="100%" viewBox="0 0 520 200">
+              <rect width="520" height="200" fill="#e7ece2"/>
+              <path d="M0 160 C 80 150 160 170 240 160 C 320 150 400 166 520 150 L520 200 L0 200Z" fill="#bcd6e0"/>
+              <path d="M300 156 C 330 146 350 152 372 158" stroke="#bcd6e0" stroke-width="8"/>
+              <g stroke="#fff" stroke-width="5"><path d="M0 120 H520"/><path d="M0 70 H520"/><path d="M0 28 H520"/><path d="M110 0 V170"/><path d="M230 0 V165"/><path d="M350 0 V160"/><path d="M450 0 V158"/></g>
+              <g stroke="#fff" stroke-width="2.5" opacity=".9"><path d="M0 95 H520"/><path d="M0 48 H520"/><path d="M170 0 V170"/><path d="M290 0 V170"/><path d="M400 0 V160"/></g>
+              <path d="M420 0 C 430 60 410 110 440 160" stroke="#c9dbc0" stroke-width="12" fill="none"/>
+              <g font-family="NM" font-weight="700" font-size="11" fill="#fff">
+                <g transform="translate(380,128)"><circle r="16" fill="#1E5631"/><text x="-7" y="4">15</text></g>
+                <g transform="translate(330,100)"><circle r="13" fill="#3d7a4f"/><text x="-7" y="4">22</text></g>
+                <g transform="translate(205,80)"><circle r="13" fill="#3d7a4f"/><text x="-7" y="4">35</text></g>
+                <g transform="translate(150,135)"><circle r="13" fill="#3d7a4f"/><text x="-7" y="4">10</text></g>
+                <g transform="translate(470,60)"><circle r="13" fill="#3d7a4f"/><text x="-7" y="4">40</text></g>
+                <g transform="translate(260,20)"><circle r="13" fill="#3d7a4f"/><text x="-7" y="4">18</text></g>
+                <g transform="translate(60,90)"><circle r="13" fill="#3d7a4f"/><text x="-7" y="4">25</text></g>
+              </g>
+              <g transform="translate(380,128)"><circle r="24" fill="none" stroke="#A4DE02" stroke-width="3"/></g>
+            </svg></div>
+          </div>
+          <div class="list">
+            <div class="lh"><span>9 clinics · sorted by distance</span><span>Wait now · Next slot</span></div>
+            <div class="row first"><div><b>Leslieville</b>1015 Queen St E · 0.4 km</div><div class="w ok">15 min<small>walk-in wait</small></div><div class="slot">10:40<small>Dr. Haddad</small></div><div class="bk">Book</div></div>
+            <div class="row"><div><b>Riverdale</b>688 Gerrard St E · 1.6 km</div><div class="w ok">22 min<small>walk-in wait</small></div><div class="slot">10:55<small>Dr. Okafor</small></div><div class="bk">Book</div></div>
+            <div class="row"><div><b>Danforth</b>2150 Danforth Ave · 2.9 km</div><div class="w mid">40 min<small>walk-in wait</small></div><div class="slot">11:20<small>NP Chen</small></div><div class="bk">Book</div></div>
+            <div class="row"><div><b>Liberty Village</b>85 East Liberty St · 5.8 km</div><div class="w ok">10 min<small>walk-in wait</small></div><div class="slot">10:30<small>Dr. Singh</small></div><div class="bk">Book</div></div>
+            <div class="row"><div><b>The Annex</b>402 Bloor St W · 6.1 km</div><div class="w mid">35 min<small>walk-in wait</small></div><div class="slot">11:10<small>Dr. Morin</small></div><div class="bk">Book</div></div>
+            <div class="row"><div><b>The Junction</b>3021 Dundas St W · 9.4 km</div><div class="w ok">25 min<small>walk-in wait</small></div><div class="slot">11:00<small>Dr. Kowalski</small></div><div class="bk">Book</div></div>
+          </div>
+        </div>
+      </div><div class="glare"></div></div>
+    </div>
+  </div>
+    <div class="phone" style="left:1590px;top:118px;transform-origin:50% 100%;transform:translateZ(560px) rotateY(-24deg) rotateX(9deg)">
+      <div class="pshadow"></div>
+      <div class="ps">
+        <div class="sb"><span>10:21</span><span>●●● 5G ▮</span></div>
+        <div class="isl"></div>
+        <div style="padding:26px 24px 0">
+          <div style="display:flex;align-items:center;gap:10px;font:500 15px NM;color:#56705f"><span style="font-size:22px;color:#14301e">‹</span> Step 2 of 3</div>
+          <div style="height:6px;border-radius:3px;background:#dfe5dc;margin-top:12px"><div style="width:66%;height:6px;border-radius:3px;background:#1E5631"></div></div>
+          <div style="font:700 31px/1.05 NM;letter-spacing:-.02em;margin-top:22px">Choose a time</div>
+          <div style="font:400 16px/1.4 NM;color:#3c5446;margin-top:8px">Leslieville clinic · 1015 Queen St E<br>Today, Thursday 14 November</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px">
+            <div style="border-radius:12px;padding:15px 0;text-align:center;font:700 20px NM;background:#1E5631;color:#fff;box-shadow:0 0 0 3px #A4DE02">10:40</div>
+            <div style="border-radius:12px;padding:15px 0;text-align:center;font:700 20px NM;background:#fff;border:1.5px solid #c9d4c6">10:55</div>
+            <div style="border-radius:12px;padding:15px 0;text-align:center;font:700 20px NM;background:#fff;border:1.5px solid #c9d4c6">11:10</div>
+            <div style="border-radius:12px;padding:15px 0;text-align:center;font:700 20px NM;background:#eef1ec;color:#a3b0a6;text-decoration:line-through">11:25</div>
+            <div style="border-radius:12px;padding:15px 0;text-align:center;font:700 20px NM;background:#fff;border:1.5px solid #c9d4c6">11:40</div>
+            <div style="border-radius:12px;padding:15px 0;text-align:center;font:700 20px NM;background:#fff;border:1.5px solid #c9d4c6">12:15</div>
+          </div>
+          <div style="margin-top:18px;background:#fff;border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:center">
+            <div style="width:46px;height:46px;border-radius:50%;background:#dfeacb;display:flex;align-items:center;justify-content:center;font:700 17px NM;color:#1E5631">AH</div>
+            <div style="font:400 14px/1.35 NM;color:#56705f"><b style="font:700 17px NM;color:#14301e;display:block">Dr. Amira Haddad</b>Family physician · accepting walk-ins</div>
+          </div>
+          <div style="margin-top:14px;font:400 14px/1.4 NM;color:#3c5446;display:flex;gap:8px"><span style="color:#1E5631;font-weight:700">i</span>Bring your OHIP card. Takes about 15 minutes.</div>
+          <div style="margin-top:22px;background:#1E5631;color:#fff;border-radius:14px;padding:18px;text-align:center;font:500 19px NM">Continue with 10:40</div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;left:1600px;top:850px;width:352px;height:40px;transform-origin:50% 100%;transform:translateZ(600px) rotateY(-24deg);background:linear-gradient(180deg,#d9c8ab,#b99e78);border-radius:6px;box-shadow:0 30px 40px rgba(50,40,25,.35)"></div>
+
+  <!-- potted plant (rubber plant) at the back left of the desk, as an upright card in the scene -->
+  <svg id="plant" style="position:absolute;left:120px;top:250px;transform:translateZ(240px)" width="520" height="640" viewBox="0 0 520 640"></svg>
+</div>
+
+<script>
+window.__ready=false;
+const NS='http://www.w3.org/2000/svg';let s=11;const R=()=>{s=(s*16807)%2147483647;return s/2147483647};
+function E(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+// keyboard keys
+const kb=document.getElementById('kb');
+for(let r=0;r<6;r++)for(let c=0;c<14;c++){if(r==5&&c>3&&c<10&&c!=4)continue;const d=document.createElement('div');
+  const w=r==5&&c==4?6*69-8:61;Object.assign(d.style,{position:'absolute',left:(14+c*69)+'px',top:(10+r*53)+'px',width:w+'px',height:44+'px',background:'#2a2b2e',borderRadius:'6px',boxShadow:'inset 0 -2px 0 #111, 0 1px 0 #d8dbde'});kb.appendChild(d)}
+// leaf shapes
+function leaf(p,x,y,len,ang,fill,op){const g=E('g',{transform:`translate(${x} ${y}) rotate(${ang})`},p);
+  E('path',{d:`M0 0 C ${len*.25} ${-len*.28} ${len*.75} ${-len*.3} ${len} 0 C ${len*.75} ${len*.3} ${len*.25} ${len*.28} 0 0Z`,fill,opacity:op||1},g);return g}
+// wall + desk shadows of a plant near the window
+const ws=document.getElementById('wshadow');
+E('path',{d:'M260 900 C 300 700 420 520 600 380',stroke:'#5c6a5a','stroke-width':14,fill:'none'},ws);
+for(let i=0;i<16;i++){const t=i/16;leaf(ws,260+340*t+R()*40,900-520*t+R()*40,140+R()*70,-150+R()*120,'#5c6a5a')}
+const ds=document.getElementById('dshadow');
+for(let i=0;i<22;i++){leaf(ds,2500+R()*1100,700+R()*700,190+R()*110,R()*360,'#5c5a4a')}
+// the plant itself
+const pl=document.getElementById('plant');
+const df=E('defs',{},pl);
+const lg=E('linearGradient',{id:'lg',x1:0,y1:0,x2:1,y2:1},df);E('stop',{offset:0,'stop-color':'#5d8a52'},lg);E('stop',{offset:1,'stop-color':'#203d26'},lg);
+const pg=E('linearGradient',{id:'pg',x1:0,y1:0,x2:1,y2:0},df);E('stop',{offset:0,'stop-color':'#f4efe6'},pg);E('stop',{offset:.6,'stop-color':'#ddd5c6'},pg);E('stop',{offset:1,'stop-color':'#b9b0a0'},pg);
+E('ellipse',{cx:270,cy:632,rx:150,ry:16,fill:'#3c3a30',opacity:.3,filter:'blur(6px)'},pl);
+E('path',{d:'M260 470 C 250 380 270 300 250 200 M262 420 C 300 340 340 290 380 250 M256 380 C 200 320 170 260 150 200',stroke:'#3f5a36','stroke-width':7,fill:'none'},pl);
+const L=[[250,200,170,-100],[250,240,150,-40],[252,300,160,-140],[260,330,170,-10],[150,200,140,-130],[170,250,150,-160],[380,250,150,-30],[340,300,140,10],[300,350,150,-60],[230,380,140,-170],[280,420,130,20],[200,160,130,-80],[300,180,150,-60],[220,440,120,160]];
+L.forEach(([x,y,l,a])=>{const g=leaf(pl,x,y,l,a,'url(#lg)');E('path',{d:`M4 0 L${l-8} 0`,stroke:'#a9c49a','stroke-width':2,opacity:.7},g);E('path',{d:`M0 0 C ${l*.25} ${-l*.28} ${l*.75} ${-l*.3} ${l} 0`,stroke:'#cfe0c1','stroke-width':2,fill:'none',opacity:.35},g)});
+E('path',{d:'M170 470 L370 470 L350 630 L190 630Z',fill:'url(#pg)'},pl);
+E('rect',{x:164,y:462,width:212,height:18,rx:4,fill:'#ece6da'},pl);
+E('path',{d:'M174 480 L366 480 L364 492 L176 492Z',fill:'#000',opacity:.08},pl);
+window.__ready=true;
+</script>
+</body></html>

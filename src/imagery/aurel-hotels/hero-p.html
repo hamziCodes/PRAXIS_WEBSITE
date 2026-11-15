@@ -1,0 +1,218 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;position:relative;background:#4a2430;font-family:Garamond,'Palatino Linotype',Georgia,serif;color:#2b1a1e}
+.abs{position:absolute}
+.paper{background:#f6eee3;background-image:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.55),rgba(255,255,255,0) 60%),linear-gradient(135deg,#f8f1e7,#efe4d4)}
+.sh{filter:drop-shadow(10px 16px 14px rgba(25,6,12,.55)) drop-shadow(2px 3px 2px rgba(25,6,12,.35))}
+.sh2{filter:drop-shadow(18px 26px 26px rgba(25,6,12,.6)) drop-shadow(3px 4px 3px rgba(25,6,12,.4))}
+.blind{color:#efe4d6;text-shadow:-1px -1px 0 rgba(255,255,255,1),1.5px 1.5px 1.5px rgba(110,80,60,.6)}
+.wm{font-family:Georgia,serif;font-weight:700;letter-spacing:-.01em}
+.it{font-style:italic}
+.caps{letter-spacing:.24em;text-transform:uppercase;font-family:Georgia,serif}
+.grainy::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix values='0 0 0 0 .4  0 0 0 0 .3  0 0 0 0 .25  0 0 0 .18 0'/></filter><rect width='300' height='300' filter='url(%23f)'/></svg>");mix-blend-mode:multiply;pointer-events:none;border-radius:inherit}
+/* ---------- layout: portrait ---------- */
+#marble{left:-260px;top:560px;width:1180px;height:900px;transform:rotate(-6deg)}
+#menu{left:60px;top:90px;transform:rotate(3deg)}
+#glass{left:770px;top:-120px}
+#lh{left:70px;top:700px;transform:rotate(-4deg)}
+#dnd{left:770px;top:720px;transform:rotate(7deg)}
+#chips{left:800px;top:1380px;transform:rotate(-4deg)}
+#env{left:300px;top:1440px;transform:rotate(-5deg)}
+#key{left:10px;top:1600px;transform:rotate(-18deg) scale(1.15);transform-origin:0 0}
+#pen{left:560px;top:1850px;transform:rotate(-8deg)}
+</style></head>
+<body>
+<!-- velvet -->
+<svg class="abs" style="inset:0" width="1080" height="1920">
+  <defs>
+    <filter id="velvet" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0045 0.009" numOctaves="5" seed="8" result="t"/>
+      <feDiffuseLighting in="t" surfaceScale="16" lighting-color="#f0a0ae" diffuseConstant="1.25" result="l"><feDistantLight azimuth="235" elevation="38"/></feDiffuseLighting>
+      <feComposite in="l" in2="SourceGraphic" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+    </filter>
+    <filter id="pile"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 .2  0 0 0 0 .05  0 0 0 0 .08  0 0 0 .35 0"/></filter>
+    <radialGradient id="pool" cx="48%" cy="45%" r="70%"><stop offset="0" stop-color="#fff2e0" stop-opacity=".22"/><stop offset=".55" stop-color="#fff2e0" stop-opacity="0"/><stop offset="1" stop-color="#12030a" stop-opacity=".65"/></radialGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="#6a3443" filter="url(#velvet)"/>
+  <rect width="1080" height="1920" fill="#5A2E3A" opacity=".3"/>
+  <rect width="1080" height="1920" filter="url(#pile)"/>
+</svg>
+
+<!-- marble slab -->
+<div id="marble" class="abs sh2" style="border-radius:6px;overflow:hidden">
+  <svg width="1180" height="900">
+    <defs>
+      <filter id="mv" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.0022 0.0055" numOctaves="5" seed="31" result="t"/>
+        <feColorMatrix in="t" type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0 1" result="g"/>
+        <feComponentTransfer in="g" result="v"><feFuncR type="table" tableValues="1 1 1 1 1 .5 1 1 1 .72 1 1 1 1"/><feFuncG type="table" tableValues="1 1 1 1 1 .5 1 1 1 .72 1 1 1 1"/><feFuncB type="table" tableValues="1 1 1 1 1 .52 1 1 1 .74 1 1 1 1"/></feComponentTransfer>
+        <feGaussianBlur in="v" stdDeviation=".7" result="vb"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" seed="4" result="c"/>
+        <feColorMatrix in="c" type="matrix" values="0 0 0 0 .55  0 0 0 0 .5  0 0 0 0 .48  -1.2 0 0 0 .75" result="cl"/>
+        <feBlend in="cl" in2="vb" mode="multiply"/>
+      </filter>
+    </defs>
+    <rect width="1180" height="900" fill="#efe8df"/>
+    <rect width="1180" height="900" filter="url(#mv)" style="mix-blend-mode:multiply" opacity=".9"/>
+    <rect width="1180" height="900" fill="url(#ml)"/>
+    <linearGradient id="ml" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#3a1a20" stop-opacity=".15"/></linearGradient>
+  </svg>
+</div>
+
+<!-- seven property colour chips, fanned -->
+<div id="chips" class="abs" style="width:300px;height:420px">
+  <script>
+  document.write([['Pera','İstanbul','#D8B26E'],['Cihangir','İstanbul','#B5573B'],['Balat','İstanbul','#2F6F6A'],['Moda','İstanbul','#3D6A8F'],['Gümüşlük','Bodrum','#7A7F3A'],['Yalıkavak','Bodrum','#D98466'],['Ürgüp','Kapadokya','#B98A7A']].map((c,i)=>
+   `<div class="abs paper sh grainy" style="left:0;top:0;width:250px;height:400px;border-radius:4px;transform-origin:30px 370px;transform:rotate(${i*9}deg);overflow:hidden">
+     <div style="height:250px;background:${c[2]};position:relative"><div class="abs" style="inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(0,0,0,.1))"></div></div>
+     <div style="padding:16px 18px"><div class="wm" style="font-size:24px">Aurel ${c[0]}</div><div class="caps" style="font-size:11px;margin-top:6px;opacity:.6">${c[1]} · ${c[2]}</div></div></div>`).join(''))
+  </script>
+</div>
+
+<!-- letterhead -->
+<div id="lh" class="abs paper sh grainy" style="width:600px;height:848px;padding:70px 66px">
+  <svg class="abs" style="left:262px;top:56px" width="76" height="76" viewBox="0 0 100 100" fill="none" stroke-width="5" stroke-linecap="round">
+    <g stroke="rgba(255,255,255,.95)" transform="translate(-1 -1)"><path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/></g>
+    <g stroke="rgba(120,90,70,.4)" transform="translate(1.4 1.4)"><path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/></g>
+  </svg>
+  <div class="wm blind" style="text-align:center;margin-top:84px;font-size:34px">Aurel</div>
+  <div class="caps" style="text-align:center;font-size:10px;margin-top:6px;color:#8a6a55">Pera · İstanbul</div>
+  <div style="margin-top:58px;font-size:17px;line-height:1.65;color:#3a2a2c">
+    <div style="opacity:.6;font-size:14px" class="caps">14 Kasım 2026</div>
+    <div style="margin-top:22px">Dear Ms. Laurent,</div>
+    <div style="margin-top:12px">Welcome back to the house. Your room on the second floor looks over Asmalımescit, and the radiator has been warmed since noon. Breakfast is served in the courtyard from seven; the simit comes from Halil Usta at the corner, as it has for forty years.</div>
+    <div style="margin-top:12px">If you travel on to Balat on Thursday, our car will take your cases ahead. It is the same house, only a different street.</div>
+    <div style="margin-top:20px" class="it">With warm regards,</div>
+    <div style="font-family:'Segoe Script';font-size:28px;color:#3b2a5a;margin-top:6px;transform:rotate(-3deg)">Elif Demir</div>
+  </div>
+  <div class="abs caps" style="left:66px;right:66px;bottom:44px;font-size:9.5px;color:#8a6a55;display:flex;justify-content:space-between;border-top:1px solid rgba(138,106,85,.35);padding-top:12px"><span>Asmalımescit Sk. 12 · Beyoğlu</span><span>+90 212 245 07 70</span></div>
+</div>
+
+<!-- envelope with wax seal -->
+<div id="env" class="abs sh" style="width:560px;height:380px">
+  <div class="abs paper grainy" style="inset:0;border-radius:3px;background:linear-gradient(160deg,#efe2cf,#e3d2ba)"></div>
+  <svg class="abs" width="560" height="380"><path d="M0 0 L280 210 L560 0" fill="#ead9c1" stroke="rgba(120,90,60,.25)" stroke-width="1.5"/><path d="M0 0 L280 210 L560 0" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1" transform="translate(0 -1.5)"/></svg>
+  <div class="abs" style="left:44px;bottom:40px;font-size:22px;color:#4a3236"><span class="it">Ms. C. Laurent</span><div class="caps" style="font-size:10px;margin-top:6px;opacity:.6">Room 214 · by hand</div></div>
+  <!-- wax -->
+  <svg class="abs" style="left:218px;top:150px;filter:drop-shadow(4px 6px 5px rgba(40,5,10,.55))" width="128" height="128" viewBox="0 0 128 128">
+    <defs><filter id="wx"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="14"/></filter>
+    <radialGradient id="wg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#b03a4c"/><stop offset=".6" stop-color="#7a1c2c"/><stop offset="1" stop-color="#4a0d18"/></radialGradient></defs>
+    <circle cx="64" cy="64" r="54" fill="url(#wg)" filter="url(#wx)"/>
+    <circle cx="64" cy="64" r="36" fill="#6e1828" stroke="#4a0d18" stroke-width="2"/>
+    <circle cx="64" cy="64" r="36" fill="none" stroke="rgba(255,170,170,.35)" stroke-width="1.5" transform="translate(-1 -1)"/>
+    <g fill="none" stroke-width="4" stroke-linecap="round" transform="translate(40 38) scale(.48)"><g stroke="#3d0812" transform="translate(1.5 1.5)"><path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/></g><g stroke="rgba(230,140,150,.7)"><path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/></g></g>
+    <ellipse cx="46" cy="36" rx="14" ry="6" fill="#fff" opacity=".25" transform="rotate(-30 46 36)"/>
+  </svg>
+</div>
+
+<!-- folded dinner menu (two panels, open) -->
+<div id="menu" class="abs sh" style="width:860px;height:640px;display:flex">
+  <div class="paper grainy" style="position:relative;width:430px;height:640px;padding:60px 48px;background:linear-gradient(90deg,#f4ecdf 0%,#f6eee3 70%,#e2d4c1 100%)">
+    <div class="wm" style="font-size:44px;line-height:1">Aurel <span class="it" style="font-weight:400">Balat</span></div>
+    <div class="caps" style="font-size:11px;margin-top:12px;color:#2F6F6A">Akşam yemeği · Dinner</div>
+    <div style="margin-top:40px;font-size:14px;line-height:1.6;color:#5a4648" class="it">Cooked by Ayşe Kaya and her team from what came in at the Fatih market on Wednesday.</div>
+    <div style="width:60px;height:2px;background:#2F6F6A;margin:34px 0"></div>
+    <div class="caps" style="font-size:11px;color:#8a6a55">Wine</div>
+    <div style="font-size:15px;line-height:1.9;margin-top:8px">Kayra Öküzgözü, Elazığ<br>Suvla Kınalı Yapıncak<br>Chamlija Papaskarası</div>
+  </div>
+  <div class="paper grainy" style="position:relative;width:430px;height:640px;padding:60px 48px;background:linear-gradient(90deg,#d9c9b4 0%,#efe5d8 8%,#f6eee3 40%,#f2e8db 100%)">
+    <script>
+    const items=[['Başlangıç',''],['Topik, tahini, cinnamon','₺ 380'],['Levrek, rakı & fennel','₺ 520'],['Ana yemek',''],['Hünkâr beğendi','₺ 760'],['Kuzu tandır, bulgur','₺ 840'],['Tatlı',''],['Fırın sütlaç','₺ 290'],['Kaymaklı ayva','₺ 310']];
+    document.write(items.map(([a,b])=>b?`<div style="display:flex;justify-content:space-between;font-size:18px;line-height:1.3;margin:10px 0"><span>${a}</span><span style="font-variant-numeric:oldstyle-nums;color:#6a5052">${b}</span></div>`:`<div class="caps" style="font-size:11px;color:#2F6F6A;margin:26px 0 6px">${a}</div>`).join(''))
+    </script>
+    <div class="abs caps" style="left:48px;bottom:44px;font-size:9.5px;color:#8a6a55">Vodina Cd. 28 · Balat · İstanbul</div>
+  </div>
+</div>
+
+<!-- wine glass, top-down, with coloured shadow and caustic -->
+<div id="glass" class="abs" style="width:420px;height:420px">
+  <svg width="560" height="560" style="position:absolute;left:0;top:0;overflow:visible">
+    <defs>
+      <radialGradient id="wine" cx="45%" cy="42%" r="60%"><stop offset="0" stop-color="#8a1426"/><stop offset=".55" stop-color="#4e0614"/><stop offset="1" stop-color="#2a0208"/></radialGradient>
+      <radialGradient id="cast" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ff5a6e" stop-opacity=".85"/><stop offset=".4" stop-color="#c0182e" stop-opacity=".55"/><stop offset="1" stop-color="#5a0010" stop-opacity="0"/></radialGradient>
+      <filter id="b8"><feGaussianBlur stdDeviation="8"/></filter><filter id="b20"><feGaussianBlur stdDeviation="20"/></filter>
+    </defs>
+    <!-- shadow on velvet: dark ring + red caustic -->
+    <ellipse cx="300" cy="300" rx="150" ry="140" fill="#2a0610" opacity=".35" filter="url(#b20)"/>
+    <ellipse cx="300" cy="300" rx="128" ry="118" fill="url(#cast)" filter="url(#b20)" opacity=".7"/>
+    <path d="M250 330 A90 90 0 0 0 340 250" fill="none" stroke="#ff9a8a" stroke-width="10" opacity=".55" filter="url(#b8)"/>
+    <!-- foot -->
+    <circle cx="200" cy="200" r="118" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+    <circle cx="200" cy="200" r="112" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="6"/>
+    <!-- bowl -->
+    <circle cx="200" cy="200" r="150" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.55)" stroke-width="3"/>
+    <circle cx="200" cy="200" r="146" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="8"/>
+    <circle cx="200" cy="200" r="104" fill="url(#wine)"/>
+    <circle cx="200" cy="200" r="104" fill="none" stroke="rgba(190,60,80,.6)" stroke-width="3"/>
+    <path d="M110 160 A98 98 0 0 1 200 100" fill="none" stroke="rgba(255,220,220,.55)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M90 120 A150 150 0 0 1 170 54" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="168" cy="166" rx="18" ry="9" fill="#fff" opacity=".35" transform="rotate(-35 168 166)"/>
+  </svg>
+</div>
+
+<!-- do not disturb door hanger -->
+<div id="dnd" class="abs sh" style="width:250px;height:640px">
+  <div class="abs grainy" style="inset:0;border-radius:6px;background:linear-gradient(160deg,#2F6F6A,#255a56);overflow:hidden">
+    <div class="abs" style="left:50%;top:44px;width:118px;height:118px;margin-left:-59px;border-radius:50%;background:#4a2430;box-shadow:inset 3px 4px 6px rgba(0,0,0,.6)"></div>
+    <div class="abs" style="left:50%;top:0;width:22px;height:70px;margin-left:-11px;background:#4a2430"></div>
+    <svg class="abs" style="left:91px;top:226px" width="68" height="68" viewBox="0 0 100 100" fill="none" stroke="#D8B26E" stroke-width="5" stroke-linecap="round"><path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/></svg>
+    <div class="abs" style="left:24px;right:24px;top:330px;text-align:center;color:#f6eee3">
+      <div class="it" style="font-size:31px;line-height:1.1;font-family:Georgia">Lütfen<br>rahatsız<br>etmeyiniz</div>
+      <div style="width:40px;height:1px;background:#D8B26E;margin:20px auto"></div>
+      <div class="caps" style="font-size:11px;line-height:1.8;opacity:.85">Please do<br>not disturb</div>
+    </div>
+    <div class="abs caps" style="left:0;right:0;bottom:26px;text-align:center;font-size:10px;color:#D8B26E">Aurel Balat</div>
+  </div>
+</div>
+
+<!-- brass key on leather tag -->
+<div id="key" class="abs" style="width:640px;height:220px">
+  <svg width="640" height="220" style="overflow:visible;filter:drop-shadow(10px 14px 9px rgba(25,6,12,.6)) drop-shadow(2px 3px 2px rgba(25,6,12,.4))">
+    <defs>
+      <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0bf"/><stop offset=".22" stop-color="#e2be6e"/><stop offset=".55" stop-color="#a77a2c"/><stop offset=".8" stop-color="#d7b060"/><stop offset="1" stop-color="#6a4a18"/></linearGradient>
+      <radialGradient id="brassR" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fff2c4"/><stop offset=".4" stop-color="#d9b462"/><stop offset=".85" stop-color="#8a6322"/><stop offset="1" stop-color="#5d4012"/></radialGradient>
+      <linearGradient id="leather" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a3a2a"/><stop offset=".5" stop-color="#6a2618"/><stop offset="1" stop-color="#4a170f"/></linearGradient>
+      <filter id="lt"><feTurbulence type="fractalNoise" baseFrequency=".5" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 .15  0 0 0 0 .05  0 0 0 0 .03  0 0 0 .5 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+    </defs>
+    <!-- leather tag -->
+    <g transform="translate(0 30)">
+      <path d="M10 20 Q10 0 30 0 H210 L250 40 V120 L210 160 H30 Q10 160 10 140 Z" fill="url(#leather)"/>
+      <path d="M10 20 Q10 0 30 0 H210 L250 40 V120 L210 160 H30 Q10 160 10 140 Z" filter="url(#lt)"/>
+      <path d="M22 26 Q22 12 36 12 H205 L238 45 V115 L205 148 H36 Q22 148 22 134 Z" fill="none" stroke="#e0b088" stroke-opacity=".55" stroke-width="2" stroke-dasharray="7 5"/>
+      <circle cx="222" cy="80" r="13" fill="#3a1009"/><circle cx="222" cy="80" r="13" fill="none" stroke="url(#brass)" stroke-width="5"/>
+      <text x="112" y="100" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="58" fill="#3e120b" opacity=".9">214</text>
+      <text x="112" y="98" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="58" fill="none" stroke="rgba(230,170,140,.35)" stroke-width="1">214</text>
+      <text x="112" y="132" text-anchor="middle" font-family="Georgia" font-size="12" letter-spacing="4" fill="#d8a47e" opacity=".8">AUREL PERA</text>
+      <g transform="translate(96 16) scale(.3)" fill="none" stroke="#d8a47e" stroke-opacity=".75" stroke-width="7" stroke-linecap="round"><path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/></g>
+    </g>
+    <!-- ring -->
+    <circle cx="262" cy="110" r="30" fill="none" stroke="url(#brassR)" stroke-width="7"/>
+    <!-- key: bow, shank, bit -->
+    <g transform="translate(270 70)">
+      <circle cx="60" cy="40" r="40" fill="url(#brassR)"/>
+      <circle cx="60" cy="40" r="17" fill="#4a2430"/><circle cx="60" cy="40" r="17" fill="none" stroke="#5d4012" stroke-width="3"/>
+      <circle cx="60" cy="40" r="36" fill="none" stroke="rgba(255,240,200,.45)" stroke-width="2"/>
+      <rect x="96" y="31" width="22" height="18" rx="4" fill="url(#brass)"/>
+      <rect x="116" y="33" width="210" height="14" rx="5" fill="url(#brass)"/>
+      <rect x="150" y="29" width="10" height="22" rx="3" fill="url(#brass)"/>
+      <path d="M290 47 h40 v40 h-10 v-12 h-8 v18 h-10 v-14 h-12 Z" fill="url(#brass)"/>
+      <rect x="120" y="35" width="200" height="3" fill="#fff6d8" opacity=".7"/>
+    </g>
+  </svg>
+</div>
+
+<!-- brass fountain pen -->
+<div id="pen" class="abs" style="width:520px;height:40px;filter:drop-shadow(8px 12px 7px rgba(25,6,12,.6))">
+  <div class="abs" style="left:0;top:8px;width:300px;height:26px;border-radius:13px 4px 4px 13px;background:linear-gradient(180deg,#2a0e14,#5a2e3a 30%,#1a0508 100%)"></div>
+  <div class="abs" style="left:290px;top:6px;width:20px;height:30px;background:linear-gradient(180deg,#fff0bf,#c8a050 45%,#6a4a18)"></div>
+  <div class="abs" style="left:310px;top:8px;width:150px;height:26px;border-radius:2px;background:linear-gradient(180deg,#3a1219,#6a3443 30%,#1a0508 100%)"></div>
+  <div class="abs" style="left:460px;top:11px;width:50px;height:20px;clip-path:polygon(0 0,100% 50%,0 100%);background:linear-gradient(180deg,#fff0bf,#c8a050 45%,#6a4a18)"></div>
+  <div class="abs" style="left:40px;top:2px;width:180px;height:8px;border-radius:4px;background:linear-gradient(180deg,#fff0bf,#a77a2c)"></div>
+</div>
+
+<!-- overhead light pool + vignette -->
+<svg class="abs" style="inset:0;pointer-events:none" width="1080" height="1920"><rect width="1080" height="1920" fill="url(#pool)"/></svg>
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 60% 70% at 45% 40%,rgba(255,230,200,.10),rgba(255,230,200,0) 60%);mix-blend-mode:screen"></div>
+</body></html>

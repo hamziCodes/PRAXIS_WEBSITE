@@ -31,7 +31,7 @@ const imgs = (p) => {
   const base = `assets/img/work/${p.slug}/`;
   if (p.images) return { hero: base + p.images[0], heroP: null, gallery: p.images.slice(1).map((f) => base + f), designed: false };
   if (existsSync(join(ROOT, base, 'hero.webp'))) { // the designed set (src/imagery/<slug>/ → render.mjs)
-    const g = ['01.webp', '02.webp', '03.webp'].filter((f) => existsSync(join(ROOT, base, f)));
+    const g = ['02.webp', '01.webp', '03.webp'].filter((f) => existsSync(join(ROOT, base, f)));
     return { hero: base + 'hero.webp', heroP: existsSync(join(ROOT, base, 'hero-p.webp')) ? base + 'hero-p.webp' : null, gallery: g.map((f) => base + f), designed: true };
   }
   return { hero: base + 'hero.svg', heroP: null, gallery: p.gallery.map((_, i) => `${base}${pad(i + 1)}.svg`), designed: false };
@@ -241,7 +241,6 @@ function home() {
   </video>
   <canvas class="reel-px" data-reel-px aria-hidden="true"></canvas>
   <div class="reel-ui">
-    <span class="tag reel-tag">Praxis Studio · Showreel</span>
     <button class="reel-btn tag" type="button" data-reel-btn aria-pressed="false"><span data-reel-label>Pause</span><span class="sr"> the showreel</span></button>
   </div>
 </section>
@@ -343,7 +342,7 @@ function workIndex() {
     </div>
     <div class="wx-shade" aria-hidden="true"></div>
     <ol class="wx-names" data-wx-names>
-      ${projects.map((p, i) => `<li class="wx-i${i ? '' : ' on'}" style="--i:${i}"><a href="${R}work/${p.slug}/" data-wx-i="${i}"><span class="wx-name">${esc(p.name)}</span><span class="wx-sub">${esc(p.sub)} · ${esc(p.location)}</span></a></li>`).join('')}
+      ${projects.map((p, i) => `<li class="wx-i${i ? '' : ' on'}" style="--i:${i};--len:${p.name.length}"><a href="${R}work/${p.slug}/" data-wx-i="${i}"><span class="wx-name">${esc(p.name)}</span><span class="wx-sub">${esc(p.sub)} · ${esc(p.location)}</span></a></li>`).join('')}
     </ol>
     <div class="wx-bar">
       <p class="tag wx-count" aria-hidden="true"><span data-wx-count>01</span> / ${pad(n)}</p>

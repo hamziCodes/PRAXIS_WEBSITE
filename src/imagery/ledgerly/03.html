@@ -1,0 +1,155 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>LEDGERLY — onboarding screens</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf);font-weight:700}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Light.otf);font-weight:300}
+@font-face{font-family:PX;src:url(../../../assets/fonts/handjet.woff2)}
+html,body{margin:0;padding:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#c9a77c;font-family:NM,Arial,sans-serif}
+.abs{position:absolute}
+/* ---------- phone ---------- */
+.phone{position:absolute;width:433px;height:888px;border-radius:72px;transform-origin:50% 50%}
+.phone .shadow1{position:absolute;inset:0;border-radius:72px;background:#1d140c;opacity:.55;filter:blur(30px);transform:translate(36px,46px)}
+.phone .shadow2{position:absolute;inset:6px;border-radius:72px;background:#120c06;opacity:.7;filter:blur(6px);transform:translate(8px,10px)}
+.phone .frame{position:absolute;inset:0;border-radius:72px;background:linear-gradient(135deg,#e9e9ec,#9b9ca2 18%,#5d5e63 45%,#a7a8ad 70%,#4a4b50)}
+.phone .bezel{position:absolute;inset:5px;border-radius:67px;background:#050506}
+.phone .screen{position:absolute;left:20px;top:20px;width:393px;height:848px;border-radius:54px;overflow:hidden;background:#F3F3EE}
+.phone .glass{position:absolute;inset:5px;border-radius:67px;background:linear-gradient(125deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.04) 26%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 70%,rgba(255,255,255,.07) 85%,rgba(255,255,255,0));pointer-events:none}
+.phone .island{position:absolute;left:50%;top:14px;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000;z-index:5}
+.phone .btn{position:absolute;background:linear-gradient(90deg,#4a4b50,#c9cacd,#55565b);border-radius:3px}
+/* ---------- app UI ---------- */
+.ui{position:absolute;inset:0;font-family:NM;color:#141414;font-size:15px}
+.sb{height:54px;display:flex;justify-content:space-between;align-items:center;padding:6px 34px 0 40px;font-weight:500;font-size:16px}
+.sb .r{display:flex;gap:6px;align-items:center}
+.top{display:flex;align-items:center;justify-content:space-between;padding:6px 20px 10px}
+.top .t{font-weight:500;font-size:17px}
+.top .d{font-size:12px;color:#77776f}
+.av{width:34px;height:34px;border-radius:50%;background:#2F4BFF;display:grid;place-items:center}
+.chat{padding:4px 16px;display:flex;flex-direction:column;gap:9px}
+.day{align-self:center;font-size:11px;letter-spacing:.8px;color:#8a8a82;text-transform:uppercase;margin:4px 0}
+.me{align-self:flex-end;max-width:76%;background:#2F4BFF;color:#fff;padding:10px 14px;border-radius:20px 20px 6px 20px;line-height:1.3}
+.bot{align-self:flex-start;max-width:84%;background:#fff;padding:10px 14px;border-radius:20px 20px 20px 6px;line-height:1.32;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.entry{align-self:flex-start;width:84%;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.entry .h{display:flex;align-items:center;gap:8px;padding:9px 12px;background:#FFD84D;font-size:12px;font-weight:500;letter-spacing:.3px}
+.entry .row{display:flex;justify-content:space-between;padding:8px 12px;border-top:1px solid #eeeee8;font-size:13.5px}
+.entry .row b{font-weight:500}
+.chips{display:flex;gap:7px;align-self:flex-start}
+.chip{border:1.5px solid #2F4BFF;color:#2F4BFF;border-radius:16px;padding:6px 12px;font-size:13px;font-weight:500}
+.chip.on{background:#2F4BFF;color:#fff}
+.composer{position:absolute;left:12px;right:12px;bottom:28px;height:50px;border-radius:25px;background:#fff;display:flex;align-items:center;padding:0 8px 0 18px;color:#9a9a92;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.composer .mic{margin-left:auto;width:36px;height:36px;border-radius:50%;background:#2F4BFF;display:grid;place-items:center}
+.home{position:absolute;left:50%;bottom:9px;width:134px;height:5px;margin-left:-67px;border-radius:3px;background:#141414}
+.big{font-size:30px;font-weight:500;letter-spacing:-.6px;line-height:1.08}
+.lbl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#77776f}
+.tick{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#141414;color:#FFD84D;font-size:10px}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="oak" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0018 0.022" numOctaves="5" seed="14" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .35  0 0 0 0 .2  0 0 0 0 .08  -3.2 0 0 0 1.95"/>
+  </filter>
+  <filter id="oak2" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="turbulence" baseFrequency="0.0009 0.012" numOctaves="3" seed="3" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .4  0 0 0 0 .24  0 0 0 0 .1  2 0 0 0 -.5"/>
+  </filter>
+  <filter id="pores" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.25 2" numOctaves="1" seed="2" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .2  0 0 0 0 .1  0 0 0 0 .04  -4 0 0 0 2.5"/>
+  </filter>
+  <filter id="scratch" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.6 0.004" numOctaves="1" seed="31" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -9 0 0 0 5.9"/>
+  </filter>
+  <filter id="paper" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .3  0 0 0 0 .3  0 0 0 0 .3  0 0 0 -1.4 .78"/>
+  </filter>
+  <filter id="curl" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.004 0.02" numOctaves="3" seed="5" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="4" lighting-color="#fff" result="l"><feDistantLight azimuth="225" elevation="45"/></feDiffuseLighting>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.8 0 0 0 1.32"/>
+  </filter>
+  <filter id="thermal" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" seed="9" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.4 0 0 0 1.9" result="m"/>
+    <feComposite in="SourceGraphic" in2="m" operator="in"/>
+  </filter>
+</defs></svg>
+
+<div class="abs" style="inset:0;background:radial-gradient(1500px 1700px at 30% 20%,#4a63ff,#2F4BFF 50%,#2236c9)"></div>
+<svg class="abs" style="left:0;top:0;opacity:.35;mix-blend-mode:multiply" width="1600" height="2000"><filter id="pp"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feColorMatrix type="matrix" values="0 0 0 0 .1 0 0 0 0 .1 0 0 0 0 .3 0 0 0 -1.5 .9"/></filter><rect width="1600" height="2000" filter="url(#pp)"/></svg>
+<div class="abs" style="left:0;top:0;width:1600px;height:2000px;perspective:5000px">
+ <div id="plane" class="abs" style="left:-760px;top:-640px;width:3000px;height:2600px;transform:rotateX(48deg) rotateZ(-62deg);transform-origin:50% 50%">
+  <div id="stage" class="abs" style="inset:0"></div>
+ </div>
+</div>
+<div class="abs" style="inset:0;background:linear-gradient(150deg,rgba(255,255,255,.12),rgba(255,255,255,0) 40%,rgba(0,0,40,.25))"></div>
+<script>
+window.__ready=false;
+const stage=document.getElementById('stage');
+const add=h=>{stage.insertAdjacentHTML('beforeend',h)};
+const icons={
+  sig:`<svg width="18" height="12"><rect x="0" y="8" width="3" height="4" fill="#141414"/><rect x="5" y="5" width="3" height="7" fill="#141414"/><rect x="10" y="2" width="3" height="10" fill="#141414"/><rect x="15" y="0" width="3" height="12" fill="#141414"/></svg>`,
+  bat:`<svg width="27" height="13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke="#141414" opacity=".4"/><rect x="2" y="2" width="16" height="9" rx="2" fill="#141414"/><rect x="25" y="4" width="2" height="5" rx="1" fill="#141414" opacity=".4"/></svg>`,
+  mic:`<svg width="14" height="18"><rect x="4" y="0" width="6" height="11" rx="3" fill="#fff"/><path d="M1,8 a6,6 0 0 0 12,0 M7,14 v4" stroke="#fff" stroke-width="1.8" fill="none"/></svg>`,
+  mark:(c='#FFD84D')=>`<svg width="18" height="18"><rect x="0" y="0" width="7" height="7" fill="${c}"/><rect x="9" y="4" width="5" height="5" fill="${c}"/><rect x="2" y="10" width="5" height="5" fill="${c}"/><rect x="11" y="12" width="6" height="6" fill="${c}"/></svg>`
+};
+const status=(t='18:52',dark=false)=>`<div class="sb" style="${dark?'color:#fff':''}"><span>${t}</span><span class="r">${icons.sig}${icons.bat}</span></div>`;
+
+
+const scr1=`<div class="ui" style="background:#2F4BFF;color:#fff">${status('9:41',true)}
+ <div style="padding:60px 30px 0">
+  <svg width="120" height="120"><rect x="0" y="0" width="44" height="44" fill="#FFD84D"/><rect x="56" y="20" width="30" height="30" fill="#FFD84D"/><rect x="12" y="62" width="30" height="30" fill="#FFD84D"/><rect x="66" y="72" width="44" height="44" fill="#FFD84D"/><rect x="98" y="0" width="16" height="16" fill="#fff"/></svg>
+  <div style="font-size:54px;font-weight:700;letter-spacing:-1.5px;margin-top:40px;line-height:1">LEDGERLY</div>
+  <div style="font-size:34px;color:#FFD84D;margin-top:14px;font-style:italic;letter-spacing:-.5px">Books, by chat.</div>
+  <div style="font-size:18px;line-height:1.4;margin-top:34px;color:#e3e7ff">Tell me what you sold and what you paid. I'll do the accounting words, and your accountant gets a proper ledger.</div>
+ </div>
+ <div style="position:absolute;left:24px;right:24px;bottom:96px;height:58px;border-radius:29px;background:#FFD84D;color:#141414;display:grid;place-items:center;font-weight:500;font-size:17px">Start in two minutes</div>
+ <div style="position:absolute;left:0;right:0;bottom:56px;text-align:center;font-size:14px;color:#c9d0ff">I already have an account</div>
+ <div class="home" style="background:#fff"></div></div>`;
+const scr2=`<div class="ui">${status('9:42')}
+ <div style="padding:8px 20px"><div style="height:6px;border-radius:3px;background:#e6e6e0"><div style="width:40%;height:100%;border-radius:3px;background:#2F4BFF"></div></div><div class="lbl" style="margin-top:10px">Step 2 of 5</div></div>
+ <div class="chat" style="margin-top:6px">
+  <div class="bot">Hello! I'm going to keep your books. First, what's your shop called?</div>
+  <div class="me">Hussain's Corner Shop</div>
+  <div class="bot">Lovely. And roughly how do people pay you?</div>
+  <div class="chips" style="flex-wrap:wrap"><span class="chip on">Mostly card</span><span class="chip">Mostly cash</span><span class="chip">Half and half</span></div>
+  <div class="bot">Got it. Are you VAT registered?</div>
+ </div>
+ <div style="position:absolute;left:0;right:0;bottom:0;height:300px;background:#d3d6dc;padding:10px 4px;box-sizing:border-box">
+  <div style="display:flex;gap:6px;padding:4px 6px 10px"><span style="flex:1;background:#fff;border-radius:16px;padding:8px;text-align:center;font-size:14px">Yes, standard</span><span style="flex:1;background:#fff;border-radius:16px;padding:8px;text-align:center;font-size:14px">Flat rate</span><span style="flex:1;background:#fff;border-radius:16px;padding:8px;text-align:center;font-size:14px">Not yet</span></div>
+  ${['qwertyuiop','asdfghjkl','zxcvbnm'].map((r,i)=>`<div style="display:flex;justify-content:center;gap:6px;margin:8px 0;padding:0 ${i*14}px">${[...r].map(k=>`<span style="flex:1;max-width:33px;height:42px;background:#fff;border-radius:5px;display:grid;place-items:center;font-size:20px;box-shadow:0 1px 0 #8a8e96">${k}</span>`).join('')}</div>`).join('')}
+ </div>
+ </div>`;
+const scr3=`<div class="ui">${status('9:44')}
+ <div style="padding:8px 20px"><div style="height:6px;border-radius:3px;background:#e6e6e0"><div style="width:80%;height:100%;border-radius:3px;background:#2F4BFF"></div></div><div class="lbl" style="margin-top:10px">Step 4 of 5</div></div>
+ <div style="padding:14px 22px"><div class="big">Let me see the money as it moves.</div><div style="font-size:15px;color:#55554f;margin-top:10px;line-height:1.4">Optional. You can always just tell me instead.</div></div>
+ <div style="padding:0 16px;display:flex;flex-direction:column;gap:10px">
+  ${[['Card reader','Takings arrive by themselves','Connected','#2a8a4a'],['Business bank account','Read-only, through Open Banking','Connect',''],['Your accountant','Priya gets the ledger, not the chat','Invite','']].map(r=>`<div style="background:#fff;border-radius:18px;padding:16px;display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;border-radius:12px;background:${r[3]?'#FFD84D':'#eef0ff'};display:grid;place-items:center">${icons.mark(r[3]?'#141414':'#2F4BFF')}</div><div style="flex:1"><div style="font-weight:500;font-size:16px">${r[0]}</div><div style="font-size:13px;color:#77776f;margin-top:2px">${r[1]}</div></div><span style="font-size:14px;font-weight:500;color:${r[3]||'#2F4BFF'}">${r[2]}</span></div>`).join('')}
+ </div>
+ <div style="position:absolute;left:24px;right:24px;bottom:56px;height:56px;border-radius:28px;background:#141414;color:#fff;display:grid;place-items:center;font-weight:500;font-size:16px">Continue</div>
+ <div class="home"></div></div>`;
+function phone(x,y,rot,scr,s=1,id=''){
+  add(`<div class="phone" ${id?`id="${id}"`:''} style="left:${x}px;top:${y}px;transform:rotate(${rot}deg) scale(${s})">
+   <div class="shadow1"></div><div class="shadow2"></div><div class="frame"></div>
+   <div class="btn" style="left:-3px;top:170px;width:5px;height:34px"></div><div class="btn" style="left:-3px;top:230px;width:5px;height:64px"></div><div class="btn" style="left:-3px;top:306px;width:5px;height:64px"></div><div class="btn" style="right:-3px;top:250px;width:5px;height:100px"></div>
+   <div class="bezel"></div><div class="screen">${scr}</div><div class="island"></div><div class="glass"></div></div>`);
+}
+
+
+phone(900,1000,0,scr1,1.18);
+phone(1500,1000,0,scr2,1.18);
+phone(2100,1000,0,scr3,1.18);
+// yellow pixel blocks on the paper
+const blocks=[[620,300,110],[760,250,60],[690,420,50],[2700,2400,120],[2860,2330,60],[2560,2500,50],[1400,2380,70],[1900,240,60]];
+blocks.forEach(([x,y,s])=>add(`<div class="abs" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;background:#FFD84D;box-shadow:${s*.3}px ${s*.4}px ${s*.4}px rgba(0,0,40,.45),inset -3px -3px 0 rgba(0,0,0,.08)"></div>`));
+// centre the set in the frame
+const plane=document.getElementById('plane');
+for(let k=0;k<3;k++){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;document.querySelectorAll('.phone').forEach(p=>{const r=p.getBoundingClientRect();x0=Math.min(x0,r.left);y0=Math.min(y0,r.top);x1=Math.max(x1,r.right);y1=Math.max(y1,r.bottom)});
+ const dx=800-(x0+x1)/2, dy=1020-(y0+y1)/2; plane.style.left=(parseFloat(plane.style.left)+dx)+'px'; plane.style.top=(parseFloat(plane.style.top)+dy*1.3)+'px';}
+window.__ready=true;
+</script></body></html>

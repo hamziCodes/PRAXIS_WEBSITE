@@ -1,0 +1,93 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#4a2430}
+.abs{position:absolute}
+</style></head>
+<body>
+<svg width="1600" height="2000" viewBox="0 0 1600 2000">
+  <defs>
+    <filter id="velvet" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.008" numOctaves="5" seed="12" result="t"/>
+      <feDiffuseLighting in="t" surfaceScale="16" lighting-color="#f0a0ae" diffuseConstant="1.25"><feDistantLight azimuth="225" elevation="30"/></feDiffuseLighting>
+      <feComposite in2="SourceGraphic" operator="arithmetic" k1="1"/>
+    </filter>
+    <filter id="pile"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 .2  0 0 0 0 .05  0 0 0 0 .08  0 0 0 .35 0"/></filter>
+
+    <!-- blind emboss + paper tooth, lit by a low raking light -->
+    <filter id="emb" filterUnits="userSpaceOnUse" x="0" y="0" width="1400" height="2300" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.6" result="b2"/>
+      <feComposite in="b1" in2="b2" operator="arithmetic" k2=".6" k3=".5" result="b"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".06 .9" numOctaves="3" seed="9" result="fib"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3" result="tooth"/>
+      <feComposite in="fib" in2="tooth" operator="arithmetic" k2=".035" k3=".045" result="tex"/>
+      <feComposite in="b" in2="tex" operator="arithmetic" k2="1" k3="1" result="bump"/>
+      <feDiffuseLighting in="bump" surfaceScale="4.2" diffuseConstant="1" lighting-color="#fff4e4" result="lit"><feDistantLight azimuth="215" elevation="24"/></feDiffuseLighting>
+      <feFlood flood-color="#fff1dc" result="pc"/>
+      <feComposite in="lit" in2="pc" operator="arithmetic" k1="1.12" k3=".3" result="out"/>
+    </filter>
+    <linearGradient id="rake" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#3a1a22" stop-opacity=".35"/></linearGradient>
+    <linearGradient id="foil" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6322"/><stop offset=".3" stop-color="#f3d995"/><stop offset=".5" stop-color="#b8903f"/><stop offset=".75" stop-color="#fff0c0"/><stop offset="1" stop-color="#8a6322"/></linearGradient>
+    <filter id="deckle"><feTurbulence type="fractalNoise" baseFrequency=".08" numOctaves="3" seed="6"/><feDisplacementMap in="SourceGraphic" scale="9"/></filter>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%"><feGaussianBlur in="SourceAlpha" stdDeviation="22"/><feOffset dx="34" dy="40"/><feComponentTransfer><feFuncA type="linear" slope=".7"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="dof"><feGaussianBlur stdDeviation="5"/></filter>
+    <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0bf"/><stop offset=".25" stop-color="#e2be6e"/><stop offset=".6" stop-color="#9a6f28"/><stop offset=".85" stop-color="#d7b060"/><stop offset="1" stop-color="#5a3c12"/></linearGradient>
+    <linearGradient id="lacq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a0e14"/><stop offset=".2" stop-color="#8a4a5a"/><stop offset=".35" stop-color="#5a2e3a"/><stop offset="1" stop-color="#140306"/></linearGradient>
+  </defs>
+
+  <rect width="1600" height="2000" fill="#6a3443" filter="url(#velvet)"/>
+  <rect width="1600" height="2000" fill="#5A2E3A" opacity=".3"/>
+  <rect width="1600" height="2000" filter="url(#pile)"/>
+
+  <!-- sheet -->
+  <g transform="translate(140 -120) rotate(-4 650 1100)" filter="url(#shadow)">
+    <g filter="url(#deckle)">
+      <clipPath id="sheet"><rect x="0" y="0" width="1300" height="2300"/></clipPath>
+    </g>
+    <g clip-path="url(#sheet)">
+      <!-- emboss source shapes (only their alpha is used) -->
+      <g filter="url(#emb)">
+        <rect x="0" y="0" width="1300" height="2300" fill="#fff" fill-opacity="0.001"/>
+        <g transform="translate(410 300) scale(4.8)" fill="none" stroke="#000" stroke-width="5.5" stroke-linecap="round">
+          <path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/>
+        </g>
+        <text x="650" y="1040" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="230" letter-spacing="-3">Aurel</text>
+        <circle cx="650" cy="1150" r="8"/>
+      </g>
+      <rect x="0" y="0" width="1300" height="2300" fill="url(#rake)"/>
+      <!-- foil stamped property line -->
+      <text x="650" y="1230" text-anchor="middle" font-family="Georgia" font-size="40" letter-spacing="22" fill="url(#foil)">PERA · İSTANBUL</text>
+      <text x="650" y="1229" text-anchor="middle" font-family="Georgia" font-size="40" letter-spacing="22" fill="none" stroke="rgba(255,250,230,.4)" stroke-width=".8">PERA · İSTANBUL</text>
+      <!-- printed in wine ink -->
+      <text x="650" y="1330" text-anchor="middle" font-family="Garamond" font-style="italic" font-size="50" fill="#5A2E3A">Seven houses. One host.</text>
+      <line x1="200" y1="1440" x2="1100" y2="1440" stroke="#8a6a55" stroke-opacity=".4" stroke-width="2"/>
+      <g font-family="Georgia" font-size="25" letter-spacing="7" fill="#5e4334">
+        <text x="200" y="1500">ASMALIMESCIT SK. 12</text><text x="1100" y="1500" text-anchor="end">+90 212 245 07 70</text>
+        <text x="200" y="1545">BEYOĞLU 34430</text><text x="1100" y="1545" text-anchor="end">PERA@AURELHOTELS.COM</text>
+      </g>
+      <g font-family="Garamond" font-size="46" fill="#3a2a2c">
+        <text x="200" y="1720" font-family="Georgia" font-size="26" letter-spacing="8" fill="#5e4334">14 KASIM 2026</text>
+        <text x="200" y="1830">Dear Ms. Laurent,</text>
+        <text x="200" y="1915">Welcome back to the house. Your room on the</text>
+        <text x="200" y="1985">second floor looks over Asmalımescit, and the</text>
+        <text x="200" y="2055">radiator has been warmed since noon.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- fountain pen, foreground, slightly out of focus -->
+  <g transform="translate(860 1610) rotate(-31)" filter="url(#dof)">
+    <ellipse cx="420" cy="70" rx="470" ry="34" fill="#12030a" opacity=".55"/>
+    <rect x="0" y="0" width="520" height="66" rx="33" fill="url(#lacq)"/>
+    <rect x="500" y="-2" width="40" height="70" fill="url(#brass)"/>
+    <rect x="540" y="4" width="300" height="58" rx="6" fill="url(#lacq)"/>
+    <rect x="60" y="-14" width="330" height="20" rx="10" fill="url(#brass)"/>
+    <path d="M840 8 L960 33 L840 58 Z" fill="url(#brass)"/>
+  </g>
+  <!-- warm light falloff -->
+  <rect width="1600" height="2000" fill="url(#vg)"/>
+  <radialGradient id="vg" cx="38%" cy="32%" r="85%"><stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#12030a" stop-opacity=".6"/></radialGradient>
+</svg>
+</body></html>

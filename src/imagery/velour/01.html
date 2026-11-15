@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Italic.otf');font-weight:400;font-style:italic}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Light.otf');font-weight:300}
+
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:2000px;overflow:hidden;background:#2a0f18}svg{display:block}</style></head><body><svg width="1600" height="2000"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .5 -.12"/></filter>
+<filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".5" numOctaves="3" seed="6"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .38  0 0 0 0 .32  0 0 0 .35 -.05"/></filter>
+<filter id="b40"><feGaussianBlur stdDeviation="40"/></filter><filter id="b20"><feGaussianBlur stdDeviation="20"/></filter><filter id="b8"><feGaussianBlur stdDeviation="8"/></filter><filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
+<radialGradient id="vig" cx=".45" cy=".4" r=".85"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+
+
+<filter id="vel" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.0052 0.0011" numOctaves="3" seed="41" result="n"/>
+<feDiffuseLighting in="n" surfaceScale="30" diffuseConstant="1.15" lighting-color="#fff" result="L"><feDistantLight azimuth="220" elevation="30"/></feDiffuseLighting>
+<feComponentTransfer in="L" result="C"><feFuncR type="table" tableValues="0.03 0.10 0.22 0.34 0.52 0.86"/><feFuncG type="table" tableValues="0.01 0.03 0.07 0.12 0.24 0.62"/><feFuncB type="table" tableValues="0.02 0.05 0.11 0.18 0.31 0.68"/></feComponentTransfer>
+<feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="48" result="g"/>
+<feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.9 0.62" result="ga"/>
+<feComposite in="ga" in2="C" operator="atop" result="CG"/>
+<feMerge><feMergeNode in="C"/><feMergeNode in="CG"/></feMerge>
+</filter>
+
+<filter id="lin" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.012 0.002" numOctaves="3" seed="9" result="n"/>
+<feDiffuseLighting in="n" surfaceScale="10" diffuseConstant="1.15" lighting-color="#fff" result="L"><feDistantLight azimuth="235" elevation="45"/></feDiffuseLighting>
+<feComponentTransfer in="L" result="C"><feFuncR type="table" tableValues="0.25 0.45 0.62 0.76 0.86 0.95"/><feFuncG type="table" tableValues="0.12 0.24 0.38 0.52 0.64 0.80"/><feFuncB type="table" tableValues="0.15 0.28 0.42 0.56 0.68 0.83"/></feComponentTransfer>
+<feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="16" result="g"/>
+<feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.9 0.62" result="ga"/>
+<feComposite in="ga" in2="C" operator="atop" result="CG"/>
+<feMerge><feMergeNode in="C"/><feMergeNode in="CG"/></feMerge>
+</filter>
+<pattern id="wv" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="3" fill="#efe4d6"/><rect y="0" width="4" height="1.3" fill="#e2d3c1"/><rect x="0" y="0" width="1" height="3" fill="#e2d3c1" opacity=".35"/></pattern><pattern id="wv2" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="3" fill="#f4ece2"/><rect y="0" width="4" height="1.3" fill="#e6dacb"/><rect x="0" y="0" width="1" height="3" fill="#e6dacb" opacity=".35"/></pattern>
+<filter id="bend" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".004" numOctaves="2" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="22" xChannelSelector="R" yChannelSelector="G"/></filter>
+<linearGradient id="tagL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#3a1a22" stop-opacity=".22"/></linearGradient>
+<linearGradient id="labL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient>
+<linearGradient id="cord" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9c5d6d"/><stop offset=".5" stop-color="#e2b1be"/><stop offset="1" stop-color="#8a4f5f"/></linearGradient>
+</defs>
+<g transform="rotate(-14 800 1000)"><rect x="-500" y="-500" width="2600" height="3000" filter="url(#vel)"/></g>
+<!-- lining strip (satin) along top, with seam -->
+<g transform="rotate(-6 800 300)">
+ <rect x="-200" y="80" width="2000" height="330" filter="url(#lin)"/>
+ <rect x="-200" y="80" width="2000" height="330" fill="#4A1C2C" opacity=".25"/>
+ <rect x="-200" y="400" width="2000" height="30" fill="#000" opacity=".5" filter="url(#b8)"/>
+ <path d="M-200 395 H1800" stroke="#2a0b14" stroke-width="3" stroke-dasharray="9 6"/>
+ <!-- woven brand label sewn into lining -->
+ <g filter="url(#bend)">
+  <rect x="470" y="168" width="660" height="196" fill="#000" opacity=".45" filter="url(#b8)" transform="translate(8 10)"/>
+  <rect x="470" y="168" width="660" height="196" fill="url(#wv)"/>
+  <rect x="470" y="168" width="40" height="196" fill="#d6c6b2"/><rect x="1090" y="168" width="40" height="196" fill="#d6c6b2"/>
+  <path d="M492 172 V360 M1108 172 V360" stroke="#4A1C2C" stroke-width="3" stroke-dasharray="7 5"/>
+  <text x="800" y="282" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="82" letter-spacing="10" fill="#4A1C2C">VELOUR</text>
+  <text x="800" y="330" text-anchor="middle" font-family="NM" font-weight="500" font-size="19" letter-spacing="9" fill="#4A1C2C">LONDON</text>
+  <rect x="470" y="168" width="660" height="196" fill="url(#labL)"/>
+ </g>
+</g>
+<!-- care label hanging from seam -->
+<g transform="rotate(4 520 420)" filter="url(#bend)">
+ <rect x="410" y="400" width="230" height="560" fill="#000" opacity=".45" filter="url(#b8)" transform="translate(14 16)"/>
+ <rect x="410" y="400" width="230" height="560" fill="url(#wv2)"/>
+ <path d="M410 950 l10 10 l10 -10 l10 10 l10 -10 l10 10 l10 -10 l10 10 l10 -10 l10 10 l10 -10 l10 10 l10 -10 l10 10 l10 -10 l10 10 l10 -10 l10 10 l10 -10 l10 10 l10 -10 l10 10 l10 -10 V940 H410Z" fill="#f4ece2"/>
+ <g font-family="Arial" fill="#4A1C2C" font-size="17" letter-spacing="1.2">
+  <text x="525" y="470" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="26" letter-spacing="3">VELOUR</text>
+  <text x="430" y="530">100% COTTON</text><text x="430" y="554">VELVET</text>
+  <text x="430" y="596">LINING</text><text x="430" y="620">100% CUPRO</text>
+  <text x="430" y="662">MADE IN</text><text x="430" y="686">LONDON E8</text>
+  <text x="430" y="728" font-size="15">DRY CLEAN ONLY</text><text x="430" y="750" font-size="15">DO NOT TUMBLE</text>
+ </g>
+ <g fill="none" stroke="#4A1C2C" stroke-width="2.6">
+  <path d="M432 790 h34 l-4 26 h-26z M429 800 q8 -6 16 0 q8 6 16 0"/><path d="M430 784 L470 822 M470 784 L430 822"/>
+  <circle cx="512" cy="804" r="18"/><text x="512" y="811" text-anchor="middle" font-family="Arial" font-size="18" fill="#4A1C2C" stroke="none">P</text>
+  <path d="M548 818 h44 l-6 -20 h-26 q-12 0 -12 20z"/><circle cx="571" cy="810" r="2.5" fill="#4A1C2C"/>
+  <rect x="604" y="788" width="30" height="30"/><circle cx="619" cy="803" r="11"/><path d="M604 788 L634 818 M634 788 L604 818"/>
+ </g>
+ <text x="525" y="880" text-anchor="middle" font-family="Arial" font-size="15" fill="#4A1C2C" letter-spacing="1">RN 087 · AW DROP 01</text>
+ <rect x="410" y="400" width="230" height="560" fill="url(#labL)"/>
+</g>
+<!-- cord from seam to tag -->
+<path d="M720 430 C 760 600, 700 760, 900 860" stroke="#000" stroke-opacity=".4" stroke-width="10" fill="none" filter="url(#b8)" transform="translate(18 22)"/>
+<path d="M720 430 C 760 600, 700 760, 900 860" stroke="url(#cord)" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M720 430 C 760 600, 700 760, 900 860" stroke="#fff" stroke-opacity=".25" stroke-width="2" fill="none" stroke-dasharray="3 5"/>
+<!-- hang tag -->
+<g transform="rotate(-9 1080 1300)">
+ <rect x="826" y="850" width="560" height="900" rx="10" fill="#000" opacity=".55" filter="url(#b20)" transform="translate(30 42)"/>
+ <rect x="826" y="850" width="560" height="900" rx="10" fill="#F3E7DD"/>
+ <rect x="826" y="850" width="560" height="900" rx="10" filter="url(#paper)"/>
+ <circle cx="1106" cy="930" r="26" fill="#c9a87a"/><circle cx="1106" cy="930" r="22" fill="none" stroke="#8a6a3e" stroke-width="3"/><circle cx="1106" cy="930" r="15" fill="#3a1520"/>
+ <text x="1106" y="1090" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="88" letter-spacing="5" fill="#4A1C2C">VELOUR</text>
+ <g transform="translate(1106 1180)"><circle r="40" fill="none" stroke="#D9A5B3" stroke-width="5"/><circle r="21" fill="none" stroke="#D9A5B3" stroke-width="5"/><circle cy="-40" r="5" fill="#D9A5B3"/></g>
+ <line x1="880" x2="1332" y1="1270" y2="1270" stroke="#4A1C2C" stroke-opacity=".25"/>
+ <g font-family="NM" fill="#4A1C2C">
+  <text x="880" y="1324" font-size="34" font-weight="500">The Long Coat</text>
+  <text x="880" y="1366" font-size="24" opacity=".8">Cotton velvet · Oxblood</text>
+  <text x="880" y="1440" font-size="17" letter-spacing="2" font-weight="500" opacity=".7">SIZE</text><text x="880" y="1478" font-size="30">UK 10</text>
+  <text x="1110" y="1440" font-size="17" letter-spacing="2" font-weight="500" opacity=".7">PIECE</text>
+  <text x="880" y="1560" font-size="17" letter-spacing="2" font-weight="500" opacity=".7">DROP 01 · AUTUMN / WINTER</text>
+  <text x="880" y="1680" font-size="30" font-style="italic">Made slow.</text>
+  <text x="1332" y="1680" text-anchor="end" font-size="30">£385</text>
+ </g>
+ <text x="1110" y="1484" font-family="Segoe Print" font-size="40" fill="#3a3a48" opacity=".85">087</text><text x="1218" y="1484" font-family="NM" font-size="30" fill="#4A1C2C">/ 300</text>
+ <rect x="826" y="850" width="560" height="900" rx="10" fill="url(#tagL)"/>
+</g>
+<rect width="1600" height="2000" fill="url(#vig)"/>
+<rect width="1600" height="2000" filter="url(#grain)" opacity=".12"/>
+</svg></body></html>

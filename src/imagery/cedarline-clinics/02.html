@@ -1,0 +1,193 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Cedarline Clinics — Leslieville storefront</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-weight:700;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf)}
+html,body{margin:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#6b5144}
+svg{position:absolute;left:0;top:0}
+.t{position:absolute;font-family:NM}
+</style></head>
+<body>
+<svg width="2400" height="1350" id="s">
+<defs>
+  <pattern id="brick" width="96" height="44" patternUnits="userSpaceOnUse">
+    <rect width="96" height="44" fill="#c9c1b5"/>
+    <rect x="1.5" y="1.5" width="93" height="19" fill="#9a4f3a"/><rect x="-46.5" y="23.5" width="93" height="19" fill="#8e4634"/><rect x="49.5" y="23.5" width="93" height="19" fill="#a35a42"/>
+  </pattern>
+  <filter id="bv" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".035 .09" numOctaves="3" seed="3" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .2 0 0 0 0 .1 0 0 0 0 .07 0 0 0 1.5 -.55"/>
+  </filter>
+  <filter id="soot" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".004 .02" numOctaves="4" seed="8"/><feColorMatrix type="matrix" values="0 0 0 0 .15 0 0 0 0 .12 0 0 0 0 .1 0 0 0 1.2 -.4"/></filter>
+  <filter id="conc" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".5 .9" numOctaves="2" seed="5"/><feColorMatrix type="matrix" values="0 0 0 0 .35 0 0 0 0 .35 0 0 0 0 .33 0 0 0 -1.2 .9"/></filter>
+  <linearGradient id="refl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dfe5e6" stop-opacity=".55"/><stop offset=".35" stop-color="#b9c4c7" stop-opacity=".18"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".32"/><stop offset=".58" stop-color="#b9c4c7" stop-opacity=".1"/><stop offset="1" stop-color="#6d7a80" stop-opacity=".3"/></linearGradient>
+  <linearGradient id="inside" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9e4d6"/><stop offset=".55" stop-color="#ddd5c2"/><stop offset="1" stop-color="#b7ab92"/></linearGradient>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfd5d6"/><stop offset="1" stop-color="#eef0ee"/></linearGradient>
+  <linearGradient id="walk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9a7a1"/><stop offset="1" stop-color="#c3c1bb"/></linearGradient>
+  <filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
+  <filter id="b8" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="8"/></filter>
+  <filter id="frost" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="1" seed="2"/><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .18 0"/></filter>
+</defs>
+
+<!-- brick facade -->
+<rect width="2400" height="1060" fill="url(#brick)"/>
+<rect width="2400" height="1060" filter="url(#bv)" opacity=".55"/>
+<rect width="2400" height="1060" filter="url(#soot)" opacity=".35"/>
+<!-- upper storey windows (sash), partially visible -->
+<g>
+  <rect x="440" y="-80" width="300" height="140" fill="#3a3d3e"/><rect x="430" y="58" width="320" height="20" fill="#d8d2c6"/>
+  <rect x="1660" y="-80" width="300" height="140" fill="#3a3d3e"/><rect x="1650" y="58" width="320" height="20" fill="#d8d2c6"/>
+  <rect x="440" y="-80" width="300" height="140" fill="url(#refl)"/><rect x="1660" y="-80" width="300" height="140" fill="url(#refl)"/>
+</g>
+<!-- cornice above the shopfront -->
+<rect x="230" y="118" width="1940" height="26" fill="#2b2e2c"/>
+<rect x="230" y="140" width="1940" height="10" fill="#000" opacity=".25"/>
+<!-- fascia sign -->
+<rect x="250" y="150" width="1900" height="168" fill="#1E5631"/>
+<rect x="250" y="150" width="1900" height="168" fill="url(#refl)" opacity=".25"/>
+<rect x="250" y="312" width="1900" height="8" fill="#000" opacity=".25"/>
+<g transform="translate(330,178)">
+  <path d="M26 3 C 8 18 3 32 3 40 C 3 56 14 66 26 69 C 38 66 49 56 49 40 C 49 32 44 18 26 3Z" transform="scale(1.6)" fill="none" stroke="#A4DE02" stroke-width="5.5"/>
+  <path d="M41.6 26 V93" stroke="#A4DE02" stroke-width="9" stroke-linecap="round"/>
+</g>
+<text x="440" y="270" font-family="NM" font-weight="700" font-size="96" fill="#fff" letter-spacing="-3">Cedarline Clinics</text>
+<text x="2090" y="226" text-anchor="end" font-family="NM" font-weight="500" font-size="30" fill="#A4DE02" letter-spacing="3">LESLIEVILLE</text>
+<text x="2090" y="272" text-anchor="end" font-family="NM" font-size="28" fill="#dfeedd">Family &amp; walk-in care</text>
+<!-- shopfront frame -->
+<rect x="250" y="320" width="1900" height="740" fill="#1d201f"/>
+<!-- interiors seen through the glass -->
+<g id="int">
+  <rect x="278" y="346" width="782" height="690" fill="url(#inside)"/>
+  <rect x="1440" y="346" width="682" height="690" fill="url(#inside)"/>
+  <rect x="1100" y="430" width="300" height="606" fill="url(#inside)"/>
+  <!-- left interior: waiting chairs, window display screen -->
+  <g filter="url(#b3)">
+    <rect x="278" y="346" width="782" height="200" fill="#f4f0e4"/>
+    <rect x="300" y="800" width="740" height="236" fill="#c8bda4"/>
+    <g fill="#3e6b4c"><rect x="320" y="760" width="120" height="90" rx="12"/><rect x="460" y="760" width="120" height="90" rx="12"/><rect x="600" y="760" width="120" height="90" rx="12"/></g>
+    <g fill="#2d5038"><rect x="320" y="840" width="120" height="30" rx="6"/><rect x="460" y="840" width="120" height="30" rx="6"/><rect x="600" y="840" width="120" height="30" rx="6"/></g>
+    <circle cx="930" cy="420" r="30" fill="#fffbe8" opacity=".9"/><circle cx="560" cy="400" r="30" fill="#fffbe8" opacity=".9"/>
+  </g>
+  <!-- right interior: reception desk and wayfinding wall -->
+  <g filter="url(#b3)">
+    <rect x="1440" y="346" width="682" height="420" fill="#eef0ea"/>
+    <rect x="1500" y="800" width="560" height="236" fill="#d9cdb5"/><rect x="1500" y="790" width="560" height="22" fill="#f4efe4"/>
+    <text x="1520" y="520" font-family="NM" font-weight="700" font-size="44" fill="#1E5631">Reception</text>
+    <text x="1520" y="580" font-family="NM" font-size="30" fill="#1E5631">Exam rooms 1–6 →</text>
+    <text x="1520" y="626" font-family="NM" font-size="30" fill="#1E5631">Lab &amp; vaccines ↑</text>
+    <rect x="1950" y="660" width="70" height="140" rx="6" fill="#3e6b4c"/>
+    <circle cx="1985" cy="640" r="60" fill="#4f7d4b"/><circle cx="2030" cy="600" r="40" fill="#3d6a3e"/>
+    <circle cx="1700" cy="400" r="30" fill="#fffbe8"/>
+  </g>
+  <!-- door interior: corridor -->
+  <g filter="url(#b3)"><rect x="1150" y="460" width="200" height="560" fill="#cfc6b2"/><rect x="1190" y="500" width="120" height="380" fill="#f2efe6"/><rect x="1150" y="980" width="200" height="40" fill="#a69b83"/></g>
+</g>
+<g fill="#1c241e" opacity=".5"><rect x="278" y="346" width="782" height="690"/><rect x="1440" y="346" width="682" height="690"/><rect x="1100" y="430" width="300" height="606"/></g>
+<!-- window display screen: live wait time (inside, behind glass) -->
+<g transform="translate(400,740)">
+  <rect x="0" y="0" width="300" height="190" rx="8" fill="#0f1411"/>
+  <rect x="10" y="10" width="280" height="170" rx="4" fill="#1E5631"/>
+  <text x="28" y="48" font-family="NM" font-weight="500" font-size="17" fill="#d6ecbd" letter-spacing="2">WALK-IN WAIT NOW</text>
+  <text x="26" y="126" font-family="NM" font-weight="700" font-size="88" fill="#fff" letter-spacing="-3">12<tspan font-size="36" letter-spacing="0"> min</tspan></text>
+  <circle cx="34" cy="158" r="6" fill="#A4DE02"/><text x="48" y="164" font-family="NM" font-size="15" fill="#d6ecbd">Live · next slot 10:40</text>
+  <rect x="140" y="190" width="20" height="80" fill="#222"/>
+</g>
+<!-- mullions -->
+<g fill="#26302a">
+  <rect x="250" y="320" width="28" height="740"/><rect x="1060" y="320" width="40" height="740"/><rect x="1400" y="320" width="40" height="740"/><rect x="2122" y="320" width="28" height="740"/>
+  <rect x="250" y="320" width="1900" height="26"/><rect x="1060" y="410" width="380" height="24"/><rect x="250" y="1030" width="1900" height="30"/>
+</g>
+<!-- glass reflections (overcast street) -->
+<g opacity=".55">
+  <rect x="278" y="346" width="782" height="684" fill="url(#refl)"/>
+  <rect x="1440" y="346" width="682" height="684" fill="url(#refl)"/>
+  <rect x="1100" y="434" width="300" height="596" fill="url(#refl)"/>
+  <path d="M278 346 L520 346 L278 700Z" fill="#fff" opacity=".12"/>
+  <path d="M1440 346 L1720 346 L1440 760Z" fill="#fff" opacity=".1"/>
+  <!-- reflected street: parked car silhouette, trees -->
+  <path d="M278 980 C 320 940 420 930 520 930 C 600 930 680 950 720 980 L720 1030 L278 1030Z" fill="#3b4246" opacity=".22"/>
+  <path d="M1440 950 C 1520 920 1640 910 1760 930 L1800 1030 L1440 1030Z" fill="#3b4246" opacity=".2"/>
+  <path d="M1880 346 C 1900 420 1940 500 1960 600 C 1980 700 2000 760 2010 1030" stroke="#3b4246" stroke-width="14" fill="none" opacity=".12"/>
+</g>
+<!-- frosted privacy band with leaf pattern (manifestation) -->
+<g id="band"></g>
+<!-- window vinyl, left -->
+<g font-family="NM" fill="#fff">
+  <text x="330" y="440" font-weight="700" font-size="64" letter-spacing="-2">Can someone</text>
+  <text x="330" y="508" font-weight="700" font-size="64" letter-spacing="-2">see you today?</text>
+  <text x="332" y="560" font-size="28" fill="#f2f7ea">Probably. Check the wait at all 9 clinics</text>
+  <text x="332" y="596" font-size="28" fill="#f2f7ea">at <tspan font-weight="700">cedarline.ca</tspan></text>
+</g>
+<!-- window vinyl, right: services list -->
+<g font-family="NM" fill="#fff">
+  <text x="1480" y="420" font-weight="500" font-size="24" letter-spacing="3" fill="#e6f2d7">IN THIS CLINIC</text>
+  <text x="1480" y="466" font-weight="700" font-size="34">Family doctors · Walk-in</text>
+  <text x="1480" y="508" font-weight="700" font-size="34">Flu &amp; COVID shots · Lab</text>
+  <text x="1480" y="550" font-weight="700" font-size="34">Children's checkups</text>
+</g>
+<!-- door: transom numerals + door vinyl -->
+<text x="1250" y="398" text-anchor="middle" font-family="NM" font-weight="700" font-size="54" fill="#fff" letter-spacing="2">1015</text>
+<g font-family="NM" fill="#fff" text-anchor="middle">
+  <g transform="translate(1226,470) scale(.62)"><path d="M26 3 C 8 18 3 32 3 40 C 3 56 14 66 26 69 C 38 66 49 56 49 40 C 49 32 44 18 26 3Z" fill="none" stroke="#fff" stroke-width="6"/><path d="M26 16 V58" stroke="#fff" stroke-width="6" stroke-linecap="round"/></g>
+  <text x="1250" y="548" font-weight="700" font-size="26">Cedarline Clinics</text>
+  <text x="1250" y="580" font-size="18" fill="#eef4e8">Leslieville</text>
+  <text x="1250" y="636" font-weight="500" font-size="15" letter-spacing="2.4" fill="#eef4e8">HOURS</text>
+  <g font-size="18"><text x="1250" y="666">Mon–Fri  8:00–20:00</text><text x="1250" y="692">Sat  9:00–16:00</text><text x="1250" y="718">Sun  10:00–14:00</text></g>
+  <text x="1250" y="770" font-size="17" fill="#eef4e8">Walk in or book ahead</text>
+  <text x="1250" y="794" font-weight="700" font-size="18">cedarline.ca</text>
+</g>
+<!-- door hardware -->
+<rect x="1356" y="640" width="14" height="300" rx="7" fill="#c8ccc9"/><rect x="1358" y="640" width="4" height="300" rx="2" fill="#fff" opacity=".7"/>
+<rect x="1340" y="700" width="20" height="12" fill="#9fa5a2"/><rect x="1340" y="870" width="20" height="12" fill="#9fa5a2"/>
+<g transform="translate(1160,880)"><rect width="66" height="66" rx="8" fill="#1f5fa8"/><g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"><circle cx="30" cy="40" r="13"/><path d="M28 18 V32 H42 L48 48"/></g><circle cx="28" cy="12" r="5" fill="#fff"/></g>
+<text x="1236" y="910" font-family="NM" font-size="17" fill="#fff">Step-free</text><text x="1236" y="934" font-family="NM" font-size="17" fill="#fff">entrance</text>
+<text x="1196" y="990" font-family="NM" font-weight="700" font-size="24" fill="#fff" letter-spacing="3">PUSH</text>
+<!-- blade sign projecting from the wall (left) -->
+<g transform="translate(70,330)">
+  <rect x="0" y="0" width="16" height="250" fill="#2b2e2c"/>
+  <rect x="16" y="20" width="120" height="10" fill="#2b2e2c"/><rect x="16" y="210" width="120" height="10" fill="#2b2e2c"/>
+  <path d="M60 30 L130 30 L130 210 L60 210Z" fill="#1E5631"/>
+  <path d="M60 30 L130 30 L130 210 L60 210Z" fill="url(#refl)" opacity=".3"/>
+  <g transform="translate(80,80) scale(.6)"><path d="M26 3 C 8 18 3 32 3 40 C 3 56 14 66 26 69 C 38 66 49 56 49 40 C 49 32 44 18 26 3Z" fill="none" stroke="#A4DE02" stroke-width="7"/><path d="M26 16 V58" stroke="#A4DE02" stroke-width="7" stroke-linecap="round"/></g>
+  <text x="95" y="180" text-anchor="middle" font-family="NM" font-weight="700" font-size="34" fill="#fff">+</text>
+</g>
+<!-- sidewalk -->
+<rect y="1060" width="2400" height="290" fill="url(#walk)"/>
+<rect y="1060" width="2400" height="290" filter="url(#conc)" opacity=".5"/>
+<rect y="1060" width="2400" height="14" fill="#7f7d78"/>
+<g id="joints" stroke="#7c7a74" stroke-width="3" opacity=".7"></g>
+<!-- soft ambient shadow at the wall base -->
+<rect y="1060" width="2400" height="60" fill="#2e2a26" opacity=".25" filter="url(#b8)"/>
+<!-- planters either side of the door -->
+<g id="pl"></g>
+<!-- maple leaves on the pavement -->
+<g id="leaves"></g>
+<!-- overcast light falloff -->
+<rect width="2400" height="1350" fill="#e9eef0" opacity=".06"/>
+</svg>
+<script>
+const NS='http://www.w3.org/2000/svg';let s=5;const R=()=>{s=(s*16807)%2147483647;return s/2147483647};
+function E(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+// frosted band at 1.2-1.5 m with small leaf manifestation
+const b=document.getElementById('band');
+[[278,1060],[1440,2122],[1100,1400]].forEach(([x0,x1])=>{E('rect',{x:x0,y:650-(x0==1100?-170:0),width:x1-x0,height:70,fill:'#fff',opacity:.42},b);
+  for(let x=x0+20;x<x1-10;x+=46){const y=685-(x0==1100?-170:0);E('path',{d:`M${x} ${y-14} c -8 7 -10 13 -10 17 c 0 6 5 10 10 11 c 5 -1 10 -5 10 -11 c 0 -4 -2 -10 -10 -17Z`,fill:'none',stroke:'#1E5631','stroke-width':2.2,opacity:.75},b)}});
+// sidewalk joints converging to a vanishing point above the door
+const j=document.getElementById('joints'),vx=1250,vy=520;
+for(let i=-12;i<=12;i++){const xb=1250+i*230;const t=(1060-vy)/(1350-vy);const xt=vx+(xb-vx)*t;E('path',{d:`M${xt} 1060 L${xb} 1350`},j)}
+[1110,1185,1290].forEach(y=>E('path',{d:`M0 ${y} L2400 ${y}`},j));
+// planters
+const p=document.getElementById('pl');
+[[880,1060],[1620,1060]].forEach(([x,y])=>{E('ellipse',{cx:x,cy:y+30,rx:120,ry:16,fill:'#2e2a26',opacity:.3,filter:'url(#b8)'},p);
+  E('rect',{x:x-90,y:y-150,width:180,height:180,rx:6,fill:'#2b2e2c'},p);E('rect',{x:x-90,y:y-150,width:30,height:180,fill:'#fff',opacity:.08},p);
+  for(let i=0;i<40;i++){const a=R()*Math.PI,r=40+R()*70;E('path',{d:`M${x} ${y-150} q ${Math.cos(a)*r*.5} ${-r*.9} ${Math.cos(a)*r} ${-Math.sin(a)*r*1.4}`,stroke:['#4f6e3a','#6b8a46','#3d5a2e','#8a8f4c'][i%4],'stroke-width':4+R()*3,fill:'none','stroke-linecap':'round'},p)}});
+// fallen maple leaves
+const lv=document.getElementById('leaves');
+for(let i=0;i<22;i++){const x=R()*2400,y=1090+R()*250,sc=.5+R()*.6,rot=R()*360;const g=E('g',{transform:`translate(${x} ${y}) rotate(${rot}) scale(${sc} ${sc*.45})`},lv);
+  E('path',{d:'M0 -30 L6 -14 L20 -20 L14 -4 L28 0 L12 6 L16 22 L0 12 L-16 22 L-12 6 L-28 0 L-14 -4 L-20 -20 L-6 -14Z',fill:['#b5482a','#c9762d','#8f3a22','#d29a3a'][i%4]},g);
+  E('path',{d:'M0 12 L0 34',stroke:'#6b3a20','stroke-width':2},g)}
+</script>
+</body></html>

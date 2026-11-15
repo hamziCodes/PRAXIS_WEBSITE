@@ -1,0 +1,135 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Cedarline Clinics — confirmation and reminder</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-weight:700;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf)}
+html,body{margin:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#e6e9e2;perspective:3600px;perspective-origin:800px 400px}
+.plane{position:absolute;left:-700px;top:-900px;width:3000px;height:3500px;transform-origin:50% 50%;transform:rotateX(30deg) translateZ(-640px);transform-style:preserve-3d}
+.plane svg.tex{position:absolute;inset:0}
+.ph{position:absolute;width:560px;height:1170px;border-radius:84px;background:#1b1c1e;box-shadow:0 0 0 4px #7d8185,0 0 0 7px #2c2d2f,30px 50px 50px rgba(40,50,40,.35),8px 12px 10px rgba(40,50,40,.25);transform-style:preserve-3d}
+.ph .sh{display:none;position:absolute;inset:0;border-radius:84px;background:rgba(40,45,35,.55);filter:blur(30px);transform:translate3d(30px,46px,-14px)}
+.ph .s{position:absolute;inset:20px;border-radius:66px;overflow:hidden;font-family:NM;transform:translateZ(1px)}
+.ph .isl{position:absolute;left:50%;top:20px;width:150px;height:42px;margin-left:-75px;background:#000;border-radius:24px;z-index:3}
+.ph .gl{position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.0) 30%,rgba(255,255,255,.16) 42%,rgba(255,255,255,0) 52%);z-index:4}
+.sb{display:flex;justify-content:space-between;padding:26px 46px 0;font:600 22px 'Segoe UI';position:relative;z-index:2}
+/* confirmation */
+.cf{background:#F4F6F1;color:#14301e;height:100%}
+.ck{width:92px;height:92px;border-radius:50%;background:#1E5631;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px #dfeec0}
+.card{background:#fff;border-radius:22px;padding:22px 24px;margin-top:22px}
+.kv{display:flex;gap:16px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #edf0ea;font:400 19px/1.35 NM;color:#56705f}
+.kv:last-child{border:0}
+.kv b{display:block;font:700 22px/1.25 NM;color:#14301e}
+.kv .ic{width:34px;flex:0 0 34px;height:34px;border-radius:10px;background:#e7f0dc;display:flex;align-items:center;justify-content:center}
+.bt{display:flex;gap:12px;margin-top:20px}
+.bt span{flex:1;text-align:center;border-radius:16px;padding:20px 0;font:500 20px NM}
+/* lock screen */
+.ls{height:100%;background:radial-gradient(120% 70% at 30% 20%,#9cb7b9 0%,#5f8287 35%,#2c4a52 70%,#1d3239 100%);color:#fff}
+.ls .day{text-align:center;font:500 24px 'Segoe UI';margin-top:48px;opacity:.9}
+.ls .time{text-align:center;font:600 150px/1 'Segoe UI';letter-spacing:-4px;margin-top:4px}
+.nt{margin:0 22px 14px;border-radius:30px;background:rgba(240,244,240,.78);backdrop-filter:blur(20px);color:#111;padding:20px 22px;font:400 20px/1.36 'Segoe UI'}
+.nt .h{display:flex;align-items:center;gap:12px;font:600 18px 'Segoe UI';color:#333}
+.nt .h i{width:36px;height:36px;border-radius:9px;background:#35c759;display:flex;align-items:center;justify-content:center}
+.nt .h span{margin-left:auto;font:400 17px 'Segoe UI';color:#666}
+.nt b{display:block;font:600 21px 'Segoe UI';margin:8px 0 2px}
+</style></head>
+<body>
+<div class="plane">
+  <svg class="tex" width="3000" height="3500">
+    <defs>
+      <filter id="terr" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="5" result="n"/>
+        <feColorMatrix in="n" type="matrix" values="0 0 0 0 .55 0 0 0 0 .6 0 0 0 0 .55 0 0 0 -16 9.2"/>
+      </filter>
+      <filter id="terr2" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="9"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 .2 0 0 0 0 .34 0 0 0 0 .24 0 0 0 -18 10.6"/>
+      </filter>
+      <linearGradient id="day" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf2" stop-opacity=".75"/><stop offset=".6" stop-color="#fffdf2" stop-opacity="0"/><stop offset="1" stop-color="#3a4a40" stop-opacity=".18"/></linearGradient>
+      <filter id="b" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="22"/></filter>
+    </defs>
+    <rect width="3000" height="3500" fill="#f1f2ee"/>
+    <rect width="3000" height="3500" filter="url(#terr)" opacity=".28"/>
+    <rect width="3000" height="3500" filter="url(#terr2)" opacity=".2"/>
+    <rect width="3000" height="3500" fill="url(#day)"/>
+    <!-- window mullion shadow -->
+    <g fill="#3d4a3f" opacity=".13" filter="url(#b)"><rect x="1800" y="-200" width="70" height="3400" transform="rotate(24 1800 1400)"/><rect x="-200" y="1950" width="3400" height="60" transform="rotate(-8 1500 1950)"/></g>
+  </svg>
+
+  <!-- health card -->
+  <div style="position:absolute;left:1100px;top:2140px;width:520px;height:330px;border-radius:22px;background:linear-gradient(135deg,#f6f8f4,#e9efe6);transform:translateZ(3px) rotate(-20deg);box-shadow:16px 26px 26px rgba(40,50,40,.3);font-family:NM;color:#1d3a2a;overflow:hidden">
+    <div style="position:absolute;left:0;right:0;top:0;height:86px;background:#2d6a45"></div>
+    <div style="position:absolute;left:30px;top:24px;font:700 26px NM;color:#fff">Health Card · Carte Santé</div>
+    <div style="position:absolute;left:30px;top:120px;font:700 34px 'Consolas',monospace;letter-spacing:2px">4417 · 902 · 618 · KT</div>
+    <div style="position:absolute;left:30px;top:180px;font:500 22px NM">TREMBLAY, JULIE M.</div>
+    <div style="position:absolute;left:30px;top:226px;font:400 16px NM;color:#5b7363">ISS 2024-03-11 · EXP 2029-07-22</div>
+    <div style="position:absolute;right:30px;top:120px;width:120px;height:150px;border-radius:10px;background:linear-gradient(180deg,#cfd8cc,#b7c3b4)"></div>
+  </div>
+
+  <!-- printed appointment card -->
+  <div style="position:absolute;left:720px;top:2170px;width:470px;height:280px;background:#fbfbf8;transform:translateZ(2px) rotate(8deg);box-shadow:12px 20px 22px rgba(40,50,40,.25);font-family:NM;color:#14301e;padding:30px 34px;box-sizing:border-box">
+    <div style="display:flex;align-items:center;gap:10px;font:700 24px NM;color:#1E5631;letter-spacing:-.02em"><svg width="20" height="28" viewBox="0 0 52 72"><path d="M26 3 C 8 18 3 32 3 40 C 3 56 14 66 26 69 C 38 66 49 56 49 40 C 49 32 44 18 26 3Z" fill="none" stroke="#1E5631" stroke-width="7"/><path d="M26 16 V58" stroke="#1E5631" stroke-width="7" stroke-linecap="round"/></svg>Cedarline Clinics</div>
+    <div style="font:500 15px NM;letter-spacing:.14em;color:#56705f;margin-top:22px">YOUR NEXT VISIT</div>
+    <div style="border-bottom:1.5px solid #c9d4c6;margin-top:52px;position:relative"><span style="position:absolute;left:0;bottom:4px;font:400 28px 'Segoe Print',cursive;color:#23408e">Thu 14 Nov · 10:40</span></div>
+    <div style="border-bottom:1.5px solid #c9d4c6;margin-top:44px;position:relative"><span style="position:absolute;left:0;bottom:4px;font:400 26px 'Segoe Print',cursive;color:#23408e">Dr. Haddad</span></div>
+  </div>
+
+  <!-- phone: confirmation -->
+  <div class="ph" style="left:820px;top:820px;transform:translateZ(12px) rotate(-7deg)">
+    <div class="sh"></div>
+    <div class="s cf">
+      <div class="isl"></div>
+      <div class="sb" style="color:#14301e"><span>10:22</span><span>●●● 5G ▮</span></div>
+      <div style="padding:46px 40px 0">
+        <div class="ck"><svg width="46" height="46" viewBox="0 0 24 24"><path d="M5 12.5 L10 17 L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div style="font:700 54px/1 NM;letter-spacing:-.03em;margin-top:34px">You're booked.</div>
+        <div style="font:400 21px/1.4 NM;color:#3c5446;margin-top:12px">We sent the details to (416) 555‑0148. No account needed.</div>
+        <div class="card">
+          <div class="kv"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E5631" stroke-width="2.4"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10 H21 M8 3 V7 M16 3 V7"/></svg></div><div><b>Thursday 14 November, 10:40</b>Today · about 15 minutes</div></div>
+          <div class="kv"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E5631" stroke-width="2.4"><circle cx="12" cy="8" r="4"/><path d="M4 21 C 5 15 19 15 20 21"/></svg></div><div><b>Dr. Amira Haddad</b>Family physician</div></div>
+          <div class="kv"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E5631" stroke-width="2.4"><path d="M12 22 C 6 15 4 12 4 9 a8 8 0 0 1 16 0 c0 3 -2 6 -8 13Z"/><circle cx="12" cy="9" r="3"/></svg></div><div><b>Leslieville clinic</b>1015 Queen St E, Toronto ON M4M 1K7 · step-free entrance</div></div>
+          <div class="kv"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E5631" stroke-width="2.4"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M7 11 H13 M7 15 H11"/></svg></div><div><b>Bring</b>Your OHIP card and a list of any medications</div></div>
+        </div>
+        <div class="bt"><span style="background:#1E5631;color:#fff">Get directions</span><span style="background:#fff;color:#1E5631;box-shadow:inset 0 0 0 2px #1E5631">Add to calendar</span></div>
+        <div style="text-align:center;font:400 18px NM;color:#56705f;margin-top:22px">Reference CL‑7Q4‑218 · <u>Change or cancel</u></div>
+      </div>
+    </div>
+    <div class="gl"></div>
+  </div>
+
+  <!-- phone: lock screen with the reminder text -->
+  <div class="ph" style="left:1580px;top:940px;transform:translateZ(12px) rotate(9deg)">
+    <div class="sh"></div>
+    <div class="s ls">
+      <div class="isl"></div>
+      <div class="sb"><span></span><span>●●● 5G ▮</span></div>
+      <div class="day">Thursday, November 14</div>
+      <div class="time">9:41</div>
+      <div style="height:300px"></div>
+      <div class="nt">
+        <div class="h"><i><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 4 C 6.5 4 3 7.4 3 11 c0 2 1 3.8 2.8 5 L5 20 l4-2.2 c1 .3 2 .4 3 .4 5.5 0 9-3.4 9-7.2 S17.5 4 12 4Z" fill="#fff"/></svg></i>MESSAGES<span>now</span></div>
+        <b>Cedarline Clinics</b>Reminder: your visit at Leslieville is today at 10:40 with Dr. Haddad. Walk-in wait right now: 12 min. Reply C to confirm or R to reschedule.
+      </div>
+      <div class="nt" style="opacity:.92;transform:scale(.96);margin-top:-4px">
+        <div class="h"><i><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 4 C 6.5 4 3 7.4 3 11 c0 2 1 3.8 2.8 5 L5 20 l4-2.2 c1 .3 2 .4 3 .4 5.5 0 9-3.4 9-7.2 S17.5 4 12 4Z" fill="#fff"/></svg></i>MESSAGES<span>Tue 6:12 PM</span></div>
+        <b>Cedarline Clinics</b>Booked: Thu Nov 14, 10:40, Leslieville, 1015 Queen St E. Bring your OHIP card.
+      </div>
+      <div style="position:absolute;left:50%;bottom:22px;width:190px;height:7px;margin-left:-95px;border-radius:4px;background:#fff;opacity:.9"></div>
+    </div>
+    <div class="gl"></div>
+  </div>
+
+  <!-- a sprig of eucalyptus on the counter -->
+  <svg style="position:absolute;left:330px;top:760px;transform:translateZ(6px) rotate(-30deg)" width="420" height="900" viewBox="0 0 420 900" id="euc"></svg>
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg',e=document.getElementById('euc');
+function E(t,a){const x=document.createElementNS(NS,t);for(const k in a)x.setAttribute(k,a[k]);e.appendChild(x);return x}
+E('path',{d:'M210 880 C 200 700 220 500 200 300 C 190 200 210 100 200 20',stroke:'#6f7f6a','stroke-width':5,fill:'none'});
+for(let i=0;i<13;i++){const y=60+i*62,sd=i%2?1:-1,r=34+i*2.6;
+  E('ellipse',{cx:205+sd*(r*.9),cy:y,rx:r,ry:r*.82,fill:i%3?'#9fb3a3':'#8ea595',transform:`rotate(${sd*25} ${205} ${y})`,opacity:.97});
+  E('ellipse',{cx:205+sd*(r*.9)+12,cy:y+16,rx:r,ry:r*.82,fill:'#3a4a3d',opacity:.12,transform:`rotate(${sd*25} ${205} ${y})`})}
+</script>
+</body></html>

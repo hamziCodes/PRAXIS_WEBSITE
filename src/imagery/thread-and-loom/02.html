@@ -1,0 +1,133 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Thread &amp; Loom — folded stacks in the mill</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+html,body{margin:0;padding:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#cbbfa9;color:#33302B}
+.abs{position:absolute}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs id="D">
+  <filter id="fuzz" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" seed="9"/><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -2.4 1.3"/></filter>
+  <filter id="woodg" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.002 0.06" numOctaves="4" seed="3"/><feColorMatrix type="matrix" values="0 0 0 0 .25  0 0 0 0 .14  0 0 0 0 .05  -2.6 0 0 0 1.6"/></filter>
+  <filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="4"/><feColorMatrix type="matrix" values="0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .2  0 0 0 -1.5 .85"/></filter>
+  <filter id="b10" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10"/></filter>
+  <filter id="b30" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="30"/></filter>
+</defs></svg>
+
+<!-- mill background: racks of yarn cones, out of focus -->
+<div class="abs" style="inset:0;background:linear-gradient(#8a7b66,#a8987e 40%,#bfae92 75%)"></div>
+<svg id="cones" class="abs" style="left:0;top:0;filter:blur(9px)" width="2400" height="1000"></svg>
+<div class="abs" style="left:0;top:0;width:2400px;height:1000px;background:linear-gradient(100deg,rgba(255,240,210,.45),rgba(255,240,210,.05) 45%,rgba(40,25,10,.25))"></div>
+<!-- shafts of light from high mill windows -->
+<svg class="abs" style="left:0;top:0;mix-blend-mode:screen" width="2400" height="1350"><g filter="url(#b30)" fill="#fff1d2" opacity=".22"><polygon points="300,-50 520,-50 1300,1350 900,1350"/><polygon points="760,-50 900,-50 1640,1350 1380,1350"/></g></svg>
+
+<!-- worktable -->
+<div class="abs" style="left:0;top:1000px;width:2400px;height:350px;background:linear-gradient(#9a7650,#7a5634 40%,#4a3018)"></div>
+<svg class="abs" style="left:0;top:1000px" width="2400" height="350"><rect width="2400" height="350" filter="url(#woodg)"/></svg>
+<div class="abs" style="left:0;top:996px;width:2400px;height:10px;background:linear-gradient(#c9a77c,#7a5634)"></div>
+<div class="abs" style="left:0;top:1000px;width:2400px;height:350px;background:radial-gradient(1400px 300px at 40% 0%,rgba(255,236,200,.35),transparent)"></div>
+
+<div id="stage" class="abs" style="inset:0"></div>
+<div class="abs" style="inset:0;background:radial-gradient(1900px 1100px at 48% 52%,rgba(0,0,0,0) 55%,rgba(30,18,6,.4) 100%)"></div>
+
+<script>
+window.__ready=false;
+const D=document.getElementById('D');let pid=0;
+function shade(hex,k){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;const f=k<0?0:255,a=Math.abs(k);r=Math.round(r+(f-r)*a);g=Math.round(g+(f-g)*a);b=Math.round(b+(f-b)*a);return `rgb(${r},${g},${b})`}
+function weave(draft,cell,warp,weft,opt={}){
+  const id='w'+(pid++),rows=draft.length,cols=draft[0].length,W=cols*cell,H=rows*cell;
+  const g=`<linearGradient id="${id}v" x1="0" x2="1"><stop offset="0" stop-color="${shade(warp,-.3)}"/><stop offset=".5" stop-color="${shade(warp,.15)}"/><stop offset="1" stop-color="${shade(warp,-.35)}"/></linearGradient><linearGradient id="${id}h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${shade(weft,-.3)}"/><stop offset=".5" stop-color="${shade(weft,.15)}"/><stop offset="1" stop-color="${shade(weft,-.38)}"/></linearGradient>`;
+  let t='';const gap=cell*(opt.gap??.08);
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const x=c*cell,y=r*cell;
+    if(draft[r][c]){const up=draft[(r-1+rows)%rows][c],dn=draft[(r+1)%rows][c];t+=`<rect x="${x+gap}" y="${y+(up?-.5:gap)}" width="${cell-2*gap}" height="${cell+(up?.5:-gap)+(dn?.5:-gap)}" rx="${up&&dn?0:cell*.42}" fill="url(#${id}v)"/>`}
+    else{const lf=!draft[r][(c-1+cols)%cols],rt=!draft[r][(c+1)%cols];t+=`<rect x="${x+(lf?-.5:gap)}" y="${y+gap}" width="${cell+(lf?.5:-gap)+(rt?.5:-gap)}" height="${cell-2*gap}" ry="${lf&&rt?0:cell*.42}" fill="url(#${id}h)"/>`}}
+  D.insertAdjacentHTML('beforeend',`${g}<pattern id="${id}" width="${W}" height="${H}" patternUnits="userSpaceOnUse"><rect width="${W}" height="${H}" fill="${shade(weft,opt.gapShade??-.3)}"/>${t}</pattern>`);return id}
+const plain=[[1,0],[0,1]];
+const twill=[[1,1,0,0],[0,1,1,0],[0,0,1,1],[1,0,0,1]];
+const herring=(()=>{const n=8,rows=4,d=[];for(let r=0;r<rows;r++){d.push([]);for(let c=0;c<n*2;c++){const cc=c<n?c:(2*n-1-c);d[r].push(((cc-r)%4+4)%4<2?1:0)}}return d})();
+const waffle=(()=>{const n=8,d=[];for(let r=0;r<n;r++){d.push([]);for(let c=0;c<n;c++){const a=Math.min(r,n-1-r),b=Math.min(c,n-1-c);d[r].push(((a+b)%2))}}return d})();
+function rnd(seed){let s=seed;return()=>((s=(s*16807)%2147483647)/2147483647)}
+const R=rnd(17);
+
+// yarn cones on racks
+let c='';
+for(let row=0;row<4;row++){const y=120+row*220;c+=`<rect x="0" y="${y+150}" width="2400" height="14" fill="#5a4630"/>`;
+  for(let x=-20;x<2400;x+=74){const col=['#f2ece0','#e9dfcc','#B65C3A','#d9c7a8','#3c4d6e','#a3ad92','#f2ece0','#c98a6a'][Math.floor(R()*8)];
+   c+=`<path d="M${x+14},${y+150} L${x+24},${y+30} L${x+46},${y+30} L${x+56},${y+150} Z" fill="${col}"/><path d="M${x+14},${y+150} L${x+24},${y+30} L${x+30},${y+30} L${x+22},${y+150} Z" fill="#000" opacity=".15"/><rect x="${x+32}" y="${y+10}" width="6" height="22" fill="#d9c9a0"/>`}}
+document.getElementById('cones').innerHTML=c;
+
+const st=document.getElementById('stage');const add=h=>st.insertAdjacentHTML('beforeend',h);
+// a folded stack: items from bottom up
+function stack(x,baseY,w,items){
+  let y=baseY,h='';
+  h+=`<div class="abs" style="left:${x-30}px;top:${baseY-14}px;width:${w+120}px;height:46px;border-radius:50%;background:#1a0e04;opacity:.55;filter:blur(18px)"></div>`;
+  items.forEach((it,i)=>{
+    const ih=it.h, ww=w+(R()-.5)*16, xx=x+(R()-.5)*12; y-=ih;
+    const id=weave(it.d,it.cell,it.warp,it.weft,{gap:.06,gapShade:it.gs??-.2});
+    h+=`<div class="abs" style="left:${xx}px;top:${y}px;width:${ww}px;height:${ih+4}px">
+     <svg class="abs" style="left:0;top:0;overflow:visible" width="${ww}" height="${ih+4}">
+      <defs><linearGradient id="f${pid}_${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset=".22" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#000" stop-opacity=".18"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient>
+      <linearGradient id="s${pid}_${i}" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".15"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient></defs>
+      <rect x="0" y="0" width="${ww}" height="${ih+4}" rx="${ih*.3}" fill="url(#${id})"/>
+      <rect x="0" y="0" width="${ww}" height="${ih+4}" rx="${ih*.3}" filter="url(#fuzz)" opacity=".2"/>
+      <rect x="0" y="0" width="${ww}" height="${ih+4}" rx="${ih*.3}" fill="url(#f${pid}_${i})"/>
+      <rect x="0" y="0" width="${ww}" height="${ih+4}" rx="${ih*.3}" fill="url(#s${pid}_${i})"/>
+      ${it.fold?`<path d="M${ww*.06},${ih*.5} Q${ww*.5},${ih*.42} ${ww*.94},${ih*.52}" stroke="#000" stroke-opacity=".18" stroke-width="2" fill="none"/>`:''}
+     </svg></div>`;
+  });
+  add(h);return y;
+}
+const W='#f5f1e9',W2='#ebe5d8';
+// left: waffle towels, oat
+let t1=stack(380,1080,520,Array.from({length:8},()=>({d:waffle,cell:4,warp:'#e8dcc4',weft:'#d6c7a8',h:66+R()*14})));
+// centre: percale sheets, ash white, with belly band + woven label
+let t2=stack(1000,1090,600,[...Array.from({length:5},()=>({d:plain,cell:2.5,warp:W,weft:W2,h:50+R()*12,fold:1,gs:-.06})),...Array.from({length:4},()=>({d:twill,cell:3,warp:'#3c4d6e',weft:'#5a6a88',h:48+R()*10,fold:1,gs:-.1})),...Array.from({length:4},()=>({d:plain,cell:2.5,warp:W,weft:W2,h:50+R()*12,fold:1,gs:-.06}))]);
+// right: terracotta herringbone throws
+let t3=stack(1700,1070,500,Array.from({length:6},()=>({d:herring,cell:4,warp:'#B65C3A',weft:'#e2c2a8',h:72+R()*14})));
+
+// belly band on the centre stack
+add(`<div class="abs" style="left:1210px;top:${t2-6}px;width:190px;height:${1090-t2+16}px">
+  <div class="abs" style="inset:0;background:linear-gradient(90deg,#b98f60,#d2a676 30%,#c39462 70%,#9a7448);box-shadow:8px 0 14px rgba(0,0,0,.3)"></div>
+  <svg class="abs" style="left:0;top:0" width="190" height="${1090-t2+16}"><rect width="190" height="${1090-t2+16}" filter="url(#paper)" opacity=".5"/>
+   <g transform="translate(95 70)" fill="none" stroke="#B65C3A" stroke-width="5">${[0,1,2].map(r=>[0,1,2].map(c=>`<rect x="${c*22-31}" y="${r*22-31}" width="16" height="16" rx="2" ${r==1&&c==1?'fill="#B65C3A"':''}/>`).join('')).join('')}</g>
+   <text x="95" y="160" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="30" fill="#33302B">Thread &amp;</text>
+   <text x="95" y="196" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="30" fill="#33302B">Loom</text>
+   <line x1="30" y1="226" x2="160" y2="226" stroke="#33302B"/>
+   <text x="95" y="258" text-anchor="middle" font-family="NM" font-size="15" letter-spacing="2" fill="#33302B">PERCALE</text>
+   <text x="95" y="282" text-anchor="middle" font-family="NM" font-size="15" letter-spacing="2" fill="#33302B">SHEET SET</text>
+   <text x="95" y="320" text-anchor="middle" font-family="NM" font-weight="500" font-size="22" fill="#33302B">King · 300 TC</text>
+   <text x="95" y="360" text-anchor="middle" font-family="NM" font-size="14" fill="#7a3a22">Ash white</text>
+   <text x="95" y="${1090-t2-70}" text-anchor="middle" font-family="Dubai,'Segoe UI'" font-size="20" fill="#33302B">فیصل آباد میں بُنا گیا</text>
+   <text x="95" y="${1090-t2-40}" text-anchor="middle" font-family="NM" font-size="13" letter-spacing="1.5" fill="#33302B">WOVEN IN FAISALABAD</text>
+  </svg></div>`);
+// woven label stitched on top fold edge of centre stack
+const lab=weave(plain,2.4,'#33302B','#2a2722',{gap:.1});
+add(`<div class="abs" style="left:1050px;top:${t2+4}px;width:150px;height:46px;transform:rotate(-1deg)">
+ <svg class="abs" style="left:0;top:0;overflow:visible" width="150" height="46"><rect width="150" height="46" fill="#000" opacity=".35" filter="url(#b10)" transform="translate(3 4)"/><rect width="150" height="46" fill="url(#${lab})"/>
+ <line x1="6" y1="0" x2="6" y2="46" stroke="#cfc6b4" stroke-width="2" stroke-dasharray="3 3"/><line x1="144" y1="0" x2="144" y2="46" stroke="#cfc6b4" stroke-width="2" stroke-dasharray="3 3"/>
+ <text x="75" y="24" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="15" fill="#e9dcc0">Thread &amp; Loom</text>
+ <text x="75" y="38" text-anchor="middle" font-family="NM" font-size="7.5" letter-spacing="1.5" fill="#e9dcc0">100% COTTON · FAISALABAD</text></svg></div>`);
+// swing tag hanging off the towel stack
+add(`<div class="abs" style="left:780px;top:${t1+30}px;width:150px;height:240px;transform:rotate(-6deg)">
+  <svg class="abs" style="left:0;top:0;overflow:visible" width="150" height="240"><path d="M75,26 C60,-10 30,-20 0,-24" stroke="#f3eee2" stroke-width="3" fill="none"/>
+  <path d="M0,16 L16,0 L134,0 L150,16 L150,240 L0,240 Z" fill="#000" opacity=".3" filter="url(#b10)" transform="translate(8 10)"/>
+  <path d="M0,16 L16,0 L134,0 L150,16 L150,240 L0,240 Z" fill="#F1ECE2"/><circle cx="75" cy="26" r="7" fill="#bfae92"/>
+  <text x="75" y="72" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="20" fill="#33302B">Thread &amp;</text><text x="75" y="94" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="20" fill="#33302B">Loom</text>
+  <text x="75" y="124" text-anchor="middle" font-family="NM" font-size="12" fill="#33302B">Waffle bath towel</text>
+  <text x="75" y="142" text-anchor="middle" font-family="NM" font-size="12" fill="#33302B">Oat · 70 × 140 cm</text>
+  <text x="75" y="186" text-anchor="middle" font-family="NM" font-weight="500" font-size="22" fill="#33302B">$34</text>
+  <text x="75" y="214" text-anchor="middle" font-family="NM" font-size="10" letter-spacing="1" fill="#7a3a22">SET OF 2 · $58</text></svg></div>`);
+// loose cotton boll on the table
+D.insertAdjacentHTML('beforeend',`<radialGradient id="lint" cx="38%" cy="35%"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#f3efe6"/><stop offset=".85" stop-color="#cfc6b4"/><stop offset="1" stop-color="#a99c84"/></radialGradient><filter id="boll" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="4" seed="5" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="18" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="1"/></filter>`);
+add(`<svg class="abs" style="left:0;top:0" width="2400" height="1350"><g transform="translate(860 1190)"><ellipse cx="30" cy="40" rx="90" ry="22" fill="#1a0e04" opacity=".5" filter="url(#b10)"/>
+ ${[0,72,144,216,288].map(a=>`<path d="M0,0 C20,-14 50,-20 76,-6 C56,8 28,12 0,0 Z" transform="rotate(${a}) scale(.9 .6)" fill="#5a3a22"/>`).join('')}
+ <g filter="url(#boll)">${[0,90,180,270].map(a=>`<ellipse cx="${Math.cos(a*Math.PI/180)*34}" cy="${Math.sin(a*Math.PI/180)*20-10}" rx="44" ry="34" fill="url(#lint)"/>`).join('')}</g></g>
+ <g transform="translate(2080 1230) scale(.8)"><ellipse cx="30" cy="40" rx="90" ry="22" fill="#1a0e04" opacity=".5" filter="url(#b10)"/>
+ ${[0,72,144,216,288].map(a=>`<path d="M0,0 C20,-14 50,-20 76,-6 C56,8 28,12 0,0 Z" transform="rotate(${a+20}) scale(.9 .6)" fill="#5a3a22"/>`).join('')}
+ <g filter="url(#boll)">${[0,90,180,270].map(a=>`<ellipse cx="${Math.cos(a*Math.PI/180)*34}" cy="${Math.sin(a*Math.PI/180)*20-10}" rx="44" ry="34" fill="url(#lint)"/>`).join('')}</g></g></svg>`);
+window.__ready=true;
+</script>
+</body></html>

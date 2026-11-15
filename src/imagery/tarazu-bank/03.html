@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Light.otf');font-weight:300}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+
+*{box-sizing:border-box;margin:0;padding:0}html,body{width:1600px;height:2000px;overflow:hidden}
+body{position:relative;font-family:'NM','Segoe UI',sans-serif;color:#0B3D3A;-webkit-font-smoothing:antialiased}
+
+.scr{position:absolute;inset:0;width:360px;height:780px;overflow:hidden;font-family:'NM','Segoe UI',sans-serif;color:#0B3D3A;background:#F2F4EF;-webkit-font-smoothing:antialiased}
+.ur{font-family:'Segoe UI','Tahoma',sans-serif;direction:rtl;unicode-bidi:isolate}
+.sb{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 20px 0 24px;font-size:13px;font-weight:500;letter-spacing:.01em}
+.sb .ic{display:flex;gap:5px;align-items:center}
+.btn{height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:500;gap:10px}
+.btn.y{background:#FFC857;color:#0B3D3A}
+.btn.g{background:#0B3D3A;color:#fff}
+.btn.o{border:1.5px solid rgba(11,61,58,.25);color:#0B3D3A}
+.steps{display:flex;gap:5px;padding:0 20px}
+.steps i{flex:1;height:4px;border-radius:2px;background:rgba(11,61,58,.14)}
+.steps i.on{background:#0B3D3A}
+.dark .steps i{background:rgba(255,255,255,.22)}.dark .steps i.on{background:#FFC857}
+.lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.6;font-weight:500}
+.chk{width:20px;height:20px;border-radius:50%;background:#0B3D3A;display:inline-flex;align-items:center;justify-content:center;flex:none}
+
+.ph{position:absolute;border-radius:calc(var(--k)*50px);background:linear-gradient(140deg,#3a3d40 0%,#1b1d1f 30%,#0e0f10 70%,#2b2e31 100%);
+ box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.14),inset 0 0 0 3px #0a0a0b,0 1px 1px rgba(0,0,0,.25),0 calc(var(--k)*8px) calc(var(--k)*14px) rgba(25,40,35,.16),0 calc(var(--k)*34px) calc(var(--k)*60px) calc(var(--k)*-6px) rgba(25,40,35,.28),0 calc(var(--k)*70px) calc(var(--k)*120px) calc(var(--k)*-30px) rgba(25,40,35,.3)}
+.ph .sc{position:absolute;left:calc(var(--k)*11px);top:calc(var(--k)*11px);width:360px;height:780px;transform-origin:0 0;border-radius:40px;overflow:hidden;background:#000}
+.ph .cam{position:absolute;left:50%;top:calc(var(--k)*23px);width:calc(var(--k)*11px);height:calc(var(--k)*11px);margin-left:calc(var(--k)*-5.5px);border-radius:50%;background:radial-gradient(circle at 35% 35%,#2b3a4a,#050607 60%);z-index:3}
+.ph .gl{position:absolute;inset:calc(var(--k)*11px);border-radius:calc(var(--k)*40px);background:linear-gradient(118deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.03) 28%,transparent 42%);z-index:2;pointer-events:none}
+.ph .bt{position:absolute;right:calc(var(--k)*-3px);width:calc(var(--k)*4px);border-radius:2px;background:linear-gradient(90deg,#26292c,#4a4e52)}
+body{background:#0d1513}
+.fdk{position:absolute;width:44px;height:30px;border-radius:5px;background:linear-gradient(#d8dcdc,#9aa1a1);box-shadow:0 2px 0 #5d6464,inset 0 1px 0 #fff}
+.kp{width:66px;height:44px;border-radius:7px;background:linear-gradient(#e9ecec,#b5bcbc);box-shadow:0 3px 0 #5e6666,0 5px 8px rgba(0,0,0,.4),inset 0 1px 0 #fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:500;color:#2b3332}
+</style></head><body>
+<svg style="position:absolute;inset:0" width="1600" height="2000">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2a3c"/><stop offset=".6" stop-color="#5a5468"/><stop offset="1" stop-color="#c47d5e"/></linearGradient>
+<filter id="stone" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="5" seed="3"/><feColorMatrix values="0 0 0 0 .78  0 0 0 0 .70  0 0 0 0 .58  0 0 0 .32 0"/></filter>
+<filter id="fine"><feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .1 0 0 0 0 .1 0 0 0 0 .1 0 0 0 .5 0"/></filter>
+<filter id="b40"><feGaussianBlur stdDeviation="40"/></filter><filter id="b12"><feGaussianBlur stdDeviation="12"/></filter><filter id="b4"><feGaussianBlur stdDeviation="4"/></filter>
+<radialGradient id="spill" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#fff1cf" stop-opacity=".55"/><stop offset=".45" stop-color="#e9c98a" stop-opacity=".18"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+<linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8d7e68"/><stop offset=".5" stop-color="#5d5345"/><stop offset="1" stop-color="#2c2822"/></linearGradient>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b6262"/><stop offset=".15" stop-color="#9ba3a2"/><stop offset=".5" stop-color="#c3cac9"/><stop offset=".85" stop-color="#8e9695"/><stop offset="1" stop-color="#4e5555"/></linearGradient>
+<linearGradient id="pave" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3530"/><stop offset="1" stop-color="#151311"/></linearGradient>
+<linearGradient id="box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#145a53"/><stop offset=".5" stop-color="#0f4a45"/><stop offset="1" stop-color="#0a3936"/></linearGradient>
+</defs>
+<rect width="1600" height="230" fill="url(#sky)"/>
+<g fill="#0c1110"><rect x="0" y="70" width="430" height="160"/><rect x="60" y="40" width="70" height="34" rx="6"/><rect x="150" y="46" width="56" height="28" rx="6"/><rect x="300" y="38" width="80" height="36" rx="6"/><rect x="40" y="110" width="50" height="40" fill="#caa060" opacity=".6"/><rect x="130" y="110" width="50" height="40" fill="#2a2a28"/><rect x="220" y="110" width="50" height="40" fill="#caa060" opacity=".4"/><rect x="310" y="110" width="50" height="40" fill="#2a2a28"/>
+<path d="M560 230V150h4v-60h2v60h4v80z"/><path d="M500 92q66 -4 132 0" stroke="#0c1110" stroke-width="2" fill="none"/>
+<rect x="1180" y="80" width="420" height="150"/><rect x="1220" y="50" width="90" height="34" rx="7"/><rect x="1470" y="56" width="70" height="28" rx="7"/><rect x="1240" y="110" width="60" height="44" fill="#d9a85f" opacity=".55"/><rect x="1330" y="110" width="60" height="44" fill="#3a3a38"/><rect x="1420" y="110" width="60" height="44" fill="#d9a85f" opacity=".35"/></g>
+<rect y="200" width="1600" height="60" fill="#1a1f1d"/>
+<!-- fascia lightbox -->
+<rect x="0" y="246" width="1600" height="290" fill="#071f1d"/>
+<rect x="18" y="260" width="1564" height="262" fill="url(#box)"/>
+<rect x="18" y="260" width="1564" height="262" fill="url(#spill)" opacity=".35"/>
+<rect x="18" y="260" width="1564" height="8" fill="#000" opacity=".35"/>
+<!-- stone wall -->
+<rect y="536" width="1600" height="1240" fill="url(#wall)"/>
+<rect y="536" width="1600" height="1240" filter="url(#stone)"/>
+<g stroke="#1f1b16" stroke-width="2" opacity=".4"><line x1="0" x2="1600" y1="846" y2="846"/><line x1="0" x2="1600" y1="1156" y2="1156"/><line x1="0" x2="1600" y1="1466" y2="1466"/><line x1="0" x2="1600" y1="1776" y2="1776"/><line y1="536" y2="1776" x1="200" x2="200"/><line y1="536" y2="1776" x1="600" x2="600"/><line y1="536" y2="1776" x1="1000" x2="1000"/><line y1="536" y2="1776" x1="1400" x2="1400"/><line y1="536" y2="1776" x1="1800" x2="1800"/></g>
+<rect y="536" width="1600" height="1240" fill="url(#spill)"/>
+<ellipse cx="800" cy="560" rx="900" ry="120" fill="#ffe7b0" opacity=".25" filter="url(#b40)"/>
+<rect y="536" width="1600" height="26" fill="#000" opacity=".45" filter="url(#b12)"/>
+<!-- ATM glow on wall -->
+<ellipse cx="800" cy="1050" rx="520" ry="560" fill="#7fe0c8" opacity=".10" filter="url(#b40)"/>
+<!-- ATM surround -->
+<rect x="440" y="660" width="720" height="1116" rx="6" fill="#14191a"/>
+<rect x="452" y="672" width="696" height="1104" fill="url(#steel)"/>
+<rect x="452" y="672" width="696" height="1104" filter="url(#fine)" opacity=".25"/>
+<rect x="452" y="672" width="696" height="150" fill="url(#box)"/>
+<rect x="452" y="812" width="696" height="10" fill="#000" opacity=".4"/>
+<!-- screen bezel -->
+<rect x="520" y="880" width="560" height="440" rx="10" fill="#1d2222"/>
+<rect x="514" y="1320" width="572" height="40" fill="#000" opacity=".25" filter="url(#b12)"/>
+<!-- keypad shelf -->
+<path d="M480 1410H1120L1170 1590H430Z" fill="#6f7777"/><path d="M480 1410H1120L1124 1424H476Z" fill="#000" opacity=".3"/><path d="M430 1590H1170V1612H430Z" fill="#3d4343"/>
+<rect x="452" y="1612" width="696" height="164" fill="#2a3030" opacity=".3"/>
+<!-- pavement -->
+<rect y="1776" width="1600" height="224" fill="url(#pave)"/>
+<rect y="1776" width="1600" height="10" fill="#57504a"/>
+<g stroke="#000" stroke-opacity=".35" stroke-width="2"><line x1="-100" y1="1786" x2="-910" y2="2000"/><line x1="100" y1="1786" x2="-530" y2="2000"/><line x1="300" y1="1786" x2="-150" y2="2000"/><line x1="500" y1="1786" x2="230" y2="2000"/><line x1="700" y1="1786" x2="610" y2="2000"/><line x1="900" y1="1786" x2="990" y2="2000"/><line x1="1100" y1="1786" x2="1370" y2="2000"/><line x1="1300" y1="1786" x2="1750" y2="2000"/><line x1="1500" y1="1786" x2="2130" y2="2000"/><line x1="0" x2="1600" y1="1850" y2="1850"/><line x1="0" x2="1600" y1="1940" y2="1940"/></g>
+<ellipse cx="800" cy="1830" rx="560" ry="70" fill="#7fe0c8" opacity=".12" filter="url(#b40)"/>
+<ellipse cx="800" cy="1800" rx="700" ry="30" fill="#ffe7b0" opacity=".10" filter="url(#b12)"/>
+</svg>
+<!-- fascia content -->
+<div style="position:absolute;left:0;right:0;top:260px;height:262px;display:flex;align-items:center;justify-content:center;gap:42px;color:#fff">
+ <div style="width:190px;height:111px;filter:drop-shadow(0 0 18px rgba(255,200,87,.65))"><svg viewBox="0 0 120 70" fill="none" stroke="#FFC857" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="33" cy="35" r="26"/><path d="M59 35H108V58M92 35V50"/></svg></div>
+ <div style="text-shadow:0 0 22px rgba(255,255,255,.45)"><div style="font-size:112px;font-weight:700;letter-spacing:-.025em;line-height:1">Tarazu Bank</div>
+ <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><span style="font-size:30px;color:#FFC857;text-shadow:0 0 16px rgba(255,200,87,.6)">Your first bank, done right.</span><span style="font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;unicode-bidi:isolate;font-size:48px;font-weight:700">ترازو بینک</span></div></div>
+</div>
+<!-- ATM topper -->
+<div style="position:absolute;left:452px;top:672px;width:696px;height:140px;display:flex;align-items:center;justify-content:space-between;padding:0 46px;color:#fff;text-shadow:0 0 14px rgba(255,255,255,.4)">
+ <div style="display:flex;align-items:center;gap:18px"><div style="width:76px;height:44px"><svg viewBox="0 0 120 70" fill="none" stroke="#FFC857" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="33" cy="35" r="26"/><path d="M59 35H108V58M92 35V50"/></svg></div><div style="font-size:58px;font-weight:700;letter-spacing:.02em">ATM</div></div>
+ <div style="text-align:right"><div style="font-size:30px;font-weight:500;color:#FFC857">24/7</div><span style="font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;unicode-bidi:isolate;font-size:26px">اے ٹی ایم · 24 گھنٹے</span></div>
+</div>
+<!-- screen -->
+<div style="position:absolute;left:540px;top:900px;width:520px;height:400px;border-radius:4px;overflow:hidden;background:#0B3D3A;box-shadow:0 0 50px rgba(120,230,200,.35);color:#fff">
+ 
+ <div style="padding:34px 36px 0;display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:40px;font-weight:500;letter-spacing:-.02em">Welcome</span><span style="font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;unicode-bidi:isolate;font-size:38px;color:#FFC857">خوش آمدید</span></div>
+ <div style="padding:12px 36px 0;font-size:22px;line-height:1.35;opacity:.85">Insert or tap your card</div>
+ <div style="padding:4px 36px 0;text-align:right"><span style="font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;unicode-bidi:isolate;font-size:22px;opacity:.85">اپنا کارڈ داخل کریں یا ٹیپ کریں</span></div>
+ <div style="position:absolute;left:0;right:0;bottom:30px;display:flex;justify-content:space-between">
+  <div style="background:#FFC857;color:#0B3D3A;font-size:22px;font-weight:500;padding:12px 22px 12px 20px;border-radius:0 10px 10px 0">◂ English</div>
+  <div style="background:#FFC857;color:#0B3D3A;font-size:24px;padding:10px 20px 10px 22px;border-radius:10px 0 0 10px"><span style="font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;unicode-bidi:isolate;">اردو</span> ▸</div></div>
+ <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.08),transparent 40%)"></div>
+</div>
+<div class="fdk" style="left:470px;top:960px"></div><div class="fdk" style="left:1086px;top:960px"></div><div class="fdk" style="left:470px;top:1042px"></div><div class="fdk" style="left:1086px;top:1042px"></div><div class="fdk" style="left:470px;top:1124px"></div><div class="fdk" style="left:1086px;top:1124px"></div><div class="fdk" style="left:470px;top:1206px"></div><div class="fdk" style="left:1086px;top:1206px"></div>
+<!-- card slot + receipt -->
+<div style="position:absolute;left:880px;top:1342px;width:150px;height:56px;border-radius:8px;background:linear-gradient(#26302f,#0c1111);box-shadow:inset 0 2px 4px #000"><div style="position:absolute;left:18px;right:18px;top:24px;height:6px;border-radius:3px;background:#000;box-shadow:0 0 12px 3px rgba(80,255,170,.75),0 0 2px #7dffc0"></div></div>
+<div style="position:absolute;left:570px;top:1342px;width:170px;height:56px;border-radius:8px;background:linear-gradient(#2a3232,#121616);display:flex;align-items:center;justify-content:center"><div style="width:130px;height:5px;background:#000;border-radius:2px"></div></div>
+<!-- keypad on shelf (perspective) -->
+<div style="position:absolute;left:560px;top:1420px;width:480px;height:236px;transform:perspective(1100px) rotateX(42deg);transform-origin:50% 0">
+ <div style="display:grid;grid-template-columns:repeat(3,66px) 116px;gap:10px 14px;padding:10px 70px">
+ <div class="kp">1</div><div class="kp">2</div><div class="kp">3</div><div class="kp" style="width:116px;font-size:15px;color:#fff;background:linear-gradient(#e0574d,#a1281f)">CANCEL</div><div class="kp">4</div><div class="kp">5</div><div class="kp">6</div><div class="kp" style="width:116px;font-size:15px;color:#fff;background:linear-gradient(#f5cf5a,#c09a20)">CLEAR</div><div class="kp">7</div><div class="kp">8</div><div class="kp">9</div><div class="kp" style="width:116px;font-size:15px;color:#fff;background:linear-gradient(#3cab73,#1f7448)">ENTER</div><div class="kp"></div><div class="kp">0</div><div class="kp"></div><div class="kp" style="width:116px;font-size:15px;color:#fff;background:linear-gradient(#e9ecec,#b5bcbc)"></div>
+ </div></div>
+<!-- cash slot -->
+<div style="position:absolute;left:600px;top:1640px;width:400px;height:62px;border-radius:10px;background:linear-gradient(#1b2121,#060808);box-shadow:inset 0 3px 6px #000,0 1px 0 rgba(255,255,255,.3)"><div style="position:absolute;left:30px;right:30px;top:30px;height:10px;background:#000;border-radius:3px"></div></div>
+<div style="position:absolute;left:600px;top:1712px;width:400px;text-align:center;font-size:17px;color:#2b3332;font-weight:500;letter-spacing:.06em">CASH · <span style="font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;unicode-bidi:isolate;font-size:18px">رقم</span></div>
+<!-- side plaque -->
+<div style="position:absolute;left:1236px;top:880px;width:270px;padding:26px 24px;background:linear-gradient(140deg,#e9e3d6,#c8bfae);border-radius:4px;box-shadow:6px 10px 20px rgba(0,0,0,.45);color:#0B3D3A">
+ <div style="width:58px;height:34px"><svg viewBox="0 0 120 70" fill="none" stroke="#0B3D3A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="33" cy="35" r="26"/><path d="M59 35H108V58M92 35V50"/></svg></div>
+ <div style="font-size:26px;font-weight:700;margin-top:14px">Tarazu Bank</div><div style="font-size:19px;margin-top:2px">Clifton Block 5 branch</div>
+ <div style="height:1px;background:rgba(11,61,58,.25);margin:16px 0"></div>
+ <div style="font-size:16px;line-height:1.5">Mon–Sat · 9:00–17:00<br>ATM open 24 hours</div>
+ <div style="font-size:16px;line-height:1.7;margin-top:6px"><span style="font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;unicode-bidi:isolate;">پیر تا ہفتہ · صبح 9 تا شام 5</span></div>
+ <div style="font-size:16px;margin-top:12px;font-weight:500">UAN 111-827-298</div>
+</div>
+<div style="position:absolute;left:1456px;top:600px;width:44px;height:14px;background:#2a2d2d;border-radius:3px"></div><div style="position:absolute;left:1452px;top:610px;width:52px;height:30px;border-radius:0 0 26px 26px;background:radial-gradient(circle at 40% 20%,#6a6f78,#141618 75%);box-shadow:0 6px 12px rgba(0,0,0,.5)"></div>
+<!-- warm vignette / atmosphere -->
+<div style="position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 55%,transparent 55%,rgba(0,0,0,.55) 100%)"></div>
+</body></html>

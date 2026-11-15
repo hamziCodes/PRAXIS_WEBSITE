@@ -1,0 +1,116 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Italic.otf');font-weight:400;font-style:italic}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;font-family:'NM',sans-serif;color:#1b1f1c;background:#bfc2c0}
+.abs{position:absolute}
+.ur{font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl}
+.g{color:#0F5B3A}
+.page{position:absolute;top:0;width:860px;height:1120px;background:#fbfaf5;overflow:hidden;padding:64px 70px}
+.lab{font-size:14px;font-weight:700;letter-spacing:.12em;color:#0F5B3A}
+.ph{position:relative;overflow:hidden;border-radius:2px}
+.cap{font-size:13px;color:#555;margin-top:6px;display:flex;justify-content:space-between}
+.bar{height:26px;background:#0F5B3A;border-radius:2px}
+</style></head>
+<body>
+<script>window.__ready=false</script>
+<!-- desk -->
+<svg class="abs" style="inset:0" width="2400" height="1350"><filter id="lam"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .3  0 0 0 0 .3  0 0 0 0 .3  0 0 0 .18 0"/></filter><rect width="2400" height="1350" fill="#c4c6c2"/><rect width="2400" height="1350" filter="url(#lam)"/></svg>
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 60% 60% at 40% 30%,rgba(255,255,255,.35),rgba(255,255,255,0) 60%)"></div>
+
+<!-- open report -->
+<div class="abs" style="left:330px;top:110px;width:1740px;height:1130px;transform:rotate(-1.5deg);filter:drop-shadow(20px 30px 26px rgba(30,30,30,.4)) drop-shadow(2px 4px 3px rgba(30,30,30,.3))">
+  <div class="abs" style="left:-6px;top:6px;width:870px;height:1124px;background:repeating-linear-gradient(90deg,#e8e6dc 0 2px,#d6d3c8 2px 3px)"></div>
+  <div class="abs" style="right:-6px;top:6px;width:870px;height:1124px;background:repeating-linear-gradient(90deg,#d6d3c8 0 1px,#e8e6dc 1px 3px)"></div>
+  <!-- LEFT PAGE -->
+  <div class="page" style="left:0;background:linear-gradient(90deg,#f6f5ef 0%,#fbfaf5 15%,#fbfaf5 85%,#e9e7dd 100%)">
+    <div style="display:flex;justify-content:space-between;font-size:13px;color:#777"><span>Saffa Stores · Communication audit · 2026</span><span>18 / 46</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:30px">
+      <div><div class="lab">SECTION 4</div><div style="font-size:50px;font-weight:700;letter-spacing:-.02em;line-height:1.02;margin-top:8px">What the street sees</div></div>
+      <div class="ur g" style="font-size:30px;font-weight:700">گلی کیا دیکھتی ہے</div>
+    </div>
+    <div style="font-size:19px;line-height:1.5;margin-top:18px;max-width:700px;color:#333">We photographed the front of 18 stores between 6 and 8 pm, when most shoppers come. Four different logos are in use. Only six fascias are lit after dark.</div>
+    <div id="photos" style="display:grid;grid-template-columns:1fr 1fr;gap:22px 24px;margin-top:28px"></div>
+    <div style="display:flex;gap:16px;margin-top:26px;align-items:center;background:#F2C230;padding:16px 20px;border-radius:3px">
+      <div style="font-size:40px;font-weight:700;color:#0F5B3A;letter-spacing:-.02em">4</div>
+      <div style="font-size:17px;line-height:1.35;color:#0F5B3A"><b>logos in use across 42 stores.</b> Shoppers at Store 19 did not know Store 04 was the same company.</div>
+    </div>
+  </div>
+  <!-- RIGHT PAGE -->
+  <div class="page" style="left:880px;background:linear-gradient(90deg,#e9e7dd 0%,#fbfaf5 12%,#fbfaf5 90%,#f2f0e8 100%)">
+    <div style="display:flex;justify-content:space-between;font-size:13px;color:#777"><span>Touchpoint census</span><span>19 / 46</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:30px">
+      <div><div class="lab">1,140 ASSETS · 18 STORES</div><div style="font-size:50px;font-weight:700;letter-spacing:-.02em;line-height:1.02;margin-top:8px">Where the money went</div></div>
+      <div class="ur g" style="font-size:30px;font-weight:700">پیسہ کہاں گیا</div>
+    </div>
+    <div style="margin-top:34px" id="bars"></div>
+    <div style="display:flex;gap:40px;margin-top:40px">
+      <div style="flex:1">
+        <div class="lab">SHOPPERS AT THE TILL · N = 64</div>
+        <div style="display:flex;align-items:center;gap:24px;margin-top:16px">
+          <svg width="170" height="170" viewBox="0 0 170 170"><circle cx="85" cy="85" r="64" fill="none" stroke="#e3e0d4" stroke-width="30"/><circle cx="85" cy="85" r="64" fill="none" stroke="#0F5B3A" stroke-width="30" stroke-dasharray="${0}" id="donut" transform="rotate(-90 85 85)"/><text x="85" y="96" text-anchor="middle" font-family="NM" font-weight="700" font-size="34" fill="#0F5B3A">23%</text></svg>
+          <div style="font-size:18px;line-height:1.4">knew the <b>Saffa Card</b> existed. Of those, most had heard about it from a cashier, not a sign.<div class="ur" style="font-size:18px;margin-top:8px;color:#555">صرف ۲۳٪ کو کارڈ کا علم تھا</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:34px;border-top:2px solid #0F5B3A;padding-top:18px">
+      <div class="lab">WHAT WE RECOMMEND FIRST</div>
+      <div style="display:grid;grid-template-columns:auto 1fr auto auto;gap:10px 18px;margin-top:14px;font-size:16px;align-items:baseline">
+        <b class="g">01</b><span>One price-tag standard, printed not handwritten</span><span style="color:#777">Ops</span><b>Rs 3,800 / store</b>
+        <b class="g">02</b><span>Light every fascia after dark (LED retrofit)</span><span style="color:#777">Facilities</span><b>Rs 46,000 / store</b>
+        <b class="g">03</b><span>Loyalty card at the till, on the tag and in the window</span><span style="color:#777">Marketing</span><b>Rs 1,200 / store</b>
+      </div>
+    </div>
+  </div>
+  <!-- gutter -->
+  <div class="abs" style="left:830px;top:0;width:110px;height:1120px;background:linear-gradient(90deg,rgba(40,40,30,0),rgba(40,40,30,.22) 45%,rgba(40,40,30,.35) 50%,rgba(40,40,30,.18) 55%,rgba(40,40,30,0))"></div>
+</div>
+
+<!-- sticky notes -->
+<div class="abs" style="left:2080px;top:470px;width:230px;height:200px;background:#F2C230;transform:rotate(7deg);box-shadow:6px 10px 14px rgba(0,0,0,.25);padding:20px 22px;font-family:'Segoe Print','Ink Free',cursive;font-size:24px;line-height:1.25;color:#1d2a7a">Fix #1 first!<br>tags → all 42<br>by 8 weeks</div>
+<div class="abs" style="left:150px;top:880px;width:210px;height:190px;background:#ffd3e0;transform:rotate(-8deg);box-shadow:6px 10px 14px rgba(0,0,0,.25);padding:18px 20px;font-family:'Segoe Print','Ink Free',cursive;font-size:22px;line-height:1.25;color:#1d2a7a">Store 19<br>sign dark<br>after 7 pm</div>
+<!-- chai cup, top-down -->
+<svg class="abs" style="left:2060px;top:860px;overflow:visible" width="300" height="300">
+  <defs><radialGradient id="chai" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#d9a873"/><stop offset=".7" stop-color="#b07a46"/><stop offset="1" stop-color="#8a5a2e"/></radialGradient><filter id="b12"><feGaussianBlur stdDeviation="12"/></filter></defs>
+  <ellipse cx="166" cy="170" rx="128" ry="124" fill="#000" opacity=".25" filter="url(#b12)"/>
+  <circle cx="150" cy="150" r="128" fill="#f2f2ee"/><circle cx="150" cy="150" r="128" fill="none" stroke="#dcdcd4" stroke-width="3"/>
+  <circle cx="150" cy="150" r="80" fill="#fff" stroke="#d9d9d0" stroke-width="6"/>
+  <circle cx="150" cy="150" r="70" fill="url(#chai)"/>
+  <ellipse cx="128" cy="126" rx="22" ry="10" fill="#fff" opacity=".35" transform="rotate(-30 128 126)"/>
+  <path d="M228 150 h40 a14 14 0 0 1 0 28 h-40" fill="none" stroke="#fff" stroke-width="12"/>
+</svg>
+<!-- pen -->
+<div class="abs" style="left:2010px;top:180px;width:380px;height:26px;transform:rotate(68deg);border-radius:13px;background:linear-gradient(180deg,#3a3a40,#16161a 60%,#000);box-shadow:8px 12px 10px rgba(0,0,0,.3)"></div>
+
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 75% 75% at 50% 45%,rgba(0,0,0,0) 60%,rgba(20,20,20,.35) 100%)"></div>
+<script>
+// tiny 'photographs' of storefronts, drawn
+const shops=[
+ {id:'Store 04 · Samanabad',bg:'#c8202a',fg:'#fff',font:'Impact',name:'SAFFA',ur:'صفا',lit:false},
+ {id:'Store 11 · Johar Town',bg:'#2e8b3a',fg:'#fff',font:'Georgia',name:'Saffa Store',ur:'صفا سٹور',lit:true,leaf:true},
+ {id:'Store 19 · Shadbagh',bg:'#f2d21c',fg:'#1a3a9a',font:'Arial Black',name:'SAFA SUPER STORE',ur:'صفا سپر اسٹور',lit:false},
+ {id:'Store 33 · Wapda Town',bg:'#1b4fbf',fg:'#ffe000',font:'Arial',name:'SAFFA MART',ur:'صفا مارٹ',lit:true}];
+const sky=['#6d84b0','#8aa0c8','#5a6f9c','#7b8fb8'];
+document.getElementById('photos').innerHTML=shops.map((s,i)=>`<div><div class="ph" style="height:250px;background:linear-gradient(180deg,${sky[i]},#2a3350)">
+  <div class="abs" style="left:-10px;right:-10px;top:30px;height:90px;background:#4a4e60"></div>
+  <div class="abs" style="left:${20+i*8}px;top:${44+i*4}px;width:${260+i*20}px;height:12px;background:#2a2e3c;transform:rotate(${(i%2?-1:1)*1.5}deg)"></div>
+  <div class="abs" style="left:24px;right:24px;top:110px;height:58px;background:${s.bg};display:flex;align-items:center;justify-content:space-between;padding:0 14px;${s.lit?'box-shadow:0 0 24px rgba(255,255,220,.45)':'filter:brightness(.62)'}">
+    <span style="font-family:'${s.font}';font-weight:700;color:${s.fg};font-size:${s.name.length>12?17:28}px;white-space:nowrap">${s.leaf?'❦ ':''}${s.name}</span><span class="ur" style="color:${s.fg};font-size:20px;font-weight:700;white-space:nowrap;margin-left:8px">${s.ur}</span></div>
+  <div class="abs" style="left:24px;right:24px;top:168px;height:82px;background:${s.lit?'#efe6c4':'#3a3a40'}"></div>
+  <div class="abs" style="left:24px;right:24px;top:168px;height:82px;background:repeating-linear-gradient(90deg,rgba(0,0,0,0) 0 20px,rgba(${s.lit?'200,60,40':'0,0,0'},.25) 20px 30px)"></div>
+  <div class="abs" style="left:0;right:0;bottom:0;height:24px;background:#2a2a30"></div>
+  <div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.06),rgba(0,0,0,.35));mix-blend-mode:multiply"></div>
+  <div class="abs" style="left:10px;top:10px;font:700 13px NM;color:#fff;background:rgba(0,0,0,.45);padding:3px 8px">${['A','B','C','D'][i]}</div>
+ </div><div class="cap"><span>${s.id}</span><span>${s.lit?'lit':'unlit'} · 19:${10+i*12}</span></div></div>`).join('');
+// remove leaf glyph if unsupported: use simple dot instead
+document.querySelectorAll('#photos span').forEach(e=>{e.innerHTML=e.innerHTML.replace('❦ ','• ')});
+const data=[['Price tags','قیمت کے ٹیگ',486,'11 designs'],['WhatsApp & Facebook posts','سوشل میڈیا',268,'no shared template'],['Shop signs and banners','سائن بورڈ',212,'4 logos'],['Posters and flyers','پوسٹر',174,'printed locally']];
+document.getElementById('bars').innerHTML=data.map(d=>`<div style="margin-bottom:20px"><div style="display:flex;justify-content:space-between;font-size:17px;margin-bottom:6px"><span><b>${d[0]}</b> <span style="color:#777">· ${d[3]}</span></span><span class="ur" style="color:#555">${d[1]}</span></div><div style="display:flex;align-items:center;gap:14px"><div class="bar" style="width:${d[2]/486*560}px;${d[0]==='Price tags'?'background:#F2C230':''}"></div><b style="font-size:22px">${d[2]}</b></div></div>`).join('');
+const dn=document.getElementById('donut');const C=2*Math.PI*64;dn.setAttribute('stroke-dasharray',`${C*.23} ${C}`);
+window.__ready=true;
+</script>
+</body></html>

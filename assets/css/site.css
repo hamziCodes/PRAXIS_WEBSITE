@@ -587,7 +587,8 @@ span.acc { font-family: var(--f-pix); font-weight: 600; letter-spacing: 0; font-
 .reel { position: relative; height: 100svh; min-height: 520px; background: #000; overflow: hidden; color: var(--bone); }
 .reel-v { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: calc(1 - var(--rp, 0) * .75); transform: scale(calc(1 + var(--rp, 0) * .06)); transform-origin: 50% 100%; }
 .reel-px { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.reel-ui { position: absolute; left: var(--gut); right: var(--gut); bottom: clamp(18px, 2.4vw, 32px); display: flex; justify-content: space-between; align-items: center; gap: 16px; opacity: calc(1 - var(--rp, 0) * 2); }
+.reel-ui { display: none; }
+.js .reel-ui { position: absolute; left: var(--gut); right: var(--gut); bottom: clamp(18px, 2.4vw, 32px); display: flex; justify-content: flex-end; align-items: center; gap: 16px; opacity: calc(1 - var(--rp, 0) * 2); }
 .reel-tag { color: color-mix(in srgb, var(--bone) 80%, transparent); }
 .reel-btn { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; border-radius: 999px; background: rgba(0,0,0,.45); border: 1px solid rgba(223,224,208,.24); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--bone); }
 .reel-btn::before { content: ''; width: 9px; height: 10px; box-sizing: border-box; border: solid currentColor; border-width: 0 3px; }
@@ -608,7 +609,7 @@ span.acc { font-family: var(--f-pix); font-weight: 600; letter-spacing: 0; font-
 /* major works: one wide rectangle per screen, name + credits on the side, never on the image (C5–C8) */
 .works { width: min(1680px, 100% - 2 * var(--gut)); margin-inline: auto; padding-bottom: var(--sec); }
 .work + .work { margin-top: var(--sec); }
-.work-a { display: grid; grid-template-columns: minmax(170px, 1fr) minmax(0, 4.4fr) minmax(170px, 1fr); gap: clamp(20px, 2.4vw, 40px); align-items: end; }
+.work-a { display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 5.2fr) minmax(160px, 1fr); gap: clamp(20px, 2.4vw, 40px); align-items: end; }
 .work-fig { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: #111; transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--ts, 1)); will-change: transform; box-shadow: 0 30px 60px -40px rgba(0,0,0,.9); }
 .work-fig img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .work-a:hover .work-fig img { transform: scale(1.025); }
@@ -653,7 +654,7 @@ span.acc { font-family: var(--f-pix); font-weight: 600; letter-spacing: 0; font-
   .sv-col:nth-child(n + 3) { border-top: 1px solid var(--hair); }
 }
 @media (max-width: 760px) and (orientation: portrait) {
-  .reel { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
+  .reel { height: auto; min-height: 0; aspect-ratio: 16 / 15; } /* shows exactly the trailer's centre-60% safe area */
 }
 @media (max-width: 640px) {
   .sv-head { grid-template-columns: 1fr; }
@@ -691,7 +692,7 @@ span.acc { font-family: var(--f-pix); font-weight: 600; letter-spacing: 0; font-
 .wx-i { height: var(--lh); display: flex; align-items: center; opacity: calc(.34 / max(var(--d, 1), 1) - .03); transition: opacity .6s var(--ease); }
 .wx-i.on { opacity: 1; }
 .wx-i a { display: flex; align-items: baseline; gap: clamp(14px, 2vw, 28px); max-width: 100%; }
-.wx-name { font-size: calc(var(--lh) * .82); font-weight: 500; letter-spacing: -.045em; line-height: 1; white-space: nowrap; transition: color .3s; }
+.wx-name { font-size: min(calc(var(--lh) * .82), calc((100vw - 2 * var(--gut)) / (var(--len, 10) * .5))); font-weight: 500; letter-spacing: -.045em; line-height: 1; white-space: nowrap; transition: color .3s; }
 .wx-sub { font-family: var(--f-pix); font-size: 1.15rem; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; opacity: 0; transform: translateY(6px); transition: opacity .4s, transform .5s var(--ease); }
 .wx-i.on .wx-sub { opacity: .85; transform: none; }
 .wx-i a:hover .wx-name, .wx-i a:focus-visible .wx-name { color: var(--inch); }

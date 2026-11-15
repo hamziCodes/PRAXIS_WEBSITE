@@ -1,0 +1,162 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Kora Home — in-store room planner</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-weight:700;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf)}
+html,body{margin:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#2a2b35;perspective:2800px;perspective-origin:1150px 300px}
+#bg{position:absolute;inset:0}
+.tab{position:absolute;left:560px;top:150px;width:1300px;height:900px;border-radius:46px;background:#16171c;box-shadow:0 0 0 3px #4a4c55, 0 60px 80px rgba(0,0,0,.45);
+  transform-origin:50% 100%;transform:rotateX(16deg) rotateY(-10deg);transform-style:preserve-3d}
+.scr{position:absolute;inset:30px;border-radius:18px;overflow:hidden;background:#F4F1DE}
+.ui{width:1600px;height:1032px;transform:scale(.775);transform-origin:0 0;display:flex;font-family:NM;color:#2b2d40}
+.rail{width:120px;background:#3D405B;display:flex;flex-direction:column;align-items:center;padding-top:34px;gap:34px;color:#c9cbe0;font:500 15px NM}
+.rail div{display:flex;flex-direction:column;align-items:center;gap:8px}
+.rail .on{color:#fff}.rail .on i{background:#E07A5F}
+.rail i{width:52px;height:52px;border-radius:14px;background:#4b4f6e;display:block}
+.main{flex:1;padding:36px 36px 0 40px;display:flex;flex-direction:column}
+.hd{display:flex;justify-content:space-between;align-items:flex-end}
+.hd h1{margin:0;font:700 46px NM;letter-spacing:-1.5px}
+.hd .ar{font:400 26px Dubai;color:#3D405B}
+.chips{display:flex;gap:12px;margin-top:18px}
+.chip{border:1.5px solid #c9c3a8;border-radius:12px;padding:10px 16px;font:400 17px NM;color:#55576e;background:#fbf9ef}
+.chip b{color:#2b2d40;font-weight:500}
+.plan{flex:1;margin-top:20px;border-radius:16px;background:#fbf9ef;position:relative;overflow:hidden;border:1.5px solid #e2dcc4}
+.side{width:440px;background:#fff;border-left:1.5px solid #e2dcc4;padding:36px 32px 0;display:flex;flex-direction:column}
+.side h3{margin:0;font:700 28px NM}
+.li{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee8d3;font:400 15px NM;color:#6a6c80}
+.li b{display:block;font:500 18px NM;color:#2b2d40}
+.li .p{font:500 18px NM;color:#2b2d40}
+.sw{width:52px;height:40px;border-radius:8px}
+.tot{margin-top:auto;padding:22px 0 28px}
+.tot .row{display:flex;justify-content:space-between;font:400 17px NM;color:#55576e;padding:6px 0}
+.tot .big{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;border-top:2px solid #2b2d40;padding-top:14px}
+.tot .big b{font:700 40px NM;letter-spacing:-1px}
+.btn{margin-top:16px;background:#E07A5F;color:#fff;border-radius:14px;text-align:center;padding:20px;font:500 21px NM}
+.btn2{margin-top:10px;border:2px solid #3D405B;color:#3D405B;border-radius:14px;text-align:center;padding:16px;font:500 19px NM}
+.glare{position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.12) 47%,rgba(255,255,255,0) 58%);pointer-events:none}
+</style></head>
+<body>
+<svg id="bg" width="2400" height="1350">
+  <defs>
+    <filter id="b30" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="b12" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter>
+    <linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b6862"/><stop offset="1" stop-color="#a7a39b"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffdca0" stop-opacity=".9"/><stop offset="1" stop-color="#ffdca0" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="2400" height="1350" fill="#2a2b35"/>
+  <rect y="760" width="2400" height="590" fill="url(#fl)"/>
+  <g filter="url(#b30)">
+    <!-- room sets receding in the showroom -->
+    <rect x="-100" y="300" width="700" height="480" fill="#d9c9b2"/><rect x="40" y="560" width="420" height="160" fill="#5b6a74"/><path d="M180 560 L180 400 A100 100 0 0 1 380 400 L380 560Z" fill="#E07A5F"/>
+    <rect x="1800" y="280" width="760" height="500" fill="#e8dcc6"/><rect x="1900" y="580" width="480" height="170" fill="#3D405B"/><rect x="2250" y="420" width="120" height="330" fill="#6b4a33"/>
+    <rect x="700" y="340" width="420" height="420" fill="#c7b59b"/><rect x="760" y="600" width="300" height="130" fill="#efe6d5"/>
+    <rect x="1260" y="360" width="420" height="400" fill="#bfae95"/><rect x="1300" y="610" width="320" height="120" fill="#8a6446"/>
+    <!-- hanging signs -->
+    <rect x="300" y="200" width="200" height="90" fill="#3D405B"/><rect x="1950" y="180" width="220" height="96" fill="#3D405B"/><rect x="980" y="220" width="160" height="70" fill="#E07A5F"/>
+  </g>
+  <!-- ceiling spots, bokeh -->
+  <g>
+    <circle cx="200" cy="90" r="40" fill="url(#glow)"/><circle cx="640" cy="60" r="34" fill="url(#glow)"/><circle cx="1150" cy="80" r="44" fill="url(#glow)"/><circle cx="1680" cy="60" r="36" fill="url(#glow)"/><circle cx="2160" cy="90" r="42" fill="url(#glow)"/>
+    <circle cx="420" cy="420" r="60" fill="url(#glow)" opacity=".4"/><circle cx="2050" cy="440" r="70" fill="url(#glow)" opacity=".45"/><circle cx="1500" cy="520" r="50" fill="url(#glow)" opacity=".35"/>
+  </g>
+  <rect y="740" width="2400" height="40" fill="#000" opacity=".15" filter="url(#b12)"/>
+  <!-- kiosk pedestal -->
+  <path d="M1110 1060 L1290 1060 L1270 1350 L1130 1350Z" fill="#3D405B"/>
+  <path d="M1110 1060 L1150 1060 L1150 1350 L1130 1350Z" fill="#4c5070"/>
+  <path d="M1250 1060 L1290 1060 L1270 1350 L1250 1350Z" fill="#2f3248"/>
+  <rect x="1090" y="1040" width="220" height="30" rx="6" fill="#2f3248"/>
+  <text x="1200" y="1240" text-anchor="middle" font-family="NM" font-weight="700" font-size="20" fill="#F4F1DE" letter-spacing="2" transform="rotate(-90 1200 1240)">PLAN YOUR ROOM</text>
+  <!-- light from the screen on the pedestal -->
+  <ellipse cx="1200" cy="1070" rx="300" ry="40" fill="#fff5e0" opacity=".12" filter="url(#b12)"/>
+</svg>
+
+<div class="tab">
+  <div class="scr"><div class="ui">
+    <div class="rail">
+      <svg width="54" height="54" viewBox="0 0 60 60"><path d="M10 54 V28 a20 20 0 0 1 40 0 V54" fill="none" stroke="#E07A5F" stroke-width="5"/><path d="M21 54 V30 a9 9 0 0 1 18 0 V54" fill="none" stroke="#E07A5F" stroke-width="5"/><path d="M4 55 H56" stroke="#E07A5F" stroke-width="5" stroke-linecap="round"/></svg>
+      <div><i></i>Rooms</div><div class="on"><i></i>Planner</div><div><i></i>My list</div><div><i></i>Help</div>
+      <div style="margin-top:auto;margin-bottom:30px;font:500 18px Dubai;color:#fff">العربية</div>
+    </div>
+    <div class="main">
+      <div class="hd"><h1>Plan your room</h1><span class="ar">خطط غرفتك</span></div>
+      <div class="chips">
+        <span class="chip">Room <b>Living, 4.2 × 5.0 m</b></span><span class="chip">Started from <b>Room 07 · The Family Majlis</b></span><span class="chip" style="background:#e9f1e2;border-color:#9fbf8c;color:#3f6a35"><b style="color:#3f6a35">✓ Fits</b> · 1.1 m walkway kept</span>
+      </div>
+      <div class="plan">
+        <svg width="100%" height="100%" viewBox="0 0 1000 720" preserveAspectRatio="xMidYMid meet">
+          <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0 H0 V20" fill="none" stroke="#ece6cf" stroke-width="1"/></pattern>
+          <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M0 10 L10 0" stroke="#2b2d40" stroke-width="2"/></pattern></defs>
+          <rect width="1000" height="720" fill="url(#grid)"/>
+          <!-- walls: 4.2 x 5.0 m at 120 px/m -->
+          <g transform="translate(200,60)">
+            <rect x="-14" y="-14" width="532" height="628" fill="url(#hatch)"/>
+            <rect x="0" y="0" width="504" height="600" fill="#fbf9ef"/>
+            <!-- window with mashrabiya on the left wall -->
+            <rect x="-14" y="150" width="14" height="250" fill="#fbf9ef"/><line x1="-14" y1="150" x2="-14" y2="400" stroke="#2b2d40" stroke-width="2"/><line x1="0" y1="150" x2="0" y2="400" stroke="#2b2d40" stroke-width="2"/>
+            <!-- door bottom right -->
+            <rect x="380" y="600" width="100" height="14" fill="#fbf9ef"/><path d="M380 600 A100 100 0 0 1 480 500 L480 600" fill="none" stroke="#9a9cb0" stroke-width="2" stroke-dasharray="6 5"/>
+            <!-- rug -->
+            <rect x="66" y="200" width="372" height="260" fill="#efe3c9" stroke="#3D405B" stroke-width="8"/>
+            <rect x="84" y="218" width="336" height="224" fill="none" stroke="#E07A5F" stroke-width="2"/>
+            <!-- sofa against back wall -->
+            <rect x="108" y="18" width="288" height="114" rx="16" fill="#e7dfcd" stroke="#2b2d40" stroke-width="2.5"/>
+            <rect x="108" y="18" width="288" height="34" rx="12" fill="#d6ccb5"/><rect x="108" y="18" width="28" height="114" rx="10" fill="#d6ccb5"/><rect x="368" y="18" width="28" height="114" rx="10" fill="#d6ccb5"/>
+            <line x1="182" y1="52" x2="182" y2="132" stroke="#b8ad94"/><line x1="258" y1="52" x2="258" y2="132" stroke="#b8ad94"/><line x1="332" y1="52" x2="332" y2="132" stroke="#b8ad94"/>
+            <!-- coffee table -->
+            <circle cx="252" cy="300" r="56" fill="#7a563d" stroke="#2b2d40" stroke-width="2.5"/>
+            <!-- armchairs -->
+            <rect x="70" y="270" width="96" height="96" rx="18" fill="#E07A5F" stroke="#2b2d40" stroke-width="2.5" transform="rotate(12 118 318)"/>
+            <rect x="338" y="270" width="96" height="96" rx="18" fill="#E07A5F" stroke="#2b2d40" stroke-width="2.5" transform="rotate(-12 386 318)"/>
+            <!-- side table, lamp, shelving -->
+            <circle cx="70" cy="70" r="30" fill="#dccbb0" stroke="#2b2d40" stroke-width="2.5"/>
+            <circle cx="440" cy="64" r="26" fill="#fff3d4" stroke="#2b2d40" stroke-width="2.5"/><circle cx="440" cy="64" r="8" fill="#c9a66b"/>
+            <rect x="460" y="150" width="44" height="200" fill="#6b4a33" stroke="#2b2d40" stroke-width="2.5"/>
+            <!-- selected item highlight -->
+            <rect x="100" y="10" width="304" height="130" rx="20" fill="none" stroke="#E07A5F" stroke-width="3" stroke-dasharray="10 6"/>
+            <g transform="translate(252,-2)"><rect x="-120" y="-34" width="240" height="30" rx="8" fill="#2b2d40"/><text x="0" y="-13" text-anchor="middle" font-family="NM" font-size="15" fill="#fff">Sofa Layla · 240 × 95 cm</text></g>
+            <!-- dimension lines -->
+            <g stroke="#55576e" stroke-width="1.5" font-family="NM" font-size="15" fill="#55576e">
+              <line x1="0" y1="640" x2="504" y2="640"/><line x1="0" y1="632" x2="0" y2="648"/><line x1="504" y1="632" x2="504" y2="648"/>
+              <text x="252" y="664" text-anchor="middle" stroke="none">4.20 m</text>
+              <line x1="544" y1="0" x2="544" y2="600"/><line x1="536" y1="0" x2="552" y2="0"/><line x1="536" y1="600" x2="552" y2="600"/>
+              <text x="560" y="305" stroke="none">5.00 m</text>
+              <line x1="166" y1="470" x2="166" y2="600" stroke="#3f6a35" stroke-dasharray="4 4"/><text x="174" y="545" fill="#3f6a35" stroke="none">1.1 m clear</text>
+            </g>
+            <text x="252" y="590" text-anchor="middle" font-family="NM" font-size="14" fill="#9a9cb0" letter-spacing="2">DOOR</text>
+            <text x="-36" y="280" text-anchor="middle" font-family="NM" font-size="14" fill="#9a9cb0" letter-spacing="2" transform="rotate(-90 -36 280)">WINDOW</text>
+          </g>
+          <!-- toolbar -->
+          <g transform="translate(830,60)" font-family="NM" font-size="15" fill="#2b2d40">
+            <rect width="140" height="200" rx="14" fill="#fff" stroke="#e2dcc4"/>
+            <text x="20" y="38">↻ Rotate</text><text x="20" y="78">⇄ Swap</text><text x="20" y="118">＋ Add</text><text x="20" y="158">✕ Remove</text>
+          </g>
+          <g transform="translate(830,300)"><rect width="140" height="110" rx="14" fill="#3D405B"/><text x="70" y="44" text-anchor="middle" font-family="NM" font-size="15" fill="#c9cbe0">In stock</text><text x="70" y="80" text-anchor="middle" font-family="NM" font-weight="700" font-size="26" fill="#fff">9 / 9</text></g>
+        </svg>
+      </div>
+      <div style="height:30px"></div>
+    </div>
+    <div class="side">
+      <h3>Your room</h3>
+      <div style="font:400 16px NM;color:#6a6c80;margin-top:6px">9 pieces · all on the floor today</div>
+      <div style="margin-top:14px">
+        <div class="li"><span class="sw" style="background:#e7dfcd"></span><div><b>Sofa Layla, 3-seat</b>Boucle, sand</div><span class="p">6,900</span></div>
+        <div class="li"><span class="sw" style="background:#E07A5F"></span><div><b>Armchair Reem × 2</b>Velvet, clay</div><span class="p">3,200</span></div>
+        <div class="li"><span class="sw" style="background:#7a563d"></span><div><b>Coffee table Dalal</b>Walnut, Ø 96 cm</div><span class="p">1,450</span></div>
+        <div class="li"><span class="sw" style="background:#efe3c9;box-shadow:inset 0 0 0 4px #3D405B"></span><div><b>Rug Bayt</b>Wool, 300 × 200 cm</div><span class="p">1,450</span></div>
+        <div class="li"><span class="sw" style="background:#6b4a33"></span><div><b>Shelving Amal</b>Walnut, 200 cm</div><span class="p">1,050</span></div>
+        <div class="li"><span class="sw" style="background:#fff3d4;box-shadow:inset 0 0 0 2px #c9a66b"></span><div><b>Floor lamp + side table</b>Linen, travertine</div><span class="p">800</span></div>
+      </div>
+      <div class="tot">
+        <div class="row"><span>Delivery &amp; assembly</span><span>Included</span></div>
+        <div class="row"><span>Earliest slot</span><span style="color:#2b2d40;font-weight:500">Sat 22 Nov, 9–12</span></div>
+        <div class="big"><span style="font:500 18px NM">Total, QAR</span><b>14,850</b></div>
+        <div class="btn">Reserve all · pay at the counter</div>
+        <div class="btn2">Send the plan to my phone</div>
+      </div>
+    </div>
+  </div><div class="glare"></div></div>
+</div>
+</body></html>

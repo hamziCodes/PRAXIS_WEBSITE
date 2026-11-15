@@ -1,0 +1,243 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>LEDGERLY — closing time on the counter</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf);font-weight:700}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Light.otf);font-weight:300}
+@font-face{font-family:PX;src:url(../../../assets/fonts/handjet.woff2)}
+html,body{margin:0;padding:0}
+body{width:1080px;height:1920px;overflow:hidden;position:relative;background:#c9a77c;font-family:NM,Arial,sans-serif}
+.abs{position:absolute}
+/* ---------- phone ---------- */
+.phone{position:absolute;width:433px;height:888px;border-radius:72px;transform-origin:50% 50%}
+.phone .shadow1{position:absolute;inset:0;border-radius:72px;background:#1d140c;opacity:.55;filter:blur(30px);transform:translate(36px,46px)}
+.phone .shadow2{position:absolute;inset:6px;border-radius:72px;background:#120c06;opacity:.7;filter:blur(6px);transform:translate(8px,10px)}
+.phone .frame{position:absolute;inset:0;border-radius:72px;background:linear-gradient(135deg,#e9e9ec,#9b9ca2 18%,#5d5e63 45%,#a7a8ad 70%,#4a4b50)}
+.phone .bezel{position:absolute;inset:5px;border-radius:67px;background:#050506}
+.phone .screen{position:absolute;left:20px;top:20px;width:393px;height:848px;border-radius:54px;overflow:hidden;background:#F3F3EE}
+.phone .glass{position:absolute;inset:5px;border-radius:67px;background:linear-gradient(125deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.04) 26%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 70%,rgba(255,255,255,.07) 85%,rgba(255,255,255,0));pointer-events:none}
+.phone .island{position:absolute;left:50%;top:14px;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000;z-index:5}
+.phone .btn{position:absolute;background:linear-gradient(90deg,#4a4b50,#c9cacd,#55565b);border-radius:3px}
+/* ---------- app UI ---------- */
+.ui{position:absolute;inset:0;font-family:NM;color:#141414;font-size:15px}
+.sb{height:54px;display:flex;justify-content:space-between;align-items:center;padding:6px 34px 0 40px;font-weight:500;font-size:16px}
+.sb .r{display:flex;gap:6px;align-items:center}
+.top{display:flex;align-items:center;justify-content:space-between;padding:6px 20px 10px}
+.top .t{font-weight:500;font-size:17px}
+.top .d{font-size:12px;color:#77776f}
+.av{width:34px;height:34px;border-radius:50%;background:#2F4BFF;display:grid;place-items:center}
+.chat{padding:4px 16px;display:flex;flex-direction:column;gap:9px}
+.day{align-self:center;font-size:11px;letter-spacing:.8px;color:#8a8a82;text-transform:uppercase;margin:4px 0}
+.me{align-self:flex-end;max-width:76%;background:#2F4BFF;color:#fff;padding:10px 14px;border-radius:20px 20px 6px 20px;line-height:1.3}
+.bot{align-self:flex-start;max-width:84%;background:#fff;padding:10px 14px;border-radius:20px 20px 20px 6px;line-height:1.32;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.entry{align-self:flex-start;width:84%;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.entry .h{display:flex;align-items:center;gap:8px;padding:9px 12px;background:#FFD84D;font-size:12px;font-weight:500;letter-spacing:.3px}
+.entry .row{display:flex;justify-content:space-between;padding:8px 12px;border-top:1px solid #eeeee8;font-size:13.5px}
+.entry .row b{font-weight:500}
+.chips{display:flex;gap:7px;align-self:flex-start}
+.chip{border:1.5px solid #2F4BFF;color:#2F4BFF;border-radius:16px;padding:6px 12px;font-size:13px;font-weight:500}
+.chip.on{background:#2F4BFF;color:#fff}
+.composer{position:absolute;left:12px;right:12px;bottom:28px;height:50px;border-radius:25px;background:#fff;display:flex;align-items:center;padding:0 8px 0 18px;color:#9a9a92;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.composer .mic{margin-left:auto;width:36px;height:36px;border-radius:50%;background:#2F4BFF;display:grid;place-items:center}
+.home{position:absolute;left:50%;bottom:9px;width:134px;height:5px;margin-left:-67px;border-radius:3px;background:#141414}
+.big{font-size:30px;font-weight:500;letter-spacing:-.6px;line-height:1.08}
+.lbl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#77776f}
+.tick{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#141414;color:#FFD84D;font-size:10px}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="oak" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0018 0.022" numOctaves="5" seed="14" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .35  0 0 0 0 .2  0 0 0 0 .08  -3.2 0 0 0 1.95"/>
+  </filter>
+  <filter id="oak2" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="turbulence" baseFrequency="0.0009 0.012" numOctaves="3" seed="3" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .4  0 0 0 0 .24  0 0 0 0 .1  2 0 0 0 -.5"/>
+  </filter>
+  <filter id="pores" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.25 2" numOctaves="1" seed="2" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .2  0 0 0 0 .1  0 0 0 0 .04  -4 0 0 0 2.5"/>
+  </filter>
+  <filter id="scratch" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.6 0.004" numOctaves="1" seed="31" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -9 0 0 0 5.9"/>
+  </filter>
+  <filter id="paper" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .3  0 0 0 0 .3  0 0 0 0 .3  0 0 0 -1.4 .78"/>
+  </filter>
+  <filter id="curl" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.004 0.02" numOctaves="3" seed="5" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="4" lighting-color="#fff" result="l"><feDistantLight azimuth="225" elevation="45"/></feDiffuseLighting>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.8 0 0 0 1.32"/>
+  </filter>
+  <filter id="thermal" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" seed="9" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.4 0 0 0 1.9" result="m"/>
+    <feComposite in="SourceGraphic" in2="m" operator="in"/>
+  </filter>
+</defs></svg>
+
+<!-- oak counter -->
+<div class="abs" style="inset:0;background:linear-gradient(180deg,#d4b58b,#c7a273 50%,#b98f61)"></div>
+<svg class="abs" style="left:0;top:0" width="1080" height="1920">
+  <rect width="1080" height="1920" filter="url(#oak2)" opacity=".75"/>
+  <rect width="1080" height="1920" filter="url(#oak)" opacity=".5"/>
+  <rect width="1080" height="1920" filter="url(#pores)" opacity=".25"/>
+  <rect width="1080" height="1920" filter="url(#scratch)" opacity=".18"/>
+  <!-- board joints -->
+  <line x1="0" y1="560" x2="1080" y2="556" stroke="#6d4a2a" stroke-width="2" opacity=".45"/>
+  <line x1="0" y1="1400" x2="1080" y2="1404" stroke="#6d4a2a" stroke-width="2" opacity=".45"/>
+</svg>
+<!-- shop window light: big soft gobo from top-left -->
+<div class="abs" style="inset:0;background:linear-gradient(118deg,rgba(255,244,220,.38) 0%,rgba(255,244,220,.12) 35%,rgba(255,244,220,0) 55%),linear-gradient(0deg,rgba(60,30,10,.22),rgba(60,30,10,0) 40%)"></div>
+<svg class="abs" style="left:0;top:0;mix-blend-mode:multiply" width="1080" height="1920"><g style="filter:blur(40px)" fill="#6a4524" opacity=".22"><polygon points="700,-100 780,-100 -40,2000 -120,2000"/><polygon points="1300,-100 1380,-100 560,2000 480,2000"/></g></svg>
+
+<div id="stage" class="abs" style="inset:0"></div>
+<div class="abs" style="inset:0;background:radial-gradient(1100px 1800px at 50% 48%,rgba(0,0,0,0) 55%,rgba(40,20,5,.35) 100%);pointer-events:none"></div>
+
+<script>
+window.__ready=false;
+const stage=document.getElementById('stage');
+const add=h=>{stage.insertAdjacentHTML('beforeend',h)};
+const icons={
+  sig:`<svg width="18" height="12"><rect x="0" y="8" width="3" height="4" fill="#141414"/><rect x="5" y="5" width="3" height="7" fill="#141414"/><rect x="10" y="2" width="3" height="10" fill="#141414"/><rect x="15" y="0" width="3" height="12" fill="#141414"/></svg>`,
+  bat:`<svg width="27" height="13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke="#141414" opacity=".4"/><rect x="2" y="2" width="16" height="9" rx="2" fill="#141414"/><rect x="25" y="4" width="2" height="5" rx="1" fill="#141414" opacity=".4"/></svg>`,
+  mic:`<svg width="14" height="18"><rect x="4" y="0" width="6" height="11" rx="3" fill="#fff"/><path d="M1,8 a6,6 0 0 0 12,0 M7,14 v4" stroke="#fff" stroke-width="1.8" fill="none"/></svg>`,
+  mark:(c='#FFD84D')=>`<svg width="18" height="18"><rect x="0" y="0" width="7" height="7" fill="${c}"/><rect x="9" y="4" width="5" height="5" fill="${c}"/><rect x="2" y="10" width="5" height="5" fill="${c}"/><rect x="11" y="12" width="6" height="6" fill="${c}"/></svg>`
+};
+const status=(t='18:52',dark=false)=>`<div class="sb" style="${dark?'color:#fff':''}"><span>${t}</span><span class="r">${icons.sig}${icons.bat}</span></div>`;
+
+// ---- screen A: chat entry
+const scrChat=`<div class="ui">${status()}
+ <div class="top"><div style="display:flex;gap:10px;align-items:center"><div class="av">${icons.mark()}</div><div><div class="t">Today's books</div><div class="d">Hussain's Corner Shop · Thu 12 Nov</div></div></div><svg width="22" height="22"><circle cx="11" cy="11" r="9" fill="none" stroke="#141414" stroke-width="1.6"/><path d="M11,6 v5 l3,3" stroke="#141414" stroke-width="1.6" fill="none"/></svg></div>
+ <div class="chat">
+  <div class="day">Closing up · 18:47</div>
+  <div class="me">Sold 3 boxes of Yorkshire Tea, £42 on card</div>
+  <div class="entry"><div class="h">${icons.mark('#141414')} Booked</div>
+   <div class="row"><span>Sales · Card</span><b>£42.00</b></div>
+   <div class="row"><span style="color:#77776f">Groceries, 0% VAT</span><span style="color:#77776f">12 Nov</span></div></div>
+  <div class="me">paid Dairy Direct £86.40 for milk, cash from the till</div>
+  <div class="bot">Booked to <b style="font-weight:500">Purchases · Cash</b>. Was there VAT on that invoice?</div>
+  <div class="chips"><span class="chip on">No VAT</span><span class="chip">20%</span><span class="chip">Not sure</span></div>
+  <div class="bot">Done. Today you took <b style="font-weight:500">£1,284.60</b> and paid out <b style="font-weight:500">£312.15</b>. The cash drawer should hold <b style="font-weight:500">£406.20</b>.</div>
+  <div class="me">counted it, £406.20 exactly</div>
+  <div class="entry"><div class="h">${icons.mark('#141414')} Day closed · 1 min 42 s</div>
+   <div class="row"><span>Entries booked</span><b>23</b></div>
+   <div class="row"><span>Cash difference</span><b>£0.00</b></div></div>
+ </div>
+ <div class="composer">Tell me what happened today…<div class="mic">${icons.mic}</div></div><div class="home"></div></div>`;
+
+// ---- screen B: the week, in sentences
+const bars=[34,52,41,60,48,78,66];
+const scrWeek=`<div class="ui" style="background:#2F4BFF;color:#fff">${status('18:53',true)}
+ <div style="padding:14px 24px 0">
+  <div class="lbl" style="color:#c9d0ff">Your week · 6–12 Nov</div>
+  <div class="big" style="margin-top:12px;font-size:33px">You took <span style="color:#FFD84D">£8,412</span> this week, 6% more than last week.</div>
+  <div style="display:flex;align-items:flex-end;gap:9px;height:150px;margin-top:26px">
+   ${bars.map((b,i)=>`<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%"><div style="height:${b*1.8}px;background:${i===5?'#FFD84D':'rgba(255,255,255,.28)'};background-image:repeating-linear-gradient(0deg,transparent 0 8px,rgba(47,75,255,.9) 8px 10px)"></div><div style="text-align:center;font-size:11px;margin-top:6px;color:#c9d0ff">${'MTWTFSS'[i]}</div></div>`).join('')}
+  </div>
+  <div style="margin-top:26px;background:#fff;color:#141414;border-radius:20px;padding:16px 18px;line-height:1.38;font-size:15.5px">
+   Your biggest cost was stock from Booker: <b style="font-weight:500">£2,960</b>.<div style="height:10px"></div>
+   You owe roughly <b style="font-weight:500">£1,140 VAT</b> for this quarter. Put aside <b style="font-weight:500">£170 a day</b> and you'll be ahead by January.
+  </div>
+  <div style="margin-top:12px;display:flex;gap:8px">
+   <div style="flex:1;background:rgba(255,255,255,.14);border-radius:16px;padding:12px 14px"><div class="lbl" style="color:#c9d0ff">Card</div><div style="font-size:22px;font-weight:500;margin-top:4px">£5,903</div></div>
+   <div style="flex:1;background:rgba(255,255,255,.14);border-radius:16px;padding:12px 14px"><div class="lbl" style="color:#c9d0ff">Cash</div><div style="font-size:22px;font-weight:500;margin-top:4px">£2,509</div></div>
+  </div>
+ </div>
+ <div class="composer" style="background:rgba(255,255,255,.95)">Ask about your week…<div class="mic" style="background:#141414">${icons.mic}</div></div><div class="home" style="background:#fff"></div></div>`;
+
+// ---- screen C: VAT summary
+const scrVat=`<div class="ui">${status('18:55')}
+ <div class="top"><svg width="22" height="22"><path d="M14,4 L7,11 L14,18" stroke="#141414" stroke-width="2" fill="none"/></svg><div class="t">VAT · Oct – Dec</div><div style="width:22px"></div></div>
+ <div style="padding:6px 20px">
+  <div style="background:#fff;border-radius:20px;padding:18px">
+   <div class="lbl">Estimated to pay HMRC</div>
+   <div style="font-size:44px;font-weight:500;letter-spacing:-1px;margin-top:6px">£1,137.45</div>
+   <div style="font-size:13px;color:#77776f;margin-top:2px">Due 7 Feb 2027 · 52 days of the quarter left</div>
+   <div style="height:10px;border-radius:5px;background:#eeeee8;margin-top:14px;overflow:hidden"><div style="width:43%;height:100%;background:#2F4BFF"></div></div>
+  </div>
+  <div style="background:#fff;border-radius:20px;margin-top:10px">
+   ${[['VAT on sales','£2,184.20'],['VAT you can reclaim','£1,046.75'],['Total sales (ex VAT)','£31,860.00'],['Total purchases (ex VAT)','£19,412.50']].map((r,i)=>`<div style="display:flex;justify-content:space-between;padding:14px 18px;${i?'border-top:1px solid #eeeee8':''};font-size:14.5px"><span>${r[0]}</span><b style="font-weight:500">${r[1]}</b></div>`).join('')}
+  </div>
+  <div class="bot" style="margin-top:12px;max-width:100%">Two Booker invoices have no VAT number. Want me to ask you about them tomorrow?</div>
+  <div style="margin-top:14px;background:#141414;color:#fff;border-radius:26px;height:52px;display:flex;align-items:center;justify-content:center;font-weight:500;gap:10px">Send to Priya at Shah &amp; Co ${icons.mark()}</div>
+  <div style="text-align:center;font-size:12px;color:#77776f;margin-top:10px">Ledger export · Making Tax Digital ready</div>
+ </div><div class="home"></div></div>`;
+
+function phone(x,y,rot,scr,s=1,id=''){
+  add(`<div class="phone" ${id?`id="${id}"`:''} style="left:${x}px;top:${y}px;transform:rotate(${rot}deg) scale(${s})">
+   <div class="shadow1"></div><div class="shadow2"></div><div class="frame"></div>
+   <div class="btn" style="left:-3px;top:170px;width:5px;height:34px"></div><div class="btn" style="left:-3px;top:230px;width:5px;height:64px"></div><div class="btn" style="left:-3px;top:306px;width:5px;height:64px"></div><div class="btn" style="right:-3px;top:250px;width:5px;height:100px"></div>
+   <div class="bezel"></div><div class="screen">${scr}</div><div class="island"></div><div class="glass"></div></div>`);
+}
+
+// ---------- props ----------
+// receipt (thermal paper strip)
+add(`<div class="abs" style="left:-60px;top:-260px;width:300px;height:900px;transform:rotate(-24deg)">
+ <div class="abs" style="inset:0;background:#3a2410;opacity:.35;filter:blur(14px);transform:translate(20px,24px)"></div>
+ <div class="abs" style="inset:0;background:linear-gradient(90deg,#f4f2ec,#fbfaf6 40%,#e9e6de);clip-path:polygon(0 0,100% 0,100% 100%,94% 99.3%,88% 100%,82% 99.3%,76% 100%,70% 99.3%,64% 100%,58% 99.3%,52% 100%,46% 99.3%,40% 100%,34% 99.3%,28% 100%,22% 99.3%,16% 100%,10% 99.3%,4% 100%,0 99.3%)"></div>
+ <svg class="abs" style="left:0;top:0" width="300" height="900"><rect width="300" height="900" filter="url(#curl)" opacity=".45"/><rect width="300" height="900" filter="url(#paper)" opacity=".4"/>
+ <g filter="url(#thermal)" font-family="Consolas,monospace" font-size="15" fill="#2a2a30">
+  <text x="150" y="60" text-anchor="middle" font-size="20" font-weight="700">HUSSAIN'S CORNER SHOP</text>
+  <text x="150" y="84" text-anchor="middle">212 Stockport Rd, Levenshulme</text>
+  <text x="150" y="104" text-anchor="middle">Manchester M19 3AB</text>
+  <text x="150" y="124" text-anchor="middle">VAT No. GB 284 7712 09</text>
+  <text x="24" y="166">12/11/2026  18:41   TILL 1</text>
+  <text x="24" y="190">--------------------------------</text>
+  ${[['YORKSHIRE TEA 240','3 x 14.00','42.00'],['WARBURTONS TOASTIE','','1.65'],['SEMI SKIMMED 4PT','','1.85'],['MCVITIES DIGESTIVE','','1.79'],['FAIRY LIQUID','','1.99'],['MANC EVE NEWS','','1.20']].map((r,i)=>`<text x="24" y="${220+i*48}">${r[0]}</text><text x="24" y="${240+i*48}" opacity=".75">${r[1]}</text><text x="276" y="${240+i*48}" text-anchor="end">${r[2]}</text>`).join('')}
+  <text x="24" y="520">--------------------------------</text>
+  <text x="24" y="550" font-size="19" font-weight="700">TOTAL</text><text x="276" y="550" text-anchor="end" font-size="19" font-weight="700">£50.48</text>
+  <text x="24" y="580">CARD  CONTACTLESS</text><text x="276" y="580" text-anchor="end">50.48</text>
+  <text x="24" y="604">VISA DEBIT  **** 4417</text>
+  <text x="24" y="628">AUTH 039912</text>
+  <text x="150" y="690" text-anchor="middle">THANK YOU, SEE YOU TOMORROW</text>
+  <g transform="translate(60 720)">${Array.from({length:46},(_,i)=>`<rect x="${i*4}" y="0" width="${[1,2,3][(i*7)%3]}" height="60"/>`).join('')}</g>
+ </g></svg></div>`);
+
+// card reader
+add(`<div class="abs" style="left:790px;top:1380px;width:300px;height:470px;transform:rotate(-22deg)">
+ <div class="abs" style="inset:0;border-radius:40px;background:#000;opacity:.5;filter:blur(24px);transform:translate(28px,36px)"></div>
+ <div class="abs" style="inset:0;border-radius:40px;background:linear-gradient(140deg,#4a4c52,#24252a 40%,#141518)"></div>
+ <div class="abs" style="left:4px;top:4px;right:4px;bottom:4px;border-radius:36px;box-shadow:inset 1px 1px 0 rgba(255,255,255,.25)"></div>
+ <div class="abs" style="left:34px;top:38px;width:232px;height:150px;border-radius:12px;background:#0b0c0e;box-shadow:inset 0 0 0 2px #333"></div>
+ <div class="abs" style="left:46px;top:50px;width:208px;height:126px;border-radius:6px;background:linear-gradient(#e9f0f5,#d5dfe7);font-family:NM;color:#141414;text-align:center">
+   <div style="font-size:13px;margin-top:16px;color:#556">Hussain's Corner Shop</div><div style="font-size:36px;font-weight:500;margin-top:6px">£42.00</div><div style="font-size:12px;margin-top:6px;color:#2a8a4a">✓ Approved</div></div>
+ <div class="abs" style="left:34px;top:212px;width:232px;height:220px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+  ${['1','2','3','4','5','6','7','8','9','✕','0','✓'].map((k,i)=>`<div style="border-radius:14px;background:${i==9?'#b33':i==11?'#2a8a4a':'linear-gradient(#3a3c42,#2a2b30)'};color:#e8e8ea;display:grid;place-items:center;font-family:NM;font-size:20px;box-shadow:0 2px 0 #000,inset 0 1px 0 rgba(255,255,255,.15)">${k}</div>`).join('')}
+ </div>
+ <div class="abs" style="inset:0;border-radius:40px;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,0) 40%)"></div>
+</div>`);
+
+// coins
+function coin(x,y,r,type,rot){
+  if(type==='pound'){add(`<div class="abs" style="left:${x}px;top:${y}px;width:${r*2}px;height:${r*2}px;transform:rotate(${rot}deg)">
+   <div class="abs" style="inset:0;clip-path:polygon(50% 0,72% 5%,89% 19%,99% 39%,97% 61%,88% 80%,71% 95%,50% 100%,29% 95%,12% 80%,3% 61%,1% 39%,11% 19%,28% 5%);background:#000;opacity:.45;filter:blur(4px);transform:translate(7px,9px)"></div>
+   <div class="abs" style="inset:0;clip-path:polygon(50% 0,72% 5%,89% 19%,99% 39%,97% 61%,88% 80%,71% 95%,50% 100%,29% 95%,12% 80%,3% 61%,1% 39%,11% 19%,28% 5%);background:conic-gradient(from 200deg,#f6e3a2,#c9a24a,#8a6a26,#e9cf7c,#b08a36,#f6e3a2)"></div>
+   <div class="abs" style="inset:${r*.26}px;border-radius:50%;background:conic-gradient(from 30deg,#f2f2f0,#a9aaae,#e2e3e6,#8c8d92,#f2f2f0)"></div>
+   <div class="abs" style="inset:${r*.36}px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)"></div></div>`)}
+  else{add(`<div class="abs" style="left:${x}px;top:${y}px;width:${r*2}px;height:${r*2}px;transform:rotate(${rot}deg)">
+   <div class="abs" style="inset:0;clip-path:polygon(50% 0,89% 19%,99% 61%,71% 95%,29% 95%,1% 61%,11% 19%);background:#000;opacity:.45;filter:blur(4px);transform:translate(6px,8px)"></div>
+   <div class="abs" style="inset:0;clip-path:polygon(50% 0,89% 19%,99% 61%,71% 95%,29% 95%,1% 61%,11% 19%);background:conic-gradient(from 120deg,#f4f4f2,#a0a1a6,#dcdde0,#7f8085,#eeeeec)"></div>
+   <div class="abs" style="inset:${r*.14}px;clip-path:polygon(50% 0,89% 19%,99% 61%,71% 95%,29% 95%,1% 61%,11% 19%);box-shadow:inset 0 0 6px rgba(0,0,0,.4)"></div></div>`)}
+}
+coin(840,150,40,'pound',12);coin(925,200,40,'pound',-30);coin(860,260,30,'20',8);coin(100,1640,40,'pound',40);
+
+// pen
+add(`<div class="abs" style="left:90px;top:1790px;width:520px;height:30px;transform:rotate(-8deg)">
+ <div class="abs" style="inset:0;border-radius:15px;background:#000;opacity:.4;filter:blur(8px);transform:translate(12px,16px)"></div>
+ <div class="abs" style="inset:0;border-radius:6px 15px 15px 6px;background:linear-gradient(#5a74ff,#2F4BFF 45%,#1b2fb8)"></div>
+ <div class="abs" style="left:-30px;top:6px;width:36px;height:18px;background:linear-gradient(#e2e2e6,#8e8f94);clip-path:polygon(0 50%,100% 0,100% 100%)"></div>
+ <div class="abs" style="left:380px;top:-6px;width:120px;height:10px;border-radius:4px;background:linear-gradient(#f0f0f2,#9a9ba0)"></div>
+ <div class="abs" style="left:90px;top:7px;font-family:NM;font-weight:700;font-size:13px;letter-spacing:3px;color:#FFD84D">LEDGERLY</div>
+</div>`);
+
+// phones
+phone(820,1010,14,scrWeek,1);
+phone(323,516,-4,scrChat,1.5);
+window.__ready=true;
+</script>
+</body></html>

@@ -1,0 +1,194 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Light.otf');font-weight:300}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#14213D;--mint:#9EF0C8;--paper:#F3F5F2}
+body{width:1080px;height:1920px;overflow:hidden;position:relative;font-family:'NM',sans-serif;color:#fff;
+  background:linear-gradient(180deg,#0a1129 0%,#14213D 28%,#26335a 44%,#4a4a68 57%,#8c6670 66%,#c98a72 73%,#e9b282 77.5%,#f3cf98 79.7%,#3b3346 80.2%,#151b33 100%)}
+.abs{position:absolute}
+#sky{position:absolute;inset:0}
+.sun{left:620px;top:1500px;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,226,170,.95),rgba(255,170,110,.45) 40%,rgba(255,140,110,0) 100%);filter:blur(6px)}
+.haze{left:0;right:0;top:1330px;height:260px;background:linear-gradient(180deg,rgba(255,190,150,0),rgba(255,180,140,.32) 55%,rgba(60,40,80,0));}
+.grain{inset:0;opacity:.22;mix-blend-mode:overlay}
+.vign{inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(0,0,0,0) 55%,rgba(4,8,24,.55) 100%)}
+/* glass */
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.20),rgba(255,255,255,.05) 45%,rgba(255,255,255,.09));
+  -webkit-backdrop-filter:blur(26px) saturate(170%);backdrop-filter:blur(26px) saturate(170%);
+  border:1.5px solid rgba(255,255,255,.30);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12),inset 2px 0 0 rgba(255,255,255,.18),0 60px 120px rgba(6,10,30,.55),0 10px 30px rgba(6,10,30,.35)}
+.rim{position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 18%,rgba(255,255,255,0) 70%,rgba(255,214,170,.28) 100%);mix-blend-mode:screen}
+.tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.mint{color:var(--mint)}
+.muted{color:rgba(255,255,255,.62)}
+.orb{border-radius:50%}
+/* phone */
+#phone{left:290px;top:560px;width:470px;height:960px;border-radius:64px;transform:perspective(2600px) rotateY(-8deg) rotateX(3deg) rotateZ(-1deg) scale(1.12);padding:34px 34px}
+#phone .sb{display:flex;justify-content:space-between;font-size:19px;font-weight:500;padding:0 10px}
+.notch{position:absolute;left:50%;top:22px;width:120px;height:34px;border-radius:20px;background:rgba(5,10,28,.75);transform:translateX(-50%)}
+#card{left:-60px;top:250px;width:640px;height:404px;border-radius:34px;transform:perspective(2200px) rotateY(26deg) rotateX(10deg) rotateZ(-9deg) scale(.92)}
+#dash{left:520px;top:140px;width:860px;height:590px;border-radius:32px;transform:perspective(2400px) rotateY(-30deg) rotateX(6deg) rotateZ(2deg) scale(.8);transform-origin:0 50%;padding:36px 40px}
+.pill{border-radius:999px;padding:18px 28px 18px 22px;display:flex;align-items:center;gap:14px;font-size:24px;font-weight:500;white-space:nowrap}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--mint);box-shadow:0 0 14px var(--mint)}
+table{border-collapse:collapse;width:100%}
+td{padding:13px 0;border-top:1px solid rgba(255,255,255,.12);font-size:19px}
+.flag{display:inline-block;width:38px;font-size:13px;font-weight:700;letter-spacing:.08em;padding:3px 0;text-align:center;border-radius:6px;background:rgba(255,255,255,.12);margin-right:12px}
+</style></head>
+<body>
+<script>window.__ready=false</script>
+<div class="abs sun"></div>
+<svg id="sky" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+<div class="abs haze"></div>
+
+<!-- glowing orbs give the glass something to refract -->
+<div class="abs orb" style="left:150px;top:620px;width:300px;height:300px;background:radial-gradient(circle at 35% 30%,#d9fff0,#9EF0C8 35%,#2fb58a 70%,rgba(20,90,80,0) 72%);filter:blur(2px);opacity:.9"></div>
+<div class="abs orb" style="left:760px;top:1380px;width:200px;height:200px;background:radial-gradient(circle at 35% 30%,#ffe2c4,#f39a72 45%,rgba(160,60,70,0) 72%);opacity:.85"></div>
+<div class="abs orb" style="left:820px;top:90px;width:130px;height:130px;background:radial-gradient(circle at 35% 30%,#ffffff,#b7c6ff 45%,rgba(80,90,180,0) 72%);opacity:.7"></div>
+
+<!-- merchant dashboard, back right -->
+<div id="dash" class="abs glass">
+  <div class="rim"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div style="display:flex;align-items:center;gap:14px">
+      <svg width="30" height="30" viewBox="0 0 200 200" fill="none" stroke="#9EF0C8" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"><path d="M112 12 L52 112 h32 L78 188 L152 82 h-34 Z"/></svg>
+      <div style="font-size:24px;font-weight:700">Kitepay <span class="muted" style="font-weight:400">Business</span></div>
+    </div>
+    <div class="muted" style="font-size:18px">Al Qudra Facilities LLC · Payroll</div>
+  </div>
+  <div style="display:flex;gap:44px;margin-top:30px">
+    <div><div class="muted" style="font-size:16px;letter-spacing:.06em">NOVEMBER RUN · 25 NOV</div><div class="tnum" style="font-size:52px;font-weight:500;margin-top:6px">AED 412,860<span class="muted" style="font-size:32px">.00</span></div></div>
+    <div style="margin-left:auto;text-align:right"><div class="muted" style="font-size:16px;letter-spacing:.06em">ON TIME</div><div class="tnum mint" style="font-size:52px;font-weight:500;margin-top:6px">142/142</div></div>
+  </div>
+  <svg width="780" height="64" viewBox="0 0 780 64" style="margin:18px 0 6px;display:block">
+    <g id="bars"></g>
+  </svg>
+  <table class="tnum">
+    <tr><td><span class="flag">PH</span>Joel Santos</td><td class="muted">BDO · Cebu</td><td style="text-align:right">AED 3,200.00</td><td style="text-align:right" class="mint">● 14:04</td></tr>
+    <tr><td><span class="flag">PK</span>Imran Qureshi</td><td class="muted">HBL · Sialkot</td><td style="text-align:right">AED 2,850.00</td><td style="text-align:right" class="mint">● 14:05</td></tr>
+    <tr><td><span class="flag">IN</span>Priya Nair</td><td class="muted">SBI · Kochi</td><td style="text-align:right">AED 4,100.00</td><td style="text-align:right" class="mint">● 14:03</td></tr>
+    <tr><td><span class="flag">NP</span>Bishnu Thapa</td><td class="muted">NIC Asia · Pokhara</td><td style="text-align:right">AED 2,400.00</td><td style="text-align:right" class="mint">● 14:06</td></tr>
+  </table>
+</div>
+
+<!-- glass card, back left -->
+<div id="card" class="abs glass" style="background:linear-gradient(135deg,rgba(158,240,200,.30),rgba(255,255,255,.06) 50%,rgba(158,240,200,.14))">
+  <div class="rim"></div>
+  <div class="abs" style="left:44px;top:40px;display:flex;align-items:center;gap:14px">
+    <svg width="40" height="40" viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"><path d="M112 12 L52 112 h32 L78 188 L152 82 h-34 Z"/></svg>
+    <div style="font-size:38px;font-weight:700;letter-spacing:-.02em">kitepay</div>
+  </div>
+  <svg class="abs" style="right:46px;top:46px" width="34" height="40" viewBox="0 0 34 40" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="3" stroke-linecap="round"><path d="M4 8c6 7 6 17 0 24M13 4c9 10 9 22 0 32M22 0c12 13 12 27 0 40" transform="translate(4 0) scale(.9)"/></svg>
+  <div class="abs" style="left:46px;top:150px;width:82px;height:62px;border-radius:12px;background:linear-gradient(135deg,rgba(255,240,200,.75),rgba(200,170,110,.5));box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)">
+    <svg width="82" height="62"><path d="M0 21h28M0 41h28M54 21h28M54 41h28M28 0v62M54 0v62M28 31h26" stroke="rgba(90,70,30,.45)" stroke-width="1.5" fill="none"/></svg>
+  </div>
+  <div class="abs tnum" style="left:46px;top:262px;font-size:30px;letter-spacing:.14em;font-weight:500">•••• •••• •••• 4821</div>
+  <div class="abs" style="left:46px;bottom:36px;font-size:20px;letter-spacing:.16em;font-weight:500;opacity:.9">NASIR HUSSAIN</div>
+  <div class="abs" style="right:46px;bottom:34px;font-size:22px;font-weight:700;font-style:italic;opacity:.9">debit</div>
+</div>
+
+<!-- phone, front -->
+<div id="phone" class="abs glass" style="background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.06) 40%,rgba(20,33,61,.30))">
+  <div class="rim"></div>
+  <div class="notch"></div>
+  <div class="sb tnum"><span>14:06</span><span style="display:flex;gap:8px;align-items:center">
+    <svg width="26" height="16"><rect x="0" y="10" width="4" height="6" fill="#fff"/><rect x="7" y="7" width="4" height="9" fill="#fff"/><rect x="14" y="4" width="4" height="12" fill="#fff"/><rect x="21" y="0" width="4" height="16" fill="#fff"/></svg>
+    <svg width="34" height="16"><rect x=".5" y=".5" width="29" height="15" rx="4" fill="none" stroke="#fff" opacity=".7"/><rect x="3" y="3" width="21" height="10" rx="2" fill="#fff"/><rect x="31" y="5" width="2.5" height="6" rx="1" fill="#fff" opacity=".7"/></svg></span></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:46px">
+    <div style="display:flex;align-items:center;gap:10px"><svg width="30" height="30" viewBox="0 0 200 200" fill="none" stroke="#9EF0C8" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"><path d="M112 12 L52 112 h32 L78 188 L152 82 h-34 Z"/></svg><span style="font-size:24px;font-weight:700">Kitepay</span></div>
+    <div style="width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;font-size:17px;font-weight:500">NH</div>
+  </div>
+  <div style="margin-top:44px;display:flex;align-items:center;gap:20px">
+    <svg width="92" height="92" viewBox="0 0 92 92"><circle cx="46" cy="46" r="40" fill="none" stroke="rgba(158,240,200,.22)" stroke-width="7"/><circle cx="46" cy="46" r="40" fill="none" stroke="#9EF0C8" stroke-width="7" stroke-dasharray="251" stroke-dashoffset="0" transform="rotate(-90 46 46)"/><path d="M29 47l11 11 23-24" fill="none" stroke="#9EF0C8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><div style="font-size:30px;font-weight:500;line-height:1.1">Delivered</div><div class="mint" style="font-size:20px;margin-top:6px">16 min ahead of promise</div></div>
+  </div>
+  <div class="tnum" style="margin-top:40px;font-size:76px;font-weight:500;letter-spacing:-.03em;line-height:1">AED 1,500<span style="font-size:44px;opacity:.6">.00</span></div>
+  <div class="tnum" style="margin-top:14px;font-size:26px">PKR 113,940.00 <span class="muted">to Nasreen</span></div>
+  <div class="muted" style="font-size:18px;margin-top:6px">Meezan Bank · •••• 0193 · Lahore</div>
+  <div style="margin-top:36px;position:relative;padding-left:34px">
+    <div class="abs" style="left:8px;top:12px;bottom:12px;width:2px;background:linear-gradient(#9EF0C8,#9EF0C8)"></div>
+    <div style="position:relative;margin-bottom:24px"><div class="abs dot" style="left:-32px;top:5px"></div><div class="tnum" style="font-size:21px;font-weight:500">14:02 <span style="font-weight:400">Salary sent</span></div><div class="muted" style="font-size:16px;margin-top:3px">From your wallet · ref KP-88213-DX</div></div>
+    <div style="position:relative;margin-bottom:24px"><div class="abs dot" style="left:-32px;top:5px"></div><div class="tnum" style="font-size:21px;font-weight:500">14:03 <span style="font-weight:400">Accepted by Meezan Bank</span></div><div class="muted" style="font-size:16px;margin-top:3px">Rate locked at 1 AED = 75.96 PKR</div></div>
+    <div style="position:relative"><div class="abs dot" style="left:-32px;top:5px"></div><div class="tnum" style="font-size:21px;font-weight:500">14:06 <span style="font-weight:400">In Nasreen’s account</span></div><div class="muted" style="font-size:16px;margin-top:3px">Promised by 14:22 · fee AED 0.00</div></div>
+  </div>
+  <div style="position:absolute;left:34px;right:34px;bottom:132px;display:flex;gap:12px;align-items:center">
+    <div class="muted" style="font-size:16px;letter-spacing:.06em;margin-right:auto">SEND AGAIN</div>
+    <div style="width:52px;height:52px;border-radius:50%;background:rgba(158,240,200,.22);display:grid;place-items:center;font-size:17px;font-weight:500">NA</div>
+    <div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;font-size:17px;font-weight:500">FH</div>
+    <div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;font-size:17px;font-weight:500">SK</div>
+  </div>
+  <div style="position:absolute;left:34px;right:34px;bottom:40px;height:72px;border-radius:24px;background:#9EF0C8;color:#14213D;display:grid;place-items:center;font-size:23px;font-weight:700">Share receipt</div>
+</div>
+
+<!-- notifications -->
+<div class="abs glass pill" style="left:90px;top:120px;transform:perspective(1600px) rotateY(14deg)"><div class="dot"></div><span>Salary sent · 14:02</span></div>
+<div class="abs glass pill tnum" style="left:150px;top:1640px;transform:perspective(1600px) rotateY(-16deg)"><svg width="22" height="22" viewBox="0 0 200 200" fill="none" stroke="#9EF0C8" stroke-width="20" stroke-linejoin="round"><path d="M112 12 L52 112 h32 L78 188 L152 82 h-34 Z"/></svg><span>Nasreen received PKR 113,940 · 4 min</span></div>
+<div class="abs glass pill tnum" style="left:40px;top:1180px;transform:perspective(1600px) rotateY(18deg);font-size:21px"><span class="muted">AED → PKR</span><span>75.96</span><span class="mint" style="font-size:18px">▲ 0.12</span></div>
+
+<div class="abs vign"></div>
+<svg class="abs grain" width="1080" height="1920"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<script>
+// seeded random
+let s=7;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+const NS='http://www.w3.org/2000/svg';
+const sky=document.getElementById('sky');
+function el(n,a,p=sky){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+const HZ=1536; // horizon y
+// stars
+for(let i=0;i<160;i++){el('circle',{cx:R()*1080,cy:R()*1000,r:R()*1.3+.3,fill:'#fff',opacity:(R()*.5+.1)*(1-0)})}
+// skyline layers
+function layer(seed,col,minH,maxH,step,lightOp,burjX){
+  s=seed;const g=el('g',{});
+  let x=-40;
+  while(x<1120){
+    const w=30+R()*70, h=minH+Math.pow(R(),2.2)*(maxH-minH);
+    const top=HZ-h;
+    const t=R();
+    if(t<.04){ // pointed top tower
+      el('path',{d:`M${x} ${HZ} V${top+30} L${x+w/2} ${top-40} L${x+w} ${top+30} V${HZ} Z`,fill:col},g);
+    } else if(t<.09){ // rounded crown
+      el('path',{d:`M${x} ${HZ} V${top+20} Q${x+w/2} ${top-30} ${x+w} ${top+20} V${HZ} Z`,fill:col},g);
+    } else {
+      el('rect',{x,y:top,width:w,height:h,fill:col},g);
+      if(R()<.3) el('rect',{x:x+w/2-1.5,y:top-40,width:3,height:40,fill:col},g);
+    }
+    // windows
+    if(lightOp>0){for(let yy=top+14;yy<HZ-6;yy+=step){for(let xx=x+6;xx<x+w-6;xx+=9){if(R()<.16) el('rect',{x:xx,y:yy,width:4,height:3,fill:R()<.7?'#ffd9a0':'#cfe8ff',opacity:lightOp*(.4+R()*.6)},g)}}}
+    x+=w+R()*14;
+  }
+  if(burjX){ // Burj Khalifa, stepped taper
+    const segs=[[150,90],[120,150],[96,150],[74,130],[56,110],[40,90],[28,80],[18,70],[10,60]];
+    let y=HZ;const p=[];let pts=`M${burjX-75} ${HZ}`;
+    let right=[];let left=[];
+    segs.forEach(([w,h],i)=>{left.push([burjX-w/2,y]);left.push([burjX-w/2,y-h]);right.unshift([burjX+w/2,y]);right.unshift([burjX+w/2,y-h]);y-=h});
+    const d='M'+left.map(a=>a.join(' ')).join(' L')+` L${burjX} ${y-150} L`+right.map(a=>a.join(' ')).join(' L')+' Z';
+    el('path',{d,fill:col},g);
+    el('circle',{cx:burjX,cy:y-150,r:3,fill:'#ff5050'},g);
+    for(let yy=HZ-20;yy>y;yy-=10){if(R()<.5)el('rect',{x:burjX-6+R()*6,y:yy,width:3,height:2,fill:'#ffe2b0',opacity:.6},g)}
+  }
+  return g;
+}
+const far=layer(11,'#9a7680',80,300,18,0,0);far.setAttribute('opacity','.55');
+const mid=layer(23,'#34304c',60,380,16,.6,930);
+const near=layer(41,'#151a35',30,200,14,.9,0);
+// water reflection
+const wg=el('g',{transform:`translate(0 ${HZ*2}) scale(1 -1)`,opacity:.35,filter:'url(#wblur)'});
+const defs=el('defs',{});
+const f=el('filter',{id:'wblur',x:'-5%',y:'-5%',width:'110%',height:'110%'},defs);
+el('feTurbulence',{type:'fractalNoise',baseFrequency:'0.002 0.09',numOctaves:2,result:'t'},f);
+el('feDisplacementMap',{in:'SourceGraphic',in2:'t',scale:26,xChannelSelector:'R',yChannelSelector:'G',result:'d'},f);
+el('feGaussianBlur',{in:'d',stdDeviation:'2 4'},f);
+wg.appendChild(mid.cloneNode(true));wg.appendChild(near.cloneNode(true));
+// water ripples of sunset
+for(let i=0;i<70;i++){const y=HZ+8+Math.pow(R(),1.6)*320;el('rect',{x:560+(R()-.5)*500*(1+(y-HZ)/200),y,width:20+R()*160,height:2,fill:'#ffc890',opacity:.25*R()})}
+el('rect',{x:0,y:HZ,width:1080,height:3,fill:'#ffcf9a',opacity:.35});
+window.__ready=true;
+// bars in dash
+const bars=document.getElementById('bars');s=5;
+for(let i=0;i<60;i++){const h=10+R()*40;const e=document.createElementNS(NS,'rect');e.setAttribute('x',i*13);e.setAttribute('y',64-h);e.setAttribute('width',8);e.setAttribute('height',h);e.setAttribute('rx',2);e.setAttribute('fill',i>50?'#9EF0C8':'rgba(255,255,255,.28)');bars.appendChild(e)}
+</script>
+</body></html>

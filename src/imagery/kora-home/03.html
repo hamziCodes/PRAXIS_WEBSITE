@@ -1,0 +1,130 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Kora Home — delivery card and fabric swatches</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-weight:700;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf)}
+html,body{margin:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#d8ccb8;perspective:3600px;perspective-origin:800px 600px}
+.w3{position:absolute;inset:0;transform-style:preserve-3d}
+.plane{position:absolute;left:-200px;top:-150px;width:2000px;height:2300px;transform:rotateX(14deg);transform-style:preserve-3d}
+.card{position:absolute;left:330px;top:300px;width:900px;height:620px;background:#F4F1DE;transform:translateZ(2px) rotate(-6deg);box-shadow:14px 24px 26px rgba(50,35,20,.3),1px 2px 2px rgba(50,35,20,.25);font-family:NM;color:#2b2d40;overflow:hidden}
+.sw{position:absolute;width:300px;height:600px;transform-origin:150px 560px;box-shadow:6px 10px 14px rgba(40,25,15,.28);overflow:hidden;font-family:NM}
+.sw .lab{position:absolute;left:0;right:0;bottom:0;height:150px;background:#fbf8ec;padding:18px 22px;box-sizing:border-box;color:#2b2d40}
+.sw .lab b{display:block;font:700 22px NM}
+.sw .lab span{font:400 15px NM;color:#6a6c80}
+.sw .hole{position:absolute;left:138px;top:548px;width:24px;height:24px;border-radius:50%;background:#bfb39e;box-shadow:inset 1px 2px 3px rgba(0,0,0,.4)}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="trav" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".0016 .012" numOctaves="5" seed="12" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 .62 0 0 0 0 .54 0 0 0 0 .44 0 0 0 1.7 -.75" result="v"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="4" result="p"/>
+      <feColorMatrix in="p" type="matrix" values="0 0 0 0 .55 0 0 0 0 .48 0 0 0 0 .4 0 0 0 -9 4.0" result="pits"/>
+      <feMerge><feMergeNode in="v"/><feMergeNode in="pits"/></feMerge>
+    </filter>
+    <filter id="boucle" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".18" numOctaves="3" seed="2" result="n"/>
+      <feDiffuseLighting in="n" surfaceScale="5" lighting-color="#fff"><feDistantLight azimuth="225" elevation="40"/></feDiffuseLighting>
+      <feComposite in2="SourceGraphic" operator="arithmetic" k1=".7" k2="0" k3=".38" k4="0"/>
+    </filter>
+    <filter id="linen" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".9 .04" numOctaves="2" seed="3" result="a"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".04 .9" numOctaves="2" seed="5" result="b"/>
+      <feComposite in="a" in2="b" operator="arithmetic" k2=".5" k3=".5" result="ab"/>
+      <feDiffuseLighting in="ab" surfaceScale="2.4" lighting-color="#fff"><feDistantLight azimuth="225" elevation="45"/></feDiffuseLighting>
+      <feComposite in2="SourceGraphic" operator="arithmetic" k1=".6" k2="0" k3=".45" k4="0"/>
+    </filter>
+    <filter id="velvet" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="7" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .12 0" result="f"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".006 .01" numOctaves="2" seed="9" result="pile"/>
+      <feDiffuseLighting in="pile" surfaceScale="6" lighting-color="#fff" result="l"><feDistantLight azimuth="225" elevation="35"/></feDiffuseLighting>
+      <feComposite in="l" in2="SourceGraphic" operator="arithmetic" k1=".8" k2="0" k3=".3" k4="0" result="m"/>
+      <feMerge><feMergeNode in="m"/><feMergeNode in="f"/></feMerge>
+    </filter>
+    <filter id="chenille" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".05 .5" numOctaves="3" seed="11" result="n"/>
+      <feDiffuseLighting in="n" surfaceScale="3.5" lighting-color="#fff"><feDistantLight azimuth="225" elevation="45"/></feDiffuseLighting>
+      <feComposite in2="SourceGraphic" operator="arithmetic" k1=".65" k2="0" k3=".4" k4="0"/>
+    </filter>
+    <linearGradient id="vsheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9aa0d0" stop-opacity=".0"/><stop offset=".45" stop-color="#aeb3dc" stop-opacity=".35"/><stop offset=".6" stop-color="#aeb3dc" stop-opacity=".05"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
+    <filter id="sb" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="22"/></filter>
+  </defs>
+</svg>
+<div class="w3"><div class="plane">
+  <svg width="2000" height="2300" style="position:absolute;inset:0">
+    <rect width="2000" height="2300" fill="#e2d6c2"/>
+    <rect width="2000" height="2300" filter="url(#trav)" opacity=".3"/>
+    <rect width="2000" height="2300" fill="#fff6e4" opacity=".12"/>
+  </svg>
+
+  <!-- the delivery & assembly card -->
+  <div class="card">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:22px;background:#E07A5F"></div>
+    <div style="position:absolute;left:62px;top:46px;right:56px;display:flex;justify-content:space-between;align-items:flex-start">
+      <div style="display:flex;gap:14px;align-items:center"><svg width="46" height="46" viewBox="0 0 60 60"><path d="M10 54 V28 a20 20 0 0 1 40 0 V54" fill="none" stroke="#3D405B" stroke-width="5"/><path d="M21 54 V30 a9 9 0 0 1 18 0 V54" fill="none" stroke="#3D405B" stroke-width="5"/><path d="M4 55 H56" stroke="#3D405B" stroke-width="5" stroke-linecap="round"/></svg><b style="font:700 34px NM;letter-spacing:-1px">Kora Home</b></div>
+      <div style="text-align:right"><div style="font:500 15px NM;letter-spacing:4px;color:#E07A5F">DELIVERY &amp; ASSEMBLY</div><div style="font:400 24px Dubai;color:#3D405B">التوصيل والتركيب</div></div>
+    </div>
+    <div style="position:absolute;left:62px;top:150px;right:56px;display:grid;grid-template-columns:1fr 1fr;gap:26px 40px">
+      <div><div style="font:500 13px NM;letter-spacing:3px;color:#8a8ca0">DAY</div><div style="border-bottom:1.5px solid #c9c3a8;font:400 34px 'Segoe Print';color:#23408e;padding:2px 0 4px">Sat 22 Nov</div></div>
+      <div><div style="font:500 13px NM;letter-spacing:3px;color:#8a8ca0">WINDOW</div><div style="display:flex;gap:10px;margin-top:8px;font:500 18px NM">
+        <span style="border:2.5px solid #23408e;border-radius:30px;padding:6px 14px;color:#23408e">9–12</span><span style="border:1.5px solid #c9c3a8;border-radius:30px;padding:6px 14px;color:#8a8ca0">12–15</span><span style="border:1.5px solid #c9c3a8;border-radius:30px;padding:6px 14px;color:#8a8ca0">15–18</span></div></div>
+      <div><div style="font:500 13px NM;letter-spacing:3px;color:#8a8ca0">ADDRESS</div><div style="border-bottom:1.5px solid #c9c3a8;font:400 26px 'Segoe Print';color:#23408e;padding:4px 0">Al Waab, St 920, Villa 14</div></div>
+      <div><div style="font:500 13px NM;letter-spacing:3px;color:#8a8ca0">ORDER</div><div style="border-bottom:1.5px solid #c9c3a8;font:500 26px Consolas;color:#2b2d40;padding:8px 0 6px">KH-0611-2287</div></div>
+    </div>
+    <div style="position:absolute;left:62px;top:420px;width:520px;font:400 18px/1.5 NM;color:#55576e">
+      <b style="font:700 22px NM;color:#2b2d40">Room 07 · 9 pieces · QAR 14,850</b><br>
+      A team of two will deliver, build and place everything, then take the packaging away. We call 30 minutes before we arrive.
+    </div>
+    <div style="position:absolute;right:56px;top:410px;width:150px;height:150px;background:#fff;padding:10px;box-sizing:border-box">
+      <svg width="130" height="130" viewBox="0 0 29 29" shape-rendering="crispEdges" id="qr"></svg>
+    </div>
+    <div style="position:absolute;right:56px;top:568px;width:150px;text-align:center;font:400 13px NM;color:#8a8ca0">Track your delivery</div>
+    <div style="position:absolute;left:0;right:0;top:0;bottom:0;background:linear-gradient(115deg,rgba(255,255,255,.12),rgba(255,255,255,0) 40%,rgba(0,0,0,.04))"></div>
+  </div>
+
+  <!-- swatch fan, pinned at one corner -->
+  <div id="fan" style="position:absolute;left:520px;top:1020px;width:300px;height:600px;transform:translateZ(6px);transform-style:preserve-3d"></div>
+
+  <!-- pencil -->
+  <div style="position:absolute;left:1180px;top:960px;width:560px;height:22px;transform:translateZ(8px) rotate(58deg);border-radius:11px;background:linear-gradient(180deg,#3D405B,#4f5373 45%,#2c2f45);box-shadow:10px 16px 14px rgba(40,25,15,.3)">
+    <div style="position:absolute;right:-40px;top:0;width:0;height:0;border-left:44px solid #e5c49a;border-top:11px solid transparent;border-bottom:11px solid transparent"></div>
+    <div style="position:absolute;left:-2px;top:0;width:40px;height:22px;border-radius:11px 0 0 11px;background:#c9a66b"></div>
+    <div style="position:absolute;left:90px;top:4px;font:700 11px NM;color:#F4F1DE;letter-spacing:2px">KORA HOME</div>
+  </div>
+  <!-- tape measure -->
+  <div style="position:absolute;left:1240px;top:1480px;width:240px;height:240px;border-radius:44px;background:#E07A5F;transform:translateZ(30px) rotate(-12deg);box-shadow:24px 40px 40px rgba(40,25,15,.35), inset 0 -10px 20px rgba(0,0,0,.15), inset 0 10px 20px rgba(255,255,255,.15)">
+    <div style="position:absolute;left:44px;top:44px;width:152px;height:152px;border-radius:50%;background:#3D405B;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#F4F1DE;font:700 22px NM">Kora<span style="font:400 13px NM;letter-spacing:2px">5 m</span></div>
+  </div>
+  <div style="position:absolute;left:820px;top:1690px;width:470px;height:46px;background:#f2d04a;transform:translateZ(2px) rotate(-8deg);box-shadow:4px 8px 8px rgba(40,25,15,.25);overflow:hidden" id="tape"></div>
+</div></div>
+<!-- soft window light from the upper left -->
+<svg style="position:absolute;inset:0;pointer-events:none" width="1600" height="2000">
+  <defs><linearGradient id="l" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff2d8" stop-opacity=".28"/><stop offset=".5" stop-color="#fff2d8" stop-opacity="0"/><stop offset="1" stop-color="#2b1d12" stop-opacity=".22"/></linearGradient>
+  <filter id="bb"><feGaussianBlur stdDeviation="40"/></filter></defs>
+  <rect width="1600" height="2000" fill="url(#l)"/>
+  <path d="M1250 -50 L1700 -50 L1700 600 L1450 700Z" fill="#3a2a1c" opacity=".14" filter="url(#bb)"/>
+</svg>
+<script>
+// swatches: label + fabric texture
+const fab=[['Boucle','Sand','KH-B12','#e8dcc6','boucle',-34],['Linen','Clay','KH-L07','#E07A5F','linen',-18],['Velvet','Indigo','KH-V03','#3D405B','velvet',-3],['Chenille','Olive','KH-C21','#7d7a45','chenille',12],['Wool','Cream','KH-W02','#efe8d6','boucle',27]];
+const fan=document.getElementById('fan');
+fab.forEach(([n,c,code,col,f,rot],i)=>{const d=document.createElement('div');d.className='sw';d.style.transform=`rotate(${rot}deg) translateZ(${i*2}px)`;
+  d.innerHTML=`<svg width="300" height="450" style="position:absolute;left:0;top:0"><rect width="300" height="450" fill="${col}" filter="url(#${f})"/>${f=='velvet'?'<rect width="300" height="450" fill="url(#vsheen)"/>':''}</svg>
+  <div style="position:absolute;left:0;right:0;top:446px;height:6px;background:rgba(0,0,0,.15)"></div>
+  <div class="lab"><b>${n} · ${c}</b><span>${code} · 100% ${n=='Velvet'?'cotton velvet':n=='Linen'?'linen':n=='Wool'?'wool':'polyester blend'}</span><br><span>Rub test 40,000 · Washable cover</span></div><div class="hole"></div>`;
+  fan.appendChild(d)});
+const pin=document.createElement('div');Object.assign(pin.style,{position:'absolute',left:'132px',top:'542px',width:'36px',height:'36px',borderRadius:'50%',background:'radial-gradient(circle at 35% 35%,#f3dc9a,#b8914a 60%,#7a5a22)',transform:'translateZ(20px)',boxShadow:'4px 6px 6px rgba(0,0,0,.35)'});fan.appendChild(pin);
+// QR-like code (decorative)
+const q=document.getElementById('qr');let s=3;const R=()=>{s=(s*16807)%2147483647;return s/2147483647};
+const NS='http://www.w3.org/2000/svg';const sq=(x,y,w,c)=>{const r=document.createElementNS(NS,'rect');r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',w);r.setAttribute('fill',c);q.appendChild(r)};
+for(let y=0;y<29;y++)for(let x=0;x<29;x++){const f=(x<8&&y<8)||(x>20&&y<8)||(x<8&&y>20);if(!f&&R()<.48)sq(x,y,1,'#2b2d40')}
+[[0,0],[22,0],[0,22]].forEach(([x,y])=>{sq(x,y,7,'#2b2d40');sq(x+1,y+1,5,'#fff');sq(x+2,y+2,3,'#2b2d40')});
+// tape ticks
+const t=document.getElementById('tape');let h='';for(let i=0;i<94;i++){const x=6+i*5;h+=`<div style="position:absolute;left:${x}px;top:0;width:1px;height:${i%10==0?22:i%5==0?14:8}px;background:#2b2d40"></div>`;if(i%10==0)h+=`<div style="position:absolute;left:${x+3}px;top:22px;font:500 13px NM;color:#2b2d40">${i/10+120}</div>`}t.innerHTML=h;
+</script>
+</body></html>

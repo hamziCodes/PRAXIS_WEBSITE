@@ -1,0 +1,123 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Kestrel — level 34 lift lobby</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf);font-weight:700}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Light.otf);font-weight:300}
+html,body{margin:0;padding:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#1a2a44;font-family:NM}
+.abs{position:absolute}
+.engr{color:#1f2f4b;text-shadow:0 1px 0 rgba(255,240,200,.55),0 -1px 0 rgba(60,40,10,.35)}
+.row{display:flex;align-items:center;gap:22px;padding:26px 0;border-top:2px solid rgba(31,47,75,.35)}
+.row .en{font-size:40px;font-weight:500;letter-spacing:-.4px}
+.row .ms{font-size:24px;font-style:italic;opacity:.8;margin-top:4px}
+.row .arr{margin-left:auto;font-size:54px;font-weight:300}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="stone" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.003 0.012" numOctaves="5" seed="8" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .8  0 0 0 0 .85  0 0 0 0 1  2.2 0 0 0 -1.1"/>
+  </filter>
+  <filter id="brushed" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.002 0.9" numOctaves="2" seed="3" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .3  0 0 0 0 .2  0 0 0 0 .05  -2.6 0 0 0 1.55"/>
+  </filter>
+  <filter id="brushedV" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9 0.002" numOctaves="2" seed="5" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .2  0 0 0 0 .22  0 0 0 0 .26  -2.4 0 0 0 1.45"/>
+  </filter>
+  <filter id="marble" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="turbulence" baseFrequency="0.004 0.01" numOctaves="4" seed="12" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .9  0 0 0 0 .9  0 0 0 0 .95  3 0 0 0 -.6"/>
+  </filter>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs></svg>
+
+<!-- lacquered navy stone wall -->
+<div class="abs" style="inset:0;background:linear-gradient(90deg,#16243c,#23395B 45%,#1c2e4c 75%,#121e33)"></div>
+<svg class="abs" style="left:0;top:0;opacity:.09" width="1600" height="2000"><rect width="1600" height="2000" filter="url(#stone)"/></svg>
+<!-- wall-washer scallops -->
+<div class="abs" style="inset:0;background:
+  radial-gradient(260px 900px at 260px 0,rgba(255,214,150,.35),rgba(255,214,150,0) 70%),
+  radial-gradient(260px 900px at 760px 0,rgba(255,214,150,.38),rgba(255,214,150,0) 70%),
+  radial-gradient(260px 900px at 1240px 0,rgba(255,214,150,.3),rgba(255,214,150,0) 70%)"></div>
+<!-- ceiling shadow gap -->
+<div class="abs" style="left:0;top:0;width:1600px;height:40px;background:linear-gradient(#05080e,rgba(5,8,14,0))"></div>
+<!-- panel joints -->
+<div class="abs" style="left:0;top:1080px;width:1600px;height:3px;background:rgba(0,0,0,.35);box-shadow:0 1px 0 rgba(255,255,255,.05)"></div>
+
+<!-- brass plaque -->
+<div class="abs" style="left:180px;top:300px;width:900px;height:1300px">
+  <div class="abs" style="inset:0;background:#000;opacity:.6;filter:blur(30px);transform:translate(26px,40px)"></div>
+  <div class="abs" style="inset:0;background:linear-gradient(170deg,#f4dca0 0%,#E4B363 22%,#c9963f 48%,#e9c784 62%,#a9772e 85%,#8a5e22 100%)"></div>
+  <svg class="abs" style="left:0;top:0" width="900" height="1300"><rect width="900" height="1300" filter="url(#brushed)" opacity=".9"/></svg>
+  <div class="abs" style="inset:0;box-shadow:inset 0 2px 0 rgba(255,250,220,.8),inset 0 -3px 0 rgba(80,50,10,.6),inset 2px 0 0 rgba(255,240,200,.5),inset -2px 0 0 rgba(80,50,10,.5)"></div>
+  <!-- light falloff on brass -->
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 30%,rgba(40,20,0,.18) 100%)"></div>
+  <div class="abs engr" style="left:70px;top:60px;right:70px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between">
+      <div style="font-size:300px;font-weight:300;letter-spacing:-14px;line-height:.86">34</div>
+      <div style="text-align:right;margin-top:16px">
+        <svg width="120" height="92"><g style="filter:drop-shadow(0 1px 0 rgba(255,240,200,.55)) drop-shadow(0 -1px 0 rgba(60,40,10,.35))"><path d="M6,84 L42,24 L58,50 L70,34 L104,84 Z" fill="none" stroke="#1f2f4b" stroke-width="7" stroke-linejoin="round"/><circle cx="94" cy="14" r="10" fill="none" stroke="#1f2f4b" stroke-width="6"/></g></svg>
+        <div style="font-size:24px;letter-spacing:5px;margin-top:10px">ARAS · LEVEL</div>
+      </div>
+    </div>
+    <div style="height:56px"></div>
+    <div class="row"><div><div class="en">Rooms 3401 – 3412</div><div class="ms">Bilik</div></div><div class="arr">←</div></div>
+    <div class="row"><div><div class="en">Rooms 3413 – 3424</div><div class="ms">Bilik</div></div><div class="arr">→</div></div>
+    <div class="row"><div><div class="en">Skyline Lounge · 38</div><div class="ms">Lounge Langit</div></div><div class="arr">↑</div></div>
+    <div class="row"><div><div class="en">Pool &amp; Gym · 36</div><div class="ms">Kolam Renang &amp; Gim</div></div><div class="arr">↑</div></div>
+    <div class="row" style="border-bottom:2px solid rgba(31,47,75,.35)"><div><div class="en">Lobby &amp; Arrivals · G</div><div class="ms">Lobi &amp; Ketibaan</div></div><div class="arr">↓</div></div>
+    <div style="margin-top:44px;display:flex;align-items:center;gap:26px">
+      <div style="width:150px;height:150px;background:#1f2f4b;padding:12px;box-sizing:border-box;border-radius:6px" id="qr"></div>
+      <div><div style="font-size:32px;font-weight:500">Ask Kestrel</div><div style="font-size:22px;margin-top:6px;line-height:1.35">Scan to chat with the hotel,<br>any hour. <i>Tanya kami, bila-bila masa.</i></div></div>
+    </div>
+  </div>
+  <!-- standoff screws -->
+  <div class="abs" style="left:24px;top:24px;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3cf,#b3843a 60%,#6a4818);box-shadow:3px 4px 5px rgba(0,0,0,.4)"></div>
+  <div class="abs" style="right:24px;top:24px;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3cf,#b3843a 60%,#6a4818);box-shadow:3px 4px 5px rgba(0,0,0,.4)"></div>
+  <div class="abs" style="left:24px;bottom:24px;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3cf,#b3843a 60%,#6a4818);box-shadow:3px 4px 5px rgba(0,0,0,.4)"></div>
+  <div class="abs" style="right:24px;bottom:24px;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3cf,#b3843a 60%,#6a4818);box-shadow:3px 4px 5px rgba(0,0,0,.4)"></div>
+</div>
+
+<!-- lift: steel frame + door edge, right -->
+<div class="abs" style="left:1260px;top:0;width:340px;height:1720px;background:linear-gradient(90deg,#8a919c,#d9dde3 20%,#9aa1ab 40%,#5d636c 100%)"></div>
+<svg class="abs" style="left:1260px;top:0" width="340" height="1720"><rect width="340" height="1720" filter="url(#brushedV)"/></svg>
+<div class="abs" style="left:1320px;top:0;width:280px;height:1720px;background:linear-gradient(90deg,#3a4049,#6e757f 30%,#4a5059)"></div>
+<svg class="abs" style="left:1320px;top:0" width="280" height="1720"><rect width="280" height="1720" filter="url(#brushedV)"/></svg>
+<div class="abs" style="left:1320px;top:0;width:280px;height:1720px;background:linear-gradient(180deg,rgba(255,220,160,.25),rgba(0,0,0,0) 40%,rgba(0,0,0,.3))"></div>
+<div class="abs" style="left:1316px;top:0;width:6px;height:1720px;background:#1a1d22"></div>
+<!-- floor indicator -->
+<div class="abs" style="left:1360px;top:220px;width:200px;height:96px;background:#05070b;border-radius:6px;box-shadow:inset 0 0 0 2px #2a2f38">
+  <div style="font-family:Consolas,monospace;color:#ffcf7a;font-size:62px;text-align:center;line-height:96px;filter:url(#glow)">▲ 34</div>
+</div>
+<!-- call buttons on wall between plaque and lift -->
+<div class="abs" style="left:1130px;top:900px;width:100px;height:250px;border-radius:10px;background:linear-gradient(90deg,#c9963f,#f0d08a 30%,#b0803a);box-shadow:8px 12px 18px rgba(0,0,0,.5)">
+  <div class="abs" style="left:22px;top:40px;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle,#fff6dc,#ffcf7a 50%,#c08a2a);box-shadow:0 0 30px 8px rgba(255,207,122,.6),inset 0 0 0 3px #8a5e22"></div>
+  <div class="abs" style="left:38px;top:54px;width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:20px solid #6a4818"></div>
+  <div class="abs" style="left:22px;top:150px;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle,#e9c784,#b0803a);box-shadow:inset 0 0 0 3px #8a5e22"></div>
+  <div class="abs" style="left:38px;top:168px;width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:20px solid #6a4818"></div>
+</div>
+<div class="abs" style="left:1060px;top:820px;width:240px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,207,122,.18),rgba(255,207,122,0))"></div>
+
+<!-- marble floor with reflection -->
+<div class="abs" style="left:0;top:1720px;width:1600px;height:280px;background:linear-gradient(#2a2c33,#15171c)"></div>
+<svg class="abs" style="left:0;top:1720px;opacity:.25" width="1600" height="280"><rect width="1600" height="280" filter="url(#marble)"/></svg>
+<div class="abs" style="left:180px;top:1720px;width:900px;height:240px;background:linear-gradient(rgba(228,179,99,.35),rgba(228,179,99,0));filter:blur(10px)"></div>
+<div class="abs" style="left:0;top:1716px;width:1600px;height:8px;background:linear-gradient(#0a0c10,#3a3d45)"></div>
+
+<div class="abs" style="inset:0;background:radial-gradient(1100px 1500px at 42% 42%,rgba(0,0,0,0) 55%,rgba(2,4,10,.55) 100%)"></div>
+<script>
+window.__ready=false;
+// QR-like code (decorative)
+function rnd(seed){let s=seed;return()=>((s=(s*16807)%2147483647)/2147483647)}
+const R=rnd(5);let q='<svg width="126" height="126">';const n=25,c=126/n;
+const finder=(x,y)=>`<rect x="${x*c}" y="${y*c}" width="${7*c}" height="${7*c}" fill="#E4B363"/><rect x="${(x+1)*c}" y="${(y+1)*c}" width="${5*c}" height="${5*c}" fill="#1f2f4b"/><rect x="${(x+2)*c}" y="${(y+2)*c}" width="${3*c}" height="${3*c}" fill="#E4B363"/>`;
+for(let i=0;i<n;i++)for(let j=0;j<n;j++){if((i<8&&j<8)||(i>16&&j<8)||(i<8&&j>16))continue;if(R()<.5)q+=`<rect x="${i*c}" y="${j*c}" width="${c+.3}" height="${c+.3}" fill="#E4B363"/>`}
+q+=finder(0,0)+finder(18,0)+finder(0,18)+'</svg>';document.getElementById('qr').innerHTML=q;
+window.__ready=true;
+</script>
+</body></html>

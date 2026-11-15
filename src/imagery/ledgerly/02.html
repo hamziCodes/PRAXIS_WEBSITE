@@ -1,0 +1,172 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>LEDGERLY — the accountant's view</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf);font-weight:700}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+html,body{margin:0;padding:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#cfc8bd;font-family:NM}
+.abs{position:absolute}
+.app{position:absolute;left:0;top:0;width:1600px;height:1000px;background:#F3F3EE;color:#141414;font-size:15px;display:flex;transform-origin:0 0}
+.side{width:250px;background:#141414;color:#e9e9e4;padding:26px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:6px}
+.side .nav{padding:9px 12px;border-radius:10px;color:#b9b9b2;font-size:15px}
+.side .nav.on{background:#2F4BFF;color:#fff}
+.side .h{font-size:11px;letter-spacing:1.2px;color:#77776f;margin:22px 0 6px 12px}
+.side .cl{padding:7px 12px;font-size:14px;color:#cfcfc8;display:flex;justify-content:space-between}
+.main{flex:1;padding:26px 34px;box-sizing:border-box}
+.card{background:#fff;border-radius:18px;padding:20px 22px}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th{font-weight:500;font-size:11px;letter-spacing:1px;color:#77776f;text-align:left;padding:8px 10px;border-bottom:1px solid #e6e6e0}
+td{padding:12px 10px;border-bottom:1px solid #f0f0ea;white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.q{color:#2F4BFF}
+.pill{display:inline-block;padding:2px 9px;border-radius:10px;background:#f0f0ea;font-size:12px}
+.lbl{font-size:11px;letter-spacing:1px;color:#77776f;text-transform:uppercase}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="walnut" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0015 0.03" numOctaves="5" seed="4" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .12  0 0 0 0 .06  0 0 0 0 .02  -3 0 0 0 1.9"/>
+  </filter>
+  <filter id="plaster" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="4" seed="2" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="2" lighting-color="#fff" result="l"><feDistantLight azimuth="180" elevation="50"/></feDiffuseLighting>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.5 0 0 0 1.2"/>
+  </filter>
+  <filter id="b30" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="30"/></filter>
+  <filter id="b12" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter>
+</defs></svg>
+
+<!-- back wall, out of focus -->
+<div class="abs" style="inset:0;background:linear-gradient(90deg,#e7e1d6,#d6cfc3 40%,#bdb5a8 100%)"></div>
+<svg class="abs" style="left:0;top:0" width="2400" height="900"><rect width="2400" height="900" filter="url(#plaster)" opacity=".5"/></svg>
+<!-- window at the left, blown out, with a Manchester terrace across the street -->
+<div class="abs" style="left:-80px;top:-60px;width:620px;height:900px;filter:blur(14px)">
+  <div class="abs" style="inset:0;background:#f4f1ea"></div>
+  <div class="abs" style="left:0;top:380px;width:620px;height:520px;background:linear-gradient(#a4553a,#8a4430)"></div>
+  <div class="abs" style="left:80px;top:470px;width:120px;height:170px;background:#3d3a3c"></div><div class="abs" style="left:330px;top:470px;width:120px;height:170px;background:#3d3a3c"></div>
+  <div class="abs" style="left:0;top:340px;width:620px;height:50px;background:#4a4440"></div>
+  <div class="abs" style="left:295px;top:0;width:30px;height:900px;background:#fbfaf7"></div><div class="abs" style="left:0;top:420px;width:620px;height:26px;background:#fbfaf7"></div>
+  <div class="abs" style="inset:0;box-shadow:inset 0 0 0 40px #f2efe8"></div>
+</div>
+<div class="abs" style="left:0;top:0;width:1500px;height:1350px;background:linear-gradient(90deg,rgba(255,252,240,.5),rgba(255,252,240,0))"></div>
+<!-- shelf with folders, out of focus -->
+<div class="abs" style="left:1840px;top:120px;width:620px;height:420px;filter:blur(10px)">
+  <div class="abs" style="left:0;top:330px;width:620px;height:22px;background:#8a6d4c"></div>
+  <div class="abs" style="left:40px;top:70px;width:70px;height:260px;background:#2F4BFF"></div>
+  <div class="abs" style="left:116px;top:90px;width:64px;height:240px;background:#33405e"></div>
+  <div class="abs" style="left:186px;top:60px;width:72px;height:270px;background:#d9cfb9"></div>
+  <div class="abs" style="left:264px;top:100px;width:60px;height:230px;background:#b04a32"></div>
+  <div class="abs" style="left:330px;top:80px;width:70px;height:250px;background:#e9e3d6"></div>
+  <div class="abs" style="left:440px;top:170px;width:120px;height:160px;border-radius:60px 60px 0 0;background:#4f6a3c"></div>
+</div>
+
+<!-- desk -->
+<div class="abs" style="left:0;top:1000px;width:2400px;height:350px;background:linear-gradient(#6e4a30,#5a3a24 40%,#3e2717)"></div>
+<svg class="abs" style="left:0;top:1000px" width="2400" height="350"><rect width="2400" height="350" filter="url(#walnut)" opacity=".85"/></svg>
+<div class="abs" style="left:0;top:1000px;width:2400px;height:350px;background:radial-gradient(1400px 300px at 30% 0%,rgba(255,240,215,.35),transparent)"></div>
+<div class="abs" style="left:0;top:996px;width:2400px;height:8px;background:linear-gradient(#8a6a4e,#5a3a24)"></div>
+
+<!-- laptop -->
+<div class="abs" style="left:440px;top:1040px;width:1520px;height:120px;background:#000;opacity:.55;filter:blur(30px);border-radius:50%"></div>
+<div class="abs" style="left:520px;top:110px;width:1360px;height:900px;border-radius:26px 26px 6px 6px;background:linear-gradient(#2b2c30,#1a1b1e);box-shadow:0 0 0 2px #8a8b90,0 30px 60px rgba(0,0,0,.25)"></div>
+<div class="abs" style="left:540px;top:130px;width:1320px;height:825px;overflow:hidden;background:#000">
+ <div class="app" style="transform:scale(.825)">
+  <div class="side">
+   <div style="display:flex;align-items:center;gap:10px;margin:0 0 22px 8px">
+    <svg width="26" height="26"><rect x="0" y="0" width="10" height="10" fill="#FFD84D"/><rect x="13" y="5" width="7" height="7" fill="#FFD84D"/><rect x="3" y="14" width="7" height="7" fill="#FFD84D"/><rect x="16" y="17" width="9" height="9" fill="#FFD84D"/></svg>
+    <span style="font-weight:700;font-size:20px;letter-spacing:.5px">LEDGERLY</span></div>
+   <div class="nav">Today</div><div class="nav">Conversations</div><div class="nav on">Ledger</div><div class="nav">VAT</div><div class="nav">Reports</div><div class="nav">Export</div>
+   <div class="h">YOUR CLIENTS · 14</div>
+   <div class="cl" style="color:#fff"><span>Hussain's Corner Shop</span><span style="color:#FFD84D">●</span></div>
+   <div class="cl"><span>Kaur Florists</span><span>✓</span></div>
+   <div class="cl"><span>Northern Quarter Vinyl</span><span>✓</span></div>
+   <div class="cl"><span>Levenshulme Bakehouse</span><span style="color:#FFD84D">●</span></div>
+   <div class="cl"><span>Rusholme Tailoring</span><span>✓</span></div>
+   <div class="cl"><span>Didsbury Bike Works</span><span>✓</span></div>
+   <div style="margin-top:auto;display:flex;gap:10px;align-items:center;padding:10px;border-radius:12px;background:#222">
+    <div style="width:34px;height:34px;border-radius:50%;background:#d9a77a;display:grid;place-items:center;color:#141414;font-weight:500">PS</div>
+    <div><div style="font-size:14px">Priya Shah</div><div style="font-size:12px;color:#8a8a82">Shah &amp; Co, Accountants</div></div></div>
+  </div>
+  <div class="main">
+   <div style="display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="lbl">Client · Levenshulme, Manchester</div><div style="font-size:34px;font-weight:500;letter-spacing:-.6px;margin-top:4px">Hussain's Corner Shop</div></div>
+    <div style="display:flex;gap:10px;align-items:center">
+     <div style="display:flex;background:#e6e6e0;border-radius:12px;padding:4px"><span style="padding:8px 14px;border-radius:9px;font-size:14px">In sentences</span><span style="padding:8px 14px;border-radius:9px;background:#fff;font-size:14px;font-weight:500">Ledger</span></div>
+     <span style="padding:12px 18px;border-radius:12px;border:1.5px solid #141414;font-size:14px;font-weight:500">Nov 2026 ▾</span>
+     <span style="padding:12px 18px;border-radius:12px;background:#2F4BFF;color:#fff;font-size:14px;font-weight:500">Export to Xero · Sage · CSV</span></div>
+   </div>
+   <div style="display:grid;grid-template-columns:1.05fr 1fr 1fr 1fr;gap:14px;margin-top:22px">
+    <div class="card" style="background:#2F4BFF;color:#fff"><div class="lbl" style="color:#c9d0ff">In a sentence</div><div style="font-size:19px;line-height:1.3;margin-top:8px">November is running <span style="color:#FFD84D">9% ahead</span> of October, mostly on hot drinks and cigarettes.</div></div>
+    <div class="card"><div class="lbl">Sales, month to date</div><div style="font-size:32px;font-weight:500;margin-top:8px">£16,982.40</div><div style="font-size:13px;color:#2a8a4a;margin-top:4px">▲ £1,402 vs Oct</div></div>
+    <div class="card"><div class="lbl">Purchases</div><div style="font-size:32px;font-weight:500;margin-top:8px">£9,214.75</div><div style="font-size:13px;color:#77776f;margin-top:4px">Booker 61% · Dairy Direct 14%</div></div>
+    <div class="card"><div class="lbl">VAT owed · Q4</div><div style="font-size:32px;font-weight:500;margin-top:8px">£1,137.45</div><div style="height:8px;border-radius:4px;background:#eeeee8;margin-top:12px;overflow:hidden"><div style="width:43%;height:100%;background:#FFD84D"></div></div></div>
+   </div>
+   <div style="display:grid;grid-template-columns:1fr 340px;gap:14px;margin-top:14px">
+    <div class="card" style="padding:12px 14px">
+     <table>
+      <thead><tr><th>Date</th><th>What they said</th><th>Account</th><th>VAT</th><th class="n">Debit</th><th class="n">Credit</th></tr></thead>
+      <tbody id="rows"></tbody>
+     </table>
+    </div>
+    <div class="card">
+     <div class="lbl">Daily takings · Nov</div>
+     <div style="display:flex;align-items:flex-end;gap:4px;height:170px;margin-top:14px">
+<div id="bars" style="display:contents"></div>
+     </div>
+     <div style="height:1px;background:#e6e6e0;margin:18px 0"></div>
+     <div class="lbl">Needs your eye · 2</div>
+     <div style="margin-top:10px;font-size:14px;line-height:1.4">Two Booker invoices have no VAT number. Farah has been asked about them tomorrow at closing.</div>
+     <div style="margin-top:12px;font-size:14px;line-height:1.4;color:#77776f">Median time to close the day this week: <b style="color:#141414;font-weight:500">1 min 50 s</b></div>
+    </div>
+   </div>
+   <div class="card" style="margin-top:14px;display:grid;grid-template-columns:200px 1fr 1fr 1fr;gap:26px;align-items:start">
+    <div><div class="lbl">Report · week 46</div><div style="font-size:20px;font-weight:500;margin-top:6px;line-height:1.2">The week, as Farah would say it</div></div>
+    <div style="font-size:15px;line-height:1.45">Takings were <b style="font-weight:500">£8,412</b>, up 6%. Saturday was the best day since August.</div>
+    <div style="font-size:15px;line-height:1.45">Stock spend rose to <b style="font-weight:500">£2,960</b>, mostly a Booker order ahead of Bonfire Night.</div>
+    <div style="font-size:15px;line-height:1.45">Every day was closed. Cash matched the till on <b style="font-weight:500">7 of 7</b> days.</div>
+   </div>
+  </div>
+ </div>
+ <div class="abs" style="inset:0;background:linear-gradient(120deg,rgba(255,255,255,.12),rgba(255,255,255,0) 35%,rgba(255,255,255,0) 70%,rgba(255,255,255,.05))"></div>
+</div>
+<div class="abs" style="left:1186px;top:116px;width:28px;height:8px;border-radius:4px;background:#0c0c0e"></div>
+<!-- hinge + base -->
+<div class="abs" style="left:520px;top:1004px;width:1360px;height:14px;background:linear-gradient(#55565b,#2a2b2f)"></div>
+<div class="abs" style="left:420px;top:1018px;width:1560px;height:52px;background:linear-gradient(#cfd0d4,#a4a5aa 60%,#7a7b80);clip-path:polygon(6% 0,94% 0,100% 100%,0 100%);"></div>
+<div class="abs" style="left:420px;top:1068px;width:1560px;height:12px;border-radius:0 0 18px 18px;background:linear-gradient(#6f7075,#3e3f43)"></div>
+<div class="abs" style="left:1080px;top:1056px;width:240px;height:12px;border-radius:0 0 10px 10px;background:linear-gradient(#9a9ba0,#c9cacd)"></div>
+
+<!-- mug -->
+<div class="abs" style="left:2010px;top:820px;width:260px;height:300px">
+ <div class="abs" style="left:10px;top:250px;width:260px;height:50px;border-radius:50%;background:#000;opacity:.45;filter:blur(12px)"></div>
+ <div class="abs" style="left:160px;top:60px;width:90px;height:130px;border-radius:50%;border:22px solid #f0f0ea;border-left-color:transparent;box-sizing:border-box"></div>
+ <div class="abs" style="left:0;top:20px;width:190px;height:250px;border-radius:0 0 26px 26px;background:linear-gradient(90deg,#c9c9c2,#fbfbf7 30%,#e9e9e2 60%,#a9a9a2)"></div>
+ <div class="abs" style="left:0;top:6px;width:190px;height:30px;border-radius:50%;background:linear-gradient(#5a3a22,#2a160a);box-shadow:0 0 0 5px #f4f4ef"></div>
+ <svg class="abs" style="left:60px;top:110px" width="70" height="70"><rect x="0" y="0" width="26" height="26" fill="#2F4BFF"/><rect x="34" y="12" width="18" height="18" fill="#2F4BFF"/><rect x="8" y="36" width="18" height="18" fill="#FFD84D"/><rect x="40" y="44" width="24" height="24" fill="#2F4BFF"/></svg>
+</div>
+<!-- invoices + phone on desk -->
+<div class="abs" style="left:150px;top:1060px;width:420px;height:280px;transform:perspective(900px) rotateX(55deg) rotateZ(-8deg);transform-origin:50% 0">
+ <div class="abs" style="inset:0;background:#000;opacity:.35;filter:blur(10px);transform:translate(10px,10px)"></div>
+ <div class="abs" style="inset:0;background:#f6f5f0;padding:24px;box-sizing:border-box;font-family:Consolas,monospace;font-size:15px;color:#333">BOOKER LTD · INVOICE 88124<br>Hussain's Corner Shop<br>————————————————<br>Walkers crisps x48 .... 18.20<br>PG Tips 160 x12 ...... 39.60<br>Coca-Cola 330 x24 .... 11.49<br>TOTAL ............... 212.00</div>
+</div>
+
+<div class="abs" style="inset:0;background:radial-gradient(2000px 1200px at 45% 40%,rgba(0,0,0,0) 60%,rgba(30,20,10,.3) 100%)"></div>
+<script>
+document.getElementById('rows').insertAdjacentHTML('beforeend',[
+       ['12 Nov','“Sold 3 boxes of Yorkshire Tea, £42 on card”','4000 Sales','0%','','42.00'],
+       ['12 Nov','“paid Dairy Direct £86.40 for milk, cash”','5000 Purchases','None','86.40',''],
+       ['12 Nov','“took 40 quid cash”','4000 Sales','0%','','40.00'],
+       ['12 Nov','“paid Booker 212 on the card”','5000 Purchases','20%','212.00',''],
+       ['12 Nov','“Ahmed paid back the 20 he owed”','1100 Debtors · Ahmed','—','','20.00'],
+       ['11 Nov','“lottery commission came in, 63.10”','4900 Commission','Exempt','','63.10'],
+       ['11 Nov','“electric, 148 by direct debit”','7200 Utilities','5%','148.00',''],
+       ['11 Nov','“card takings 1,186.25”','4000 Sales','Mixed','','1,186.25'],
+       ['10 Nov','“bought a new till roll pack, 12.99”','7500 Office','20%','12.99',''],
+       ['10 Nov','“paid Ahmed wages 280 cash”','7000 Wages','—','280.00',''],
+      ].map(r=>`<tr><td style="color:#77776f">${r[0]}</td><td class="q">${r[1]}</td><td><span class="pill">${r[2]}</span></td><td>${r[3]}</td><td class="n">${r[4]}</td><td class="n">${r[5]}</td></tr>`).join(''));
+document.getElementById('bars').innerHTML=[52,61,48,70,66,88,40,58,63,55,74,69].map((b,i)=>`<div style="flex:1;height:${b*1.8}px;background:${i===11?'#2F4BFF':'#d6dbff'};background-image:repeating-linear-gradient(0deg,transparent 0 7px,#fff 7px 9px)"></div>`).join('');
+</script>
+</body></html>

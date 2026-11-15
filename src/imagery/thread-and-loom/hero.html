@@ -1,0 +1,186 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Thread &amp; Loom — swatch book</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+html,body{margin:0;padding:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#e9e1d2;font-family:Georgia,serif;color:#33302B}
+.abs{position:absolute}
+.serif{font-family:Georgia,'Times New Roman',serif}
+.sans{font-family:NM,Arial,sans-serif}
+</style></head>
+<body>
+<svg id="defs" width="0" height="0" style="position:absolute"><defs id="D">
+  <filter id="drape" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0009 0.0026" numOctaves="3" seed="12" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="38" lighting-color="#fff" result="l0"><feDistantLight azimuth="200" elevation="34"/></feDiffuseLighting>
+    <feGaussianBlur in="l0" stdDeviation="6" result="l"/>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 .18  0 0 0 0 .12  0 0 0 0 .06  -2.2 0 0 0 1.45" result="sh"/>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 1  0 0 0 0 .96  0 0 0 0 .88  1.8 0 0 0 -1.3" result="hi"/>
+    <feMerge><feMergeNode in="sh"/><feMergeNode in="hi"/></feMerge>
+  </filter>
+  <filter id="wobble" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="fuzz" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" seed="9"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -2.4 1.3"/>
+  </filter>
+  <filter id="kraft" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.7 0.15" numOctaves="2" seed="11"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .3  0 0 0 0 .18  0 0 0 0 .08  0 0 0 -2 1.2"/>
+  </filter>
+  <filter id="boll" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="4" seed="5" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="26" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feGaussianBlur in="d" stdDeviation="1.2"/>
+  </filter>
+  <filter id="b30" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="30"/></filter>
+  <filter id="b8" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+</defs></svg>
+
+<!-- background cloth: oat plain weave, macro, with drape -->
+<svg id="bg" class="abs" style="left:0;top:0" width="2400" height="1350"></svg>
+<div id="stage" class="abs" style="inset:0"></div>
+<!-- raking window light -->
+<div class="abs" style="inset:0;background:linear-gradient(115deg,rgba(255,236,200,.35),rgba(255,236,200,0) 40%,rgba(60,40,20,0) 60%,rgba(60,40,20,.3) 100%)"></div>
+<!-- shallow depth of field at the edges -->
+<div class="abs" style="left:0;top:0;width:520px;height:1350px;backdrop-filter:blur(6px);-webkit-mask-image:linear-gradient(90deg,#000,transparent)"></div>
+<div class="abs" style="left:1880px;top:0;width:520px;height:1350px;backdrop-filter:blur(6px);-webkit-mask-image:linear-gradient(270deg,#000,transparent)"></div>
+<div class="abs" style="inset:0;background:radial-gradient(1800px 1100px at 48% 50%,rgba(0,0,0,0) 55%,rgba(40,25,10,.35) 100%)"></div>
+
+<script>
+window.__ready=false;
+const D=document.getElementById('D');
+let pid=0;
+// ---------- weave generator: draft[r][c]=1 → warp over ----------
+function weave(draft,cell,warp,weft,opt={}){
+  const id='w'+(pid++),rows=draft.length,cols=draft[0].length,W=cols*cell,H=rows*cell;
+  const g=`<linearGradient id="${id}v" x1="0" x2="1"><stop offset="0" stop-color="${shade(warp,-.35)}"/><stop offset=".45" stop-color="${shade(warp,.18)}"/><stop offset=".6" stop-color="${warp}"/><stop offset="1" stop-color="${shade(warp,-.4)}"/></linearGradient>
+  <linearGradient id="${id}h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${shade(weft,-.35)}"/><stop offset=".4" stop-color="${shade(weft,.18)}"/><stop offset=".6" stop-color="${weft}"/><stop offset="1" stop-color="${shade(weft,-.42)}"/></linearGradient>`;
+  let t='';const gap=cell*(opt.gap??.08);
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+    const x=c*cell,y=r*cell;
+    if(draft[r][c]){ // warp float: vertical; extend over neighbours that are also warp to make floats
+      const up=draft[(r-1+rows)%rows][c],dn=draft[(r+1)%rows][c];
+      t+=`<rect x="${x+gap}" y="${y+(up?-1:gap)}" width="${cell-2*gap}" height="${cell+(up?1:-gap)+(dn?1:-gap)}" rx="${up&&dn?0:cell*.42}" fill="url(#${id}v)"/>`;
+    }else{
+      const lf=!draft[r][(c-1+cols)%cols],rt=!draft[r][(c+1)%cols];
+      t+=`<rect x="${x+(lf?-1:gap)}" y="${y+gap}" width="${cell+(lf?1:-gap)+(rt?1:-gap)}" height="${cell-2*gap}" ry="${lf&&rt?0:cell*.42}" fill="url(#${id}h)"/>`;
+    }
+  }
+  D.insertAdjacentHTML('beforeend',`${g}<pattern id="${id}" width="${W}" height="${H}" patternUnits="userSpaceOnUse" patternTransform="${opt.tf||''}"><rect width="${W}" height="${H}" fill="${shade(weft,opt.gapShade??-.45)}"/>${t}</pattern>`);
+  return id;
+}
+function shade(hex,k){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;const f=k<0?0:255,a=Math.abs(k);r=Math.round(r+(f-r)*a);g=Math.round(g+(f-g)*a);b=Math.round(b+(f-b)*a);return `rgb(${r},${g},${b})`}
+const plain=[[1,0],[0,1]];
+const twill=[[1,1,0,0],[0,1,1,0],[0,0,1,1],[1,0,0,1]];
+const herring=(()=>{const n=8,rows=4,d=[];for(let r=0;r<rows;r++){d.push([]);for(let c=0;c<n*2;c++){const cc=c<n?c:(2*n-1-c);d[r].push(((cc-r)%4+4)%4<2?1:0)}}return d})();
+const sateen=[[1,0,0,0,0],[0,0,1,0,0],[0,0,0,0,1],[0,1,0,0,0],[0,0,0,1,0]].map(r=>r.map(v=>1-v));
+const waffle=(()=>{const n=8,d=[];for(let r=0;r<n;r++){d.push([]);for(let c=0;c<n;c++){const a=Math.min(r,n-1-r),b=Math.min(c,n-1-c);d[r].push(((a+b)%2))}}return d})();
+
+// background: oat percale, big macro
+const bgW=weave(plain,12,'#ece4d4','#e3d8c3',{gap:.05,gapShade:-.18});
+document.getElementById('bg').innerHTML=`<rect width="2400" height="1350" fill="url(#${bgW})"/><rect width="2400" height="1350" filter="url(#fuzz)" opacity=".18"/><rect width="2400" height="1350" filter="url(#drape)"/>`;
+
+const st=document.getElementById('stage');
+const add=h=>st.insertAdjacentHTML('beforeend',h);
+
+// ---------- swatch book, fanned from a brass post ----------
+const sw=[
+ {name:'Percale',no:'No. 01',spec:'300 TC · long-staple cotton',warp:'#f4f0e8',weft:'#ece6da',d:plain,cell:9,col:'#f4f0e8'},
+ {name:'Sateen',no:'No. 04',spec:'400 TC · sateen · Sage',warp:'#a3ad92',weft:'#8e9a7f',d:sateen,cell:8,col:'#a3ad92'},
+ {name:'Twill',no:'No. 07',spec:'2/2 twill · Indigo',warp:'#3c4d6e',weft:'#d9d2c2',d:twill,cell:9,col:'#3c4d6e'},
+ {name:'Waffle',no:'No. 15',spec:'Waffle towel · Oat',warp:'#e3d6bd',weft:'#cdbd9d',d:waffle,cell:10,col:'#e3d6bd'},
+ {name:'Herringbone',no:'No. 11',spec:'Herringbone · Terracotta',warp:'#B65C3A',weft:'#e2c2a8',d:herring,cell:9,col:'#B65C3A'},
+];
+const px=1000,py=1330; // pivot
+sw.forEach((s,i)=>{
+  const id=weave(s.d,s.cell,s.warp,s.weft,{gap:.07});
+  const ang=-50+i*13;
+  const w=440,h=900;
+  // pinked (zig-zag) top edge
+  let zz=`M0,${h} L0,40 `;for(let x=0;x<=w;x+=20)zz+=`L${x},${(x/20)%2?28:40} `;zz+=`L${w},40 L${w},${h} Z`;
+  add(`<div class="abs" style="left:${px-w/2}px;top:${py-h+60}px;width:${w}px;height:${h}px;transform-origin:50% ${h-60}px;transform:rotate(${ang}deg)">
+   <svg class="abs" style="left:0;top:0;overflow:visible" width="${w}" height="${h}">
+    <path d="${zz}" fill="#2a1c10" opacity=".45" filter="url(#b30)" transform="translate(30 30)"/>
+    <path d="${zz}" fill="#2a1c10" opacity=".35" filter="url(#b8)" transform="translate(6 6)"/>
+    <clipPath id="c${i}"><path d="${zz}"/></clipPath>
+    <g clip-path="url(#c${i})">
+     <rect width="${w}" height="${h}" fill="url(#${id})" filter="url(#wobble)"/>
+     <rect width="${w}" height="${h}" filter="url(#fuzz)" opacity=".16"/>
+     <rect width="${w}" height="${h}" fill="url(#sh${i})"/>
+    </g>
+    <linearGradient id="sh${i}" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#2a1a0a" stop-opacity=".28"/></linearGradient>
+    <!-- card backing with label at the root -->
+    <rect x="0" y="${h-230}" width="${w}" height="230" fill="#F1ECE2"/>
+    <rect x="0" y="${h-230}" width="${w}" height="230" filter="url(#kraft)" opacity=".18"/>
+    <rect x="0" y="${h-232}" width="${w}" height="4" fill="#33302B" opacity=".15"/>
+    <text x="30" y="${h-180}" font-family="Georgia" font-weight="700" font-size="34" fill="#33302B">${s.name}</text>
+    <text x="${w-30}" y="${h-182}" text-anchor="end" font-family="NM" font-size="17" letter-spacing="2" fill="#B65C3A">${s.no}</text>
+    <text x="30" y="${h-146}" font-family="NM" font-size="17" fill="#5a554c">${s.spec}</text>
+    <circle cx="${w/2}" cy="${h-60}" r="22" fill="#d9c7a0"/><circle cx="${w/2}" cy="${h-60}" r="22" fill="url(#brass)"/><circle cx="${w/2}" cy="${h-60}" r="8" fill="#6a5020"/>
+   </svg></div>`);
+});
+D.insertAdjacentHTML('beforeend',`<radialGradient id="brass" cx="35%" cy="30%"><stop offset="0" stop-color="#fff2c8"/><stop offset=".5" stop-color="#c9a24a"/><stop offset="1" stop-color="#6a5020"/></radialGradient>`);
+
+// ---------- woven label lying loose ----------
+const labW=weave(plain,3,'#33302B','#2a2722',{gap:.12});
+add(`<div class="abs" style="left:1330px;top:900px;width:520px;height:170px;transform:rotate(9deg)">
+  <svg class="abs" style="left:0;top:0;overflow:visible" width="520" height="170">
+   <rect width="520" height="170" fill="#000" opacity=".4" filter="url(#b8)" transform="translate(10 12)"/>
+   <rect width="520" height="170" fill="url(#${labW})"/>
+   <rect x="0" y="0" width="34" height="170" fill="#1f1d19"/><rect x="486" y="0" width="34" height="170" fill="#1f1d19"/>
+   <line x1="34" y1="0" x2="34" y2="170" stroke="#5a554c" stroke-width="2" stroke-dasharray="4 4"/><line x1="486" y1="0" x2="486" y2="170" stroke="#5a554c" stroke-width="2" stroke-dasharray="4 4"/>
+   <g fill="#e9dcc0" font-family="Georgia" text-anchor="middle">
+    <text x="260" y="78" font-weight="700" font-size="46" letter-spacing="1">Thread &amp; Loom</text>
+    <text x="260" y="118" font-family="NM" font-size="17" letter-spacing="5">FAISALABAD · 100% COTTON</text>
+    <text x="260" y="148" font-family="Dubai,'Segoe UI'" font-size="20">دھاگا اور کرگھا</text>
+   </g>
+   <rect width="520" height="170" filter="url(#fuzz)" opacity=".25"/>
+   <rect width="520" height="170" fill="url(#labsh)"/>
+   <linearGradient id="labsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".15"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
+  </svg></div>`);
+
+// ---------- swing tag on cotton string ----------
+add(`<div class="abs" style="left:1500px;top:250px;width:380px;height:620px;transform:rotate(14deg)">
+  <svg class="abs" style="left:0;top:0;overflow:visible" width="380" height="620">
+   <path d="M190,70 C120,-60 -80,-40 -160,-140" stroke="#f3eee2" stroke-width="5" fill="none"/>
+   <path d="M190,70 C120,-60 -80,-40 -160,-140" stroke="#b9ad96" stroke-width="5" fill="none" stroke-dasharray="3 5" opacity=".6"/>
+   <path d="M0,40 L40,0 L340,0 L380,40 L380,620 L0,620 Z" fill="#000" opacity=".35" filter="url(#b30)" transform="translate(30 34)"/>
+   <path d="M0,40 L40,0 L340,0 L380,40 L380,620 L0,620 Z" fill="#c9a274"/>
+   <path d="M0,40 L40,0 L340,0 L380,40 L380,620 L0,620 Z" filter="url(#kraft)" opacity=".7"/>
+   <circle cx="190" cy="70" r="16" fill="#e9e1d2" stroke="#F1ECE2" stroke-width="6"/>
+   <g fill="#33302B">
+    <g transform="translate(150 120)" fill="none" stroke="#B65C3A" stroke-width="6">${[0,1,2].map(r=>[0,1,2].map(c=>`<rect x="${c*30-4}" y="${r*30-4}" width="20" height="20" rx="3" ${r==1&&c==1?'fill="#B65C3A"':''}/>`).join('')).join('')}</g>
+    <text x="190" y="290" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="50">Thread &amp;</text>
+    <text x="190" y="346" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="50">Loom</text>
+    <text x="190" y="392" text-anchor="middle" font-family="NM" font-style="italic" font-size="21" fill="#7a3a22">Woven where cotton grows.</text>
+    <line x1="40" y1="430" x2="340" y2="430" stroke="#33302B" stroke-width="1.5"/>
+    <text x="40" y="468" font-family="NM" font-size="18">Percale duvet set · King</text>
+    <text x="40" y="498" font-family="NM" font-size="18">300 TC · Ash white</text>
+    <text x="40" y="560" font-family="NM" font-weight="500" font-size="30">$148</text>
+    <text x="340" y="560" text-anchor="end" font-family="NM" font-size="15" letter-spacing="1.5">£119 · PKR 41,500</text>
+   </g>
+  </svg></div>`);
+
+// ---------- cotton bolls, upper left ----------
+function bolls(x,y,s,rot){
+  let g='';
+  // dried bract (star of 4-5 brown petals)
+  for(let k=0;k<5;k++){const a=k*72+rot;g+=`<path d="M0,0 C30,-20 70,-30 110,-10 C80,10 40,18 0,0 Z" transform="rotate(${a}) scale(1.1)" fill="#5a3a22" stroke="#3a2412" stroke-width="2"/>`}
+  // fluffy lobes
+  let f='';for(let k=0;k<4;k++){const a=(k*90+rot+20)*Math.PI/180;f+=`<circle cx="${Math.cos(a)*48}" cy="${Math.sin(a)*48}" r="62" fill="url(#lint)"/>`}
+  return `<g transform="translate(${x} ${y}) scale(${s})"><g opacity=".5" filter="url(#b30)" transform="translate(40 50)"><circle r="120" fill="#3a2410"/></g>${g}<g filter="url(#boll)">${f}</g></g>`;
+}
+D.insertAdjacentHTML('beforeend',`<radialGradient id="lint" cx="38%" cy="35%"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#f3efe6"/><stop offset=".85" stop-color="#cfc6b4"/><stop offset="1" stop-color="#a99c84"/></radialGradient>`);
+add(`<svg class="abs" style="left:0;top:0" width="2400" height="1350">
+ <path d="M300,-20 C420,120 520,180 640,240" stroke="#4a2e18" stroke-width="10" fill="none"/>
+ ${bolls(300,130,1.05,10)}${bolls(560,250,.95,40)}${bolls(1990,1150,1.1,25)}
+ <path d="M1990,1150 C2100,1220 2200,1260 2420,1300" stroke="#4a2e18" stroke-width="10" fill="none"/>
+</svg>`);
+window.__ready=true;
+</script>
+</body></html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Costa Lume — print set on a painted bench</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-style:italic;src:url(../../../briefs/v6/fonts/NeueMontreal-Italic.otf)}
+html,body{margin:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#7fa3b8}
+.abs{position:absolute}
+.sh{box-shadow:14px 22px 10px rgba(30,40,60,.28), 2px 3px 2px rgba(30,40,60,.25)}
+/* brochure (open trifold, 3 panels) */
+.bro{left:120px;top:150px;width:1110px;height:780px;transform:rotate(-4deg);display:flex}
+.bro .pn{flex:1;position:relative;background:#FFF8EE;font-family:NM;color:#3a2620}
+.bro .pn:nth-child(1){background:linear-gradient(90deg,#fffaf2,#f3eadc)}
+.bro .pn:nth-child(2){background:linear-gradient(90deg,#efe5d6,#fffaf2 20%,#f5ecdf)}
+.bro .pn:nth-child(3){background:linear-gradient(90deg,#f1e7d8,#fffaf2 30%)}
+.bro h5{font:500 11px NM;letter-spacing:.26em;color:#C8553D;margin:0}
+.bro h3{font:700 34px/1 Georgia,serif;margin:10px 0 0}
+.bro p{font:400 13.5px/1.5 NM;margin:12px 0 0;color:#5b443a}
+.leg{display:grid;grid-template-columns:28px 1fr auto;gap:8px 10px;font:400 13px NM;margin-top:18px;align-items:center}
+.leg i{font:700 13px Georgia,serif;font-style:normal;width:24px;height:24px;border-radius:50%;background:#C8553D;color:#FFF8EE;display:flex;align-items:center;justify-content:center}
+.leg b{font:500 12px NM;color:#8a6a5c}
+/* postcards */
+.pc{width:600px;height:400px;background:#fffaf1;font-family:NM}
+.pc .im{position:absolute;inset:18px}
+.pc .cap{position:absolute;left:34px;bottom:30px;font:700 30px Georgia,serif;color:#FFF8EE;text-shadow:0 1px 10px rgba(0,0,0,.2)}
+.pc .cap small{display:block;font:italic 400 15px NM;color:#F2D0A4;margin-top:4px}
+.back{width:600px;height:400px;background:#fbf5ea;font-family:NM}
+.back .div{position:absolute;left:300px;top:40px;bottom:40px;border-left:1px solid #c9b9a6}
+.back .hw{position:absolute;left:30px;top:56px;width:250px;font:400 21px/1.45 'Segoe Print','Segoe Script',cursive;color:#2b3b6b;transform:rotate(-2deg)}
+.back .ad{position:absolute;left:326px;top:180px;width:240px;font:400 20px/1.75 'Segoe Print',cursive;color:#2b3b6b}
+.back .ln{position:absolute;left:326px;width:240px;border-bottom:1px solid #c9b9a6}
+.back .st{position:absolute;right:28px;top:26px;width:92px;height:112px;background:#fff;padding:6px;box-sizing:border-box;
+  outline:3px dotted #fbf5ea;outline-offset:-2px;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.back .pm{position:absolute;right:86px;top:64px;width:120px;height:120px;border-radius:50%;border:2.5px solid rgba(40,40,60,.55);transform:rotate(-14deg)}
+.back .tiny{position:absolute;left:30px;bottom:22px;font:500 9.5px NM;letter-spacing:.14em;color:#9b8573}
+/* walk pass */
+.pass{width:520px;height:330px;border-radius:22px;background:#C8553D;color:#FFF8EE;font-family:NM;overflow:hidden}
+.pass .hole{position:absolute;left:24px;top:24px;width:40px;height:14px;border-radius:7px;background:#7fa3b8;box-shadow:inset 1px 2px 3px rgba(0,0,0,.35)}
+</style></head>
+<body>
+<svg class="abs" style="left:0;top:0" width="1600" height="2000">
+<defs>
+  <filter id="wood" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0015 0.05" numOctaves="4" seed="12" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="5" lighting-color="#fff"><feDistantLight azimuth="235" elevation="45"/></feDiffuseLighting>
+    <feComposite in2="SourceGraphic" operator="arithmetic" k1=".7" k2="0" k3=".45" k4="0"/>
+  </filter>
+  <filter id="chip" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.006 0.05" numOctaves="4" seed="4"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .8 0 0 0 0 .76 0 0 0 0 .68 0 0 0 -14 6.6"/>
+  </filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+</defs>
+<g id="planks"></g>
+</svg>
+
+<!-- brochure -->
+<div class="abs bro sh">
+  <div class="pn" style="padding:46px 40px">
+    <h5>ROUTE 07 · ROTA 07</h5>
+    <h3>Lagos to Salema<br>by the cliffs</h3>
+    <p>Seventeen kilometres of limestone, coves and fishing villages. In January the path is dry, the sea is loud and you will meet more cormorants than people.</p>
+    <div class="leg">
+      <i>1</i><span>Ponta da Piedade</span><b>2.4 km</b>
+      <i>2</i><span>Praia de Porto de Mós</span><b>4.1 km</b>
+      <i>3</i><span>Rocha Negra lookout</span><b>7.8 km</b>
+      <i>4</i><span>Luz, café stop</span><b>9.0 km</b>
+      <i>5</i><span>Burgau</span><b>13.2 km</b>
+      <i>6</i><span>Salema, bus back</span><b>17.1 km</b>
+    </div>
+    <p style="font-size:12px;color:#8a6a5c;margin-top:22px">5 h 30 · ascent 540 m · moderate<br>Bus 47 Salema → Lagos, 16:40 and 18:10</p>
+  </div>
+  <div class="pn" style="flex:2;overflow:hidden">
+    <svg width="100%" height="100%" viewBox="0 0 740 780">
+      <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8 L8 0" stroke="#d9c9b4" stroke-width="1"/></pattern></defs>
+      <rect width="740" height="780" fill="#e6eef0"/>
+      <path d="M0 250 C 60 260 110 300 140 340 C 170 380 220 400 270 392 C 320 384 350 420 380 470 C 400 506 440 520 480 512 C 530 500 560 520 600 560 C 640 600 690 610 740 600 L740 0 L0 0Z" fill="#f4ecdf"/>
+      <path d="M0 250 C 60 260 110 300 140 340 C 170 380 220 400 270 392 C 320 384 350 420 380 470 C 400 506 440 520 480 512 C 530 500 560 520 600 560 C 640 600 690 610 740 600 L740 0 L0 0Z" fill="url(#hatch)" opacity=".5"/>
+      <path d="M0 250 C 60 260 110 300 140 340 C 170 380 220 400 270 392 C 320 384 350 420 380 470 C 400 506 440 520 480 512 C 530 500 560 520 600 560 C 640 600 690 610 740 600" fill="none" stroke="#a0846b" stroke-width="2.5"/>
+      <g fill="none" stroke="#c7d6da" stroke-width="1.2"><path d="M0 270 C 60 280 110 320 140 360 C 170 400 220 420 270 412 C 320 404 350 440 380 490 C 400 526 440 540 480 532 C 530 520 560 540 600 580 C 640 620 690 630 740 620"/><path d="M0 300 C 60 310 110 350 140 390 C 170 430 220 450 270 442 C 320 434 350 470 380 520 C 400 556 440 570 480 562 C 530 550 560 570 600 610 C 640 650 690 660 740 650"/></g>
+      <g fill="none" stroke="#d8c7ae" stroke-width="1"><path d="M40 200 C 120 210 180 250 220 300 C 260 340 330 350 380 380"/><path d="M60 140 C 160 150 240 200 300 260 C 360 300 440 330 520 400 C 580 440 650 470 740 480"/><path d="M200 60 C 300 90 400 160 480 240 C 560 300 640 340 740 360"/></g>
+      <!-- route -->
+      <path d="M690 560 C 640 540 610 500 590 520 C 560 500 520 470 480 488 C 440 494 410 470 384 440 C 360 400 320 368 272 372 C 220 376 180 356 150 320 C 120 280 80 240 30 232" fill="none" stroke="#C8553D" stroke-width="5" stroke-dasharray="14 8" stroke-linecap="round"/>
+      <g font-family="Georgia" font-weight="700" font-size="14" fill="#FFF8EE">
+        <g transform="translate(676,552)"><circle r="15" fill="#C8553D"/><text x="-4.5" y="5">1</text></g>
+        <g transform="translate(590,512)"><circle r="15" fill="#C8553D"/><text x="-4.5" y="5">2</text></g>
+        <g transform="translate(470,486)"><circle r="15" fill="#C8553D"/><text x="-4.5" y="5">3</text></g>
+        <g transform="translate(372,424)"><circle r="15" fill="#C8553D"/><text x="-4.5" y="5">4</text></g>
+        <g transform="translate(218,368)"><circle r="15" fill="#C8553D"/><text x="-4.5" y="5">5</text></g>
+        <g transform="translate(44,236)"><circle r="15" fill="#C8553D"/><text x="-4.5" y="5">6</text></g>
+      </g>
+      <g font-family="NM" font-size="15" fill="#3a2620">
+        <text x="600" y="470" font-weight="500">LAGOS</text><text x="640" y="610" font-size="12" fill="#6b8a94">Ponta da Piedade</text>
+        <text x="340" y="400" font-weight="500">LUZ</text><text x="190" y="340" font-weight="500">BURGAU</text><text x="40" y="208" font-weight="500">SALEMA</text>
+        <text x="420" y="455" font-size="12" fill="#7c6252">Rocha Negra 109 m</text>
+        <text x="250" y="660" font-size="20" font-style="italic" fill="#6b8a94" letter-spacing="3">Oceano Atlântico</text>
+      </g>
+      <g transform="translate(660,90)"><path d="M0 -30 L8 0 L0 -6 L-8 0Z" fill="#3a2620"/><text x="-5" y="20" font-family="NM" font-size="14" fill="#3a2620">N</text></g>
+      <g transform="translate(40,730)" font-family="NM" font-size="11" fill="#3a2620"><rect width="100" height="6" fill="#3a2620"/><rect x="50" width="50" height="6" fill="#fff" stroke="#3a2620"/><text y="22">0</text><text x="88" y="22">2 km</text></g>
+    </svg>
+  </div>
+</div>
+
+<!-- postcard, front -->
+<div class="abs pc sh" style="left:860px;top:860px;transform:rotate(7deg)">
+  <div class="im"><svg width="100%" height="100%" viewBox="0 0 564 364" preserveAspectRatio="xMidYMid slice">
+    <defs><linearGradient id="q1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7b48d"/><stop offset="1" stop-color="#f7dcb8"/></linearGradient>
+    <linearGradient id="q2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6e8f99"/><stop offset="1" stop-color="#2a5864"/></linearGradient>
+    <filter id="qt"><feTurbulence type="fractalNoise" baseFrequency=".01 .12" numOctaves="3" seed="2"/><feColorMatrix type="matrix" values="0 0 0 0 .4 0 0 0 0 .16 0 0 0 0 .08 0 0 0 1.4 -.7"/><feComposite in2="SourceGraphic" operator="in"/></filter></defs>
+    <rect width="564" height="364" fill="url(#q1)"/><circle cx="140" cy="150" r="30" fill="#fff3dc"/><circle cx="140" cy="150" r="80" fill="#fff3dc" opacity=".25"/>
+    <rect y="190" width="564" height="174" fill="url(#q2)"/><rect x="40" y="192" width="200" height="60" fill="#ffe2b8" opacity=".25"/>
+    <path d="M300 364 L320 230 C 326 200 360 190 372 214 L392 364Z" fill="#d5803f"/><path d="M300 364 L320 230 C 326 200 360 190 372 214 L392 364Z" filter="url(#qt)"/><path d="M360 206 L372 214 L392 364 L370 364Z" fill="#5e3429" opacity=".5"/>
+    <path d="M330 364 C 334 320 360 310 364 364Z" fill="#244b56"/>
+    <path d="M420 364 L436 160 C 440 130 476 124 490 150 L520 364Z" fill="#cf7a3f"/><path d="M420 364 L436 160 C 440 130 476 124 490 150 L520 364Z" filter="url(#qt)"/><path d="M478 136 L490 150 L520 364 L496 364Z" fill="#5e3429" opacity=".5"/>
+    <path d="M436 162 C 444 134 478 128 490 150 C 470 142 450 146 436 170Z" fill="#6c703c"/><path d="M320 232 C 326 204 358 196 370 214 C 352 208 334 214 320 240Z" fill="#6c703c"/>
+    <path d="M530 364 L540 250 C 544 236 564 232 564 240 L564 364Z" fill="#b9652f"/>
+  </svg></div>
+  <div class="cap">Ponta da Piedade<small>Lagos, janeiro · January</small></div>
+</div>
+
+<!-- postcard, back (written) -->
+<div class="abs back sh" style="left:180px;top:1080px;transform:rotate(-9deg)">
+  <div class="div"></div>
+  <div class="hw">Dear Mum and Pieter,<br>14° and the whole beach to ourselves. Walked Lagos to Salema today, sea like a washing machine. Staying on till Sunday!<br>x Anouk</div>
+  <div class="st"><svg width="80" height="100" viewBox="0 0 80 100"><rect width="80" height="100" fill="#C8553D"/><path d="M14 74 a26 26 0 0 1 52 0" fill="none" stroke="#F2D0A4" stroke-width="5"/><path d="M6 76 H74" stroke="#F2D0A4" stroke-width="5"/><text x="8" y="22" font-family="NM" font-size="10" fill="#FFF8EE" letter-spacing="1">PORTUGAL</text><text x="8" y="94" font-family="Georgia" font-weight="700" font-size="13" fill="#FFF8EE">€1,10</text></svg></div>
+  <div class="pm"></div>
+  <svg class="abs" style="right:70px;top:84px" width="180" height="80"><g fill="none" stroke="rgba(40,40,60,.55)" stroke-width="2.4"><path d="M0 20 q 15 -10 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0"/><path d="M0 34 q 15 -10 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0"/><path d="M0 48 q 15 -10 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0"/></g><text x="74" y="72" font-family="NM" font-size="11" fill="rgba(40,40,60,.6)" transform="rotate(-14 90 40)">LAGOS 14.01.27</text></svg>
+  <div class="ad">Fam. de Vries<br>Brouwersgracht 112<br>1013 HA Amsterdam<br>NEDERLAND</div>
+  <div class="ln" style="top:216px"></div><div class="ln" style="top:251px"></div><div class="ln" style="top:286px"></div><div class="ln" style="top:321px"></div>
+  <div class="tiny">COSTA LUME · THE COAST, OUT OF SEASON</div>
+</div>
+
+<!-- walk pass -->
+<div class="abs pass sh" style="left:1010px;top:1420px;transform:rotate(-16deg)">
+  <div class="hole"></div>
+  <svg class="abs" style="right:-40px;bottom:-60px" width="300" height="300" viewBox="0 0 60 60"><g fill="none" stroke="#F2D0A4" stroke-width="2.4" opacity=".35" stroke-linecap="round"><path d="M14 44 a16 16 0 0 1 32 0"/><path d="M6 46 H54"/><path d="M30 14 v7 M12 22 l5 5 M48 22 l-5 5 M3 34 h6 M51 34 h6"/></g></svg>
+  <div class="abs" style="left:36px;top:62px;font:500 12px NM;letter-spacing:.24em;color:#F2D0A4">PASSE DE INVERNO · WINTER WALK PASS</div>
+  <div class="abs" style="left:36px;top:90px;font:700 46px/1 Georgia,serif">5 guided walks</div>
+  <div class="abs" style="left:36px;top:146px;font:italic 400 18px NM;color:#F2D0A4">Ponta da Piedade · Sete Vales · Rota Vicentina</div>
+  <div class="abs" style="left:36px;bottom:34px;display:flex;gap:30px;font:400 12px/1.4 NM">
+    <div>Valid<br><b style="font:700 18px Georgia,serif">01.11 – 31.03</b></div><div>Holder<br><b style="font:700 18px Georgia,serif">A. de Vries</b></div><div>Nº<br><b style="font:700 18px Georgia,serif">W-04418</b></div>
+  </div>
+  <div class="abs" style="right:36px;top:36px;display:flex;gap:6px"><span style="width:22px;height:22px;border-radius:50%;background:#FFF8EE"></span><span style="width:22px;height:22px;border-radius:50%;background:#FFF8EE"></span><span style="width:22px;height:22px;border-radius:50%;border:2px solid #FFF8EE;box-sizing:border-box"></span><span style="width:22px;height:22px;border-radius:50%;border:2px solid #FFF8EE;box-sizing:border-box"></span><span style="width:22px;height:22px;border-radius:50%;border:2px solid #FFF8EE;box-sizing:border-box"></span></div>
+</div>
+
+<!-- light: louvred shutter shadow + warm low sun, on top of everything -->
+<svg class="abs" style="left:0;top:0;pointer-events:none" width="1600" height="2000">
+  <defs><filter id="sb" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="9"/></filter>
+  <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffcf90" stop-opacity=".22"/><stop offset=".6" stop-color="#ffcf90" stop-opacity=".05"/><stop offset="1" stop-color="#26304a" stop-opacity=".2"/></linearGradient>
+  <filter id="pebble"><feTurbulence type="fractalNoise" baseFrequency=".08" numOctaves="3" seed="6"/><feColorMatrix type="matrix" values="0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .4 0 0 0 1.2 -.5"/><feComposite in2="SourceGraphic" operator="in"/></filter></defs>
+  <!-- shell + two beach pebbles -->
+  <ellipse cx="1390" cy="1150" rx="60" ry="48" fill="#1d2a40" opacity=".3" filter="url(#sb)" transform="translate(14,20)"/>
+  <path d="M1340 1170 C 1330 1120 1360 1090 1390 1090 C 1420 1090 1450 1120 1440 1170 C 1420 1186 1360 1186 1340 1170Z" fill="#efe1cf"/>
+  <g stroke="#c9a88a" stroke-width="2.4" fill="none" opacity=".9"><path d="M1390 1180 L1390 1094"/><path d="M1390 1180 L1372 1096"/><path d="M1390 1180 L1408 1096"/><path d="M1390 1180 L1356 1104"/><path d="M1390 1180 L1424 1104"/><path d="M1390 1180 L1344 1120"/><path d="M1390 1180 L1436 1120"/></g>
+  <path d="M1376 1182 h28 l-4 10 h-20z" fill="#e3cdb4"/>
+  <ellipse cx="1470" cy="1260" rx="44" ry="30" fill="#8e8a84"/><ellipse cx="1470" cy="1260" rx="44" ry="30" filter="url(#pebble)"/><ellipse cx="1460" cy="1250" rx="22" ry="10" fill="#fff" opacity=".2"/>
+  <ellipse cx="1300" cy="1250" rx="26" ry="20" fill="#cfc4b4"/><ellipse cx="1300" cy="1250" rx="26" ry="20" filter="url(#pebble)"/>
+  <ellipse cx="1484" cy="1282" rx="44" ry="20" fill="#1d2a40" opacity=".25" filter="url(#sb)"/>
+  <rect width="1600" height="2000" fill="url(#warm)"/>
+  <g fill="#1d2a40" opacity=".22" filter="url(#sb)" transform="rotate(-28 800 1000)">
+    <rect x="-400" y="1500" width="2600" height="900"/>
+    <g id="louv"></g>
+  </g>
+</svg>
+<script>
+// painted planks (fishing-boat blue over silvered pine), running diagonally
+const NS='http://www.w3.org/2000/svg',pl=document.getElementById('planks');let s=3;const R=()=>{s=(s*16807)%2147483647;return s/2147483647};
+for(let i=0;i<9;i++){const g=document.createElementNS(NS,'g');g.setAttribute('transform',`rotate(-4 800 1000) translate(-200 ${-260+i*290})`);
+  const r=document.createElementNS(NS,'rect');r.setAttribute('width',2000);r.setAttribute('height',282);r.setAttribute('fill',['#86a9bf','#7ea2b9','#8aaec2'][i%3]);r.setAttribute('filter','url(#wood)');g.appendChild(r);
+  const c=document.createElementNS(NS,'rect');c.setAttribute('width',2000);c.setAttribute('height',282);c.setAttribute('filter','url(#chip)');c.setAttribute("opacity",".75");g.appendChild(c);
+  const sg=document.createElementNS(NS,'rect');sg.setAttribute('y',282);sg.setAttribute('width',2000);sg.setAttribute('height',8);sg.setAttribute('fill','#243446');g.appendChild(sg);
+  for(let k=0;k<3;k++){const n=document.createElementNS(NS,'circle');n.setAttribute('cx',200+k*700+R()*60);n.setAttribute('cy',26);n.setAttribute('r',6);n.setAttribute('fill','#5b5650');g.appendChild(n);
+    const n2=n.cloneNode();n2.setAttribute('cy',256);g.appendChild(n2)}
+  pl.appendChild(g)}
+const lv=document.getElementById('louv');for(let i=0;i<9;i++){const r=document.createElementNS(NS,'rect');r.setAttribute('x',-400);r.setAttribute('y',-300+i*90);r.setAttribute('width',2600);r.setAttribute('height',34);lv.appendChild(r)}
+</script>
+</body></html>

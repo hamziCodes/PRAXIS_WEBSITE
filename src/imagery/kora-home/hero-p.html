@@ -1,0 +1,305 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Kora Home — Room 07, the family majlis</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-weight:700;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf)}
+html,body{margin:0}
+body{width:1080px;height:1920px;overflow:hidden;background:#24252f}
+svg{display:block}
+</style></head>
+<body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <filter id="plaster" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".01 .014" numOctaves="5" seed="3" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="1.4" lighting-color="#fff"><feDistantLight azimuth="180" elevation="50"/></feDiffuseLighting>
+    <feComposite in2="SourceGraphic" operator="arithmetic" k1=".4" k2="0" k3=".66" k4="0" result="m"/><feComposite in="m" in2="SourceAlpha" operator="in"/>
+  </filter>
+  <filter id="boucle" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="8" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="1.3" lighting-color="#fff"><feDistantLight azimuth="200" elevation="45"/></feDiffuseLighting>
+    <feComposite in2="SourceGraphic" operator="arithmetic" k1=".35" k2="0" k3=".72" k4="0" result="m"/><feComposite in="m" in2="SourceAlpha" operator="in"/>
+  </filter>
+  <filter id="wool" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".5 .9" numOctaves="2" seed="4" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="1.6" lighting-color="#fff"><feDistantLight azimuth="240" elevation="60"/></feDiffuseLighting>
+    <feComposite in2="SourceGraphic" operator="arithmetic" k1=".45" k2="0" k3=".62" k4="0" result="m"/><feComposite in="m" in2="SourceAlpha" operator="in"/>
+  </filter>
+  <filter id="oak" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".002 .06" numOctaves="3" seed="5"/><feColorMatrix type="matrix" values="0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .12 0 0 0 1.2 -.55"/></filter>
+  <filter id="trav" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".02 .15" numOctaves="3" seed="2"/><feColorMatrix type="matrix" values="0 0 0 0 .55 0 0 0 0 .45 0 0 0 0 .35 0 0 0 1.4 -.65"/></filter>
+  <filter id="b2"><feGaussianBlur stdDeviation="2"/></filter>
+  <filter id="b4" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="b10" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10"/></filter>
+  <filter id="b24" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="24"/></filter>
+  <filter id="b60" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="60"/></filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="9"/><feColorMatrix type="saturate" values="0"/></filter>
+</defs>
+<g id="root"></g>
+<rect width="1080" height="1920" filter="url(#grain)" opacity=".05"/>
+</svg>
+<script>window.CAM={vx:540,vy:760,f:1250,eh:1.34,cx:.35,cz:1.0};</script>
+<script>
+window.__ready=false;
+const NS='http://www.w3.org/2000/svg',S=document.getElementById('s'),D=S.querySelector('defs'),ROOT=document.getElementById('root');
+let gid=0;const uid=p=>p+(++gid);
+function E(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||ROOT).appendChild(e);return e}
+function lg(stops,x1=0,y1=0,x2=1,y2=0,units){const id=uid('g');const a={id,x1,y1,x2,y2};if(units)a.gradientUnits=units;const g=E('linearGradient',a,D);stops.forEach(([o,c,op])=>E('stop',{offset:o,'stop-color':c,'stop-opacity':op==null?1:op},g));return `url(#${id})`}
+function rg(stops,cx=.5,cy=.5,r=.5){const id=uid('r');const g=E('radialGradient',{id,cx,cy,r},D);stops.forEach(([o,c,op])=>E('stop',{offset:o,'stop-color':c,'stop-opacity':op==null?1:op},g));return `url(#${id})`}
+let seed=7;const R=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
+// ---- camera (one-point perspective) ----
+const CAM=window.CAM||{vx:1200,vy:560,f:1518,eh:1.34};
+const CX=CAM.cx||0,CZ=CAM.cz||0;const P=(X,Y,Z)=>[CAM.vx+CAM.f*(X-CX)/(Z-CZ), CAM.vy-CAM.f*(Y-CAM.eh)/(Z-CZ)];
+const pts=a=>a.map(q=>{const p=P(...q);return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ');
+const poly=(a,attrs,p)=>E('polygon',Object.assign({points:pts(a)},attrs),p);
+const G=(attrs,p)=>E('g',attrs||{},p);
+function box(x0,x1,y0,y1,z0,z1,c,p){const g=G({},p);
+  if(y1<CAM.eh) poly([[x0,y1,z0],[x1,y1,z0],[x1,y1,z1],[x0,y1,z1]],{fill:c.top},g);
+  if(x0>CX&&c.left) poly([[x0,y0,z0],[x0,y1,z0],[x0,y1,z1],[x0,y0,z1]],{fill:c.left},g);
+  if(x1<CX&&c.right) poly([[x1,y0,z0],[x1,y1,z0],[x1,y1,z1],[x1,y0,z1]],{fill:c.right},g);
+  poly([[x0,y0,z0],[x1,y0,z0],[x1,y1,z0],[x0,y1,z0]],{fill:c.front},g);return g}
+function ellipseAt(X,Y,Z,rx,rz,attrs,p){// horizontal circle approximated by projecting 48 points
+  const a=[];for(let i=0;i<48;i++){const t=i/48*Math.PI*2;a.push([X+Math.cos(t)*rx,Y,Z+Math.sin(t)*rz])}return poly(a,attrs,p)}
+function cyl(X,Z,r,y0,y1,fill,topFill,p){const g=G({},p);const n=48;const side=[];
+  for(let i=0;i<=n/2;i++){const t=Math.PI*i/(n/2);side.push([X+Math.cos(t)*r,y0,Z-Math.sin(t)*r*-1])}
+  const L=[X-r,y1,Z],Rr=[X+r,y1,Z];
+  const a=[];for(let i=0;i<=24;i++){const t=Math.PI*i/24;a.push([X+Math.cos(t)*r,y1,Z-Math.sin(t)*r])}
+  const b=[];for(let i=24;i>=0;i--){const t=Math.PI*i/24;b.push([X+Math.cos(t)*r,y0,Z-Math.sin(t)*r])}
+  poly(a.concat(b),{fill},g);ellipseAt(X,y1,Z,r,r,{fill:topFill},g);return g}
+
+const W0=-2.69,W1=2.69,ZB=6.0,H=3.0;
+// ================= SHOWROOM (beyond the set) =================
+E('rect',{width:1080,height:1920,fill:'#2a2b35'});
+// showroom ceiling: dark with a track and spots
+E('rect',{width:2400,height:200,fill:'#1d1e26'});
+for(let i=0;i<5;i++){const y=30+i*30;E('rect',{x:0,y,width:2400,height:2,fill:'#3a3b48',opacity:.6})}
+E('rect',{x:300,y:70,width:1800,height:8,fill:'#111'});
+[[520,70],[860,70],[1540,70],[1880,70]].forEach(([x,y])=>{E('rect',{x:x-8,y,width:16,height:26,fill:'#151515'});E('path',{d:`M${x-14} ${y+24} L${x+14} ${y+24} L${x+10} ${y+56} L${x-10} ${y+56}Z`,fill:'#0f0f12'});E('ellipse',{cx:x,cy:y+56,rx:10,ry:4,fill:'#fff6dd'});
+  E('path',{d:`M${x-10} ${y+58} L${x+10} ${y+58} L${x+150} ${y+420} L${x-150} ${y+420}Z`,fill:'#fff3d8',opacity:.05,filter:'url(#b24)'})});
+// concrete showroom floor
+poly([[-12,0,2],[12,0,2],[12,0,40],[-12,0,40]],{fill:'#8d8b88'});
+poly([[-12,0,2],[12,0,2],[12,0,40],[-12,0,40]],{fill:lg([[0,'#5f5e5c'],[1,'#a3a19c']],0,0,0,1)});
+// neighbouring set glimpsed on the right (Room 08), soft
+(function(){const g=G({filter:'url(#b4)'});
+  poly([[3.4,0,7.4],[7.5,0,7.4],[7.5,3,7.4],[3.4,3,7.4]],{fill:'#c9b7a2'},g);
+  box(3.9,6.2,0,.75,6.4,7.2,{front:'#5b6a74',top:'#6c7b84',left:'#4e5c66'},g);
+  box(4.0,4.6,0,1.9,6.9,7.3,{front:'#3d405b',top:'#4a4d6a',left:'#34374f'},g);
+  E('rect',{x:2010,y:370,width:190,height:96,fill:'#3D405B'},g);
+})();
+// hanging sign, far right
+(function(){const g=G();const [x,y]=P(3.3,2.55,5.4);
+  E('line',{x1:x+20,y1:0,x2:x+20,y2:y-8,stroke:'#111',"stroke-width":2},g);E('line',{x1:x+180,y1:0,x2:x+180,y2:y-8,stroke:'#111',"stroke-width":2},g);
+  E('rect',{x,y,width:200,height:112,fill:'#3D405B'},g);
+  E('text',{x:x+100,y:y+40,'text-anchor':'middle','font-family':'Dubai','font-weight':500,'font-size':26,fill:'#F4F1DE'},g).textContent='الغرفة ٧';
+  E('text',{x:x+100,y:y+70,'text-anchor':'middle','font-family':'NM','font-weight':500,'font-size':18,fill:'#F4F1DE','letter-spacing':2},g).textContent='ROOM 07';
+  E('text',{x:x+100,y:y+96,'text-anchor':'middle','font-family':'NM','font-size':14,fill:'#E07A5F'},g).textContent='The Family Majlis';
+})();
+
+// ================= ROOM SET =================
+// floor: light oak inside the set
+poly([[W0,0,2.0],[W1,0,2.0],[W1,0,ZB],[W0,0,ZB]],{fill:'#c9ad8c'});
+(function(){const g=G();
+  poly([[W0,0,2.0],[W1,0,2.0],[W1,0,ZB],[W0,0,ZB]],{fill:'#000',filter:'url(#oak)',opacity:.5},g);
+  for(let x=W0;x<=W1;x+=0.19){const a=P(x,0,2.0),b=P(x,0,ZB);E('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'#8c6d4f','stroke-width':1.1,opacity:.45},g);
+    let z=2.0+R()*1.2;while(z<ZB){const p1=P(x,0,z),p2=P(x+.19,0,z);E('line',{x1:p1[0],y1:p1[1],x2:p2[0],y2:p2[1],stroke:'#8c6d4f','stroke-width':1,opacity:.35},g);z+=1.0+R()*1.4}}
+  // edge of the set floor (raised 3 cm plinth)
+  poly([[W0,0,2.0],[W1,0,2.0],[W1,-.04,2.0],[W0,-.04,2.0]],{fill:'#7b6550'},g);
+})();
+// back wall
+poly([[W0,0,ZB],[W1,0,ZB],[W1,H,ZB],[W0,H,ZB]],{fill:'#efe4d1'});
+poly([[W0,0,ZB],[W1,0,ZB],[W1,H,ZB],[W0,H,ZB]],{fill:'#efe4d1',filter:'url(#plaster)'});
+// painted arch (the Kora arch) on the back wall
+(function(){const g=G();const a=[];const cx=0,w=.95,yb=0,ys=1.75;
+  a.push([cx-w,yb,ZB]);for(let i=0;i<=40;i++){const t=Math.PI-Math.PI*i/40;a.push([cx+Math.cos(t)*w,ys+Math.sin(t)*w,ZB])}a.push([cx+w,yb,ZB]);
+  poly(a,{fill:'#d9775c'},g);poly(a,{fill:'#d9775c',filter:'url(#plaster)'},g);
+  const b=[];const w2=.62;b.push([cx-w2,yb,ZB]);for(let i=0;i<=40;i++){const t=Math.PI-Math.PI*i/40;b.push([cx+Math.cos(t)*w2,ys+Math.sin(t)*w2,ZB])}b.push([cx+w2,yb,ZB]);
+  poly(b,{fill:'#c9694f',opacity:.55},g);
+})();
+// wall top cap and skirting
+poly([[W0,H,ZB],[W1,H,ZB],[W1,H,ZB-.12],[W0,H,ZB-.12]],{fill:'#d8cbb6'});
+poly([[W0,0,ZB],[W1,0,ZB],[W1,.08,ZB],[W0,.08,ZB]],{fill:'#e3d6c1'});
+// left wall with the mashrabiya window
+const ZL0=2.0;
+poly([[W0,0,ZL0],[W0,0,ZB],[W0,H,ZB],[W0,H,ZL0]],{fill:'#d9ccb6'});
+poly([[W0,0,ZL0],[W0,0,ZB],[W0,H,ZB],[W0,H,ZL0]],{fill:'#d9ccb6',filter:'url(#plaster)'});
+poly([[W0,0,ZL0],[W0,0,ZB],[W0,H,ZB],[W0,H,ZL0]],{fill:lg([[0,'#000',.25],[1,'#000',0]],0,0,1,0)});
+poly([[W0,H,ZL0],[W0,H,ZB],[W0+.12,H,ZB],[W0+.12,H,ZL0]],{fill:'#cbbda6'});
+// window opening (bright) and lattice
+const WZ0=3.0,WZ1=5.2,WY0=.35,WY1=2.55;
+poly([[W0,WY0,WZ0],[W0,WY0,WZ1],[W0,WY1,WZ1],[W0,WY1,WZ0]],{fill:'#fff6e2'});
+poly([[W0,WY0,WZ0],[W0,WY0,WZ1],[W0,WY1,WZ1],[W0,WY1,WZ0]],{fill:'#fff1d0',filter:'url(#b24)',opacity:.9});
+(function(){// lattice: dark wood with star-shaped openings, drawn as bars
+  const g=G();const cell=.11;
+  poly([[W0,WY0,WZ0],[W0,WY0,WZ1],[W0,WY1,WZ1],[W0,WY1,WZ0]],{fill:'#6b4a33'},g);
+  for(let z=WZ0+cell/2;z<WZ1;z+=cell)for(let y=WY0+cell/2;y<WY1;y+=cell){
+    const r=cell*.42,r2=cell*.3;const star=[];for(let k=0;k<16;k++){const t=k/16*Math.PI*2+Math.PI/16;const rr=k%2?r2:r;star.push([W0,y+Math.sin(t)*rr,z+Math.cos(t)*rr])}
+    poly(star,{fill:'#fff3d6'},g)}
+  // frame
+  poly([[W0+.001,WY0-.06,WZ0-.06],[W0+.001,WY0-.06,WZ1+.06],[W0+.001,WY0,WZ1+.06],[W0+.001,WY0,WZ0-.06]],{fill:'#4e3424'},g);
+  poly([[W0,WY0,WZ0-.06],[W0,WY0,WZ0],[W0,WY1,WZ0],[W0,WY1,WZ0-.06]],{fill:'#4e3424'},g);
+  poly([[W0,WY0,WZ1],[W0,WY0,WZ1+.06],[W0,WY1,WZ1+.06],[W0,WY1,WZ1]],{fill:'#4e3424'},g);
+  poly([[W0,WY1,WZ0-.06],[W0,WY1,WZ1+.06],[W0,WY1+.06,WZ1+.06],[W0,WY1+.06,WZ0-.06]],{fill:'#4e3424'},g);
+  // window glow spilling on the wall
+  const c=P(W0,1.5,4.1);E('ellipse',{cx:c[0],cy:c[1],rx:180,ry:420,fill:'#ffe2b0',opacity:.25,filter:'url(#b60)'});
+})();
+// ===== sunlight through the lattice, projected onto the floor (sun: +x, down, slightly away)
+const SUN=[1,-.72,-.22];
+function toFloor(y,z){const t=y/-SUN[1];return [W0+SUN[0]*t,0.002,z+SUN[2]*t]}
+const LIGHT=G({opacity:.42,filter:'url(#b2)'});
+(function(){const cell=.11;
+  // warm wash under the pattern
+  const c=[toFloor(WY0,WZ0),toFloor(WY0,WZ1),toFloor(WY1,WZ1),toFloor(WY1,WZ0)];
+  poly(c,{fill:'#ffd9a0',opacity:.35,filter:'url(#b10)'},LIGHT);
+  for(let z=WZ0+cell/2;z<WZ1;z+=cell)for(let y=WY0+cell/2;y<WY1;y+=cell){const r=cell*.42,r2=cell*.3;const star=[];
+    for(let k=0;k<16;k++){const t=k/16*Math.PI*2+Math.PI/16;const rr=k%2?r2:r;star.push(toFloor(y+Math.sin(t)*rr,z+Math.cos(t)*rr))}
+    poly(star,{fill:'#fff0cc'},LIGHT)}
+})();
+
+// ===== rug (wool, cream with indigo border and terracotta lozenges)
+const RX0=-1.55,RX1=1.55,RZ0=3.25,RZ1=5.7;
+(function(){const g=G();
+  E('g',{},g);
+  poly([[RX0,.01,RZ0],[RX1,.01,RZ0],[RX1,.01,RZ1],[RX0,.01,RZ1]],{fill:'#e9e0cc'},g);
+  const b=.2;
+  poly([[RX0,.011,RZ0],[RX1,.011,RZ0],[RX1,.011,RZ1],[RX0,.011,RZ1]],{fill:'none',stroke:'#3D405B','stroke-width':1},g);
+  // border band
+  const band=(i0,i1,col)=>{poly([[RX0+i0,.012,RZ0+i0],[RX1-i0,.012,RZ0+i0],[RX1-i0,.012,RZ1-i0],[RX0+i0,.012,RZ1-i0],[RX0+i0,.012,RZ0+i0],[RX0+i1,.012,RZ0+i1],[RX0+i1,.012,RZ1-i1],[RX1-i1,.012,RZ1-i1],[RX1-i1,.012,RZ0+i1],[RX0+i1,.012,RZ0+i1]],{fill:col,'fill-rule':'evenodd'},g)};
+  band(.08,.24,'#3D405B');band(.29,.32,'#E07A5F');
+  // lozenges inside the border
+  for(let x=RX0+.36;x<RX1-.3;x+=.32){const z=RZ0+.16;poly([[x,.013,z-.05],[x+.1,.013,z],[x,.013,z+.05],[x-.1,.013,z]],{fill:'#E07A5F'},g);
+    const z2=RZ1-.16;poly([[x,.013,z2-.05],[x+.1,.013,z2],[x,.013,z2+.05],[x-.1,.013,z2]],{fill:'#E07A5F'},g)}
+  // centre medallion
+  
+  poly([[0,.013,4.32],[.28,.013,4.48],[0,.013,4.64],[-.28,.013,4.48]],{fill:'#c7b9a0'},g);
+  poly([[RX0,.012,RZ0],[RX1,.012,RZ0],[RX1,.012,RZ1],[RX0,.012,RZ1]],{fill:'#000',filter:'url(#wool)',opacity:.0},g);
+  const wg=G({filter:'url(#wool)'},g);poly([[RX0,.012,RZ0],[RX1,.012,RZ0],[RX1,.012,RZ1],[RX0,.012,RZ1]],{fill:'#e9e0cc',opacity:.35},wg);
+  // fringe
+  for(let x=RX0+.02;x<RX1;x+=.035){const a=P(x,.01,RZ0),b=P(x+.004,.01,RZ0-.07);E('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'#e4d9c2','stroke-width':2},g)}
+})();
+// light falls over the rug too (redraw the light layer on top of rug)
+ROOT.appendChild(LIGHT.cloneNode(true));
+
+// ===== shadows on floor (soft, cast right from the window)
+function floorShadow(a,op){poly(a.map(q=>[q[0],.015,q[1]]),{fill:'#3b2a1f',opacity:op||.35,filter:'url(#b24)'})}
+floorShadow([[-1.2,4.6],[1.25,4.6],[1.9,4.9],[1.9,5.8],[-1.2,5.8]],.3);
+floorShadow([[-.45,3.5],[.5,3.5],[.9,3.9],[.9,4.3],[-.4,4.3]],.25);
+
+// ===== side table (travertine pedestal) + vase with dried palm
+(function(){const g=G();const X=-1.62,Z=5.05;
+  cyl(X,Z,.13,0,.48,lg([[0,'#b8a487'],[.4,'#e2d3b8'],[1,'#a08c70']]),'#dccbb0',g);
+  const top=ellipseAt(X,.5,Z,.27,.27,{fill:'#e7d9c0'},g);
+  const a=[];for(let i=0;i<=24;i++){const t=Math.PI*i/24;a.push([X+Math.cos(t)*.27,.5,Z-Math.sin(t)*.27])}for(let i=24;i>=0;i--){const t=Math.PI*i/24;a.push([X+Math.cos(t)*.27,.46,Z-Math.sin(t)*.27])}
+  poly(a,{fill:'#bfae92'},g);ellipseAt(X,.5,Z,.27,.27,{fill:'#000',filter:'url(#trav)',opacity:.5},g);
+  // vase
+  const [vx,vy]=P(X,.5,Z);E('path',{d:`M${vx-24} ${vy} C ${vx-34} ${vy-40} ${vx-30} ${vy-70} ${vx-10} ${vy-90} L${vx+10} ${vy-90} C ${vx+30} ${vy-70} ${vx+34} ${vy-40} ${vx+24} ${vy}Z`,fill:lg([[0,'#6b4a36'],[.4,'#a9785a'],[1,'#4f3326']])},g);
+  for(let i=0;i<7;i++){const a2=-1.9+i*.28;const L=150+R()*80;E('path',{d:`M${vx} ${vy-88} q ${Math.cos(a2)*L*.4} ${-L*.7} ${Math.cos(a2)*L} ${-L*1.1+Math.sin(i)*20}`,stroke:'#b8956a','stroke-width':3,fill:'none'},g);
+    const ex=vx+Math.cos(a2)*L,ey=vy-88-L*1.1+Math.sin(i)*20;E('ellipse',{cx:ex,cy:ey,rx:16,ry:40,fill:'#d6b98d',opacity:.85,transform:`rotate(${a2*40} ${ex} ${ey})`},g)}
+})();
+
+// wall shadows behind sofa and shelving (soft bounce occlusion)
+(function(){const a=P(-1.25,0,ZB),b=P(1.25,.95,ZB);E('rect',{x:a[0],y:b[1]-10,width:b[0]-a[0],height:a[1]-b[1]+10,fill:'#5a4434',opacity:.22,filter:'url(#b24)'});
+  const c=P(1.95,0,ZB),d=P(2.6,2.1,ZB);E('rect',{x:c[0],y:d[1],width:d[0]-c[0],height:c[1]-d[1],fill:'#5a4434',opacity:.18,filter:'url(#b24)'});
+  const e=P(-1.2,.02,4.6),f2=P(1.2,.02,4.6);E('ellipse',{cx:(e[0]+f2[0])/2,cy:e[1],rx:(f2[0]-e[0])/2+20,ry:16,fill:'#2a1d14',opacity:.45,filter:'url(#b10)'})})();
+// ===== the sofa (Layla, 3-seat, boucle)
+(function(){const g=G();const X0=-1.2,X1=1.2,Z0=4.62,Z1=5.55;const SEAT=.44,ARM=.64,BACK=.92,AW=.22;
+  const fab='#ece3d1',fabTop='#f4ecdc',fabSide='#d3c7b1',fabShade='#c4b7a0';
+  // legs (walnut)
+  [[X0+.08,Z0+.08],[X1-.08,Z0+.08]].forEach(([x,z])=>{box(x-.025,x+.025,0,.09,z,z+.05,{front:'#3a2a20',top:'#4a3628',left:'#2c2018',right:'#2c2018'},g)});
+  // base + seat cushions
+  box(X0,X1,.09,.3,Z0,Z1,{front:fabShade,top:fab,left:fabSide,right:fabSide},g);
+  box(X0+AW,X1-AW,.3,BACK,Z1-.25,Z1,{front:fab,top:fabTop},g); // back
+  // back cushions
+  for(let i=0;i<3;i++){const w=(X1-X0-2*AW)/3;const x=X0+AW+i*w;box(x+.01,x+w-.01,SEAT,BACK-.04,Z1-.42,Z1-.25,{front:'#efe6d5',top:'#f6efe1'},g)}
+  // seat cushions
+  for(let i=0;i<3;i++){const w=(X1-X0-2*AW)/3;const x=X0+AW+i*w;box(x+.008,x+w-.008,.3,SEAT,Z0+.02,Z1-.25,{front:'#e6dcc9',top:'#f5ede0'},g)}
+  // arms
+  box(X0,X0+AW,.09,ARM,Z0,Z1,{front:'#e8dfcd',top:'#f3ebdc',right:fabSide,left:fabSide},g);
+  box(X1-AW,X1,.09,ARM,Z0,Z1,{front:'#e8dfcd',top:'#f3ebdc',left:'#d8ccb6'},g);
+  // texture over the whole sofa
+  const bb=g.getBBox();E('rect',{x:bb.x,y:bb.y,width:bb.width,height:bb.height,fill:'#000',opacity:0},g);
+  g.setAttribute('filter','url(#boucle)');
+  // seam shadows
+  const sh=G();for(let i=1;i<3;i++){const w=(X1-X0-2*AW)/3;const x=X0+AW+i*w;const a=P(x,.3,Z0+.02),b=P(x,SEAT,Z0+.02),c=P(x,SEAT,Z1-.25);E('polyline',{points:`${a} ${b} ${c}`,stroke:'#8f7f66','stroke-width':2.5,fill:'none',opacity:.6,filter:'url(#b2)'},sh)}
+  // sunlight falling over the left arm and seat front
+  const lt=G({opacity:.35,filter:'url(#b4)'});
+  for(let k=0;k<9;k++){const z=Z0;const y=.12+k*.055;const x=X0+.05+((k*37)%11)*.04;const a=P(x,y,z);E('ellipse',{cx:a[0],cy:a[1],rx:9,ry:7,fill:'#fff3d0'},lt)}
+  // cushions: terracotta + indigo + kilim pattern
+  const cush=(x,w,h,col,tilt,pat)=>{const [cx,cy]=P(x,SEAT+h/2,Z1-.38);const s=CAM.f/(Z1-.38-CZ);const W=w*s,Hh=h*s;
+    const cg=G({transform:`rotate(${tilt} ${cx} ${cy})`});
+    E('path',{d:`M${cx-W/2} ${cy-Hh/2+6} Q ${cx} ${cy-Hh/2-8} ${cx+W/2} ${cy-Hh/2+6} Q ${cx+W/2+8} ${cy} ${cx+W/2} ${cy+Hh/2-6} Q ${cx} ${cy+Hh/2+8} ${cx-W/2} ${cy+Hh/2-6} Q ${cx-W/2-8} ${cy} ${cx-W/2} ${cy-Hh/2+6}Z`,fill:col},cg);
+    if(pat){for(let i=-2;i<=2;i++)E('path',{d:`M${cx+i*W/5-10} ${cy} l10 -14 l10 14 l-10 14Z`,fill:'none',stroke:'#F4F1DE','stroke-width':3},cg)}
+    E('path',{d:`M${cx-W/2} ${cy-Hh/2+6} Q ${cx} ${cy-Hh/2-8} ${cx+W/2} ${cy-Hh/2+6} Q ${cx+W/2+8} ${cy} ${cx+W/2} ${cy+Hh/2-6} Q ${cx} ${cy+Hh/2+8} ${cx-W/2} ${cy+Hh/2-6} Q ${cx-W/2-8} ${cy} ${cx-W/2} ${cy-Hh/2+6}Z`,fill:rg([[0,'#fff',.18],[.6,'#000',0],[1,'#000',.25]],.35,.3,.8)},cg);
+    E('rect',{x:cx-W/2,y:cy-Hh/2,width:W,height:Hh,fill:'#000',opacity:0},cg)};
+  cush(-.72,.48,.44,'#E07A5F',-6,false);cush(-.28,.46,.42,'#3D405B',3,true);cush(.42,.5,.44,'#c9a66b',5,false);cush(.7,.4,.36,'#E07A5F',-8,false);
+  // throw over the right arm
+  const t1=P(X1-AW-.05,ARM+.02,Z0+.15),t2=P(X1+.02,ARM+.02,Z0+.15),t3=P(X1+.03,.25,Z0-.01),t4=P(X1-AW-.07,.3,Z0-.01);
+  E('path',{d:`M${t1} L${t2} L${t3} L${t4}Z`,fill:'#3D405B',opacity:.0},g);
+})();
+
+// ===== coffee table (walnut, round) with tray, books, coffee pot (dallah)
+(function(){const g=G();const X=0,Z=3.95,r=.48;
+  cyl(X,Z,.2,0,.3,lg([[0,'#2f2119'],[.4,'#5c4130'],[1,'#24180f']]),'#4a3426',g);
+  const a=[];for(let i=0;i<=24;i++){const t=Math.PI*i/24;a.push([X+Math.cos(t)*r,.36,Z-Math.sin(t)*r])}for(let i=24;i>=0;i--){const t=Math.PI*i/24;a.push([X+Math.cos(t)*r,.3,Z-Math.sin(t)*r])}
+  poly(a,{fill:lg([[0,'#3a291e'],[.35,'#7a563d'],[.6,'#5a3f2d'],[1,'#2a1d14']])},g);
+  ellipseAt(X,.36,Z,r,r,{fill:'#6e4d37'},g);ellipseAt(X,.36,Z,r,r,{fill:rg([[0,'#fff',.18],[1,'#fff',0]],.35,.3,.6)},g);
+  // books
+  const [bx,by]=P(-.18,.36,Z+.05);E('rect',{x:bx-70,y:by-22,width:140,height:22,fill:'#E07A5F'},g);E('rect',{x:bx-62,y:by-40,width:124,height:18,fill:'#F4F1DE'},g);E('rect',{x:bx-62,y:by-40,width:124,height:4,fill:'#d8d2bb'},g);
+  // brass dallah (Arabic coffee pot)
+  const [dx,dy]=P(.2,.36,Z-.02);const brass=lg([[0,'#7a5a22'],[.35,'#e7c272'],[.55,'#b88d3d'],[1,'#5e4318']]);
+  E('ellipse',{cx:dx,cy:dy,rx:34,ry:8,fill:'#2a1d14',opacity:.4,filter:'url(#b4)'},g);
+  E('path',{d:`M${dx-30} ${dy} C ${dx-34} ${dy-26} ${dx-20} ${dy-40} ${dx-12} ${dy-52} L${dx-8} ${dy-80} L${dx+8} ${dy-80} L${dx+12} ${dy-52} C ${dx+20} ${dy-40} ${dx+34} ${dy-26} ${dx+30} ${dy}Z`,fill:brass},g);
+  E('path',{d:`M${dx-8} ${dy-80} L${dx-4} ${dy-104} L${dx+4} ${dy-104} L${dx+8} ${dy-80}Z`,fill:brass},g);E('circle',{cx:dx,cy:dy-108,r:5,fill:'#e7c272'},g);
+  E('path',{d:`M${dx-14} ${dy-50} C ${dx-40} ${dy-60} ${dx-56} ${dy-84} ${dx-60} ${dy-96}`,stroke:'#b88d3d','stroke-width':6,fill:'none'},g);
+  E('path',{d:`M${dx+12} ${dy-70} C ${dx+40} ${dy-70} ${dx+40} ${dy-20} ${dx+24} ${dy-12}`,stroke:'#8f6a2c','stroke-width':5,fill:'none'},g);
+  // small cups
+  [[.36,Z+.12],[.42,Z-.05]].forEach(([x,z])=>{const [cx,cy]=P(x,.36,z);E('path',{d:`M${cx-9} ${cy-16} L${cx+9} ${cy-16} L${cx+6} ${cy} L${cx-6} ${cy}Z`,fill:'#f4f1de'},g);E('rect',{x:cx-9,y:cy-14,width:18,height:3,fill:'#E07A5F'},g)});
+})();
+
+// ===== floor lamp (linen drum shade on a slim brass stem)
+(function(){const g=G();const X=1.72,Z=5.25;
+  const [bx,by]=P(X,0,Z),[tx,ty]=P(X,1.45,Z);
+  E('ellipse',{cx:bx,cy:by,rx:34,ry:8,fill:'#2b2b2b'},g);
+  E('line',{x1:bx,y1:by,x2:tx,y2:ty,stroke:'#b8914a','stroke-width':5},g);
+  const [sx,sy]=P(X,1.45,Z),s=CAM.f/(Z-CZ);const w=.46*s,h=.36*s;
+  E('ellipse',{cx:sx,cy:sy+h*.2,rx:w*1.4,ry:h*1.8,fill:'#ffd38a',opacity:.35,filter:'url(#b60)'},g);
+  E('path',{d:`M${sx-w/2} ${sy-h} L${sx+w/2} ${sy-h} L${sx+w/2+8} ${sy} L${sx-w/2-8} ${sy}Z`,fill:lg([[0,'#f3dfb3'],[.5,'#fff3d4'],[1,'#e9cf98']])},g);
+  E('ellipse',{cx:sx,cy:sy,rx:w/2+8,ry:7,fill:'#ffe6b0'},g);
+  E('ellipse',{cx:sx,cy:sy+60,rx:120,ry:80,fill:'#ffd38a',opacity:.25,filter:'url(#b24)'},g);
+})();
+
+// ===== open shelving (walnut) on the right, with ceramics and books
+(function(){const g=G();const X0=1.95,X1=2.6,Z0=5.35,Z1=5.75,Hh=2.05;
+  const wood='#5a3f2d',woodTop='#7a563d',woodSide='#4a3426';
+  [0,.5,1.0,1.5,2.0].forEach(y=>box(X0,X1,y,y+.035,Z0,Z1,{front:wood,top:woodTop,left:woodSide},g));
+  box(X0,X0+.035,0,Hh,Z0,Z1,{front:wood,left:woodSide,top:woodTop},g);box(X1-.035,X1,0,Hh,Z0,Z1,{front:wood,left:woodSide,top:woodTop},g);
+  const place=(x,y,draw)=>{const [px,py]=P(x,y,Z0+.2);draw(px,py,CAM.f/(Z0+.2))};
+  place(2.1,1.535,(x,y,s)=>{E('path',{d:`M${x-20} ${y} C ${x-26} ${y-30} ${x-12} ${y-48} ${x} ${y-60} C ${x+12} ${y-48} ${x+26} ${y-30} ${x+20} ${y}Z`,fill:'#E07A5F'},g)});
+  place(2.38,1.535,(x,y,s)=>{for(let i=0;i<5;i++)E('rect',{x:x-36+i*14,y:y-70+(i%2)*6,width:12,height:70-(i%2)*6,fill:['#3D405B','#F4F1DE','#c9a66b','#8a8fa8','#E07A5F'][i]},g)});
+  place(2.25,1.035,(x,y,s)=>{E('ellipse',{cx:x,cy:y-24,rx:42,ry:24,fill:'#f2ece0'},g);E('ellipse',{cx:x,cy:y-40,rx:40,ry:8,fill:'#d8cfbe'},g)});
+  place(2.12,.535,(x,y,s)=>{E('rect',{x:x-30,y:y-80,width:60,height:80,rx:6,fill:'#3D405B'},g)});
+  place(2.42,.535,(x,y,s)=>{E('path',{d:`M${x-26} ${y} L${x-20} ${y-56} L${x+20} ${y-56} L${x+26} ${y}Z`,fill:'#b8a88c'},g)});
+  place(2.3,2.035,(x,y,s)=>{E('path',{d:`M${x} ${y} q -30 -60 -60 -70 M${x} ${y} q 10 -70 40 -90 M${x} ${y} q 30 -40 70 -40`,stroke:'#5c6b3e','stroke-width':6,fill:'none'},g)});
+})();
+
+// ===== room card on the right arm of the sofa
+(function(){const [x,y]=P(1.09,.64,4.72);const sc=(CAM.f/(4.72-CZ))/321.6;const g=G({transform:`translate(${x} ${y}) scale(${sc})`});
+  E('path',{d:'M-78 0 L78 0 L70 -116 L-70 -116Z',fill:'#cfd4d6',opacity:.55},g);
+  E('rect',{x:-74,y:-118,width:148,height:112,fill:'#F4F1DE'},g);
+  E('rect',{x:-74,y:-118,width:148,height:24,fill:'#3D405B'},g);
+  E('text',{x:-64,y:-101,'font-family':'NM','font-weight':700,'font-size':12,fill:'#F4F1DE'},g).textContent='Kora Home';
+  E('text',{x:64,y:-101,'text-anchor':'end','font-family':'Dubai','font-size':12,fill:'#F4F1DE'},g).textContent='كورا هوم';
+  E('text',{x:-64,y:-78,'font-family':'NM','font-weight':500,'font-size':10.5,fill:'#3D405B','letter-spacing':1},g).textContent='ROOM 07 · 9 PIECES';
+  E('text',{x:-64,y:-58,'font-family':'NM','font-weight':700,'font-size':19,fill:'#3D405B'},g).textContent='QAR 14,850';
+  E('text',{x:-64,y:-42,'font-family':'NM','font-size':9.5,fill:'#5b5d73'},g).textContent='Sofa Layla 3-seat · QAR 6,900';
+  E('text',{x:-64,y:-29,'font-family':'NM','font-size':9.5,fill:'#E07A5F'},g).textContent='Delivered & built in 48 h';
+  E('text',{x:64,y:-12,'text-anchor':'end','font-family':'Dubai','font-size':10.5,fill:'#3D405B'},g).textContent='غرفة كاملة في زيارة واحدة';
+  E('rect',{x:-80,y:-4,width:160,height:6,fill:'#b8c0c4',opacity:.8},g);
+})();
+
+// ===== warm grade + vignette
+E('rect',{width:1080,height:1920,fill:rg([[0,'#ffcf8a',.12],[1,'#ffcf8a',0]],.25,.6,.6)});
+E('rect',{width:1080,height:1920,fill:rg([[.55,'#000',0],[1,'#0d0e18',.45]],.5,.5,.8)});
+window.__ready=true;
+</script>
+</body></html>

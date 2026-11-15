@@ -1,0 +1,344 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Costa Lume — Lagos promenade, January</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-style:italic;src:url(../../../briefs/v6/fonts/NeueMontreal-Italic.otf)}
+html,body{margin:0;padding:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#c9b8a6}
+#scene{position:absolute;inset:0}
+/* the mupi (street poster panel) */
+.mupi{position:absolute;left:var(--mx);top:var(--my);width:var(--mw);height:var(--mh);
+  background:linear-gradient(90deg,#4b4846 0%,#6d6863 6%,#3c3a38 14%,#3a3836 86%,#2a2826 100%);
+  border-radius:10px;box-shadow:0 2px 0 #1f1d1c, -2px 0 0 rgba(255,214,170,.35) inset}
+.mupi::before{content:"";position:absolute;inset:0;border-radius:10px;
+  background:linear-gradient(180deg,rgba(255,220,180,.18),transparent 30%,transparent 70%,rgba(0,0,0,.25))}
+.mupi .glass{position:absolute;left:5.5%;right:5.5%;top:4.2%;bottom:13%;background:#1a1a1a;overflow:hidden;border-radius:2px;
+  box-shadow:inset 0 0 0 2px #222, inset 0 6px 14px rgba(0,0,0,.5)}
+.mupi .plinth{position:absolute;left:5.5%;right:5.5%;bottom:3.4%;height:7.2%;background:linear-gradient(180deg,#2f2d2b,#3f3c39 40%,#2b2927);border-radius:2px}
+.mupi .plinth i{position:absolute;right:8%;top:30%;font:500 13px NM;letter-spacing:.2em;color:#8c8580;font-style:normal}
+.leg{position:absolute;background:linear-gradient(90deg,#55514d,#7a746e 30%,#393634 70%,#2a2826)}
+/* poster */
+.poster{position:absolute;left:0;top:0;width:387px;height:589px;transform-origin:0 0;transform:scale(var(--ps,1));background:#C8553D;color:#FFF8EE;font-family:NM}
+.poster .img{position:absolute;left:0;right:0;top:0;height:53%;overflow:hidden}
+.poster .txt{position:absolute;left:7%;right:7%;top:55.5%;bottom:3.6%;display:flex;flex-direction:column}
+.poster h1{font:700 41px/0.98 Georgia,serif;margin:0;letter-spacing:-.01em}
+.poster h2{font:italic 400 19px/1.1 NM;margin:6px 0 0;color:#F2D0A4;letter-spacing:-.01em}
+.poster .meta{margin-top:auto;display:flex;justify-content:space-between;font:500 10.5px/1.3 NM;letter-spacing:.02em;color:#FFF8EE;border-top:1px solid rgba(255,248,238,.4);padding-top:7px}
+.poster .meta b{display:block;font:700 19px/1.05 Georgia,serif;letter-spacing:0;margin-top:2px}
+.poster .foot{margin-top:9px;display:flex;align-items:center;gap:8px;font:700 15px Georgia,serif}
+.poster .foot span{font:italic 400 11px NM;color:#F2D0A4;margin-left:auto}
+.sheen{position:absolute;inset:0;background:linear-gradient(112deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 38%,rgba(255,240,220,.16) 44%,rgba(255,255,255,.05) 52%,rgba(255,255,255,0) 60%),
+  linear-gradient(180deg,rgba(255,245,230,.07),rgba(0,0,0,.06));pointer-events:none}
+.grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.35}
+</style></head>
+<body>
+<svg id="scene" width="2400" height="1350" viewBox="0 0 2400 1350" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#7d97ad"/><stop offset=".35" stop-color="#a9b9c3"/>
+    <stop offset=".7" stop-color="#e2cdb6"/><stop offset=".92" stop-color="#f2c9a0"/><stop offset="1" stop-color="#f6d7b4"/>
+  </linearGradient>
+  <radialGradient id="sunglow" cx="0" cy="0.5" r="1">
+    <stop offset="0" stop-color="#fff1d6" stop-opacity=".9"/><stop offset=".35" stop-color="#ffd9a8" stop-opacity=".35"/><stop offset="1" stop-color="#ffd9a8" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#9aaab0"/><stop offset=".08" stop-color="#5f7f8c"/><stop offset=".55" stop-color="#3f6f7c"/><stop offset="1" stop-color="#4f8f8f"/>
+  </linearGradient>
+  <linearGradient id="seaL" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#ffd7a6" stop-opacity=".35"/><stop offset=".45" stop-color="#ffd7a6" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#d9b48a"/><stop offset="1" stop-color="#e7c79f"/>
+  </linearGradient>
+  <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f3d9bd" stop-opacity="0"/><stop offset=".55" stop-color="#f3d9bd" stop-opacity=".55"/><stop offset="1" stop-color="#e9d3bf" stop-opacity=".25"/>
+  </linearGradient>
+  <linearGradient id="cliffG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#e3954f"/><stop offset=".45" stop-color="#d27b3c"/><stop offset="1" stop-color="#a65a2f"/>
+  </linearGradient>
+  <linearGradient id="shadeG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#7a4a3c"/><stop offset="1" stop-color="#4e3431"/>
+  </linearGradient>
+  <filter id="rock" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0035 0.03" numOctaves="5" seed="7" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="7" lighting-color="#ffffff" result="l"><feDistantLight azimuth="190" elevation="38"/></feDiffuseLighting>
+    <feTurbulence type="fractalNoise" baseFrequency="0.045 0.006" numOctaves="3" seed="11" result="g"/>
+    <feColorMatrix in="g" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.4 1.25" result="g2"/>
+    <feComposite in="l" in2="SourceGraphic" operator="arithmetic" k1="1.32" k2="0" k3="0" k4="0" result="m"/>
+    <feComposite in="m" in2="SourceAlpha" operator="in" result="m2"/>
+    <feComposite in="m2" in2="g2" operator="arithmetic" k1="0.25" k2="0.78" k3="0" k4="0"/>
+  </filter>
+  <filter id="dof" x="-2%" y="-2%" width="104%" height="104%"><feGaussianBlur stdDeviation="1.3"/></filter>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2"/></filter>
+  <filter id="soft6" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
+  <filter id="blur18" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="18"/></filter>
+  <filter id="waves" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0025 0.09" numOctaves="3" seed="4"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 .96  0 0 0 0 .9  0 0 0 2.4 -1.25"/>
+  </filter>
+  <filter id="stone" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.35 0.6" numOctaves="2" seed="2" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.35" result="d"/>
+    <feComposite in="d" in2="SourceGraphic" operator="in"/>
+  </filter>
+  <filter id="plaster" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="4" seed="9" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="0.9" lighting-color="#fff"><feDistantLight azimuth="180" elevation="60"/></feDiffuseLighting>
+    <feComposite in2="SourceGraphic" operator="arithmetic" k1="1.02" k2="0" k3="0" k4="0" result="m"/>
+    <feComposite in="m" in2="SourceAlpha" operator="in"/>
+  </filter>
+  <filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="5"/><feColorMatrix type="saturate" values="0"/></filter>
+  <clipPath id="clipAll"><rect width="2400" height="1350"/></clipPath>
+</defs>
+<rect width="2400" height="1350" fill="url(#sky)"/>
+<g id="clouds"></g>
+<ellipse cx="-80" cy="520" rx="1500" ry="520" fill="url(#sunglow)"/>
+<!-- sea -->
+<rect y="588" width="2400" height="400" fill="url(#sea)"/>
+<rect y="588" width="2400" height="400" fill="url(#seaL)"/>
+<rect y="588" width="2400" height="400" filter="url(#waves)" opacity=".22"/>
+<g id="far"></g>
+<rect y="520" width="2400" height="80" fill="url(#haze)"/>
+<g id="stacks"></g>
+<g id="cliff"></g>
+<g id="beach"></g>
+<g id="promenade"></g>
+<g id="fx"></g>
+</svg>
+
+<div class="leg" id="leg"></div>
+<div class="mupi" id="mupi">
+  <div class="glass">
+    <div class="poster">
+      <div class="img"><svg width="100%" height="100%" viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="psky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8b48b"/><stop offset=".6" stop-color="#f6d6ae"/><stop offset="1" stop-color="#fbe6c8"/></linearGradient>
+          <linearGradient id="psea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7e8f95"/><stop offset="1" stop-color="#3e6670"/></linearGradient>
+          <linearGradient id="pcl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e79a5a"/><stop offset="1" stop-color="#a9552f"/></linearGradient>
+          <filter id="ptex"><feTurbulence type="fractalNoise" baseFrequency="0.02 0.18" numOctaves="3" seed="3"/><feColorMatrix type="matrix" values="0 0 0 0 .35 0 0 0 0 .15 0 0 0 0 .08 0 0 0 1.4 -.7"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+        </defs>
+        <rect width="400" height="330" fill="url(#psky)"/>
+        <circle cx="300" cy="118" r="26" fill="#fff4dc"/>
+        <circle cx="300" cy="118" r="70" fill="#fff0d0" opacity=".25"/>
+        <rect y="150" width="400" height="180" fill="url(#psea)"/>
+        <path d="M0 150 L400 150" stroke="#f3dcc0" stroke-width="1.2" opacity=".6"/>
+        <path d="M230 180 L330 168 L345 150 L420 150 L420 190 Z" fill="#c9a089" opacity=".5"/>
+        <path d="M-10 132 C40 128 90 140 130 150 C160 158 175 175 190 200 C205 222 208 250 230 270 L250 330 L-10 330 Z" fill="url(#pcl)"/>
+        <path d="M-10 132 C40 128 90 140 130 150 C160 158 175 175 190 200 C205 222 208 250 230 270 L250 330 L-10 330 Z" filter="url(#ptex)"/>
+        <path d="M-10 132 C40 128 90 140 130 150 C150 155 162 162 170 170 C120 160 60 150 -10 150Z" fill="#6f6b3e" opacity=".85"/>
+        <path d="M188 200 C200 220 204 250 226 270 L248 330 L215 330 C214 300 196 260 188 200Z" fill="#5c3a33" opacity=".55"/>
+        <path d="M 10 300 C 60 260 90 222 120 200 C 140 186 160 178 176 176" stroke="#f6dcbc" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/>
+        <g transform="translate(150,182)"><path d="M0 0 l-2 9 l2 9 M0 0 l3 9 l-1 9" stroke="#3a2a26" stroke-width="2.2" fill="none" stroke-linecap="round"/><rect x="-2.4" y="-12" width="5" height="13" rx="2" fill="#3a2a26"/><circle cx="0" cy="-15" r="3.2" fill="#3a2a26"/><rect x="1" y="-11" width="4" height="7" rx="1.5" fill="#2f4f5c"/></g>
+        <path d="M290 190 C300 210 310 235 300 330 L400 330 L400 175 C370 172 330 178 290 190Z" fill="#b3653a"/>
+        <path d="M330 178 C340 200 345 240 340 330 L400 330 L400 175Z" fill="#6d3f35" opacity=".6"/>
+        <rect x="0" y="0" width="400" height="330" fill="#fff" opacity=".04"/>
+      </svg></div>
+      <div class="txt">
+        <h1>Janeiro tem<br>outra luz.</h1>
+        <h2>January has a different light.</h2>
+        <div class="meta">
+          <div>Sete Vales Suspensos<br>trilho de 5,7 km<b>12°C ao sol</b></div>
+          <div style="text-align:right">5 noites · 5 nights<br>a partir de / from<b>€230</b></div>
+        </div>
+        <div class="foot">
+          <svg width="30" height="20" viewBox="0 0 60 40"><g fill="none" stroke="#F2D0A4" stroke-width="4" stroke-linecap="round"><path d="M14 34 a16 16 0 0 1 32 0"/><path d="M6 36 H54"/><path d="M30 4 v7 M12 12 l5 5 M48 12 l-5 5 M3 24 h6 M51 24 h6"/></g></svg>
+          Costa Lume <span>costalume.pt/inverno</span>
+        </div>
+      </div>
+    </div>
+    <div class="sheen"></div>
+  </div>
+  <div class="plinth"><i>CM LAGOS · 214</i></div>
+</div>
+<svg class="grain" width="2400" height="1350"><rect width="2400" height="1350" filter="url(#grainF)"/></svg>
+
+<script>
+window.__ready=false;
+const NS='http://www.w3.org/2000/svg';
+let seed=12345;const R=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
+const rr=(a,b)=>a+(b-a)*R();
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);(parent||document.getElementById('scene')).appendChild(e);return e}
+const g=id=>document.getElementById(id);
+const W=2400,H=1350,HZ=588;
+
+// ---------- clouds: thin high winter cirrus lit warm underneath ----------
+for(let i=0;i<9;i++){const x=rr(-200,2400),y=rr(80,360),w=rr(260,700),h=rr(14,40);
+  el('ellipse',{cx:x,cy:y,rx:w,ry:h,fill:i%3?'#f4e2d0':'#ffe9d2',opacity:rr(.12,.26),filter:'url(#blur18)'},g('clouds'))}
+
+// ---------- jagged ridge helper ----------
+function ridge(x0,x1,yfn,step,jit){const pts=[];for(let x=x0;x<=x1;x+=step){pts.push([x,yfn(x)+rr(-jit,jit)])}return pts}
+const P=pts=>pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+
+// ---------- far headlands with a whitewashed town ----------
+(function(){
+  const far=g('far');
+  // farthest
+  let pts=ridge(1180,2420,x=>HZ-10-14*Math.sin((x-1180)/260)-(x>1900?10:0),18,2.5);
+  el('path',{d:P([[1180,HZ+2],...pts,[2420,HZ+2]])+'Z',fill:'#b9a8a2',opacity:.75},far);
+  // nearer headland, right
+  pts=ridge(1560,2420,x=>HZ-26-30*Math.pow(Math.max(0,(x-1560)/860),.5)+6*Math.sin(x/70),14,3);
+  el('path',{d:P([[1560,HZ+6],...pts,[2420,HZ+6]])+'Z',fill:'#c99a7a'},far);
+  el('path',{d:P([[1560,HZ+6],...pts,[2420,HZ+6]])+'Z',fill:'#d8a77c',filter:'url(#rock)',opacity:.7},far);
+  // town on top: little white cubes, terracotta roofs, a church
+  for(let i=0;i<140;i++){const x=rr(1640,2400);const top=HZ-26-30*Math.pow(Math.max(0,(x-1560)/860),.5)+6*Math.sin(x/70);
+    const w=rr(7,18),h=rr(6,14),y=top-h+rr(2,10);
+    el('rect',{x,y,width:w,height:h,fill:R()<.82?'#f6efe6':'#efd9b8'},far);
+    el('rect',{x:x+w*.62,y,width:w*.38,height:h,fill:'#cbbcb3',opacity:.8},far);
+    if(R()<.45)el('rect',{x:x-1,y:y-2.5,width:w+2,height:3,fill:'#b8624a',opacity:.9},far);
+    if(R()<.25)el('rect',{x:x+2,y:y+4,width:2,height:3,fill:'#5a5560'},far);}
+  el('rect',{x:2060,y:HZ-108,width:12,height:40,fill:'#f7f0e6'},far);el('path',{d:`M2058 ${HZ-108} l8 -14 l8 14Z`,fill:'#e8dccd'},far);
+  el('rect',{x:2066,y:HZ-108,width:6,height:40,fill:'#cfc2b8'},far);
+  el('rect',{x:1600,y:HZ-30,width:820,height:40,fill:'url(#haze)'},far);
+})();
+
+// ---------- sea stacks (Ponta da Piedade) ----------
+function stack(cx,base,w,h,opt={}){
+  const grp=el('g',{},g('stacks'));
+  const L=[],Rt=[];const n=Math.round(h/9);
+  for(let i=0;i<=n;i++){const t=i/n;const y=base-t*h;
+    const bulge=Math.sin(t*Math.PI)*w*.08;const taper=1-.28*t;
+    L.push([cx-w/2*taper-bulge+rr(-3,3)*(1+t)+(opt.lean||0)*t*w,y]);
+    Rt.push([cx+w/2*taper+bulge+rr(-3,3)*(1+t)+(opt.lean||0)*t*w,y]);}
+  // top with scrub cap
+  const top=[];const tx0=L[n][0],tx1=Rt[n][0];
+  for(let x=tx0;x<=tx1;x+=5)top.push([x,base-h-rr(0,7)-Math.sin((x-tx0)/(tx1-tx0)*Math.PI)*8]);
+  const d=P([...L,...top,...Rt.slice().reverse()])+'Z';
+  el('path',{d,fill:'url(#cliffG)'},grp);
+  el('path',{d,fill:'#d88a4a',filter:'url(#rock)'},grp);
+  // shade face (east)
+  const S=[];for(let i=0;i<=n;i++){const t=i/n;const x=Rt[i][0]-(w*(.32+.12*Math.sin(t*9+cx)))*(1-.2*t);S.push([x+rr(-4,4),Rt[i][1]])}
+  el('path',{d:P([...S,...Rt.slice().reverse()])+'Z',fill:'url(#shadeG)',opacity:.78},grp);
+  // strata (masked to the stack)
+  const mid='sm'+Math.round(cx);const mk=el('mask',{id:mid},document.querySelector('defs'));el('path',{d,fill:'#fff'},mk);
+  const sg=el('g',{mask:`url(#${mid})`},grp);
+  for(let k=0;k<h/11;k++){const y=base-k*11-rr(0,6);el('path',{d:`M${cx-w} ${y} q ${w*.5} ${rr(-3,3)} ${w} ${rr(-2,2)} t ${w} ${rr(-2,2)}`,stroke:k%4?'#7a3f22':'#f3b47a',
+     'stroke-width':rr(.5,1.4),opacity:rr(.1,.26),fill:'none'},sg)}
+  for(let k=0;k<6;k++){const x=cx+rr(-w*.4,w*.3);el('path',{d:`M${x} ${base-h+rr(5,30)} q ${rr(-6,6)} ${h*.3} ${rr(-3,3)} ${h*rr(.4,.8)}`,stroke:'#4a2c26','stroke-width':rr(1.5,4),opacity:.35,fill:'none',filter:'url(#soft)'},sg)}
+  el('rect',{x:cx-w,y:base-h*.45,width:w*2,height:h*.45,fill:'#9fb3b8',opacity:.18},sg);
+  // scrub
+  el('path',{d:P(top)+` L${tx1} ${base-h+8} L${tx0} ${base-h+8}Z`,fill:'#5d6338',opacity:.9},grp);
+  for(let x=tx0;x<tx1;x+=6)el('circle',{cx:x+rr(-2,2),cy:base-h-rr(-2,6),r:rr(2,5),fill:R()<.5?'#6b7040':'#4e5530'},grp);
+  if(opt.arch){const a=opt.arch;el('path',{d:`M${cx-a.w/2} ${base+1} L${cx-a.w/2+2} ${base-a.h*.6} Q ${cx-a.w*.1} ${base-a.h*1.08} ${cx+a.w/2-4} ${base-a.h*.55} L${cx+a.w/2} ${base+1}Z`,fill:'#3c5961'},grp);
+     el('path',{d:`M${cx-a.w/2+6} ${base+1} L${cx-a.w/2+8} ${base-a.h*.45} Q ${cx} ${base-a.h*.85} ${cx+a.w/2-8} ${base-a.h*.42} L${cx+a.w/2-6} ${base+1}Z`,fill:'#7d939a',opacity:.75},grp);
+     el('path',{d:`M${cx-a.w/2} ${base-a.h*.6} Q ${cx-a.w*.1} ${base-a.h*1.08} ${cx+a.w/2-4} ${base-a.h*.55}`,stroke:'#3d2723',"stroke-width":6,fill:'none',opacity:.5,filter:'url(#soft)'},grp);}
+  // foam & reflection at base
+  el('ellipse',{cx:cx+w*.05,cy:base+2,rx:w*.62,ry:4,fill:'#f4efe6',opacity:.75,filter:'url(#soft)'},grp);
+  el('rect',{x:cx-w/2,y:base+3,width:w,height:h*.18,fill:'#8b5a3c',opacity:.22,filter:'url(#soft6)'},grp);
+}
+stack(1210,622,60,92,{lean:.05});
+stack(1110,628,92,150,{arch:{w:44,h:62}});
+stack(1000,640,74,205,{lean:-.06});
+stack(905,648,58,128);
+stack(1290,616,34,48);
+
+// ---------- main cliff (left) ----------
+(function(){
+  const grp=g('cliff');const base=690;
+  const topY=x=>x<300?262+10*Math.sin(x/53)+x*.02:(x<470?268+(x-300)*.12+14*Math.sin(x/31):(x<560?288+(x-470)*.9:369+(x-560)*1.18+10*Math.sin(x/23)));
+  const top=ridge(-20,830,x=>Math.min(base-6,topY(x)),8,3);
+  const d=P([[-20,base+3],...top,[860,base+3]])+'Z';
+  el('path',{d,fill:'url(#cliffG)'},grp);
+  el('path',{d,fill:'#d88a4a',filter:'url(#rock)'},grp);
+  // gully shadows & recesses
+  for(let i=0;i<16;i++){const x=rr(20,760);const yt=Math.min(base-30,topY(x)+rr(20,80));const len=rr(60,base-yt);
+    el('path',{d:`M${x} ${yt} c ${rr(-14,14)} ${len*.3} ${rr(-14,14)} ${len*.6} ${rr(-8,8)} ${len} l ${rr(3,10)} 0 c ${rr(-8,8)} ${-len*.4} ${rr(-8,8)} ${-len*.7} ${rr(-6,4)} ${-len}Z`,fill:'#5b3a33',opacity:rr(.18,.38),filter:'url(#soft)'},grp)}
+  for(let i=0;i<40;i++){const x=rr(0,760),y=rr(Math.min(base-20,topY(x)+30),base-10);el('ellipse',{cx:x,cy:y,rx:rr(6,26),ry:rr(2,6),fill:R()<.6?'#6a3b2a':'#f0b27a',opacity:rr(.12,.3),filter:'url(#soft)'},grp)}
+  // big cave/arch at base
+  el('path',{d:`M548 ${base+2} C 552 ${base-40} 566 ${base-78} 580 ${base-96} C 596 ${base-118} 618 ${base-110} 628 ${base-92} C 640 ${base-70} 654 ${base-60} 668 ${base-30} L676 ${base+2}Z`,fill:'#2a2a2c'},grp);
+  el('path',{d:`M548 ${base+2} C 552 ${base-40} 566 ${base-78} 580 ${base-96} C 596 ${base-118} 618 ${base-110} 628 ${base-92}`,stroke:'#f2a868','stroke-width':3,fill:'none',opacity:.5},grp);
+  el('path',{d:`M582 ${base+2} C 590 ${base-30} 600 ${base-44} 612 ${base-46} C 626 ${base-40} 636 ${base-24} 640 ${base+2}Z`,fill:'#5d7880',opacity:.75},grp);
+  // east-facing shade on the descending ridge
+  const sh=[];for(let x=830;x>=520;x-=10){sh.push([x-rr(40,95)*((x-520)/310+.4),Math.min(base,topY(x)+rr(4,14))])}
+  el('path',{d:P([[860,base+3],[830,Math.min(base-6,topY(830))],...sh,[520,base+3]])+'Z',fill:'url(#shadeG)',opacity:.62},grp);
+  // strata lines
+  for(let k=0;k<30;k++){const y=base-k*15-rr(0,6);const x0=rr(-20,200);
+    el('path',{d:`M${x0} ${y} C ${x0+200} ${y+rr(-6,6)}, ${x0+400} ${y+rr(-6,6)}, ${x0+820} ${y+rr(-10,4)}`,stroke:k%3?'#8a4a26':'#f1b178',"stroke-width":rr(.6,2),opacity:rr(.1,.28),fill:'none'},grp)}
+  // re-clip strata to cliff with mask by redrawing sky region over top (simpler: mask)
+  const m=el('mask',{id:'cm'},document.querySelector('defs'));el('path',{d,fill:'#fff'},m);
+  grp.setAttribute('mask','url(#cm)');
+  // scrub & garrigue on top
+  const sc=el('g',{},document.getElementById('scene'));
+  for(let x=-20;x<800;x+=3){const y=Math.min(base,topY(x));if(y>base-40)continue;if(R()<.25)continue;
+    const big=R()<.15;el('ellipse',{cx:x,cy:y-rr(-4,big?8:3),rx:big?rr(8,16):rr(2,7),ry:big?rr(5,9):rr(2,4),fill:['#5a6034','#6c7340','#4a5030','#7c7a45','#8a7f4c'][Math.floor(R()*5)],opacity:rr(.75,1)},sc)}
+  for(let i=0;i<60;i++){const x=rr(300,800);const y=Math.min(base-20,topY(x))+rr(10,120);if(y>base-30)continue;el('ellipse',{cx:x,cy:y,rx:rr(2,6),ry:rr(1.5,3),fill:'#5d6236',opacity:.8},sc)}
+  sc.setAttribute('id','scrub');
+  // dark reflection and foam at cliff foot
+  el('rect',{x:-20,y:base+4,width:880,height:26,fill:'#7a5440',opacity:.16,filter:'url(#soft6)'});
+  for(let i=0;i<3;i++)el('path',{d:`M-20 ${base+4+i*5} C 200 ${base+rr(0,8)+i*5}, 500 ${base-4+i*5}, 840 ${base+3+i*3}`,stroke:'#f8f2e8','stroke-width':rr(1.5,4),opacity:rr(.25,.6),fill:'none',filter:'url(#soft)'})
+})();
+
+const hz2=el('linearGradient',{id:'hz2',x1:0,y1:0,x2:0,y2:1},document.querySelector('defs'));el('stop',{offset:0,'stop-color':'#f3dcc4','stop-opacity':0},hz2);el('stop',{offset:.7,'stop-color':'#f3dcc4','stop-opacity':.5},hz2);el('stop',{offset:1,'stop-color':'#f3dcc4','stop-opacity':0},hz2);
+el('rect',{x:-20,y:470,width:1400,height:230,fill:'url(#hz2)',opacity:.6});
+// depth of field: soften everything behind the poster a touch
+['far','stacks','cliff','scrub'].forEach(id=>{const n=document.getElementById(id);if(n)n.setAttribute('filter',(n.getAttribute('filter')||'')+' url(#dof)')});
+// ---------- beach (empty cove) with foam lines ----------
+(function(){
+  const b=g('beach');
+  const shore=x=>760+40*Math.sin((x+200)/700)+ (x<700? (700-x)*.06:0);
+  const pts=ridge(-20,2420,shore,20,1.5);
+  el('path',{d:P([[-20,1000],...pts,[2420,1000]])+'Z',fill:'url(#sand)'},b);
+  // wet sand sheen
+  el('path',{d:P([[-20,1000],...pts.map(p=>[p[0],p[1]]),[2420,1000]])+'Z',fill:'#b48e6e',opacity:.0},b);
+  el('path',{d:P(pts.map(p=>[p[0],p[1]+4]))+P(pts.map(p=>[p[0],p[1]+26]).reverse()).replace('M','L')+'Z',fill:'#b59473',opacity:.55},b);
+  for(let k=0;k<4;k++){const off=-6-k*14;el('path',{d:P(pts.map(p=>[p[0],p[1]+off+rr(-2,2)])),stroke:'#fbf6ee','stroke-width':k?2:4,opacity:k?.35:.85,fill:'none',filter:'url(#soft)'},b)}
+  // footprints line (one walker) — the only trace of a person
+  for(let i=0;i<46;i++){const x=1900-i*24+Math.sin(i*.5)*6;const y=shore(x)+52+i*.9;el('ellipse',{cx:x,cy:y+(i%2?3:-3),rx:3.2,ry:1.4,fill:'#a9825f',opacity:.55},b)}
+  el('rect',{x:-20,y:880,width:2440,height:120,fill:'#000',opacity:.05},b);
+})();
+
+// ---------- promenade: parapet + calçada portuguesa in perspective ----------
+(function(){
+  const pr=g('promenade');const f=1400,cx=1200,h=1.6;
+  const Y=z=>HZ+f*h/z;const X=(x,z)=>cx+f*x/z;
+  // parapet (0.45 m) at z=5.6
+  const zw=5.6,ytop=HZ+f*(h-.45)/zw,ybot=Y(zw);
+  el('rect',{x:0,y:ytop+10,width:W,height:ybot-ytop-10,fill:'#f2ece2'},pr);
+  el('rect',{x:0,y:ytop+10,width:W,height:ybot-ytop-10,fill:'#f2ece2',filter:'url(#plaster)'},pr);
+  el('rect',{x:0,y:ybot-30,width:W,height:30,fill:'#d6a14a',opacity:.85},pr); // ochre barra
+  el('rect',{x:0,y:ytop,width:W,height:14,fill:'#e3dccf'},pr); // stone cap
+  el('rect',{x:0,y:ytop+12,width:W,height:4,fill:'#a39a8c',opacity:.6},pr);
+  // promenade surface
+  const top=ybot;el('rect',{x:0,y:top,width:W,height:H-top,fill:'#ece6da'},pr);
+  // basalt wave bands (Lagos-style mar largo) projected
+  for(let b=0;b<16;b++){const z0=5.5-b*.2;const wv=[];const wv2=[];
+    for(let xm=-9;xm<=9;xm+=.06){const zz=z0+.06*Math.sin(xm*3.1);wv.push([X(xm,zz),Y(zz)]);const z2=zz-.065;wv2.push([X(xm,z2),Y(z2)])}
+    el('path',{d:P(wv)+P(wv2.reverse()).replace('M','L')+'Z',fill:'#36332f',opacity:.88},pr)}
+  const jg=el('g',{stroke:'#8e877b','stroke-width':.7,opacity:.35},pr);
+  for(let zz=2.4;zz<5.6;zz+=.07){el('path',{d:`M0 ${Y(zz)+rr(-.5,.5)} L${W} ${Y(zz)+rr(-.5,.5)}`},jg)}
+  // stone texture on the whole promenade
+  el('rect',{x:0,y:top,width:W,height:H-top,fill:'#000',filter:'url(#stone)',opacity:.22},pr);
+  const lg=el('linearGradient',{id:'pl',x1:0,y1:0,x2:1,y2:0},document.querySelector('defs'));el('stop',{offset:0,'stop-color':'#ffcf96','stop-opacity':.38},lg);el('stop',{offset:1,'stop-color':'#6d6a8a','stop-opacity':.18},lg);
+  el('rect',{x:0,y:top,width:W,height:H-top,fill:'url(#pl)'},pr);
+  // palm shadow from off-frame left, long and soft
+  const ps=el('g',{opacity:.28,filter:'url(#soft6)'},pr);
+  el('path',{d:`M0 ${H-40} L760 ${top+40} L770 ${top+48} L0 ${H-10}Z`,fill:'#3a2c38'},ps);
+  for(let i=0;i<11;i++){const a=-.6+i*.12;const x0=760,y0=top+44;
+    el('path',{d:`M${x0} ${y0} q ${120*Math.cos(a)} ${50*Math.sin(a)} ${260*Math.cos(a)} ${60*Math.sin(a)+30} l -10 8 Q ${x0+100*Math.cos(a)} ${y0+20} ${x0} ${y0+6}Z`,fill:'#3a2c38'},ps)}
+  // mupi geometry (z=4.25, centred at x=0.55 m)
+  const zm=4.25,xm=.55,mw=1.32,mh=2.38;
+  const L=X(xm-mw/2,zm),Rr=X(xm+mw/2,zm),B=Y(zm)-f*.22/zm,T=Y(zm)-f*mh/zm;
+  const m=g('mupi');m.style.setProperty('--mx',L+'px');m.style.setProperty('--mw',(Rr-L)+'px');m.style.setProperty('--my',T+'px');m.style.setProperty('--mh',(B-T)+'px');
+  const gw=(Rr-L)*.89;document.querySelector('.poster').style.setProperty('--ps',gw/387);
+  const leg=g('leg');Object.assign(leg.style,{left:(X(xm,zm)-30)+'px',width:'60px',top:B+'px',height:(Y(zm)-B)+'px'});
+  // ground contact + long shadow cast right and toward camera (sun low, left, slightly behind)
+  const gy=Y(zm);
+  el('path',{d:`M${L+40} ${gy} L${Rr-10} ${gy} L${Rr+760} ${gy+138} L${Rr+330} ${gy+170}Z`,fill:'#2b2230',opacity:.5,filter:'url(#soft6)'},pr);
+  el('ellipse',{cx:X(xm,zm),cy:gy+2,rx:60,ry:7,fill:'#151214',opacity:.55,filter:'url(#soft)'},pr);
+  // bollard/bin for scale: small cast-iron bollard left
+  const bx=X(-2.9,4.8),by=Y(4.8);
+  el('rect',{x:bx-12,y:by-112,width:24,height:112,rx:5,fill:'#2d3236'},pr);el('ellipse',{cx:bx,cy:by-112,rx:14,ry:7,fill:'#3f464c'},pr);
+  el('rect',{x:bx-12,y:by-112,width:7,height:112,fill:'#c99a6c',opacity:.45},pr);
+  el('path',{d:`M${bx} ${by} L${bx+240} ${by+40} L${bx+246} ${by+52} L${bx-4} ${by+6}Z`,fill:'#2b2230',opacity:.3,filter:'url(#soft)'},pr);
+})();
+
+// warm grade + vignette
+el('rect',{width:W,height:H,fill:'url(#sunglow)',opacity:.12},g('fx'));
+const vg=el('radialGradient',{id:'vg',cx:'.5',cy:'.48',r:'.75'},document.querySelector('defs'));
+el('stop',{offset:'.6','stop-color':'#000','stop-opacity':0},vg);el('stop',{offset:'1','stop-color':'#1a0f10','stop-opacity':.32},vg);
+el('rect',{width:W,height:H,fill:'url(#vg)'},g('fx'));
+// keep the scene SVG behind the mupi: move fx overlay to be just the SVG (mupi sits above as HTML)
+window.__ready=true;
+</script>
+</body></html>

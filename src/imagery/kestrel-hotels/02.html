@@ -1,0 +1,110 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Kestrel — booking site with the concierge</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf);font-weight:700}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Light.otf);font-weight:300}
+html,body{margin:0;padding:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#0c1426;font-family:NM;color:#1b2a44}
+.abs{position:absolute}
+.msg{padding:12px 15px;border-radius:16px;font-size:15px;line-height:1.4;max-width:88%}
+.g{align-self:flex-end;background:#23395B;color:#fff;border-bottom-right-radius:4px}
+.k{align-self:flex-start;background:#F5F3EE;border-bottom-left-radius:4px}
+.src{display:inline-flex;gap:6px;align-items:center;font-size:12.5px;color:#8a6a2a;background:#fbf3e2;border-radius:8px;padding:4px 9px;margin-top:9px}
+.lbl{font-size:11.5px;letter-spacing:1.4px;color:#7a8396;text-transform:uppercase}
+.cmp td{padding:7px 8px;border-top:1px solid #ece8de;font-size:13.5px}
+.cmp th{font-weight:500;font-size:13px;text-align:left;padding:6px 8px}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="b30" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter>
+</defs></svg>
+<!-- night city bokeh behind the screen -->
+<div class="abs" style="inset:0;background:radial-gradient(1600px 900px at 50% 110%,#5a3a52,#1d2a48 50%,#0c1426)"></div>
+<svg id="bokeh" class="abs" style="left:0;top:0" width="2400" height="1350"></svg>
+
+<!-- browser window -->
+<div class="abs" style="left:250px;top:110px;width:1900px;height:1180px;border-radius:16px;background:#000;opacity:.6;filter:blur(40px);transform:translate(0,40px)"></div>
+<div class="abs" style="left:250px;top:110px;width:1900px;height:1180px;border-radius:16px;overflow:hidden;background:#F5F3EE;box-shadow:0 0 0 1px rgba(255,255,255,.15)">
+  <!-- chrome -->
+  <div style="height:76px;background:linear-gradient(#ecebe7,#e1dfd9);display:flex;align-items:center;padding:0 22px;gap:18px;border-bottom:1px solid #cfccc4">
+    <div style="display:flex;gap:9px"><i style="width:14px;height:14px;border-radius:50%;background:#ee6a5f;display:block"></i><i style="width:14px;height:14px;border-radius:50%;background:#f5be4f;display:block"></i><i style="width:14px;height:14px;border-radius:50%;background:#62c554;display:block"></i></div>
+    <div style="color:#8a877f;font-size:20px;margin-left:16px">‹ &nbsp;›</div>
+    <div style="flex:1;max-width:760px;margin:0 auto;height:40px;border-radius:10px;background:#f8f7f4;display:flex;align-items:center;justify-content:center;gap:8px;font-size:16px;color:#4a4a46"><span style="font-size:13px">🔒︎</span>kestrelhotels.com/kuala-lumpur</div>
+    <div style="width:120px"></div>
+  </div>
+  <!-- site -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 48px">
+    <div style="display:flex;align-items:center;gap:14px"><svg width="54" height="42"><path d="M4,38 L20,11 L27,22 L33,15 L50,38 Z" fill="none" stroke="#E4B363" stroke-width="3.5" stroke-linejoin="round"/><circle cx="45" cy="7" r="5" fill="none" stroke="#E4B363" stroke-width="3"/></svg><span style="font-weight:700;font-size:28px;letter-spacing:-.8px">Kestrel Hotels</span><span style="margin-left:18px;font-size:15px;color:#7a8396">Kuala Lumpur ▾</span></div>
+    <div style="display:flex;gap:34px;font-size:16px;align-items:center"><span>Rooms</span><span>Dining</span><span>Skyline Lounge</span><span>Offers</span><span>EN · BM</span><span style="background:#23395B;color:#fff;padding:12px 22px;border-radius:24px">Book a stay</span></div>
+  </div>
+  <div style="display:flex;gap:28px;padding:0 48px">
+    <!-- left: hero + rooms -->
+    <div style="flex:1">
+      <div id="hero" style="position:relative;height:430px;border-radius:18px;overflow:hidden"></div>
+      <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:12px;margin-top:-46px;position:relative;padding:0 24px">
+        <div style="background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 10px 30px rgba(20,30,60,.12)"><div class="lbl">Hotel</div><div style="font-size:19px;font-weight:500;margin-top:5px">Kestrel Kuala Lumpur</div></div>
+        <div style="background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 10px 30px rgba(20,30,60,.12)"><div class="lbl">Check in</div><div style="font-size:19px;font-weight:500;margin-top:5px">Fri, 20 Nov</div></div>
+        <div style="background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 10px 30px rgba(20,30,60,.12)"><div class="lbl">Check out</div><div style="font-size:19px;font-weight:500;margin-top:5px">Mon, 23 Nov</div></div>
+        <div style="background:#E4B363;border-radius:14px;padding:16px 18px;display:grid;place-items:center;font-size:18px;font-weight:500;color:#1b2a44">See rooms →</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:30px"><div style="font-size:30px;font-weight:500;letter-spacing:-.6px">Rooms above the city</div><div style="font-size:15px;color:#7a8396">3 nights · 2 adults · taxes included</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px" id="rooms"></div>
+      <div style="display:flex;gap:12px;margin-top:18px;font-size:15px">
+        <div style="flex:1;border:1px solid #e2ddd2;border-radius:14px;padding:14px 16px"><b style="font-weight:500">Early check-in from 08:00</b><div style="color:#7a8396;font-size:13px;margin-top:3px">RM 150 · ask Kestrel when you book</div></div>
+        <div style="flex:1;border:1px solid #e2ddd2;border-radius:14px;padding:14px 16px"><b style="font-weight:500">KLIA airport car</b><div style="color:#7a8396;font-size:13px;margin-top:3px">About 55 minutes · RM 210 each way</div></div>
+        <div style="flex:1;border:1px solid #e2ddd2;border-radius:14px;padding:14px 16px"><b style="font-weight:500">Book direct, pay less</b><div style="color:#7a8396;font-size:13px;margin-top:3px">Free parking and breakfast for two</div></div>
+      </div>
+    </div>
+    <!-- right: Ask Kestrel -->
+    <div style="width:520px;height:930px;background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(20,30,60,.18);display:flex;flex-direction:column;overflow:hidden">
+      <div style="background:#23395B;color:#fff;padding:18px 20px;display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;border-radius:50%;background:#E4B363;display:grid;place-items:center;color:#23395B;font-weight:700;font-size:18px">K</div>
+        <div><div style="font-weight:500;font-size:18px">Ask Kestrel</div><div style="font-size:13px;color:#c9d3e6">Answers from our own pages · a person is always nearby</div></div>
+      </div>
+      <div style="flex:1;padding:18px;display:flex;flex-direction:column;gap:12px">
+        <div class="msg g">What's the difference between the Skyline King and the Deluxe Twin? Travelling with my mum.</div>
+        <div class="msg k" style="max-width:100%">Here's the short version:
+          <table class="cmp" style="width:100%;border-collapse:collapse;margin-top:8px;background:#fff;border-radius:10px">
+            <tr><th></th><th>Skyline King</th><th>Deluxe Twin</th></tr>
+            <tr><td style="color:#7a8396">Floors</td><td>30–38</td><td>12–29</td></tr>
+            <tr><td style="color:#7a8396">Beds</td><td>1 king</td><td>2 singles</td></tr>
+            <tr><td style="color:#7a8396">View</td><td>Twin towers</td><td>City</td></tr>
+            <tr><td style="color:#7a8396">Per night</td><td>RM 980</td><td>RM 720</td></tr>
+          </table>
+          With your mum, the Twin is the easier fit. Ask for a high floor and I'll note it.
+          <div class="src">↗ From: Kestrel KL · Rooms &amp; suites</div></div>
+        <div class="msg g">Could the Twin have a cot as well? And it's her 70th, any chance of a cake?</div>
+        <div class="msg k">A cot fits in the Twin, free of charge. For the cake, I'm bringing in Aisyah from our front desk so she can arrange it properly.</div>
+        <div style="align-self:center;display:flex;align-items:center;gap:10px;font-size:13px;color:#7a8396"><span style="width:28px;height:28px;border-radius:50%;background:#c99a7a;display:inline-block"></span>Aisyah joined · she can see this conversation</div>
+        <div class="msg k" style="background:#fbf3e2">Selamat petang! I've added a cot and a small pandan cake for Saturday at 19:00. Happy birthday to your mum. — Aisyah</div>
+      </div>
+      <div style="margin:0 16px 16px;height:52px;border-radius:26px;background:#F5F3EE;display:flex;align-items:center;padding:0 20px;color:#8a93a6;font-size:15px">Ask about rooms, parking, the pool…</div>
+    </div>
+  </div>
+</div>
+<!-- screen glare -->
+<div class="abs" style="left:250px;top:110px;width:1900px;height:1180px;border-radius:16px;background:linear-gradient(120deg,rgba(255,255,255,.08),rgba(255,255,255,0) 30%);pointer-events:none"></div>
+
+<script>
+window.__ready=false;
+function rnd(seed){let s=seed;return()=>((s=(s*16807)%2147483647)/2147483647)}
+const R=rnd(21);let b='';
+for(let i=0;i<90;i++){const x=R()*2400,y=300+R()*1100,r=12+R()*46,warm=R()<.65;b+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${warm?'#ffc27a':'#9cc0ff'}" opacity="${.08+R()*.25}" filter="url(#b30)"/>`}
+document.getElementById('bokeh').innerHTML=b;
+// hero banner: twin towers at dusk, seen from the hotel
+let h=`<svg width="1300" height="430" style="position:absolute;left:0;top:0"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16264a"/><stop offset=".45" stop-color="#4a4f78"/><stop offset=".75" stop-color="#d98a62"/><stop offset="1" stop-color="#f3c07a"/></linearGradient><linearGradient id="tw" x1="0" x2="1"><stop offset="0" stop-color="#4a5270"/><stop offset=".5" stop-color="#c9cfdc"/><stop offset="1" stop-color="#2a3048"/></linearGradient></defs><rect width="1300" height="430" fill="url(#sk)"/>`;
+const R2=rnd(4);
+for(let i=0;i<40;i++){const w=30+R2()*70,x=R2()*1300,hh=60+R2()*190;h+=`<rect x="${x}" y="${430-hh}" width="${w}" height="${hh}" fill="#1b2238" opacity=".95"/>`;for(let k=0;k<hh/9;k++)if(R2()<.35)h+=`<rect x="${x+3}" y="${430-hh+4+k*9}" width="${w-6}" height="2" fill="#ffd596" opacity="${.2+R2()*.4}"/>`}
+for(const cx of [880,960]){let y=430;for(const [sw,sh] of [[44,90],[40,70],[36,56],[30,42],[24,30],[18,22]]){y-=sh;h+=`<rect x="${cx-sw/2}" y="${y}" width="${sw}" height="${sh+1}" fill="url(#tw)"/>`}h+=`<rect x="${cx-1.5}" y="${y-60}" width="3" height="60" fill="#c9cfdc"/>`}
+h+=`<rect x="896" y="250" width="48" height="6" fill="#9aa3b8"/></svg>
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,36,.55),rgba(10,18,36,0) 60%)"></div>
+<div style="position:absolute;left:44px;bottom:80px;color:#fff"><div style="font-size:14px;letter-spacing:3px;color:#E4B363">KESTREL KUALA LUMPUR · BUKIT BINTANG</div><div style="font-size:64px;font-weight:500;letter-spacing:-2px;margin-top:10px;line-height:1">Stay above the city.</div><div style="font-size:18px;margin-top:14px;color:#dfe5f1">286 rooms from the 12th floor up. Rooftop pool on 36.</div></div>`;
+document.getElementById('hero').innerHTML=h;
+const R3=rnd(9);function mini(){let t='<svg width="420" height="150" style="position:absolute;left:0;top:0">';for(let i=0;i<22;i++){const w=14+R3()*30,x=R3()*420,hh=20+R3()*70;t+=`<rect x="${x}" y="${100-hh}" width="${w}" height="${hh}" fill="#1b2238"/>`;for(let k=0;k<hh/6;k++)if(R3()<.3)t+=`<rect x="${x+2}" y="${100-hh+3+k*6}" width="${w-4}" height="1.5" fill="#ffd596" opacity=".5"/>`}return t+'</svg>'}
+document.getElementById('rooms').innerHTML=[['Skyline King','Floors 30–38 · 42 m²','RM 980',['#1d3156','#d98a62']],['Deluxe Twin','Floors 12–29 · 34 m²','RM 720',['#2a3a5a','#8a7a9a']],['Corner Suite','Floors 36–38 · 68 m²','RM 1,640',['#23395B','#E4B363']]].map(r=>`<div style="background:#fff;border-radius:16px;overflow:hidden"><div style="height:150px;background:linear-gradient(180deg,${r[3][0]},${r[3][1]});position:relative;overflow:hidden">${mini()}<div style="position:absolute;left:0;right:0;bottom:0;height:50px;background:linear-gradient(#2a2420,#1a1512)"></div><div style="position:absolute;left:0;right:0;top:0;height:14px;background:#141820"></div>${[0.33,0.66].map(f=>`<div style="position:absolute;left:${f*100}%;top:0;bottom:50px;width:6px;background:#141820"></div>`).join('')}<div style="position:absolute;left:24px;bottom:30px;width:190px;height:34px;border-radius:8px;background:linear-gradient(#f4efe6,#d8d0c2)"></div><div style="position:absolute;left:30px;bottom:56px;width:60px;height:20px;border-radius:6px;background:#E4B363"></div><div style="position:absolute;right:30px;bottom:46px;width:30px;height:60px;background:radial-gradient(ellipse at 50% 20%,#fff2d6,#d9b27a);clip-path:polygon(20% 0,80% 0,100% 50%,0 50%)"></div></div><div style="padding:14px 16px"><div style="font-size:18px;font-weight:500">${r[0]}</div><div style="font-size:13px;color:#7a8396;margin-top:3px">${r[1]}</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><span style="font-size:20px;font-weight:500">${r[2]}<span style="font-size:12px;color:#7a8396;font-weight:400"> /night</span></span><span style="font-size:13px;border:1.5px solid #23395B;border-radius:14px;padding:5px 12px">Select</span></div></div></div>`).join('');
+window.__ready=true;
+</script>
+</body></html>

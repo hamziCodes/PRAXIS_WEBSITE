@@ -1,0 +1,140 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Italic.otf');font-weight:400;font-style:italic}
+@font-face{font-family:'HJ';src:url('../../../assets/fonts/handjet.woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;font-family:'NM',sans-serif;color:#101820;background:#d9c6a5}
+.abs{position:absolute}
+.sh{filter:drop-shadow(14px 20px 10px rgba(70,45,20,.42)) drop-shadow(2px 3px 2px rgba(70,45,20,.35))}
+.card{position:absolute;overflow:hidden;border-radius:16px}
+.perf{position:absolute;top:0;bottom:0;width:0;border-left:4px dotted rgba(16,24,32,.35)}
+.mul{mix-blend-mode:multiply}
+.inkwear{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:.4;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 .96  0 0 0 0 .94  0 0 0 0 .9  0 0 0 -2.2 1.25'/></filter><rect width='400' height='400' filter='url(%23f)'/></svg>")}
+</style></head>
+<body>
+<script>window.__ready=false</script>
+<!-- sand, top-down, daylight -->
+<svg class="abs" style="inset:0" width="1600" height="2000">
+  <defs>
+    <filter id="sand" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.022" numOctaves="4" seed="21" result="r"/>
+      <feDiffuseLighting in="r" surfaceScale="3.5" lighting-color="#fff1da" result="l"><feDistantLight azimuth="225" elevation="40"/></feDiffuseLighting>
+      <feComposite in="l" in2="SourceGraphic" operator="arithmetic" k1="1.05"/>
+    </filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="1.3" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .15  -1.6 0 0 0 1.05"/></filter>
+    <filter id="grain2"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="1" seed="9"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 .98  0 0 0 0 .92  2.4 0 0 0 -1.7"/></filter>
+  </defs>
+  <rect width="1600" height="2000" fill="#e0d0b4" filter="url(#sand)"/>
+  <rect width="1600" height="2000" filter="url(#grain)" opacity=".6"/>
+  <rect width="1600" height="2000" filter="url(#grain2)" opacity=".7"/>
+</svg>
+
+<!-- weekend pass, back side up (site map) -->
+<div class="abs sh" style="left:820px;top:120px;width:640px;height:420px;transform:rotate(9deg)">
+  <div class="card" style="inset:0;background:#101820;color:#F5F0E6">
+    <div class="abs" style="left:34px;top:28px;font-weight:700;font-size:26px;letter-spacing:.04em">SITE MAP · KEEP THIS</div>
+    <div class="abs hj" style="right:34px;top:26px;font-family:HJ;font-size:30px;color:#FF6B4A">N ↑</div>
+    <svg class="abs" style="left:30px;top:76px" width="580" height="300">
+      <defs><pattern id="seaD" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="3" fill="#3043C2"/></pattern></defs>
+      <path d="M0 0 H200 C 230 80 210 160 240 300 H0Z" fill="url(#seaD)"/>
+      <path d="M200 0 C 230 80 210 160 240 300" fill="none" stroke="#F5F0E6" stroke-width="2"/>
+      <g font-family="NM" font-weight="700" font-size="15" fill="#F5F0E6">
+        <rect x="270" y="40" width="90" height="44" fill="#FF6B4A"/><text x="372" y="68">SHORE STAGE</text>
+        <rect x="260" y="200" width="70" height="40" fill="#18B2A6"/><text x="342" y="226">REEF STAGE</text><text x="342" y="246" font-weight="400" font-size="13">CLOSES AT HIGH WATER</text>
+        <circle cx="300" cy="140" r="9"/><text x="318" y="146">BAR · WATER</text>
+        <circle cx="470" cy="140" r="9" fill="none" stroke="#F5F0E6" stroke-width="3"/><text x="488" y="146">AID</text>
+        <path d="M560 280 v-40 m-8 10 l8 -10 l8 10" stroke="#F5F0E6" stroke-width="3" fill="none"/><text x="470" y="296">GATE</text>
+      </g>
+      <path d="M560 250 C 470 220 420 180 380 120" fill="none" stroke="#F5F0E6" stroke-width="2" stroke-dasharray="5 6"/>
+    </svg>
+    <div class="inkwear"></div>
+  </div>
+</div>
+
+<!-- weekend pass, front -->
+<div class="abs sh" style="left:140px;top:300px;width:820px;height:400px;transform:rotate(-7deg)">
+  <div class="card" style="inset:0;background:#F5F0E6">
+    <div class="abs" style="left:0;top:0;bottom:0;width:600px">
+      <div class="abs" style="left:36px;top:26px;font-weight:700;font-size:118px;letter-spacing:-.06em;line-height:.85">LOWTIDE</div>
+      <div class="abs mul" style="left:40px;top:30px;font-weight:700;font-size:118px;letter-spacing:-.06em;line-height:.85;color:#FF6B4A;opacity:.5">LOWTIDE</div>
+      <svg class="abs mul" style="left:30px;top:140px" width="540" height="100"><g fill="none" stroke-width="12" stroke-linecap="round"><path d="M0 30 q34 -26 68 0 t68 0 t68 0 t68 0 t68 0 t68 0 t68 0 t68 0" stroke="#FF6B4A"/><path d="M0 62 q34 -26 68 0 t68 0 t68 0 t68 0 t68 0 t68 0 t68 0 t68 0" stroke="#18B2A6"/><path d="M0 94 q34 -26 68 0 t68 0 t68 0 t68 0 t68 0 t68 0 t68 0 t68 0" stroke="#3043C2"/></g></svg>
+      <div class="abs" style="left:38px;top:262px;font-weight:700;font-size:40px;letter-spacing:-.02em">WEEKEND PASS</div>
+      <div class="abs" style="left:38px;top:314px;font-size:18px;font-weight:500;letter-spacing:.04em">FRI 20 — SUN 22 FEB 2027 · MOUNT LAVINIA BEACH</div>
+      <div class="abs" style="left:38px;bottom:20px;font-style:italic;font-size:20px">Three days. Two tides. Map on the back.</div>
+    </div>
+    <div class="perf" style="left:600px"></div>
+    <div class="abs" style="left:604px;top:0;bottom:0;right:0;background:#FF6B4A">
+      <div class="abs" style="left:28px;top:28px;font-weight:700;font-size:20px;letter-spacing:.06em">GA</div>
+      <div class="abs" style="left:28px;top:56px;font-family:HJ;font-size:44px;line-height:1">Nº 08412</div>
+      <svg class="abs" style="left:28px;top:150px" width="160" height="160" id="qr"></svg>
+      <div class="abs" style="left:28px;bottom:24px;font-size:15px;font-weight:500">ADMIT ONE · NOT FOR RESALE</div>
+    </div>
+    <!-- foil strip -->
+    <div class="abs" style="left:560px;top:0;bottom:0;width:26px;background:linear-gradient(180deg,#d9f2ff,#ffd6f0 20%,#fff3c4 40%,#c8ffe8 60%,#d6d9ff 80%,#ffe0d0);opacity:.9;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)"></div>
+    <div class="inkwear"></div>
+    <div class="abs" style="inset:0;background:linear-gradient(135deg,rgba(255,255,255,.25),rgba(255,255,255,0) 40%,rgba(0,0,0,.06))"></div>
+  </div>
+</div>
+
+<!-- wristbands (woven, three day colours) -->
+<svg class="abs" style="left:0;top:-150px;overflow:visible" width="1600" height="2000" id="bands"></svg>
+
+<!-- artist pass on lanyard -->
+<div class="abs sh" style="left:930px;top:1080px;width:440px;height:620px;transform:rotate(12deg)">
+  <div class="card" style="inset:0;background:#101820;color:#F5F0E6;border-radius:22px">
+    <div class="abs" style="left:50%;top:26px;width:90px;height:22px;margin-left:-45px;border-radius:11px;background:#d9c6a5;box-shadow:inset 2px 3px 4px rgba(0,0,0,.5)"></div>
+    <div class="abs" style="left:34px;top:84px;font-weight:700;font-size:76px;letter-spacing:-.06em;line-height:.85">LOW<br>TIDE</div>
+    <div class="abs" style="left:0;right:0;top:250px;height:150px;background:#FFC23C;color:#101820;padding:20px 34px">
+      <div style="font-weight:700;font-size:62px;letter-spacing:-.04em;line-height:1">ARTIST</div>
+      <div style="font-weight:500;font-size:22px;margin-top:10px;letter-spacing:.04em">ALL AREAS · BOTH STAGES</div>
+    </div>
+    <div class="abs" style="left:34px;top:430px;font-size:22px;line-height:1.5"><b>Kalu Ganga Sound System</b><br><span style="opacity:.7">Shore · Fri 20.02 · 19:00</span></div>
+    <div class="abs" style="left:34px;bottom:30px;font-family:HJ;font-size:40px;color:#FF6B4A">A-0117</div>
+    <div class="abs" style="inset:0;border-radius:22px;background:linear-gradient(120deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 30%,rgba(255,255,255,0) 60%,rgba(255,255,255,.12) 64%,rgba(255,255,255,0) 70%)"></div>
+  </div>
+</div>
+<!-- lanyard strap -->
+<svg class="abs" style="left:0;top:-120px;overflow:visible;filter:drop-shadow(8px 12px 6px rgba(70,45,20,.4))" width="1600" height="2000">
+  <defs><pattern id="lan" width="300" height="34" patternUnits="userSpaceOnUse"><rect width="300" height="34" fill="#18B2A6"/><text x="6" y="25" font-family="NM" font-weight="700" font-size="20" fill="#101820" letter-spacing="1">LOWTIDE · 2027 ·</text></pattern></defs>
+  <path d="M1170 1230 C 1240 1060 1480 1010 1520 860 C 1560 700 1420 640 1600 520" fill="none" stroke="#14a397" stroke-width="40"/>
+  <path d="M1170 1230 C 1240 1060 1480 1010 1520 860 C 1560 700 1420 640 1600 520" fill="none" stroke="#18B2A6" stroke-width="34"/>
+  <path id="lp" d="M1170 1230 C 1240 1060 1480 1010 1520 860 C 1560 700 1420 640 1600 520" fill="none"/>
+  <text font-family="NM" font-weight="700" font-size="20" fill="#101820" letter-spacing="2" dy="7"><textPath href="#lp">LOWTIDE · 2027 · LOWTIDE · 2027 · LOWTIDE · 2027 · LOWTIDE · 2027 ·</textPath></text>
+  <rect x="1150" y="1205" width="44" height="60" rx="8" fill="#9aa0a6" transform="rotate(12 1172 1235)"/>
+</svg>
+
+<!-- sunlight warmth + soft vignette -->
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 80% 70% at 30% 20%,rgba(255,240,210,.18),rgba(255,240,210,0) 60%);mix-blend-mode:screen"></div>
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 85% 75% at 50% 45%,rgba(0,0,0,0) 60%,rgba(70,45,20,.35) 100%)"></div>
+<script>
+const NS='http://www.w3.org/2000/svg';let s=31;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+// QR-like code
+const q=document.getElementById('qr');el('rect',{width:160,height:160,fill:'#F5F0E6'},q);
+for(let y=0;y<25;y++)for(let x=0;x<25;x++){const f=(x<7&&y<7)||(x>17&&y<7)||(x<7&&y>17);if(f){const fx=x<7?0:18,fy=y<7?0:18;const dx=x-fx,dy=y-fy;if(dx===0||dx===6||dy===0||dy===6||(dx>1&&dx<5&&dy>1&&dy<5))el('rect',{x:6+x*5.9,y:6+y*5.9,width:5.9,height:5.9,fill:'#101820'},q)}else if(R()<.48)el('rect',{x:6+x*5.9,y:6+y*5.9,width:5.9,height:5.9,fill:'#101820'},q)}
+// wristbands
+const B=document.getElementById('bands');const defs=el('defs',{},B);
+const days=[['FRI 20.02','#FF6B4A','#e85a3a'],['SAT 21.02','#18B2A6','#119b90'],['SUN 22.02','#3043C2','#2536a8']];
+days.forEach(([lab,c,c2],i)=>{const p=el('pattern',{id:'w'+i,width:6,height:6,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'},defs);el('rect',{width:6,height:6,fill:c},p);el('rect',{width:3,height:6,fill:c2},p);el('rect',{y:0,width:6,height:1,fill:'rgba(255,255,255,.18)'},p)});
+const filt=el('filter',{id:'weave'},defs);el('feTurbulence',{type:'fractalNoise',baseFrequency:'.9 .25',numOctaves:2,seed:3,result:'n'},filt);el('feColorMatrix',{in:'n',values:'0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .35 0',result:'a'},filt);el('feComposite',{in:'a',in2:'SourceGraphic',operator:'in',result:'d'},filt);el('feMerge',{},filt);
+const paths=['M60 1060 C 300 980 620 1000 820 1120 C 980 1220 1000 1400 860 1500','M90 1260 C 340 1220 560 1300 700 1460 C 820 1600 720 1760 520 1800','M40 1520 C 260 1460 420 1560 470 1700 C 520 1840 380 1960 200 1940'];
+paths.forEach((d,i)=>{const g=el('g',{style:'filter:drop-shadow(10px 14px 6px rgba(70,45,20,.4)) drop-shadow(2px 2px 1px rgba(70,45,20,.3))'},B);
+  el('path',{d,fill:'none',stroke:'url(#w'+i+')','stroke-width':74,'stroke-linecap':'butt'},g);
+  el('path',{d,fill:'none',stroke:'rgba(0,0,0,.18)','stroke-width':74,filter:'url(#weave)'},g);
+  el('path',{d,fill:'none',stroke:'rgba(255,255,255,.22)','stroke-width':4,transform:'translate(0 -33)',style:'opacity:.0'},g);
+  el('path',{id:'bp'+i,d,fill:'none'},g);
+  const t=el('text',{'font-family':'HJ','font-size':52,fill:'#101820',dy:16,'letter-spacing':2},g);const tp=el('textPath',{href:'#bp'+i,startOffset:'90'},t);tp.textContent=`LOWTIDE  ${days[i][0]}  THREE DAYS. TWO TIDES.  LOWTIDE  ${days[i][0]}`;
+  // edge hems
+  el('path',{d,fill:'none',stroke:'rgba(16,24,32,.25)','stroke-width':74,'stroke-dasharray':'2 6',style:'mix-blend-mode:multiply',opacity:.0},g);
+  // slider clasp at the start
+  const m=d.match(/M(\d+) (\d+)/);const x=+m[1],y=+m[2];
+  el('rect',{x:x-6,y:y-46,width:58,height:92,rx:12,fill:'#cfd3d6',stroke:'#8d9296','stroke-width':3,transform:`rotate(-14 ${x} ${y})`},g);
+  el('rect',{x:x+8,y:y-30,width:30,height:60,rx:6,fill:'#9ea3a7',transform:`rotate(-14 ${x} ${y})`},g);
+});
+window.__ready=true;
+</script>
+</body></html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Italic.otf');font-weight:400;font-style:italic}
+@font-face{font-family:'HJ';src:url('../../../assets/fonts/handjet.woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;position:relative;background:#0b0f14;font-family:'NM',sans-serif}
+.abs{position:absolute}
+/* ===LIB-CSS=== */
+.pst{position:absolute;width:600px;height:840px;overflow:hidden;background:#F5F0E6;transform-origin:0 0;color:#101820}
+.pst .mul{mix-blend-mode:multiply}
+.ht{position:absolute;background-image:radial-gradient(circle,var(--c) 42%,transparent 44%);background-size:var(--s,12px) var(--s,12px)}
+.crease{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(90deg,transparent calc(50% - 2px),rgba(255,255,255,.35) calc(50% - 1px),rgba(0,0,0,.18) 50%,transparent calc(50% + 2px)),
+  linear-gradient(0deg,transparent calc(50% - 2px),rgba(255,255,255,.3) calc(50% - 1px),rgba(0,0,0,.15) 50%,transparent calc(50% + 2px)),
+  linear-gradient(0deg,transparent calc(25% - 1px),rgba(0,0,0,.08) 25%,transparent calc(25% + 1px)),
+  linear-gradient(0deg,transparent calc(75% - 1px),rgba(0,0,0,.08) 75%,transparent calc(75% + 1px))}
+.inkwear{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:.5;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 .96  0 0 0 0 .94  0 0 0 0 .9  0 0 0 -2.2 1.25'/></filter><rect width='400' height='400' filter='url(%23f)'/></svg>")}
+.tape{position:absolute;width:150px;height:46px;background:linear-gradient(180deg,rgba(250,244,220,.62),rgba(235,226,196,.55));box-shadow:0 1px 2px rgba(0,0,0,.25);clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,16% 8%,84% 4%,88% 0,92% 10%,96% 0,100% 6%,100% 92%,96% 100%,92% 90%,88% 100%,84% 94%,16% 96%,12% 100%,8% 90%,4% 100%,0 94%)}
+.staple{position:absolute;width:30px;height:5px;border-radius:2px;background:linear-gradient(180deg,#e8e8e8,#888);box-shadow:1px 2px 1px rgba(0,0,0,.5)}
+.hj{font-family:'HJ',monospace}
+/* ===/LIB-CSS=== */
+</style></head>
+<body>
+<script>window.__ready=false</script>
+<div id="wall" class="abs" style="inset:0"></div>
+<script>
+/* ===LIB-JS=== */
+const C={ink:'#101820',paper:'#F5F0E6',coral:'#FF6B4A',tq:'#18B2A6',ind:'#3043C2',yel:'#FFC23C',sand:'#EADBC0'};
+const DAYS=[
+ {k:'FRI',date:'20.02',col:C.coral,name:'Friday',tide:[['HIGH','05:48'],['LOW','12:02'],['HIGH','18:20']],acts:[['16:00','Ishara'],['17:30','Coral Tape'],['19:00','Kalu Ganga Sound System'],['21:00','Mira Sol'],['23:00','NILA'],['01:30','Low Orbit']]},
+ {k:'SAT',date:'21.02',col:C.tq,name:'Saturday',tide:[['HIGH','06:31'],['LOW','12:44'],['HIGH','19:03']],acts:[['14:00','Marine Drive'],['16:00','Ranjan Reef'],['18:00','Haputale Hi-Fi'],['20:00','Tidal Static'],['22:30','Ayu b2b Sanda'],['01:00','Sea Glass']]},
+ {k:'SUN',date:'22.02',col:C.ind,name:'Sunday',tide:[['HIGH','07:15'],['LOW','13:27'],['HIGH','19:48']],acts:[['06:00','Monsoon Club'],['12:00','Pettah Dub'],['15:00','Dunes of Galle'],['17:30','Wellawatte Tapes'],['19:30','Kirala'],['22:00','Closing: all hands']]}];
+let SEED=1;const rand=()=>(SEED=(SEED*16807)%2147483647)/2147483647;
+const waveSVG=(w,col,sw=26,n=3,gap=70,amp=26,period=200,y0=50)=>{let s=`<svg width="${w}" height="${y0*2+gap*(n-1)}" style="display:block;overflow:visible">`;for(let i=0;i<n;i++){let d=`M-20 ${y0+i*gap}`;for(let x=-20;x<w+40;x+=period/2){d+=` q${period/4} ${(x/(period/2))%2?amp*2:-amp*2} ${period/2} 0`}s+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="${sw}" stroke-linecap="round"/>`}return s+'</svg>'};
+const wrap=(inner,bg,extra='')=>`<div class="pst" style="background:${bg};${extra}">${inner}<div class="inkwear"></div><div class="crease"></div></div>`;
+const P={
+ type:(o={})=>{const c=o.col||C.coral,c2=o.col2||C.tq;return wrap(`
+   <div class="abs mul" style="left:${30+(o.mx||5)}px;top:${380+(o.my||-4)}px">${waveSVG(560,c,30,3,74,24,180)}</div>
+   <div class="abs" style="left:28px;top:36px;font-weight:700;font-size:250px;line-height:.8;letter-spacing:-.055em;color:${C.ink}" class="mul">LOW<br>TIDE</div>
+   <div class="abs mul" style="left:30px;top:380px;opacity:.85">${waveSVG(560,c2,8,3,74,24,180)}</div>
+   <div class="abs" style="left:34px;right:34px;bottom:150px;font-style:italic;font-size:46px;color:${c};letter-spacing:-.02em" class="mul">Three days. Two tides.</div>
+   <div class="abs" style="left:34px;right:34px;bottom:36px;display:flex;justify-content:space-between;font-weight:700;font-size:22px;letter-spacing:.06em;border-top:4px solid ${C.ink};padding-top:16px"><span>20—22 FEB 2027</span><span>MOUNT LAVINIA BEACH</span></div>
+   <div class="abs hj" style="left:34px;bottom:84px;font-size:38px;letter-spacing:.04em">COLOMBO / SRI LANKA / BEACH</div>`,o.bg||C.paper)},
+ tide:(o={})=>{const D=DAYS[o.day||0];const W=540,H=300;
+   const hi=+D.tide[0][1].slice(0,2)+(+D.tide[0][1].slice(3))/60;
+   const lv=t=>H*0.5+Math.cos((t-hi)/12.42*Math.PI*2)*-H*0.36;const X=t=>(t-4)/24*W;
+   let d=`M0 ${H}`;for(let t=4;t<=28.01;t+=.2){d+=` L${X(t).toFixed(1)} ${lv(t).toFixed(1)}`}d+=` L${W} ${H} Z`;
+   const acts=D.acts.map((a,i)=>{let t=+a[0].slice(0,2)+(+a[0].slice(3))/60;if(t<4)t+=24;const x=X(t),y=lv(t);return `<circle cx="${x}" cy="${y}" r="9" fill="${C.paper}"/><line x1="${x}" y1="${y}" x2="${x}" y2="${y-50-i%2*46}" stroke="${C.paper}" stroke-width="2"/><text x="${x-4}" y="${y-58-i%2*46}" fill="${C.paper}" font-family="NM" font-weight="500" font-size="20">${a[0]}</text>`}).join('');
+   return wrap(`
+   <div class="abs" style="left:34px;top:34px;font-weight:700;font-size:96px;line-height:.86;letter-spacing:-.05em;color:${C.paper}">LOW<br>TIDE</div>
+   <div class="abs" style="right:34px;top:40px;text-align:right;color:${D.col};font-weight:700;font-size:40px;line-height:1">${D.k}<br><span style="font-weight:400;font-size:40px">${D.date}</span></div>
+   <svg class="abs" style="left:30px;top:300px;overflow:visible" width="${W}" height="${H}"><defs><pattern id="hp${o.day}${o.id||''}" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="5.5" cy="5.5" r="3.6" fill="${D.col}"/></pattern></defs><path d="${d}" fill="url(#hp${o.day}${o.id||''})"/><path d="${d.replace(/ L${W} ${H} Z$/,'')}" fill="none" stroke="${D.col}" stroke-width="6"/>${acts}</svg>
+   <div class="abs" style="left:34px;right:34px;bottom:112px;color:${C.paper};font-size:24px;font-weight:500;letter-spacing:.04em;display:flex;justify-content:space-between">${D.tide.map(t=>`<span>${t[0]} ${t[1]}</span>`).join('')}</div>
+   <div class="abs" style="left:34px;right:34px;bottom:36px;color:${C.paper};font-size:22px;font-weight:700;letter-spacing:.06em;border-top:3px solid ${D.col};padding-top:14px;display:flex;justify-content:space-between"><span>${D.name.toUpperCase()} ${D.date}</span><span>MT. LAVINIA</span></div>`,C.ink)},
+ lineup:(o={})=>{const bg=o.bg||C.yel;return wrap(`
+   <div class="abs" style="left:30px;top:30px;font-weight:700;font-size:118px;letter-spacing:-.06em;line-height:.85;color:${C.ink}">LOWTIDE</div>
+   <div class="abs mul" style="left:${33+(o.mx||4)}px;top:${33+(o.my||3)}px;font-weight:700;font-size:118px;letter-spacing:-.06em;line-height:.85;color:${C.coral};opacity:.55">LOWTIDE</div>
+   <div class="abs" style="left:32px;right:32px;top:150px">${DAYS.map(D=>`<div style="border-top:4px solid ${C.ink};padding:10px 0 12px;display:flex;gap:16px"><div style="width:84px;font-weight:700;font-size:26px;line-height:1">${D.k}<div style="font-weight:400;font-size:22px">${D.date}</div></div><div style="flex:1;font-weight:700;font-size:${o.fs||31}px;line-height:1.02;letter-spacing:-.02em;text-transform:uppercase">${D.acts.slice(0,5).map(a=>a[1]).join(' · ')}</div></div>`).join('')}</div>
+   <div class="abs" style="left:32px;right:32px;bottom:34px;display:flex;justify-content:space-between;font-weight:700;font-size:21px;letter-spacing:.06em"><span>MOUNT LAVINIA BEACH</span><span>LOWTIDE.LK</span></div>
+   <div class="abs" style="right:28px;bottom:80px;width:120px;height:120px;border-radius:50%;background:${C.ink};color:${bg};display:grid;place-items:center;text-align:center;font-weight:700;font-size:20px;line-height:1.05;transform:rotate(-12deg)">3 DAYS<br>2 TIDES</div>`,bg)},
+ pixel:(o={})=>{let px='';SEED=o.seed||5;const cols=[C.coral,C.tq,C.paper,C.ind];for(let y=0;y<16;y++)for(let x=0;x<20;x++){const wv=Math.sin(x/20*Math.PI*2+y*0.25)*2.4+8;if(y>wv&&rand()<.92){const ci=y<wv+2?0:y<wv+5?1:y<wv+8?3:2;px+=`<rect x="${x*30}" y="${y*30}" width="29" height="29" fill="${cols[ci]}" opacity="${.7+rand()*.3}"/>`}}
+   return wrap(`
+   <svg class="abs" style="left:0;top:330px" width="600" height="480">${px}</svg>
+   <div class="abs hj" style="left:28px;top:16px;font-size:190px;line-height:.82;color:${C.paper};letter-spacing:.01em">LOW<br>TIDE</div>
+   <div class="abs hj" style="right:30px;top:40px;font-size:120px;line-height:1;color:${C.coral}">27</div>
+   <div class="abs" style="left:30px;bottom:30px;right:30px;display:flex;justify-content:space-between;color:${C.ink};font-weight:700;font-size:22px;letter-spacing:.05em;background:${C.paper};padding:12px 14px"><span>20—22.02.2027</span><span>COLOMBO</span></div>`,C.ink)},
+ sun:(o={})=>{const c=o.col||C.coral;return wrap(`
+   <div class="ht mul" style="--c:${c};--s:14px;left:60px;top:90px;width:480px;height:480px;border-radius:50%;-webkit-mask-image:radial-gradient(circle at 50% 40%,#000 30%,rgba(0,0,0,.35) 70%,transparent 72%)"></div>
+   <div class="abs mul" style="left:${66+(o.mx||6)}px;top:${96+(o.my||4)}px;width:480px;height:240px;border-radius:240px 240px 0 0;border:5px solid ${C.ink};border-bottom:0;opacity:.85"></div>
+   <div class="abs" style="left:0;right:0;top:340px">${Array.from({length:9},(_,i)=>`<div style="height:${10+i*3}px;margin-bottom:${16-i}px;background:${C.ind};opacity:.92" class="mul"></div>`).join('')}</div>
+   <div class="abs" style="left:34px;top:36px;font-weight:700;font-size:40px;letter-spacing:-.02em;color:${C.ink}">LOWTIDE <span style="font-weight:400">2027</span></div>
+   <div class="abs" style="left:34px;bottom:96px;font-weight:700;font-size:92px;letter-spacing:-.05em;line-height:.88;color:${C.ink}">TWO<br>TIDES</div>
+   <div class="abs" style="right:34px;bottom:100px;text-align:right;font-size:24px;font-weight:500;line-height:1.3;color:${C.ink}">HIGH 05:48<br>LOW 12:02<br>HIGH 18:20</div>
+   <div class="abs" style="left:34px;right:34px;bottom:34px;font-weight:700;font-size:21px;letter-spacing:.06em;display:flex;justify-content:space-between;border-top:4px solid ${C.ink};padding-top:12px"><span>20—22 FEB</span><span>MT. LAVINIA · COLOMBO</span></div>`,o.bg||C.sand)}
+};
+function place(parent,html,x,y,scale,rot,z,extra=''){const d=document.createElement('div');d.className='abs';d.style.cssText=`left:${x}px;top:${y}px;transform:rotate(${rot}deg);z-index:${z};filter:drop-shadow(2px 4px 3px rgba(0,0,0,.45));${extra}`;d.innerHTML=`<div style="width:${600*scale}px;height:${840*scale}px;position:relative">${html.replace('class="pst" style="','class="pst" style="transform:scale('+scale+');')}</div>`;parent.appendChild(d);return d}
+function tape(parent,x,y,rot,z){const t=document.createElement('div');t.className='tape';t.style.cssText=`left:${x}px;top:${y}px;transform:rotate(${rot}deg);z-index:${z}`;parent.appendChild(t)}
+function staple(parent,x,y,rot,z){const t=document.createElement('div');t.className='staple';t.style.cssText=`left:${x}px;top:${y}px;transform:rotate(${rot}deg);z-index:${z}`;parent.appendChild(t)}
+/* ===/LIB-JS=== */
+
+const wall=document.getElementById('wall');
+SEED=29;
+const kinds=[()=>P.type({}),()=>P.tide({day:0,id:'a'}),()=>P.lineup({}),()=>P.pixel({seed:3}),()=>P.sun({}),()=>P.tide({day:1,id:'b'}),()=>P.type({col:C.tq,col2:C.coral,bg:C.sand}),()=>P.lineup({bg:C.coral,fs:30}),()=>P.tide({day:2,id:'c'}),()=>P.pixel({seed:9})];
+const sc=.46,pw=600*sc,ph=840*sc;let z=1;
+for(let r=0;r<6;r++){const run=Math.floor(rand()*kinds.length);
+  for(let c=0;c<5;c++){
+    const kind=(c%2===0&&rand()<.5)?Math.floor(rand()*kinds.length):run;
+    const x=-90+c*(pw-8)+(r%2)*70+rand()*10, y=-70+r*(ph-40)+rand()*14;
+    SEED=Math.floor(rand()*1e6)+1;
+    place(wall,kinds[kind](),x,y,sc,(rand()-.5)*2.4,z++);
+  }}
+place(wall,P.type({}),150,260,1.0,-1.6,101);
+place(wall,P.tide({day:1,id:'h1'}),80,1040,.66,3,102);
+place(wall,P.pixel({seed:21}),560,980,.7,-2.5,100);
+place(wall,P.sun({}),640,120,.5,4,99);
+tape(wall,300,250,-5,120);tape(wall,620,240,7,120);tape(wall,150,1030,-9,120);tape(wall,860,1590,5,120);
+staple(wall,580,1000,90,121);staple(wall,960,1010,84,121);staple(wall,120,1580,92,121);staple(wall,500,1580,88,121);
+window.__ready=true;
+</script>
+
+<!-- paste wrinkles over everything -->
+<svg class="abs" style="inset:0;z-index:200;mix-blend-mode:multiply;opacity:.55;pointer-events:none" width="1080" height="1920">
+  <filter id="wr" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="4" seed="17" result="t"/><feDiffuseLighting in="t" surfaceScale="5" lighting-color="#fff"><feDistantLight azimuth="300" elevation="55"/></feDiffuseLighting></filter>
+  <rect width="1080" height="1920" filter="url(#wr)"/>
+</svg>
+<!-- floodlight from top right + night falloff -->
+<div class="abs" style="inset:0;z-index:201;background:radial-gradient(ellipse 75% 55% at 60% 22%,rgba(255,214,150,.20),rgba(255,214,150,0) 60%);mix-blend-mode:screen"></div>
+<div class="abs" style="inset:0;z-index:202;background:radial-gradient(ellipse 80% 62% at 50% 40%,rgba(0,0,0,0) 38%,rgba(5,8,14,.55) 70%,rgba(5,8,14,.88) 100%)"></div>
+<div class="abs" style="left:0;right:0;bottom:0;height:220px;z-index:203;background:linear-gradient(180deg,rgba(5,8,14,0),rgba(5,8,14,.7))"></div>
+<svg class="abs" style="inset:0;z-index:204;opacity:.22;mix-blend-mode:overlay" width="1080" height="1920"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</body></html>

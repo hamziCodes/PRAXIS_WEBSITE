@@ -1,0 +1,112 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Oleum — product page on a phone</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-style:italic;src:url(../../../briefs/v6/fonts/NeueMontreal-Italic.otf)}
+html,body{margin:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#cfc8bc;perspective:3000px;perspective-origin:800px 700px}
+#bg{position:absolute;inset:0}
+.ph{position:absolute;left:430px;top:170px;width:760px;height:1580px;border-radius:112px;background:#1d1e1c;
+  box-shadow:0 0 0 5px #8b8f8c,0 0 0 9px #2e2f2d, 60px 80px 90px rgba(40,34,24,.35);transform:rotateY(-9deg) rotateX(4deg) rotateZ(-1.5deg);transform-style:preserve-3d}
+.scr{position:absolute;inset:26px;border-radius:88px;overflow:hidden;background:#F7F2E9;font-family:NM;color:#2F3A2F}
+.isl{position:absolute;left:50%;top:26px;width:200px;height:58px;margin-left:-100px;background:#000;border-radius:30px;z-index:5}
+.sb{display:flex;justify-content:space-between;padding:36px 66px 0;font:600 30px 'Segoe UI';color:#2F3A2F;position:relative;z-index:4}
+.top{display:flex;align-items:center;justify-content:space-between;padding:30px 44px 16px}
+.top b{font:700 46px Georgia,serif}
+.hero{position:relative;height:640px;margin:0 0 0}
+.hero svg{position:absolute;inset:0}
+.dots{position:absolute;bottom:22px;left:0;right:0;display:flex;justify-content:center;gap:10px}
+.dots i{width:12px;height:12px;border-radius:50%;background:#fff;opacity:.5}.dots i:first-child{opacity:1}
+.chip{position:absolute;left:30px;top:30px;background:rgba(247,242,233,.92);border-radius:99px;padding:12px 22px;font:500 22px NM}
+.body{padding:34px 44px}
+h1{margin:0;font:700 62px/1.0 Georgia,serif;letter-spacing:-.01em}
+.sub{font:italic 400 27px NM;color:#6b7a4f;margin-top:10px}
+.pr{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px;font:400 24px NM;color:#5b6658}
+.pr b{font:700 46px Georgia,serif;color:#2F3A2F}
+.recipe{margin-top:26px;border-top:1.5px solid #ddd3c0;padding-top:20px}
+.recipe h4{margin:0;font:500 20px NM;letter-spacing:5px;color:#8A9A5B}
+.row{display:grid;grid-template-columns:120px 1fr;padding:12px 0;font:400 27px/1.3 NM;border-bottom:1px solid #ebe3d3}
+.row span{font:500 21px NM;letter-spacing:3px;color:#8a8f80;padding-top:5px}
+.finder{margin-top:24px;background:#E8DCC8;border-radius:24px;padding:24px 26px;display:flex;justify-content:space-between;align-items:center;font:400 25px/1.3 NM}
+.finder b{display:block;font:700 30px Georgia,serif}
+.cta{position:absolute;left:0;right:0;bottom:0;padding:22px 34px 48px;background:linear-gradient(180deg,rgba(247,242,233,0),#F7F2E9 26%)}
+.cta .btn{background:#2F3A2F;color:#F7F2E9;border-radius:22px;padding:30px;text-align:center;font:500 32px NM}
+.cta .note{text-align:center;font:400 22px NM;color:#5b6658;margin-top:14px}
+.glare{position:absolute;inset:0;border-radius:88px;background:linear-gradient(120deg,rgba(255,255,255,0) 40%,rgba(255,255,255,.14) 50%,rgba(255,255,255,0) 60%);z-index:6}
+</style></head>
+<body>
+<svg id="bg" width="1600" height="2000">
+  <defs>
+    <linearGradient id="w" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e2dfd8"/><stop offset=".6" stop-color="#cbc4b8"/><stop offset="1" stop-color="#b1a898"/></linearGradient>
+    <linearGradient id="c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cbc3b4"/><stop offset="1" stop-color="#e3dccd"/></linearGradient>
+    <filter id="b30" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="b18" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="18"/></filter>
+    <filter id="lime" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".006 .04" numOctaves="4" seed="22"/><feColorMatrix type="matrix" values="0 0 0 0 .55 0 0 0 0 .52 0 0 0 0 .47 0 0 0 1.5 -.7"/></filter>
+    <linearGradient id="oilB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7a4a08"/><stop offset=".4" stop-color="#f2c24a"/><stop offset="1" stop-color="#6e3f05"/></linearGradient>
+  </defs>
+  <rect width="1600" height="1180" fill="url(#w)"/>
+  <path d="M-100 -50 L700 -50 L560 1180 L-100 1180Z" fill="#f5f7f7" opacity=".55" filter="url(#b30)"/>
+  <rect y="1170" width="1600" height="830" fill="url(#c)"/>
+  <rect y="1170" width="1600" height="830" filter="url(#lime)" opacity=".3"/>
+  <!-- bottles behind the phone, out of focus -->
+  <g filter="url(#b18)">
+    <rect x="1130" y="420" width="300" height="780" rx="40" fill="url(#oilB)" opacity=".9"/>
+    <rect x="1130" y="420" width="300" height="200" rx="40" fill="#e9e5dc" opacity=".8"/>
+    <rect x="1240" y="270" width="80" height="160" fill="#151515"/>
+    <rect x="1160" y="760" width="240" height="300" fill="#f2ecdf"/>
+    <rect x="120" y="640" width="250" height="560" rx="30" fill="#25401f"/>
+    <rect x="200" y="480" width="90" height="170" fill="#2a2a22"/>
+    <rect x="140" y="860" width="210" height="220" fill="#f2ecdf"/>
+  </g>
+  <!-- caustic from the clear bottle -->
+  <ellipse cx="1420" cy="1300" rx="260" ry="50" fill="#ffc54a" opacity=".45" filter="url(#b30)"/>
+  <!-- phone shadow on the counter -->
+  <ellipse cx="900" cy="1760" rx="480" ry="60" fill="#2a241b" opacity=".35" filter="url(#b30)"/>
+</svg>
+<div class="ph">
+  <div class="scr">
+    <div class="isl"></div>
+    <div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+    <div class="top"><span style="font:400 40px NM">≡</span><b>Oleum</b><span style="font:500 26px NM;border:2.5px solid #2F3A2F;border-radius:12px;padding:4px 12px">Bag 1</span></div>
+    <div class="hero">
+      <svg viewBox="0 0 708 640" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="pool" cx=".45" cy=".45" r=".7"><stop offset="0" stop-color="#ffe7a0"/><stop offset=".35" stop-color="#f0b43a"/><stop offset=".75" stop-color="#b8700f"/><stop offset="1" stop-color="#6a3a06"/></radialGradient>
+          <filter id="swirl" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".008 .02" numOctaves="3" seed="6" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="90" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <filter id="sh" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".0035 .006" numOctaves="2" seed="9" result="t"/>
+            <feSpecularLighting in="t" surfaceScale="9" specularConstant=".9" specularExponent="40" lighting-color="#fff6d8" result="s"><feDistantLight azimuth="225" elevation="48"/></feSpecularLighting>
+            <feComposite in="s" in2="SourceAlpha" operator="in"/></filter>
+          <filter id="b2"><feGaussianBlur stdDeviation="2"/></filter>
+        </defs>
+        <rect width="708" height="640" fill="url(#pool)"/>
+        <g filter="url(#swirl)" opacity=".45" style="filter:url(#swirl) blur(14px)"><path d="M-40 200 C 150 120 300 300 500 220 S 760 160 760 160" stroke="#ffeab0" stroke-width="40" fill="none"/><path d="M-40 420 C 160 360 320 520 520 430 S 760 380 760 380" stroke="#8a4f08" stroke-width="50" fill="none"/></g>
+        <rect width="708" height="640" fill="#000" filter="url(#sh)" opacity=".55"/>
+        <g><circle cx="210" cy="250" r="26" fill="#ffe9a8" opacity=".25"/><circle cx="480" cy="400" r="38" fill="#ffe9a8" opacity=".22"/><circle cx="560" cy="200" r="16" fill="#ffe9a8" opacity=".2"/></g><g fill="none" stroke="#fff4cc" stroke-width="3" opacity=".85"><circle cx="210" cy="250" r="26"/><circle cx="250" cy="282" r="9"/><circle cx="480" cy="400" r="38"/><circle cx="528" cy="366" r="11"/><circle cx="560" cy="200" r="16"/><circle cx="330" cy="500" r="12"/></g><g fill="none" stroke="#8a4f08" stroke-width="3" opacity=".5"><path d="M190 266 a26 26 0 0 0 40 6"/><path d="M452 424 a38 38 0 0 0 58 6"/></g>
+        <g fill="#fff" opacity=".95"><ellipse cx="200" cy="238" rx="8" ry="5"/><ellipse cx="466" cy="380" rx="11" ry="6"/><ellipse cx="554" cy="193" rx="5" ry="3"/><circle cx="326" cy="495" r="3"/></g>
+        <!-- a drop falling from a pipette tip -->
+        <path d="M330 -10 L330 70" stroke="#1f201c" stroke-width="22"/>
+        <path d="M330 70 C 316 100 312 120 330 134 C 348 120 344 100 330 70Z" fill="#f4c04a"/><path d="M324 100 C 322 110 324 120 330 124" stroke="#fff" stroke-width="3" fill="none" opacity=".8"/>
+        <ellipse cx="330" cy="300" rx="60" ry="16" fill="#fff3c8" opacity=".35" filter="url(#b2)"/>
+      </svg>
+      <div class="chip">Macro · actual texture</div>
+      <div class="dots"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="body">
+      <h1>Face Oil · Rosehip</h1>
+      <div class="sub">Thin, dry finish. Sinks in within a minute.</div>
+      <div class="pr"><span>30 ml · 3 ingredients</span><b>£38</b></div>
+      <div class="recipe">
+        <h4>HOW IT SMELLS</h4>
+        <div class="row"><span>TOP</span>Green rosehip, cut tomato leaf</div>
+        <div class="row"><span>HEART</span>Dried apricot</div>
+        <div class="row"><span>BASE</span>Warm hay, a little earth</div>
+      </div>
+      <div class="finder"><div><b>Not sure it's yours?</b>Four questions, one answer.</div><span style="font:500 40px NM">→</span></div>
+    </div>
+    <div class="cta"><div class="btn">Add to bag · £38</div><div class="note">First order: the other three come free as 5 ml samples</div></div>
+  </div>
+  <div class="glare"></div>
+</div>
+</body></html>

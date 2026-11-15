@@ -1,0 +1,145 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Kora Home — one-visit rooms catalogue</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-weight:700;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf)}
+html,body{margin:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#4a3324;perspective:3400px;perspective-origin:800px 400px}
+#tbl{position:absolute;inset:0}
+.w3{position:absolute;inset:0;transform-style:preserve-3d}
+.plane{position:absolute;left:-300px;top:-200px;width:2200px;height:2600px;transform-origin:50% 50%;transform:rotateX(18deg);transform-style:preserve-3d}
+.cover{position:absolute;left:1020px;top:180px;width:700px;height:990px;background:#3D405B;transform:translateZ(2px) rotate(11deg);box-shadow:20px 30px 40px rgba(20,10,5,.45);font-family:NM;color:#F4F1DE;overflow:hidden}
+.spread{position:absolute;left:340px;top:600px;width:1520px;height:1060px;transform:translateZ(14px) rotate(-5deg) scale(.86);transform-style:preserve-3d;display:flex;box-shadow:30px 50px 60px rgba(20,10,5,.5)}
+.pg{position:relative;flex:1;overflow:hidden;font-family:NM;color:#2b2d40}
+.pg.l{background:#F4F1DE}
+.pg.r{background:#F7F4E6;padding:70px 64px 0 70px;box-sizing:border-box}
+.gut{position:absolute;top:0;bottom:0;width:120px;pointer-events:none}
+.it{display:grid;grid-template-columns:34px 84px 1fr auto;gap:0 16px;align-items:center;padding:12px 0;border-bottom:1px solid #ddd6bf;font:400 17px/1.3 NM;color:#55576e}
+.it b{display:block;font:500 19px NM;color:#2b2d40}
+.it .n{font:700 17px NM;color:#E07A5F}
+.it .pr{font:500 19px NM;color:#2b2d40;white-space:nowrap}
+.th{width:84px;height:58px;background:#ebe5cf;border-radius:4px;position:relative;overflow:hidden}
+</style></head>
+<body>
+<svg id="tbl" width="1600" height="2000">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".0025 .045" numOctaves="5" seed="31" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 .2 0 0 0 0 .12 0 0 0 0 .06 0 0 0 1.6 -.6"/>
+    </filter>
+    <linearGradient id="wd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7a5236"/><stop offset=".5" stop-color="#6a452c"/><stop offset="1" stop-color="#4a2f1e"/></linearGradient>
+  </defs>
+  <rect width="1600" height="2000" fill="url(#wd)"/>
+  <rect width="1600" height="2000" filter="url(#grain)" transform="translate(-300 -300) rotate(-6 1100 1300) scale(1.4)" opacity=".8"/>
+</svg>
+<div class="w3"><div class="plane">
+  <!-- a closed copy, cover up -->
+  <div class="cover">
+    <svg style="position:absolute;right:-60px;bottom:-40px" width="600" height="700" viewBox="0 0 60 70"><path d="M8 66 V30 a22 22 0 0 1 44 0 V66" fill="none" stroke="#E07A5F" stroke-width="5"/><path d="M19 66 V32 a11 11 0 0 1 22 0 V66" fill="none" stroke="#E07A5F" stroke-width="5"/></svg>
+    <div style="position:absolute;left:60px;top:70px;font:500 22px NM;letter-spacing:6px;color:#E07A5F">AUTUMN · WINTER 2026</div>
+    <div style="position:absolute;left:56px;top:130px;font:700 110px/0.92 NM;letter-spacing:-4px">Kora<br>Home</div>
+    <div style="position:absolute;left:60px;top:370px;font:400 40px/1.15 NM;color:#F4F1DE">One-visit rooms</div>
+    <div style="position:absolute;left:60px;top:420px;font:400 38px Dubai;color:#F4F1DE;direction:rtl">غرف الزيارة الواحدة</div>
+  </div>
+  <!-- the open spread -->
+  <div class="spread">
+    <div class="pg l">
+      <svg width="760" height="1060" viewBox="0 0 760 1060" style="position:absolute;inset:0">
+        <defs>
+          <linearGradient id="lw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f6ecd9"/><stop offset="1" stop-color="#eadbc0"/></linearGradient>
+          <linearGradient id="lf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b99a78"/><stop offset="1" stop-color="#d6bc9a"/></linearGradient>
+          <radialGradient id="pend" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#ffe2a8" stop-opacity=".8"/><stop offset="1" stop-color="#ffe2a8" stop-opacity="0"/></radialGradient>
+          <linearGradient id="oak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c79a6a"/><stop offset="1" stop-color="#9c7148"/></linearGradient>
+          <filter id="pb"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+        <!-- room photograph: dining room, one-point view -->
+        <rect width="760" height="1060" fill="url(#lw)"/>
+        <path d="M0 700 L760 700 L760 1060 L0 1060Z" fill="url(#lf)"/>
+        <path d="M0 1060 L250 700 M760 1060 L510 700 M380 1060 L380 700" stroke="#a5876a" stroke-width="1.2" opacity=".4"/>
+        <!-- arched niche with sideboard -->
+        <path d="M250 700 L250 380 A130 130 0 0 1 510 380 L510 700Z" fill="#3D405B"/>
+        <path d="M270 700 L270 384 A110 110 0 0 1 490 384 L490 700Z" fill="#363950"/>
+        <rect x="280" y="560" width="200" height="110" fill="#6b4a33"/><rect x="280" y="556" width="200" height="8" fill="#8a6446"/>
+        <path d="M290 670 l6 30 M470 670 l-6 30" stroke="#3a281c" stroke-width="5"/>
+        <path d="M340 556 C 336 520 350 500 356 470 C 362 500 376 520 372 556Z" fill="#E07A5F"/>
+        <ellipse cx="430" cy="545" rx="32" ry="12" fill="#efe6d2"/>
+        <!-- table + chairs -->
+        <path d="M60 790 L700 790 L740 860 L20 860Z" fill="#b58457"/><rect x="20" y="860" width="720" height="26" fill="#8e6340"/>
+        <rect x="70" y="886" width="16" height="140" fill="#7a5233"/><rect x="674" y="886" width="16" height="140" fill="#7a5233"/>
+        <g fill="#F4F1DE" stroke="#cbbf9f" stroke-width="2">
+          <path d="M110 700 C 110 660 170 660 170 700 L172 790 L108 790Z"/><path d="M250 700 C 250 660 310 660 310 700 L312 790 L248 790Z"/><path d="M450 700 C 450 660 510 660 510 700 L512 790 L448 790Z"/><path d="M590 700 C 590 660 650 660 650 700 L652 790 L588 790Z"/>
+        </g>
+        <g fill="#E07A5F"><rect x="40" y="900" width="110" height="140" rx="20"/><rect x="610" y="900" width="110" height="140" rx="20"/></g>
+        <!-- table setting -->
+        <g fill="#fbf8ef"><ellipse cx="160" cy="820" rx="40" ry="10"/><ellipse cx="300" cy="820" rx="40" ry="10"/><ellipse cx="460" cy="820" rx="40" ry="10"/><ellipse cx="600" cy="820" rx="40" ry="10"/></g>
+        <g fill="#c79a3a"><path d="M370 818 C 368 790 376 770 380 760 C 384 770 392 790 390 818Z"/></g>
+        <rect x="200" y="806" width="16" height="16" fill="#3D405B" opacity=".6"/><rect x="540" y="806" width="16" height="16" fill="#3D405B" opacity=".6"/>
+        <!-- pendant -->
+        <line x1="380" y1="0" x2="380" y2="470" stroke="#2b2b2b" stroke-width="2"/>
+        <path d="M300 520 Q 380 440 460 520Z" fill="#c9a66b"/><ellipse cx="380" cy="520" rx="80" ry="10" fill="#ffe9b8"/>
+        <ellipse cx="380" cy="640" rx="320" ry="240" fill="url(#pend)"/>
+        <!-- window light from the left -->
+        <path d="M0 0 L180 0 L120 1060 L0 1060Z" fill="#fff6dc" opacity=".25" filter="url(#pb)"/>
+        <!-- callout numbers on the photograph -->
+        <g font-family="NM" font-weight="700" font-size="17" fill="#fff">
+          <g transform="translate(380,870)"><circle r="17" fill="#E07A5F"/><text x="-5" y="6">1</text></g>
+          <g transform="translate(140,700)"><circle r="17" fill="#E07A5F"/><text x="-5" y="6">2</text></g>
+          <g transform="translate(460,480)"><circle r="17" fill="#E07A5F"/><text x="-5" y="6">3</text></g>
+          <g transform="translate(480,600)"><circle r="17" fill="#E07A5F"/><text x="-5" y="6">4</text></g>
+          <g transform="translate(680,1000)"><circle r="17" fill="#E07A5F"/><text x="-5" y="6">5</text></g>
+          <g transform="translate(600,836)"><circle r="17" fill="#E07A5F"/><text x="-5" y="6">6</text></g>
+        </g>
+        <text x="40" y="1040" font-family="NM" font-size="14" fill="#55576e">24</text>
+      </svg>
+    </div>
+    <div class="pg r">
+      <div style="display:flex;justify-content:space-between;font:500 14px NM;letter-spacing:4px;color:#E07A5F"><span>ONE-VISIT ROOMS</span><span style="font-family:Dubai;letter-spacing:0;font-size:17px">غرف الزيارة الواحدة</span></div>
+      <div style="font:700 80px/0.95 NM;letter-spacing:-3px;margin-top:34px">Room 03</div>
+      <div style="font:400 36px/1.1 NM;letter-spacing:-.5px;margin-top:10px;color:#3D405B">Friday lunch, for eight.</div>
+      <div style="font:400 30px Dubai;direction:rtl;text-align:right;margin-top:-34px;color:#3D405B">غداء الجمعة لثمانية</div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:30px;padding:20px 0;border-top:2px solid #2b2d40;border-bottom:2px solid #2b2d40">
+        <div style="font:400 17px/1.35 NM;color:#55576e">Everything on the left,<br>delivered and built in 48 hours</div>
+        <div style="font:700 50px NM;letter-spacing:-1.5px">QAR 12,500</div>
+      </div>
+      <div style="margin-top:10px">
+        <div class="it"><span class="n">1</span><span class="th"><svg width="84" height="58"><rect x="8" y="22" width="68" height="8" fill="#b58457"/><rect x="14" y="30" width="5" height="22" fill="#7a5233"/><rect x="65" y="30" width="5" height="22" fill="#7a5233"/></svg></span><div><b>Sidra dining table</b>Solid oak, 240 × 100 cm</div><span class="pr">4,200</span></div>
+        <div class="it"><span class="n">2</span><span class="th"><svg width="84" height="58"><path d="M32 10 C 32 0 52 0 52 10 L53 40 L31 40Z" fill="#F4F1DE" stroke="#cbbf9f"/><rect x="31" y="40" width="22" height="5" fill="#cbbf9f"/><path d="M33 45 l-2 10 M51 45 l2 10" stroke="#7a5233" stroke-width="2"/></svg></span><div><b>Noor chair × 8</b>Ash and cream linen</div><span class="pr">3,840</span></div>
+        <div class="it"><span class="n">3</span><span class="th"><svg width="84" height="58"><line x1="42" y1="0" x2="42" y2="22" stroke="#333"/><path d="M22 38 Q 42 14 62 38Z" fill="#c9a66b"/></svg></span><div><b>Qamar pendant</b>Brass, Ø 60 cm</div><span class="pr">980</span></div>
+        <div class="it"><span class="n">4</span><span class="th"><svg width="84" height="58"><rect x="12" y="18" width="60" height="26" fill="#6b4a33"/><rect x="12" y="16" width="60" height="4" fill="#8a6446"/></svg></span><div><b>Dana sideboard</b>Walnut, 160 cm</div><span class="pr">1,650</span></div>
+        <div class="it"><span class="n">5</span><span class="th"><svg width="84" height="58"><rect x="10" y="12" width="64" height="36" fill="#E07A5F"/><rect x="16" y="18" width="52" height="24" fill="none" stroke="#F4F1DE" stroke-width="2"/></svg></span><div><b>Bayt rug</b>Wool, 200 × 300 cm</div><span class="pr">1,450</span></div>
+        <div class="it"><span class="n">6</span><span class="th"><svg width="84" height="58"><ellipse cx="42" cy="34" rx="28" ry="10" fill="#fbf8ef" stroke="#cbbf9f"/><ellipse cx="42" cy="32" rx="16" ry="5" fill="none" stroke="#3D405B"/></svg></span><div><b>Sufra dinner set for 8</b>Stoneware, 32 pieces</div><span class="pr">380</span></div>
+      </div>
+      <div style="margin-top:22px;display:flex;gap:16px;align-items:center;font:400 16px/1.35 NM;color:#55576e">
+        <div style="flex:0 0 auto;background:#3D405B;color:#F4F1DE;padding:12px 16px;font:500 16px NM">Scan in store to plan it in your room</div>
+        <div>Or QAR 1,042 a month for 12 months, 0%.<br>Prices in Qatari riyals, including assembly.</div>
+      </div>
+      <div style="position:absolute;right:64px;bottom:22px;font:400 14px NM;color:#55576e">25</div>
+    </div>
+    <!-- gutter shading & page curvature -->
+    <div class="gut" style="left:700px;background:linear-gradient(90deg,rgba(0,0,0,0),rgba(40,25,10,.28) 50%,rgba(0,0,0,0))"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(255,255,255,.06) 20%,rgba(0,0,0,0) 40%,rgba(0,0,0,.0) 60%,rgba(255,255,255,.08) 80%,rgba(0,0,0,.1))"></div>
+  </div>
+  <!-- a cup of qahwa beside it -->
+  <svg style="position:absolute;left:1380px;top:1640px;transform:translateZ(1px)" width="300" height="240" viewBox="0 0 300 240">
+    <ellipse cx="150" cy="150" rx="120" ry="80" fill="#1a0f08" opacity=".35" style="filter:blur(12px)"/>
+    <ellipse cx="140" cy="120" rx="110" ry="74" fill="#f4f1de"/><ellipse cx="140" cy="120" rx="90" ry="58" fill="none" stroke="#E07A5F" stroke-width="4"/>
+    <ellipse cx="140" cy="112" rx="52" ry="36" fill="#f9f6ea"/><ellipse cx="140" cy="112" rx="42" ry="28" fill="#b58a3c"/><ellipse cx="130" cy="104" rx="14" ry="6" fill="#e9c97a" opacity=".7"/>
+  </svg>
+</div></div>
+<!-- mashrabiya light falling across the table and pages -->
+<svg style="position:absolute;inset:0;pointer-events:none" width="1600" height="2000">
+  <defs>
+    <pattern id="mash" width="90" height="90" patternUnits="userSpaceOnUse" patternTransform="rotate(-24) skewX(18) scale(1.15 .82)">
+      <rect width="90" height="90" fill="#000"/>
+      <path d="M45 8 L54 32 L80 24 L64 45 L80 66 L54 58 L45 82 L36 58 L10 66 L26 45 L10 24 L36 32Z" fill="#fff"/>
+    </pattern>
+    <mask id="mm"><rect width="1600" height="2000" fill="url(#mash)"/></mask>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd9a0" stop-opacity="0"/><stop offset=".35" stop-color="#ffd9a0" stop-opacity=".2"/><stop offset=".7" stop-color="#ffd9a0" stop-opacity=".14"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></linearGradient>
+    <filter id="sb"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <g mask="url(#mm)" filter="url(#sb)"><path d="M-200 900 L700 300 L1800 1300 L900 2200Z" fill="url(#fade)"/></g>
+  <rect width="1600" height="2000" fill="#1a0f08" opacity=".12"/>
+</svg>
+</body></html>

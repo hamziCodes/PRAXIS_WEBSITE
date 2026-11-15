@@ -1,0 +1,230 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Oleum — oils on a limestone counter, London light</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-style:italic;src:url(../../../briefs/v6/fonts/NeueMontreal-Italic.otf)}
+html,body{margin:0}
+body{width:1080px;height:1920px;overflow:hidden;background:#cfc8bc}
+svg{display:block}
+</style></head>
+<body>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9d6cf"/><stop offset=".55" stop-color="#cdc7bc"/><stop offset="1" stop-color="#b8b0a3"/></linearGradient>
+  <linearGradient id="wallV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".12"/><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".06"/></linearGradient>
+  <filter id="plaster" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".008 .012" numOctaves="5" seed="14" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="1.6" lighting-color="#fff"><feDistantLight azimuth="180" elevation="40"/></feDiffuseLighting>
+    <feComposite in2="SourceGraphic" operator="arithmetic" k1=".45" k2="0" k3=".62" k4="0"/>
+  </filter>
+  <filter id="lime" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".004 .03" numOctaves="5" seed="22" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .55 0 0 0 0 .52 0 0 0 0 .47 0 0 0 1.6 -.7" result="c"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".25 .9" numOctaves="2" seed="5" result="sp"/>
+    <feColorMatrix in="sp" type="matrix" values="0 0 0 0 .45 0 0 0 0 .42 0 0 0 0 .38 0 0 0 -6 3.1" result="sp2"/>
+    <feMerge><feMergeNode in="c"/><feMergeNode in="sp2"/></feMerge>
+  </filter>
+  <linearGradient id="counter" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9c2b4"/><stop offset=".25" stop-color="#d8d1c3"/><stop offset="1" stop-color="#e2dccf"/></linearGradient>
+  <radialGradient id="winGlow" cx=".2" cy=".35" r=".6"><stop offset="0" stop-color="#f4f7f8" stop-opacity=".95"/><stop offset=".6" stop-color="#eef2f3" stop-opacity=".35"/><stop offset="1" stop-color="#eef2f3" stop-opacity="0"/></radialGradient>
+  <filter id="b2"><feGaussianBlur stdDeviation="2"/></filter>
+  <filter id="b5" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+  <filter id="b10" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10"/></filter>
+  <filter id="b24" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="24"/></filter>
+  <filter id="b40" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="40"/></filter>
+  <filter id="paper" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="2" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale=".8" lighting-color="#fff"><feDistantLight azimuth="200" elevation="55"/></feDiffuseLighting>
+    <feComposite in2="SourceGraphic" operator="arithmetic" k1=".35" k2="0" k3=".72" k4="0" result="m"/>
+    <feComposite in="m" in2="SourceAlpha" operator="in"/>
+  </filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="9"/><feColorMatrix type="saturate" values="0"/></filter>
+</defs>
+
+<!-- wall with the light of a sash window falling on it -->
+<rect width="1080" height="1190" fill="url(#wall)"/>
+<rect width="1080" height="1190" fill="url(#wall)" filter="url(#plaster)"/>
+<g id="winlight" filter="url(#b24)"></g>
+<rect width="1080" height="1190" fill="url(#wallV)"/>
+<!-- counter -->
+<rect y="1180" width="1080" height="740" fill="url(#counter)"/>
+<rect y="1180" width="1080" height="740" filter="url(#lime)" opacity=".35"/>
+<rect y="1176" width="1080" height="10" fill="#8f877a" opacity=".35" filter="url(#b2)"/>
+<path d="M0 960 L900 940 L2400 1000 L2400 1350 L0 1350Z" fill="#f3f5f4" opacity=".0"/>
+<g id="floorlight" filter="url(#b40)"></g>
+<g id="stage" transform="translate(540 1420) scale(1.32) translate(-1230 -1160)"><g id="shadows"></g>
+<g id="objects"></g></g>
+<rect width="1080" height="1920" filter="url(#grain)" opacity=".05"/>
+</svg>
+<script>
+window.__ready=false;
+const NS='http://www.w3.org/2000/svg',S=document.getElementById('s'),D=S.querySelector('defs');
+let gid=0;const uid=p=>p+(++gid);
+function E(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||S).appendChild(e);return e}
+function lg(stops,x2=1,y2=0){const id=uid('g');const g=E('linearGradient',{id,x1:0,y1:0,x2,y2},D);stops.forEach(([o,c,a])=>E('stop',{offset:o,'stop-color':c,'stop-opacity':a==null?1:a},g));return `url(#${id})`}
+function rg(stops,cx=.5,cy=.5,r=.5){const id=uid('r');const g=E('radialGradient',{id,cx,cy,r},D);stops.forEach(([o,c,a])=>E('stop',{offset:o,'stop-color':c,'stop-opacity':a==null?1:a},g));return `url(#${id})`}
+const G=(p,attrs={})=>E('g',attrs,p);
+let O=document.getElementById('objects'),SH=document.getElementById('shadows');
+
+// ---- window light on the wall: a sash window off to the left, glazing bars as soft shadows
+(function(){const w=document.getElementById('winlight');
+  E('path',{d:'M-100 80 L560 140 L520 1150 L-100 1170Z',fill:'#f6f8f8',opacity:.75},w);
+  E('rect',{x:-100,y:560,width:700,height:34,fill:'#a9a39a',opacity:.5,transform:'rotate(3 350 450)'},w);
+  E('rect',{x:220,y:80,width:30,height:1100,fill:'#a9a39a',opacity:.5,transform:'skewX(-4)'},w);
+  E('path',{d:'M-100 0 L2400 0 L2400 940 L-100 940Z',fill:rg([[0,'#f6f8f8',.25],[1,'#f6f8f8',0]],.15,.4,.7)},w);
+  const f=document.getElementById('floorlight');
+  E('path',{d:'M-200 1200 L700 1200 L1000 1920 L-200 1920Z',fill:'#f7f8f5',opacity:.45},f);
+})();
+
+// ---- generic round bottle builder (front orthographic, tiny top ellipse for 3/4 feel)
+function bottle(o){
+  const g=G(O);const {x,base,w,h,neckW,neckH,sh}=o;const L=x-w/2,Rr=x+w/2,top=base-h;
+  const r=o.r||22;
+  const body=`M${L} ${base-14} Q ${L} ${base} ${L+14} ${base} L${Rr-14} ${base} Q ${Rr} ${base} ${Rr} ${base-14} L${Rr} ${top+sh} C ${Rr} ${top+sh*.35} ${x+neckW/2+10} ${top+6} ${x+neckW/2} ${top} L${x+neckW/2} ${top-neckH} L${x-neckW/2} ${top-neckH} L${x-neckW/2} ${top} C ${x-neckW/2-10} ${top+6} ${L} ${top+sh*.35} ${L} ${top+sh}Z`;
+  const clip=uid('c');const cp=E('clipPath',{id:clip},D);E('path',{d:body},cp);
+  // glass base tint
+  E('path',{d:body,fill:o.glass},g);
+  const inner=G(g,{'clip-path':`url(#${clip})`});
+  // background seen through glass (refracted, mirrored light patch)
+  if(o.clear){E('rect',{x:L,y:top-neckH,width:w,height:h+neckH,fill:lg([[0,'#c9c3b8'],[.35,'#e4e3dd'],[.6,'#bdb5a8'],[1,'#a39b8f']])},inner)}
+  // liquid
+  if(o.fill){const ly=o.fill;
+    E('rect',{x:L,y:ly,width:w,height:base-ly,fill:o.liquid},inner);
+    E('rect',{x:L,y:ly,width:w,height:base-ly,fill:lg([[0,'#3d2203',.55],[.12,'#3d2203',0],[.7,'#000',0],[.92,'#2a1702',.45],[1,'#2a1702',.75]])},inner);
+    // hot core: light passing through the oil
+    E('ellipse',{cx:x-w*.08,cy:(ly+base)/2+20,rx:w*.24,ry:(base-ly)*.42,fill:o.core||'#ffe08a',opacity:.55,filter:'url(#b24)'},inner);
+    // meniscus
+    E('ellipse',{cx:x,cy:ly,rx:w/2,ry:o.tilt||9,fill:o.menisc||'#f3c45a',opacity:.9},inner);
+    E('path',{d:`M${L} ${ly} Q ${x} ${ly+(o.tilt||9)*2} ${Rr} ${ly}`,stroke:'#fff3c8','stroke-width':2,fill:'none',opacity:.7},inner);
+  }
+  // glass thickness at bottom
+  E('rect',{x:L,y:base-o.thick,width:w,height:o.thick,fill:o.bottomTint||'#000',opacity:.18},inner);
+  E('ellipse',{cx:x,cy:base-o.thick,rx:w*.42,ry:5,fill:'#fff',opacity:.35,filter:'url(#b2)'},inner);
+  // edge darkening + specular strips (window at left)
+  E('rect',{x:L,y:top-neckH,width:w,height:h+neckH,fill:lg([[0,'#000',.45],[.06,'#000',.05],[.5,'#000',0],[.9,'#000',.12],[1,'#000',.55]])},inner);
+  E('rect',{x:L+w*.1,y:top+sh*.6,width:w*.07,height:h-sh-30,fill:'#fff',opacity:o.spec||.75,rx:6,filter:'url(#b2)'},inner);
+  E('rect',{x:L+w*.21,y:top+sh*.7,width:w*.025,height:h-sh-60,fill:'#fff',opacity:.35,rx:3},inner);
+  E('rect',{x:Rr-w*.08,y:top+sh*.8,width:w*.03,height:h-sh-50,fill:'#fff',opacity:.3,rx:3,filter:'url(#b2)'},inner);
+  E('path',{d:`M${x-neckW/2+4} ${top-neckH+6} L${x-neckW/2+4} ${top+4}`,stroke:'#fff','stroke-width':4,opacity:.6},inner);
+  E('path',{d:`M${L+w*.14} ${top+sh*.45} C ${L+w*.22} ${top+sh*.1} ${x-neckW/2} ${top+8} ${x-neckW/2+3} ${top}`,stroke:'#fff','stroke-width':5,opacity:.55,fill:'none',filter:'url(#b2)'},inner);
+  E('path',{d:body,fill:'none',stroke:o.edge||'#2f2a20','stroke-width':1.6,opacity:.6},g);
+  return {g,L,Rr,top,neckTop:top-neckH,clip};
+}
+function label(g,{x,y,w,h,curve=.5,lines}){
+  const lb=G(g);
+  E('rect',{x:x-w/2,y,width:w,height:h,fill:'#f4efe3'},lb);
+  E('rect',{x:x-w/2,y,width:w,height:h,fill:'#f4efe3',filter:'url(#paper)'},lb);
+  lines(lb,x,y,w,h);
+  E('rect',{x:x-w/2,y,width:w,height:h,fill:lg([[0,'#3c3424',.5*curve],[.18,'#3c3424',.08*curve],[.42,'#fff',.1],[.75,'#3c3424',.05],[1,'#3c3424',.55*curve]])},lb);
+  return lb}
+function T(p,x,y,txt,a){return E('text',Object.assign({x,y,'text-anchor':'middle'},a),p).appendChild(document.createTextNode(txt))}
+const drop=(p,x,y,s,c)=>{E('path',{d:`M${x} ${y-14*s} C ${x+8*s} ${y-3*s} ${x+10*s} ${y+3*s} ${x+10*s} ${y+6*s} A ${10*s} ${10*s} 0 0 1 ${x-10*s} ${y+6*s} C ${x-10*s} ${y+3*s} ${x-8*s} ${y-3*s} ${x} ${y-14*s}Z`,fill:'none',stroke:c,'stroke-width':1.8*s},p)};
+
+// ===== shadows + caustics (light from the left, slightly behind) =====
+function castShadow(x,base,w,h,len,tint){
+  E('path',{d:`M${x-w*.45} ${base} L${x+w*.5} ${base} L${x+w*.5+len} ${base-len*.18} L${x-w*.2+len} ${base-len*.22}Z`,fill:tint||'#3b3226',opacity:.5,filter:'url(#b10)'},SH);
+  E('path',{d:`M${x-w*.45} ${base} L${x+w*.5} ${base} L${x+w*.5+len*.5} ${base-len*.09} L${x-w*.2+len*.5} ${base-len*.11}Z`,fill:tint||'#3b3226',opacity:.25,filter:'url(#b5)'},SH);
+  E('ellipse',{cx:x+6,cy:base,rx:w*.55,ry:8,fill:'#2a241b',opacity:.55,filter:'url(#b5)'},SH);
+}
+// tall clear body-oil bottle
+{const w=E('g',{id:'green',transform:'translate(160 -10)'},document.getElementById('stage'));SH=E('g',{},w);O=E('g',{},w);}
+// ===== tall dark-green bottle (Cleansing Oil, Camellia), set back a little =====
+castShadow(800,1060,190,600,520,'#1c2618');
+const b3=bottle({x:800,base:1060,w:190,h:520,neckW:56,neckH:70,sh:110,glass:'#1d3320',fill:600,liquid:lg([[0,'#1a1404'],[.3,'#4a3a0a'],[.5,'#6d5a14'],[1,'#151004']]),thick:20,spec:.55,core:'#a68a2a',menisc:'#4f4a18',edge:'#0a120a'});
+E('path',{d:b3.g.firstChild.getAttribute('d'),fill:'#27452a',opacity:.4},b3.g);
+(function(){const g=b3.g,x=800,t=b3.neckTop;
+  E('rect',{x:x-26,y:t-70,width:52,height:74,rx:4,fill:lg([[0,'#7a5a3a'],[.3,'#c09a6c'],[.6,'#9a7650'],[1,'#5a4028']])},g);
+  E('rect',{x:x-26,y:t-70,width:52,height:74,rx:4,filter:'url(#paper)',fill:'#b08a5e',opacity:.5},g);
+  E('rect',{x:x-30,y:t-8,width:60,height:10,rx:2,fill:'#2F3A2F'},g);
+})();
+label(b3.g,{x:800,y:760,w:150,h:230,curve:.9,lines:(p,x,y,w,h)=>{
+  E('text',{x,y:y+46,'text-anchor':'middle','font-family':'Georgia','font-weight':700,'font-size':32,fill:'#2F3A2F'},p).textContent='Oleum';
+  E('text',{x,y:y+74,'text-anchor':'middle','font-family':'NM','font-weight':500,'font-size':10,'letter-spacing':2.4,fill:'#2F3A2F'},p).textContent='CLEANSING OIL';
+  E('text',{x,y:y+98,'text-anchor':'middle','font-family':'NM','font-style':'italic','font-size':11.5,fill:'#5a6a4a'},p).textContent='Camellia seed, Japan.';
+  E('text',{x,y:y+114,'text-anchor':'middle','font-family':'NM','font-style':'italic','font-size':11.5,fill:'#5a6a4a'},p).textContent='Sunflower, Kent.';
+  E('line',{x1:x-50,x2:x+50,y1:y+134,y2:y+134,stroke:'#2F3A2F','stroke-width':.8,opacity:.5},p);
+  E('text',{x,y:y+156,'text-anchor':'middle','font-family':'NM','font-size':10,fill:'#2F3A2F'},p).textContent='Smells of: green tea,';
+  E('text',{x,y:y+170,'text-anchor':'middle','font-family':'NM','font-size':10,fill:'#2F3A2F'},p).textContent='cut grass, nothing added';
+  E('text',{x,y:y+204,'text-anchor':'middle','font-family':'NM','font-weight':500,'font-size':11,'letter-spacing':1,fill:'#2F3A2F'},p).textContent='200 ml';
+}});
+{const w=E('g',{id:'clear',transform:'translate(160 20)'},document.getElementById('stage'));SH=E('g',{},w);O=E('g',{},w);}
+castShadow(1060,1090,220,640,620);
+E('path',{d:'M1120 1080 C 1240 1040 1440 1020 1640 1030 C 1560 1070 1320 1096 1140 1098Z',fill:'#ffb92e',opacity:.5,filter:'url(#b24)'},SH);
+E('path',{d:'M1150 1082 C 1270 1056 1420 1042 1560 1042 C 1480 1066 1300 1086 1160 1092Z',fill:'#ffd469',opacity:.6,filter:'url(#b5)'},SH);
+E('path',{d:'M1150 1084 C 1280 1066 1400 1056 1500 1052',stroke:'#fff6cf','stroke-width':6,opacity:.9,fill:'none',filter:'url(#b2)'},SH);
+E('ellipse',{cx:1330,cy:1064,rx:150,ry:18,fill:'#f2a920',opacity:.35,filter:'url(#b10)'},SH);
+// ===== the tall clear bottle (Body Oil No. 4) =====
+const b1=bottle({x:1060,base:1090,w:220,h:560,neckW:62,neckH:62,sh:120,glass:'#d9d6c8',clear:true,fill:620,liquid:lg([[0,'#8a5208'],[.25,'#e2a227'],[.45,'#f6c94e'],[.7,'#c98614'],[1,'#6e3f05']]),thick:22,spec:.85,core:'#fff0a8'});
+// cap (black, ribbed) + collar
+(function(){const g=b1.g;const x=1060,t=b1.neckTop;
+  E('rect',{x:x-38,y:t-92,width:76,height:96,rx:6,fill:lg([[0,'#0e0e0e'],[.25,'#3a3a38'],[.4,'#1a1a1a'],[1,'#050505']])},g);
+  for(let i=0;i<17;i++)E('rect',{x:x-36+i*4.4,y:t-90,width:1.4,height:92,fill:'#000',opacity:.5},g);
+  E('rect',{x:x-28,y:t-88,width:6,height:88,fill:'#fff',opacity:.25},g);
+  E('rect',{x:x-40,y:t,width:80,height:8,rx:2,fill:'#1a1a1a'},g);
+})();
+label(b1.g,{x:1060,y:760,w:200,h:250,curve:.9,lines:(p,x,y,w,h)=>{
+  E('text',{x,y:y+56,'text-anchor':'middle','font-family':'Georgia','font-weight':700,'font-size':44,fill:'#2F3A2F'},p).textContent='Oleum';
+  drop(p,x,y+80,.7,'#8A9A5B');
+  E('text',{x,y:y+120,'text-anchor':'middle','font-family':'NM','font-weight':500,'font-size':13,'letter-spacing':3,fill:'#2F3A2F'},p).textContent='BODY OIL · Nº 4';
+  E('text',{x,y:y+146,'text-anchor':'middle','font-family':'NM','font-style':'italic','font-size':14,fill:'#5a6a4a'},p).textContent='Sweet almond, camellia,';
+  E('text',{x,y:y+164,'text-anchor':'middle','font-family':'NM','font-style':'italic','font-size':14,fill:'#5a6a4a'},p).textContent='a little rosemary.';
+  E('line',{x1:x-70,x2:x+70,y1:y+184,y2:y+184,stroke:'#2F3A2F','stroke-width':.8,opacity:.5},p);
+  E('text',{x,y:y+204,'text-anchor':'middle','font-family':'NM','font-size':11.5,'letter-spacing':.6,fill:'#2F3A2F'},p).textContent='3 ingredients · nothing else';
+  E('text',{x,y:y+222,'text-anchor':'middle','font-family':'NM','font-size':11.5,'letter-spacing':.6,fill:'#2F3A2F'},p).textContent='Pressed 09·2026 · Batch 0412';
+  E('text',{x,y:y+240,'text-anchor':'middle','font-family':'NM','font-weight':500,'font-size':12,'letter-spacing':1,fill:'#2F3A2F'},p).textContent='100 ml';
+}});
+// the label seen through the back of the glass (refraction hint)
+{const w=E('g',{id:'drop',transform:'translate(30 70)'},document.getElementById('stage'));SH=E('g',{},w);O=E('g',{},w);}
+castShadow(1420,1132,160,300,380,'#22301d');
+E('path',{d:'M1480 1124 C 1560 1110 1660 1104 1740 1104 C 1690 1120 1580 1134 1490 1138Z',fill:'#b7c26a',opacity:.4,filter:'url(#b10)'},SH);
+// ===== the green dropper bottle (Face Oil, Rosehip) =====
+const b2=bottle({x:1420,base:1132,w:160,h:300,neckW:54,neckH:28,sh:70,glass:'#2d4a2a',fill:910,liquid:lg([[0,'#2d1a04'],[.3,'#7a4a0a'],[.5,'#b0700e'],[1,'#2a1a03']]),thick:18,spec:.6,core:'#e0a838',menisc:'#9a6a1a',edge:'#0f1a0e'});
+E('path',{d:b2.g.firstChild.getAttribute('d'),fill:'#3f6a35',opacity:.35},b2.g);
+(function(){const g=b2.g,x=1420,t=b2.neckTop;
+  // collar + bulb (dropper)
+  E('rect',{x:x-34,y:t-46,width:68,height:50,rx:5,fill:lg([[0,'#1c1c1a'],[.3,'#4a4a46'],[.5,'#22221f'],[1,'#0a0a09']])},g);
+  E('path',{d:`M${x-24} ${t-46} L${x-24} ${t-110} C ${x-24} ${t-150} ${x+24} ${t-150} ${x+24} ${t-110} L${x+24} ${t-46}Z`,fill:lg([[0,'#26281f'],[.3,'#5d6248'],[.55,'#33362a'],[1,'#141510']])},g);
+  E('rect',{x:x-16,y:t-130,width:6,height:76,rx:3,fill:'#fff',opacity:.22},g);
+})();
+label(b2.g,{x:1420,y:950,w:146,h:140,curve:1,lines:(p,x,y,w,h)=>{
+  E('text',{x,y:y+36,'text-anchor':'middle','font-family':'Georgia','font-weight':700,'font-size':28,fill:'#2F3A2F'},p).textContent='Oleum';
+  E('text',{x,y:y+58,'text-anchor':'middle','font-family':'NM','font-weight':500,'font-size':10,'letter-spacing':2.4,fill:'#2F3A2F'},p).textContent='FACE OIL · ROSEHIP';
+  E('text',{x,y:y+78,'text-anchor':'middle','font-family':'NM','font-style':'italic','font-size':10.5,fill:'#5a6a4a'},p).textContent='Rosehip seed, Lesotho.';
+  E('text',{x,y:y+92,'text-anchor':'middle','font-family':'NM','font-style':'italic','font-size':10.5,fill:'#5a6a4a'},p).textContent='Sea buckthorn, Latvia.';
+  E('text',{x,y:y+116,'text-anchor':'middle','font-family':'NM','font-size':9.5,fill:'#2F3A2F'},p).textContent='Pressed 08·2026 · 30 ml';
+}});
+
+{const w=E('g',{id:'tin',transform:'translate(-620 120)'},document.getElementById('stage'));SH=E('g',{},w);O=E('g',{},w);}
+castShadow(1720,1180,190,60,200);
+// ===== balm tin, lid off =====
+(function(){const g=G(O),x=1720,y=1150;
+  E('path',{d:`M${x-92} ${y} L${x-92} ${y+34} A 92 22 0 0 0 ${x+92} ${y+34} L${x+92} ${y}Z`,fill:lg([[0,'#6b6e70'],[.2,'#d9dcdc'],[.35,'#f4f5f5'],[.6,'#a5a9ab'],[1,'#5d6062']])},g);
+  E('ellipse',{cx:x,cy:y,rx:92,ry:22,fill:'#c8cbcc'},g);
+  E('ellipse',{cx:x,cy:y+2,rx:84,ry:18,fill:lg([[0,'#d9b86a'],[.5,'#f0d48a'],[1,'#c49a45']],0,1)},g);
+  E('path',{d:`M${x-40} ${y+2} C ${x-20} ${y-8} ${x+10} ${y+12} ${x+36} ${y}`,stroke:'#fff3cc','stroke-width':3,fill:'none',opacity:.8},g);
+  E('path',{d:`M${x-60} ${y+6} C ${x-30} ${y+14} ${x+10} ${y-2} ${x+50} ${y+8}`,stroke:'#b38634','stroke-width':2,fill:'none',opacity:.5},g);
+  // lid leaning against the tin
+  const lx=x+150,ly=y+18;
+  E('ellipse',{cx:lx+10,cy:ly+46,rx:70,ry:10,fill:'#2a241b',opacity:.35,filter:'url(#b5)'},g);
+  E('ellipse',{cx:lx,cy:ly,rx:40,ry:96,fill:lg([[0,'#5d6062'],[.3,'#e6e8e8'],[.55,'#b9bcbd'],[1,'#6c6f71']]),transform:`rotate(-12 ${lx} ${ly})`},g);
+  E('ellipse',{cx:lx+4,cy:ly,rx:30,ry:84,fill:'#2F3A2F',transform:`rotate(-12 ${lx} ${ly})`},g);
+  E('text',{x:lx+4,y:ly+6,'text-anchor':'middle','font-family':'Georgia','font-weight':700,'font-size':20,fill:'#E8DCC8',transform:`rotate(-102 ${lx+4} ${ly}) scale(1 1)`},g).textContent='Oleum';
+})();
+
+{const w=E('g',{id:'rose',transform:'translate(330 170)'},document.getElementById('stage'));SH=E('g',{},w);O=E('g',{},w);}
+// ===== rosemary sprig + a drop of oil on the stone =====
+(function(){const g=G(O);
+  E('path',{d:'M610 1236 C 700 1214 820 1200 930 1196',stroke:'#5a5a3a','stroke-width':4,fill:'none'},g);
+  for(let i=0;i<34;i++){const t=i/34,x=610+320*t,y=1236-40*t+Math.sin(t*3)*4;const a=(i%2?-1:1)*(40+Math.random()*10);
+    E('ellipse',{cx:x+(i%2?8:-8),cy:y+(i%2?-8:8),rx:22,ry:4,fill:i%3?'#4e5c3e':'#64704c',transform:`rotate(${a-12} ${x} ${y})`},g)}
+  E('ellipse',{cx:640,cy:1250,rx:200,ry:12,fill:'#2a241b',opacity:.18,filter:'url(#b10)'},g);
+  // oil drop
+  E('ellipse',{cx:1260,cy:1240,rx:38,ry:10,fill:'#c98a1a',opacity:.75},g);
+  E('ellipse',{cx:1260,cy:1240,rx:38,ry:10,fill:rg([[0,'#ffe9a0',.9],[1,'#a86a0e',0]],.4,.4,.6)},g);
+  E('ellipse',{cx:1250,cy:1236,rx:12,ry:3,fill:'#fff',opacity:.85},g);
+  E('ellipse',{cx:1300,cy:1246,rx:40,ry:8,fill:'#f0b23a',opacity:.25,filter:'url(#b5)'},g);
+})();
+window.__ready=true;
+</script>
+</body></html>

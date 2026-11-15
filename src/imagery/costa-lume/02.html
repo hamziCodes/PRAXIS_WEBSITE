@@ -1,0 +1,215 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Costa Lume — winter site on a laptop, café in Lagos</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf)}
+@font-face{font-family:NM;font-weight:500;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf)}
+@font-face{font-family:NM;font-weight:700;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf)}
+@font-face{font-family:NM;font-style:italic;src:url(../../../briefs/v6/fonts/NeueMontreal-Italic.otf)}
+html,body{margin:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#d8d0c4}
+#bg{position:absolute;inset:0}
+.laptop{position:absolute;left:560px;top:118px;width:1280px;height:812px;border-radius:26px 26px 6px 6px;
+  background:linear-gradient(180deg,#2a2b2e,#141518);box-shadow:0 0 0 2px #8f9296, 0 0 0 3px #c9ccd0, 0 30px 60px rgba(40,30,25,.25)}
+.screen{position:absolute;left:30px;top:30px;width:1220px;height:762px;overflow:hidden;background:#fff;border-radius:3px}
+.page{width:1440px;height:900px;transform:scale(.84722);transform-origin:0 0;position:relative;background:#FFF8EE;font-family:NM;color:#2e1d17}
+.cam{position:absolute;left:50%;top:12px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#2c3238;box-shadow:inset 0 0 0 2px #1a1d20}
+.glare{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.0) 30%,rgba(255,255,255,.10) 42%,rgba(255,255,255,0) 56%),linear-gradient(180deg,rgba(255,255,255,.04),rgba(0,0,0,.04));pointer-events:none}
+/* site */
+.nav{height:64px;display:flex;align-items:center;padding:0 40px;gap:34px;border-bottom:1px solid rgba(46,29,23,.12);font:500 14px NM}
+.nav .logo{display:flex;align-items:center;gap:10px;font:700 21px Georgia,serif;margin-right:auto;color:#2e1d17}
+.nav .lang{font:500 12px NM;letter-spacing:.08em;color:#8a6f62}.nav .lang b{color:#2e1d17}
+.nav .cta{background:#C8553D;color:#FFF8EE;padding:10px 18px;border-radius:999px}
+.hero{position:relative;height:420px;margin:0 40px;border-radius:6px;overflow:hidden;margin-top:20px}
+.hero svg{position:absolute;inset:0}
+.hero .h{position:absolute;left:44px;bottom:118px;color:#FFF8EE}
+.hero h1{font:700 76px/0.95 Georgia,serif;margin:0;letter-spacing:-.015em;text-shadow:0 2px 24px rgba(60,20,10,.25)}
+.hero p{font:400 19px/1.35 NM;margin:14px 0 0;max-width:560px}
+.search{position:absolute;left:44px;right:44px;bottom:28px;height:66px;background:#FFF8EE;border-radius:10px;display:flex;align-items:stretch;box-shadow:0 8px 30px rgba(60,20,10,.18)}
+.search div{flex:1;padding:12px 20px;border-right:1px solid rgba(46,29,23,.12);font:500 11px NM;letter-spacing:.12em;color:#8a6f62;text-transform:uppercase}
+.search div b{display:block;font:500 17px NM;letter-spacing:0;color:#2e1d17;text-transform:none;margin-top:5px}
+.search .go{flex:0 0 190px;border:0;background:#C8553D;color:#FFF8EE;border-radius:0 10px 10px 0;display:flex;align-items:center;justify-content:center;font:500 16px NM;letter-spacing:0;text-transform:none}
+.sec{margin:30px 40px 0;display:flex;align-items:baseline;justify-content:space-between}
+.sec h3{font:700 30px Georgia,serif;margin:0}.sec span{font:500 14px NM;color:#C8553D}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:18px 40px 0}
+.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 0 rgba(46,29,23,.08),0 6px 20px rgba(46,29,23,.06)}
+.card .th{height:150px;position:relative}
+.card .th svg{position:absolute;inset:0;width:100%;height:100%}
+.card .tag{position:absolute;left:12px;top:12px;background:rgba(255,248,238,.92);font:500 11px NM;letter-spacing:.06em;padding:5px 9px;border-radius:99px}
+.card .b{padding:14px 16px 16px}
+.card h4{font:700 19px/1.15 Georgia,serif;margin:0}
+.card .m{font:400 13px/1.4 NM;color:#6f5a50;margin-top:6px}
+.card .pr{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;padding-top:10px;border-top:1px solid rgba(46,29,23,.1);font:400 12px NM;color:#6f5a50}
+.card .pr b{font:700 20px Georgia,serif;color:#C8553D}
+</style></head>
+<body>
+<svg id="bg" width="2400" height="1350">
+<defs>
+  <filter id="b4" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="b12" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="12"/></filter>
+  <filter id="b24" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="24"/></filter>
+  <filter id="marble" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0016 0.006" numOctaves="6" seed="31" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .55  0 0 0 0 .53  0 0 0 0 .52  0 0 0 0 0" result="c"/>
+    <feComponentTransfer in="n" result="v"><feFuncA type="table" tableValues="0 0 0 .0 .55 0 0 0 0 .3 0 0"/></feComponentTransfer>
+    <feColorMatrix in="v" type="matrix" values="0 0 0 0 .52 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0"/>
+  </filter>
+  <pattern id="az" width="120" height="120" patternUnits="userSpaceOnUse">
+    <rect width="120" height="120" fill="#f1efe9"/>
+    <g fill="none" stroke="#2f5d9a" stroke-width="5">
+      <circle cx="60" cy="60" r="26"/><path d="M60 14 C 70 34 90 50 106 60 C 90 70 70 86 60 106 C 50 86 30 70 14 60 C 30 50 50 34 60 14Z"/>
+    </g>
+    <g fill="#2f5d9a"><circle cx="60" cy="60" r="9"/><path d="M0 0 h18 l-18 18z M120 0 v18 l-18 -18z M0 120 v-18 l18 18z M120 120 h-18 l18 -18z"/></g>
+    <rect width="120" height="120" fill="none" stroke="#d9d5cb" stroke-width="2"/>
+  </pattern>
+  <linearGradient id="win" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff2dc" stop-opacity=".9"/><stop offset="1" stop-color="#fff2dc" stop-opacity="0"/></linearGradient>
+  <linearGradient id="tbl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9e5df"/><stop offset="1" stop-color="#f7f4ef"/></linearGradient>
+  <linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7cacd"/><stop offset=".6" stop-color="#d9dcdf"/><stop offset="1" stop-color="#b1b4b8"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".12" stop-color="#fff" stop-opacity=".05"/><stop offset=".8" stop-color="#fff" stop-opacity=".0"/><stop offset=".93" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient>
+  <linearGradient id="galao" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e6d2"/><stop offset=".18" stop-color="#e3c8a3"/><stop offset=".5" stop-color="#c79c6b"/><stop offset="1" stop-color="#b98955"/></linearGradient>
+  <linearGradient id="galaoS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".0"/><stop offset=".7" stop-color="#000" stop-opacity=".05"/><stop offset="1" stop-color="#3a2010" stop-opacity=".35"/></linearGradient>
+</defs>
+<!-- back wall: plaster above, azulejo dado below, all softly out of focus -->
+<g filter="url(#b4)">
+  <rect width="2400" height="640" fill="#efe9de"/>
+  <rect y="250" width="2400" height="400" fill="url(#az)"/>
+  <rect y="238" width="2400" height="16" fill="#e2dccf"/><rect y="252" width="2400" height="4" fill="#8f8a80" opacity=".4"/>
+  <rect y="250" width="2400" height="400" fill="#fff" opacity=".08"/>
+  <!-- window light falling on the wall from the left -->
+  <path d="M0 0 L760 0 L1120 640 L0 640Z" fill="url(#win)" opacity=".55"/>
+  <!-- a framed print, out of focus -->
+  <rect x="1880" y="40" width="250" height="180" fill="#d6cbbb"/><rect x="1896" y="56" width="218" height="148" fill="#c2603f"/><path d="M1896 160 C 1960 130 2030 150 2114 120 L2114 204 L1896 204Z" fill="#e9b07b"/>
+</g>
+<rect y="600" width="2400" height="60" fill="#5d5650" opacity=".18" filter="url(#b12)"/>
+<!-- marble table top -->
+<rect y="640" width="2400" height="710" fill="url(#tbl)"/>
+<rect y="640" width="2400" height="710" filter="url(#marble)" opacity=".22"/>
+<rect y="636" width="2400" height="6" fill="#9e968c" opacity=".35"/>
+<!-- sun pool through the window, onto the table -->
+<path d="M0 700 L900 660 L1500 1350 L0 1350Z" fill="#ffe2b4" opacity=".22" filter="url(#b24)"/>
+<!-- laptop shadow and base -->
+<ellipse cx="1210" cy="1090" rx="760" ry="60" fill="#3d3128" opacity=".28" filter="url(#b24)"/>
+<path d="M1540 940 L2160 1180 L2120 1200 L1530 1000Z" fill="#3d3128" opacity=".12" filter="url(#b24)"/>
+<path d="M560 924 L1840 924 L1990 1094 L410 1094Z" fill="url(#base)"/>
+<path d="M410 1094 L1990 1094 L1986 1108 Q 1984 1114 1974 1114 L426 1114 Q 416 1114 414 1108Z" fill="#8e9195"/>
+<path d="M560 924 L1840 924 L1848 934 L552 934Z" fill="#9da0a4"/>
+<g id="keys"></g>
+<path d="M1010 1030 L1390 1030 L1404 1086 L996 1086Z" fill="#c9ccd0" stroke="#aeb1b5" stroke-width="1.5"/>
+<path d="M1110 1094 L1290 1094 L1288 1100 L1112 1100Z" fill="#7f8286"/>
+<!-- galão + saucer + pastel de nata -->
+<g id="cafe">
+  <ellipse cx="2100" cy="1100" rx="180" ry="44" fill="#3d3128" opacity=".22" filter="url(#b12)"/>
+  <ellipse cx="2075" cy="1080" rx="170" ry="42" fill="#f6f4ef"/><ellipse cx="2075" cy="1074" rx="170" ry="40" fill="#fbfaf6"/><ellipse cx="2075" cy="1074" rx="120" ry="27" fill="none" stroke="#e8e3da" stroke-width="3"/>
+  <ellipse cx="2075" cy="1074" rx="170" ry="40" fill="none" stroke="#2f5d9a" stroke-width="3" opacity=".7"/>
+  <!-- tart -->
+  <path d="M2055 1050 L2063 1078 Q 2125 1096 2187 1078 L2195 1050Z" fill="#c07a38"/><path d="M2058 1058 Q 2125 1074 2192 1058" stroke="#e7b16a" stroke-width="3" fill="none"/><path d="M2061 1068 Q 2125 1084 2189 1068" stroke="#8d4e22" stroke-width="2" fill="none"/>
+  <ellipse cx="2125" cy="1050" rx="70" ry="19" fill="#d9a043"/>
+  <ellipse cx="2125" cy="1050" rx="60" ry="15" fill="#efc96f"/>
+  <g fill="#4a200c" opacity=".85" transform="translate(0,-4) scale(1)"><ellipse cx="2110" cy="1054" rx="9" ry="4"/><ellipse cx="2138" cy="1058" rx="11" ry="4"/><ellipse cx="2126" cy="1050" rx="6" ry="3"/><ellipse cx="2148" cy="1052" rx="5" ry="2.5"/><ellipse cx="2098" cy="1060" rx="5" ry="2"/></g>
+  <g fill="#3a1a0a" opacity=".55"><ellipse cx="2113" cy="1054" rx="4" ry="2"/><ellipse cx="2140" cy="1057" rx="4" ry="2"/></g>
+  <path d="M2063 1062 q 6 -16 18 -18 q 20 0 30 4" stroke="#d3a053" stroke-width="2" fill="none" opacity=".5"/>
+  <!-- galão glass, sitting behind the plate -->
+  <ellipse cx="2010" cy="1030" rx="66" ry="14" fill="#3d3128" opacity=".25" filter="url(#b4)"/>
+  <path d="M1946 700 L2074 700 L2066 1028 Q 2010 1042 1954 1028Z" fill="url(#galao)"/>
+  <path d="M1946 700 L2074 700 L2072 760 Q 2010 772 1948 760Z" fill="#f6efe2"/>
+  <ellipse cx="2010" cy="702" rx="64" ry="13" fill="#fbf6ec"/><ellipse cx="2010" cy="702" rx="64" ry="13" fill="none" stroke="#e9e2d4" stroke-width="2"/>
+  <path d="M1946 700 L2074 700 L2066 1028 Q 2010 1042 1954 1028Z" fill="url(#galaoS)"/>
+  <path d="M1940 660 L2080 660 L2070 1032 Q 2010 1048 1950 1032Z" fill="url(#glass)"/>
+  <path d="M1940 660 L2080 660 L2070 1032 Q 2010 1048 1950 1032Z" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2"/>
+  <ellipse cx="2010" cy="660" rx="70" ry="14" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="2.5"/>
+  <rect x="2034" y="560" width="10" height="200" rx="5" fill="#cfd2d4" transform="rotate(9 2040 700)"/>
+  <rect x="2036" y="560" width="3" height="200" rx="2" fill="#fff" opacity=".8" transform="rotate(9 2040 700)"/>
+  <path d="M1960 680 L1964 1010" stroke="#fff" stroke-width="7" opacity=".45"/>
+  <path d="M2052 690 C 2120 760 2200 830 2290 900" stroke="#ffe8c0" stroke-width="30" opacity=".0"/>
+</g>
+<!-- brochure + pencil on the left -->
+<g id="broch">
+  <path d="M120 1020 L470 980 L520 1250 L160 1300Z" fill="#3d3128" opacity=".18" filter="url(#b12)"/>
+  <path d="M110 1000 L460 958 L506 1226 L150 1278Z" fill="#C8553D"/>
+  <path d="M110 1000 L460 958 L506 1226 L150 1278Z" fill="url(#win)" opacity=".18"/>
+  <g transform="matrix(.993 -.119 .168 .986 140 1030)" fill="#FFF8EE">
+    <text x="0" y="0" font-family="NM" font-size="11" letter-spacing="2.6">INVERNO · WINTER 2026/27</text>
+    <text x="0" y="56" font-family="Georgia" font-weight="700" font-size="44">Walks of</text>
+    <text x="0" y="102" font-family="Georgia" font-weight="700" font-size="44">the coast</text>
+    <text x="0" y="132" font-family="NM" font-style="italic" font-size="16" fill="#F2D0A4">22 routes, November to March</text>
+    <text x="0" y="200" font-family="Georgia" font-weight="700" font-size="17">Costa Lume</text>
+  </g>
+  <rect x="300" y="1150" width="300" height="12" rx="6" fill="#d2a24c" transform="rotate(-24 450 1156)"/>
+  <rect x="300" y="1150" width="300" height="4" rx="2" fill="#fff" opacity=".4" transform="rotate(-24 450 1156)"/>
+  <path d="M300 1150 l-26 6 l26 6Z" fill="#e8c9a0" transform="rotate(-24 450 1156)"/>
+</g>
+</svg>
+
+<div class="laptop">
+  <div class="cam"></div>
+  <div class="screen"><div class="page">
+    <div class="nav">
+      <div class="logo"><svg width="34" height="23" viewBox="0 0 60 40"><g fill="none" stroke="#C8553D" stroke-width="4.5" stroke-linecap="round"><path d="M14 34 a16 16 0 0 1 32 0"/><path d="M6 36 H54"/><path d="M30 4 v7 M12 12 l5 5 M48 12 l-5 5 M3 24 h6 M51 24 h6"/></g></svg>Costa Lume</div>
+      <span>Walk</span><span>Cycle</span><span>Stay longer</span><span>Work from here</span><span>Map</span>
+      <span class="lang"><b>EN</b> · DE · NL · DA · PT</span>
+      <span class="cta">Plan a winter stay</span>
+    </div>
+    <div class="hero">
+      <svg viewBox="0 0 1360 420" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="hs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#93aabb"/><stop offset=".5" stop-color="#e3cdb6"/><stop offset="1" stop-color="#f3d3ab"/></linearGradient>
+          <linearGradient id="hsea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8aa2a6"/><stop offset=".3" stop-color="#4f7d88"/><stop offset="1" stop-color="#244f5b"/></linearGradient>
+          <linearGradient id="hc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eba465"/><stop offset=".6" stop-color="#cf7a3f"/><stop offset="1" stop-color="#9b4f2b"/></linearGradient>
+          <filter id="ht"><feTurbulence type="fractalNoise" baseFrequency=".004 .07" numOctaves="4" seed="9"/><feColorMatrix type="matrix" values="0 0 0 0 .4 0 0 0 0 .17 0 0 0 0 .08 0 0 0 1.5 -.75"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+          <radialGradient id="hsun" cx=".9" cy=".38" r=".45"><stop offset="0" stop-color="#fff3da" stop-opacity=".95"/><stop offset="1" stop-color="#fff3da" stop-opacity="0"/></radialGradient>
+          <linearGradient id="hdk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a1610" stop-opacity=".55"/><stop offset=".5" stop-color="#2a1610" stop-opacity="0"/></linearGradient>
+          <linearGradient id="glit" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff2d6" stop-opacity="0"/><stop offset=".5" stop-color="#fff2d6" stop-opacity=".6"/><stop offset="1" stop-color="#fff2d6" stop-opacity="0"/></linearGradient>
+        </defs>
+        <rect width="1360" height="420" fill="url(#hs)"/>
+        <rect width="1360" height="420" fill="url(#hsun)"/>
+        <rect y="176" width="1360" height="244" fill="url(#hsea)"/>
+        <path d="M0 176 H1360" stroke="#f6e3cb" stroke-width="2" opacity=".8"/>
+        <rect x="1020" y="178" width="340" height="120" fill="url(#glit)" opacity=".55"/>
+        <path d="M0 168 C 140 160 260 166 360 176 L0 176Z" fill="#a9958e" opacity=".8"/>
+        <!-- stacks in the sea -->
+        <path d="M560 300 L566 236 C 568 222 586 218 592 230 L600 300Z" fill="#c9733d"/><path d="M584 226 L592 230 L600 300 L588 300Z" fill="#5e3429" opacity=".5"/><path d="M566 236 C 570 224 588 220 592 230 C 584 228 572 230 566 240Z" fill="#6c703c"/>
+        <path d="M640 290 L648 214 C 652 200 674 198 680 212 L690 290Z" fill="#cf7a3f"/><path d="M672 206 L680 212 L690 290 L676 290Z" fill="#5e3429" opacity=".5"/><path d="M660 290 C 660 270 676 262 678 290Z" fill="#2c4f58"/><path d="M648 214 C 652 202 676 198 680 212 C 668 208 656 210 648 220Z" fill="#6c703c"/>
+        <ellipse cx="580" cy="300" rx="34" ry="4" fill="#eef4f0" opacity=".6"/><ellipse cx="664" cy="290" rx="40" ry="4" fill="#eef4f0" opacity=".6"/>
+        <!-- headland, right, with path and two walkers -->
+        <path d="M760 420 L780 330 C 800 280 860 240 960 226 C 1060 214 1180 222 1260 240 C 1310 252 1340 270 1360 280 L1360 420Z" fill="url(#hc)"/>
+        <path d="M760 420 L780 330 C 800 280 860 240 960 226 C 1060 214 1180 222 1260 240 C 1310 252 1340 270 1360 280 L1360 420Z" filter="url(#ht)"/>
+        <path d="M780 330 C 800 280 860 240 960 226 C 1060 214 1180 222 1260 240 C 1310 252 1340 270 1360 280 L1360 300 C 1200 262 1000 250 880 268 C 830 280 800 300 780 330Z" fill="#6f7a40"/>
+        <path d="M760 420 L780 330 C 790 300 800 290 814 282 L800 420Z" fill="#5e3429" opacity=".45"/>
+        <path d="M900 420 C 960 360 1040 310 1140 286 C 1200 272 1260 268 1320 270" stroke="#f7e3c6" stroke-width="5" fill="none" opacity=".9"/>
+        <g transform="translate(1086,302)" fill="#2e211d"><circle cx="0" cy="-30" r="5.5"/><rect x="-4.5" y="-24" width="9" height="22" rx="3"/><path d="M-3 -3 l-5 20 M3 -3 l5 20" stroke="#2e211d" stroke-width="4" stroke-linecap="round"/><rect x="2" y="-23" width="8" height="13" rx="2" fill="#2d4d58"/></g>
+        <g transform="translate(1124,292) scale(.9)" fill="#2e211d"><circle cx="0" cy="-30" r="5.5"/><rect x="-4.5" y="-24" width="9" height="22" rx="3"/><path d="M-3 -3 l-6 20 M3 -3 l3 20" stroke="#2e211d" stroke-width="4" stroke-linecap="round"/></g>
+        <rect width="1360" height="420" fill="url(#hdk)"/>
+      </svg>
+      <div class="h"><h1>The coast,<br>out of season.</h1><p>November to March: 300 km of cliff paths, 16°C afternoons and hotels at winter prices. Come when the light is best.</p></div>
+      <div class="search">
+        <div>When<b>January 2027</b></div><div>Nights<b>5 nights</b></div><div>Who<b>2 walkers</b></div><div>Pace<b>Easy to moderate</b></div>
+        <div class="go">Find a stay →</div>
+      </div>
+    </div>
+    <div class="sec"><h3>Winter itineraries</h3><span>All 22 routes →</span></div>
+    <div class="cards">
+      <div class="card"><div class="th"><svg viewBox="0 0 300 150" preserveAspectRatio="xMidYMid slice"><rect width="300" height="150" fill="#e9c9a4"/><rect y="70" width="300" height="80" fill="#4d7e88"/><path d="M0 60 C 60 56 110 70 140 100 L160 150 L0 150Z" fill="#d4864a"/><path d="M180 150 L196 96 C 200 84 214 80 222 92 L236 150Z" fill="#c4703c"/><path d="M0 60 C 60 56 110 70 140 100 C 100 80 50 72 0 74Z" fill="#6f7340"/><path d="M10 140 C 40 110 70 90 110 84" stroke="#f6dfc0" stroke-width="2.5" fill="none"/></svg><span class="tag">1 DAY · WALK</span></div>
+        <div class="b"><h4>Seven Hanging Valleys</h4><div class="m">Praia da Marinha → Vale Centeanes · 11.4 km return · easy–moderate</div><div class="pr">Stay in Carvoeiro<b>€46<small style="font:400 12px NM;color:#6f5a50"> /night</small></b></div></div></div>
+      <div class="card"><div class="th"><svg viewBox="0 0 300 150" preserveAspectRatio="xMidYMid slice"><rect width="300" height="150" fill="#b8c7cc"/><rect y="66" width="300" height="84" fill="#34697a"/><path d="M0 150 L0 80 C 60 74 120 90 170 110 C 220 128 260 136 300 140 L300 150Z" fill="#c9a26a"/><path d="M0 92 C 80 100 150 116 300 146" stroke="#efe0c6" stroke-width="2" stroke-dasharray="5 5" fill="none"/><path d="M220 66 L238 50 L256 66Z" fill="#f2efe8"/><rect x="236" y="38" width="4" height="14" fill="#c9553d"/></svg><span class="tag">4 DAYS · WALK</span></div>
+        <div class="b"><h4>Fishermen's Trail, Rota Vicentina</h4><div class="m">Odeceixe → Sagres · 75 km · luggage moved for you</div><div class="pr">4 nights from<b>€212</b></div></div></div>
+      <div class="card"><div class="th"><svg viewBox="0 0 300 150" preserveAspectRatio="xMidYMid slice"><rect width="300" height="150" fill="#c7d3d6"/><rect y="62" width="300" height="20" fill="#5f8c97"/><path d="M0 78 C 100 70 200 82 300 74 L300 150 L0 150Z" fill="#a39a4c"/><path d="M90 150 C 130 120 190 96 300 88 L300 96 C 200 104 150 124 128 150Z" fill="#d2b183"/><g fill="#f6e8ee"><circle cx="40" cy="70" r="16"/><circle cx="62" cy="66" r="18"/></g><path d="M52 100 L52 80" stroke="#4b3a32" stroke-width="3"/><g transform="translate(200,104)" stroke="#2c2422" stroke-width="2" fill="none"><circle cx="-8" cy="6" r="6"/><circle cx="9" cy="6" r="6"/><path d="M-8 6 L0 -4 L8 -4 L9 6 M0 -10 L4 -20"/></g></svg><span class="tag">3 DAYS · CYCLE</span></div>
+        <div class="b"><h4>Ecovia do Litoral by bike</h4><div class="m">Lagos → Tavira · 120 km · almond blossom from late January</div><div class="pr">Bike hire from<b>€14<small style="font:400 12px NM;color:#6f5a50"> /day</small></b></div></div></div>
+      <div class="card"><div class="th"><svg viewBox="0 0 300 150" preserveAspectRatio="xMidYMid slice"><rect width="300" height="150" fill="#f1ebe0"/><rect x="0" y="0" width="300" height="150" fill="#f6efe4"/><rect x="30" y="20" width="120" height="96" fill="#9fc0cc"/><rect x="30" y="20" width="120" height="96" fill="none" stroke="#3f6fa0" stroke-width="6"/><path d="M30 80 H150" stroke="#2f6875" stroke-width="30" opacity=".6"/><rect x="170" y="88" width="110" height="8" fill="#a3743f"/><rect x="186" y="66" width="56" height="22" rx="2" fill="#3a3b3e"/><rect x="190" y="70" width="48" height="16" fill="#d0dbe0"/><path d="M0 116 H300 V150 H0Z" fill="#d9a548"/></svg><span class="tag">28 NIGHTS · WORK</span></div>
+        <div class="b"><h4>A month in Lagos</h4><div class="m">Fibre 1 Gbps, desk and sea view · coworking pass included</div><div class="pr">28 nights from<b>€1,190</b></div></div></div>
+    </div>
+  </div><div class="glare"></div></div>
+</div>
+<script>
+// keyboard: keys on the base trapezoid (one-point perspective)
+const NS='http://www.w3.org/2000/svg',k=document.getElementById('keys');
+const kT=940,kB=1020,lt=600,rt=1800,lb=520,rb=1880;
+const rows=5,cols=14;
+for(let r=0;r<rows;r++){const t0=r/rows,t1=(r+.82)/rows;const y0=kT+(kB-kT)*t0,y1=kT+(kB-kT)*t1;
+  const L0=lt+(lb-lt)*t0,R0=rt+(rb-rt)*t0,L1=lt+(lb-lt)*t1,R1=rt+(rb-rt)*t1;
+  for(let c=0;c<cols;c++){const a=c/cols,b=(c+.88)/cols;
+    const p=[[L0+(R0-L0)*a,y0],[L0+(R0-L0)*b,y0],[L1+(R1-L1)*b,y1],[L1+(R1-L1)*a,y1]];
+    if(r==4&&c>3&&c<10){if(c!=4)continue;p[1][0]=L0+(R0-L0)*(9.88/cols);p[2][0]=L1+(R1-L1)*(9.88/cols)}
+    const e=document.createElementNS(NS,'path');e.setAttribute('d','M'+p.map(q=>q.join(' ')).join('L')+'Z');e.setAttribute('fill','#2b2c2f');e.setAttribute('stroke','#1a1b1d');e.setAttribute('stroke-width','1');k.appendChild(e);
+    const h=document.createElementNS(NS,'path');h.setAttribute('d',`M${p[0][0]+2} ${p[0][1]+1} L${p[1][0]-2} ${p[1][1]+1}`);h.setAttribute('stroke','#55575c');h.setAttribute('stroke-width','1.2');k.appendChild(h)}}
+</script>
+</body></html>

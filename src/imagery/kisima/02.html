@@ -1,0 +1,92 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Italic.otf');font-weight:400;font-style:italic}
+@font-face{font-family:'PX';src:url('../../../assets/fonts/handjet.woff2')}
+
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:2400px;height:1350px;overflow:hidden;background:#222}svg{display:block}</style></head><body><svg width="2400" height="1350"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .45  0 0 0 0 .4  0 0 0 .55 -.15"/></filter>
+<filter id="dirt" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="5" seed="12"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .22  0 0 0 0 .12  0 0 0 .7 -.1"/></filter>
+<filter id="pebbles" x="0" y="0" width="100%" height="100%"><feTurbulence type="turbulence" baseFrequency=".09" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 .95  0 0 0 0 .8  0 0 0 0 .65  0 0 0 2.2 -1.5"/></filter>
+<filter id="plaster" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="5" seed="8"/><feColorMatrix values="0 0 0 0 .3  0 0 0 0 .25  0 0 0 0 .2  0 0 0 .35 -.02"/></filter>
+<filter id="stain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".006 .04" numOctaves="4" seed="21"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .3  0 0 0 0 .18  0 0 0 1.4 -.55"/></filter>
+<filter id="paintwear" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="17"/><feColorMatrix values="0 0 0 0 .93  0 0 0 0 .9  0 0 0 0 .84  0 0 0 2.6 -1.9"/></filter>
+<filter id="b2"><feGaussianBlur stdDeviation="2"/></filter><filter id="b6"><feGaussianBlur stdDeviation="6"/></filter><filter id="b20"><feGaussianBlur stdDeviation="20"/></filter><filter id="b60"><feGaussianBlur stdDeviation="60"/></filter>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb3d8"/><stop offset=".7" stop-color="#cfe0e6"/><stop offset="1" stop-color="#ece6d8"/></linearGradient>
+<linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8e2d2" stop-opacity="0"/><stop offset="1" stop-color="#efe6d4" stop-opacity=".55"/></linearGradient>
+<linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9714a"/><stop offset="1" stop-color="#c98458"/></linearGradient>
+<linearGradient id="jcF" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd94a"/><stop offset=".55" stop-color="#f4c21f"/><stop offset="1" stop-color="#d9a812"/></linearGradient>
+<linearGradient id="jcS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b98a0e"/><stop offset="1" stop-color="#8f6a08"/></linearGradient>
+<linearGradient id="jcDirt" x1="0" y1="0" x2="0" y2="1"><stop offset=".6" stop-color="#7a4a20" stop-opacity="0"/><stop offset="1" stop-color="#7a4a20" stop-opacity=".45"/></linearGradient>
+<linearGradient id="tank" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a5d98"/><stop offset=".35" stop-color="#3f78b6"/><stop offset=".7" stop-color="#1f477c"/><stop offset="1" stop-color="#132e55"/></linearGradient>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9dcdc"/><stop offset=".5" stop-color="#9aa0a2"/><stop offset="1" stop-color="#6c7274"/></linearGradient>
+<linearGradient id="brass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2d58a"/><stop offset=".5" stop-color="#b98a35"/><stop offset="1" stop-color="#7a5418"/></linearGradient>
+<linearGradient id="water" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#bfe6f7" stop-opacity=".6"/><stop offset=".4" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#8fcbe6" stop-opacity=".6"/></linearGradient>
+<linearGradient id="frontLight" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff3d6" stop-opacity=".22"/><stop offset="1" stop-color="#3a2a1a" stop-opacity=".12"/></linearGradient>
+<linearGradient id="sunwash" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff6dc" stop-opacity=".35"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#5a3a20" stop-opacity=".18"/></linearGradient>
+
+<pattern id="mabati" width="64" height="400" patternUnits="userSpaceOnUse"><rect width="64" height="400" fill="#6f8f7a"/><rect width="20" height="400" fill="#5d7b67"/><rect x="20" width="10" height="400" fill="#8aa893"/><rect x="44" width="12" height="400" fill="#4f6b59"/></pattern>
+<filter id="rust" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".035 .0035" numOctaves="4" seed="9"/><feColorMatrix values="0 0 0 0 .42  0 0 0 0 .24  0 0 0 0 .13  0 0 0 2.2 -1.15"/></filter>
+<filter id="pwr" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".01 .02" numOctaves="2" seed="5" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="6" xChannelSelector="R" yChannelSelector="G" result="d"/><feDiffuseLighting in="t" surfaceScale="3" lighting-color="#fff" result="l"><feDistantLight azimuth="225" elevation="55"/></feDiffuseLighting><feComposite in="d" in2="l" operator="arithmetic" k1=".35" k2=".72" k3="0" k4="0" result="m"/><feComposite in="m" in2="d" operator="in"/></filter>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="2400" height="1350" fill="url(#mabati)"/>
+<rect width="2400" height="1350" filter="url(#rust)" opacity=".6"/>
+<rect x="-100" y="0" width="4" height="1350" fill="#2f3f35" opacity=".5"/><circle cx="-98" cy="150" r="6" fill="#7d6a58"/><circle cx="-98" cy="150" r="3" fill="#3a2a1e"/><circle cx="-98" cy="560" r="6" fill="#7d6a58"/><circle cx="-98" cy="560" r="3" fill="#3a2a1e"/><circle cx="-98" cy="980" r="6" fill="#7d6a58"/><circle cx="-98" cy="980" r="3" fill="#3a2a1e"/><rect x="420" y="0" width="4" height="1350" fill="#2f3f35" opacity=".5"/><circle cx="422" cy="150" r="6" fill="#7d6a58"/><circle cx="422" cy="150" r="3" fill="#3a2a1e"/><circle cx="422" cy="560" r="6" fill="#7d6a58"/><circle cx="422" cy="560" r="3" fill="#3a2a1e"/><circle cx="422" cy="980" r="6" fill="#7d6a58"/><circle cx="422" cy="980" r="3" fill="#3a2a1e"/><rect x="940" y="0" width="4" height="1350" fill="#2f3f35" opacity=".5"/><circle cx="942" cy="150" r="6" fill="#7d6a58"/><circle cx="942" cy="150" r="3" fill="#3a2a1e"/><circle cx="942" cy="560" r="6" fill="#7d6a58"/><circle cx="942" cy="560" r="3" fill="#3a2a1e"/><circle cx="942" cy="980" r="6" fill="#7d6a58"/><circle cx="942" cy="980" r="3" fill="#3a2a1e"/><rect x="1460" y="0" width="4" height="1350" fill="#2f3f35" opacity=".5"/><circle cx="1462" cy="150" r="6" fill="#7d6a58"/><circle cx="1462" cy="150" r="3" fill="#3a2a1e"/><circle cx="1462" cy="560" r="6" fill="#7d6a58"/><circle cx="1462" cy="560" r="3" fill="#3a2a1e"/><circle cx="1462" cy="980" r="6" fill="#7d6a58"/><circle cx="1462" cy="980" r="3" fill="#3a2a1e"/><rect x="1980" y="0" width="4" height="1350" fill="#2f3f35" opacity=".5"/><circle cx="1982" cy="150" r="6" fill="#7d6a58"/><circle cx="1982" cy="150" r="3" fill="#3a2a1e"/><circle cx="1982" cy="560" r="6" fill="#7d6a58"/><circle cx="1982" cy="560" r="3" fill="#3a2a1e"/><circle cx="1982" cy="980" r="6" fill="#7d6a58"/><circle cx="1982" cy="980" r="3" fill="#3a2a1e"/><rect x="2500" y="0" width="4" height="1350" fill="#2f3f35" opacity=".5"/><circle cx="2502" cy="150" r="6" fill="#7d6a58"/><circle cx="2502" cy="150" r="3" fill="#3a2a1e"/><circle cx="2502" cy="560" r="6" fill="#7d6a58"/><circle cx="2502" cy="560" r="3" fill="#3a2a1e"/><circle cx="2502" cy="980" r="6" fill="#7d6a58"/><circle cx="2502" cy="980" r="3" fill="#3a2a1e"/>
+<rect y="1236" width="2400" height="114" fill="#a3653f"/><rect y="1236" width="2400" height="114" filter="url(#dirt)"/>
+<rect y="1236" width="2400" height="12" fill="#000" opacity=".25" filter="url(#b6)"/>
+<!-- old faded poster left -->
+<g transform="translate(340 300) rotate(-1.5)" filter="url(#pwr)"><rect width="420" height="560" fill="#e9dfc6"/><rect width="420" height="160" fill="#c86b4d" opacity=".5"/><text x="30" y="100" font-family="Impact" font-size="62" fill="#fff" opacity=".7">KLINIKI YA BURE</text><text x="30" y="230" font-family="NM" font-weight="700" font-size="34" fill="#7a5a4a" opacity=".5">Chanjo kwa watoto</text><text x="30" y="276" font-family="NM" font-size="24" fill="#7a5a4a" opacity=".45">Kila Jumamosi · saa 3 – 8</text><text x="30" y="316" font-family="NM" font-size="24" fill="#7a5a4a" opacity=".45">Zahanati ya Kayole</text><rect x="30" y="360" width="160" height="160" fill="#c86b4d" opacity=".25"/><path d="M420 400 L380 560 L420 560Z" fill="#6f8f7a"/></g>
+<!-- main poster -->
+<g transform="translate(860 150) rotate(.6)"><rect x="12" y="16" width="680" height="960" fill="#000" opacity=".35" filter="url(#b6)"/><g filter="url(#pwr)">
+<g>
+ <rect x="0" y="0" width="680" height="960" fill="#f4f3ee"/>
+ <rect x="0" y="0" width="680" height="120" fill="#1D4E89"/>
+ <g transform="translate(64 64) scale(.62)"><path d="M0 -60 C 18 -30, 38 -6, 38 18 A 38 38 0 0 1 -38 18 C -38 -6, -18 -30, 0 -60 Z" fill="none" stroke="#7FD1F7" stroke-width="10" stroke-linejoin="round"/><path d="M-20 14 A 22 22 0 0 0 -4 34" fill="none" stroke="#7FD1F7" stroke-width="8" stroke-linecap="round"/></g>
+ <text x="110" y="78" font-family="NM" font-weight="700" font-size="50" fill="#fff" letter-spacing="-1">Kisima</text>
+ <text x="640" y="56" text-anchor="end" font-family="NM" font-size="20" fill="#7FD1F7">Mpango wa Maji</text><text x="640" y="84" text-anchor="end" font-family="NM" font-style="italic" font-size="20" fill="#fff">Water you can count on.</text>
+ <text x="40" y="196" font-family="NM" font-weight="700" font-size="50" fill="#1D4E89" letter-spacing="-1">Kioski ya maji ya</text>
+ <text x="40" y="252" font-family="NM" font-weight="700" font-size="50" fill="#1D4E89" letter-spacing="-1">Kayole Kusini iko tayari.</text>
+ <text x="40" y="294" font-family="NM" font-size="26" fill="#3b4a5a">The Kayole Kusini water kiosk is built.</text>
+ <g transform="translate(60 380)"><g transform="translate(0 0)">
+<rect x="0" y="0" width="560" height="300" fill="#cfe8f5"/>
+<rect x="0" y="240" width="560" height="60" fill="#c9875c"/>
+<rect x="150" y="70" width="280" height="170" fill="#EEF2EA"/><rect x="150" y="175" width="280" height="65" fill="#1D4E89"/>
+<path d="M430 70 L490 40 L490 205 L430 240 Z" fill="#9aa59e"/><path d="M430 175 L490 145 L490 205 L430 240Z" fill="#163b68"/>
+<rect x="135" y="56" width="310" height="16" fill="#c6c4ba"/><path d="M135 56 L445 56 L505 26 L195 26Z" fill="#d8d6cc"/>
+<rect x="170" y="36" width="230" height="30" fill="#fff"/><text x="200" y="58" font-family="NM" font-weight="700" font-size="22" fill="#1D4E89">Kisima</text>
+<rect x="320" y="-60" width="110" height="90" fill="url(#tank)"/><ellipse cx="375" cy="-60" rx="55" ry="9" fill="#4f88c4"/>
+<rect x="165" y="90" width="90" height="70" fill="#1b2430"/><rect x="270" y="88" width="140" height="74" fill="#1D4E89"/><text x="282" y="132" font-family="NM" font-weight="700" font-size="26" fill="#fff">KES 3</text>
+<rect x="60" y="222" width="16" height="22" rx="3" fill="#f4c21f"/><rect x="82" y="220" width="16" height="22" rx="3" fill="#f4c21f"/><rect x="104" y="222" width="16" height="22" rx="3" fill="#f4c21f"/><rect x="126" y="220" width="16" height="22" rx="3" fill="#f4c21f"/><rect x="148" y="222" width="16" height="22" rx="3" fill="#f4c21f"/><rect x="170" y="220" width="16" height="22" rx="3" fill="#f4c21f"/><rect x="192" y="222" width="16" height="22" rx="3" fill="#f4c21f"/>
+<path d="M430 240 L560 220 L560 240 Z" fill="#8a4a2a" opacity=".4"/>
+</g></g>
+ <rect x="40" y="700" width="600" height="2" fill="#1D4E89" opacity=".25"/>
+ <g font-family="NM" fill="#1d2b3a">
+  <text x="40" y="742" font-size="17" letter-spacing="2" fill="#1D4E89" font-weight="500">INAFUNGULIWA · OPENS</text><text x="40" y="776" font-size="28" font-weight="500">Jumamosi 7 Machi 2026, saa 2 asubuhi</text>
+  <text x="40" y="820" font-size="17" letter-spacing="2" fill="#1D4E89" font-weight="500">KAMATI YA MAJI · COMMITTEE</text><text x="40" y="852" font-size="24">Grace Achieng (Mwenyekiti) · 0722 418 306</text>
+ </g>
+ <rect x="0" y="880" width="680" height="80" fill="#7FD1F7"/>
+ <text x="40" y="916" font-family="NM" font-weight="700" font-size="25" fill="#1D4E89">Sajili kadi yako ya maji leo.</text>
+ <text x="40" y="944" font-family="NM" font-size="20" fill="#1D4E89">Register your water card today · Kaya 1,240 zimesajiliwa</text>
+</g></g><rect width="680" height="960" fill="url(#fade)"/></g>
+<!-- chief's notice -->
+<g transform="translate(1640 360) rotate(2.4)"><rect x="8" y="10" width="300" height="420" fill="#000" opacity=".3" filter="url(#b6)"/><g filter="url(#pwr)"><g>
+ <rect width="300" height="420" fill="#fbfaf4"/>
+ <text x="150" y="54" text-anchor="middle" font-family="Times New Roman" font-weight="700" font-size="26" fill="#111">TANGAZO</text>
+ <text x="150" y="84" text-anchor="middle" font-family="Times New Roman" font-size="17" fill="#111">OFISI YA CHIFU — KAYOLE</text>
+ <line x1="30" x2="270" y1="100" y2="100" stroke="#111"/>
+ <g font-family="Times New Roman" font-size="17" fill="#111"><text x="30" y="134">Baraza la wananchi</text><text x="30" y="158">litafanyika Jumanne</text><text x="30" y="182">3 Machi 2026, saa 4</text><text x="30" y="206">asubuhi, uwanja wa</text><text x="30" y="230">shule ya msingi.</text>
+ <text x="30" y="274">Ajenda: Kioski ya maji</text><text x="30" y="298">na usajili wa kadi.</text></g>
+ <text x="40" y="370" font-family="Segoe Print" font-size="22" fill="#1a3a8a">Wote mnakaribishwa</text>
+ <circle cx="230" cy="380" r="32" fill="none" stroke="#6a2a8a" stroke-width="3" opacity=".6"/><text x="230" y="386" text-anchor="middle" font-family="Arial" font-size="11" fill="#6a2a8a" opacity=".7">CHIEF</text>
+</g></g><circle cx="150" cy="14" r="8" fill="#c33"/><circle cx="148" cy="12" r="3" fill="#f88"/></g>
+<!-- hard roof-edge shadow across the top -->
+<path d="M0 0 H2400 V150 L0 260 Z" fill="#1a2420" opacity=".45"/>
+<path d="M0 260 L2400 150" stroke="#000" stroke-opacity=".15" stroke-width="10" filter="url(#b6)"/>
+<!-- shadow of a pole -->
+<path d="M2010 0 L2060 0 L2190 1236 L2140 1236 Z" fill="#1a2420" opacity=".35"/>
+<path d="M2140 1236 L2190 1236 L2400 1350 L2330 1350Z" fill="#2a160c" opacity=".35"/>
+<rect width="2400" height="1350" fill="url(#sunwash)"/>
+<rect width="2400" height="1350" filter="url(#grain)" opacity=".2"/>
+</svg></body></html>

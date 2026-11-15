@@ -1,0 +1,134 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Italic.otf');font-weight:400;font-style:italic}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Light.otf');font-weight:300}
+
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:2400px;height:1350px;overflow:hidden;background:#2a0f18}svg{display:block}
+.desk{position:absolute;inset:0}
+.book{position:absolute;left:330px;top:150px;width:1560px;height:1020px;transform:perspective(3000px) rotateX(16deg) rotateZ(-2deg);transform-origin:50% 60%}
+.pg{position:absolute;top:0;width:780px;height:1020px;overflow:hidden}
+.pg.l{left:0;border-radius:6px 0 0 6px}.pg.r{left:780px;border-radius:0 6px 6px 0;background:#F3E7DD}
+.body{font-family:'NM';color:#4A1C2C}
+</style></head><body><svg class="desk" width="2400" height="1350"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .5 -.12"/></filter>
+<filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".5" numOctaves="3" seed="6"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .38  0 0 0 0 .32  0 0 0 .35 -.05"/></filter>
+<filter id="b40"><feGaussianBlur stdDeviation="40"/></filter><filter id="b20"><feGaussianBlur stdDeviation="20"/></filter><filter id="b8"><feGaussianBlur stdDeviation="8"/></filter><filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
+<radialGradient id="vig" cx=".45" cy=".4" r=".85"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+
+<filter id="wood" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".0025 .045" numOctaves="4" seed="5"/><feColorMatrix values="0 0 0 0 .32  0 0 0 0 .22  0 0 0 0 .16  0 0 0 .55 -.1"/></filter>
+<linearGradient id="win" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3e0" stop-opacity=".35"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="2400" height="1350" fill="#6b4c3b"/><rect width="2400" height="1350" filter="url(#wood)"/>
+<line x1="0" x2="2400" y1="210" y2="210" stroke="#2e1f16" stroke-width="3" opacity=".5"/><line x1="0" x2="2400" y1="480" y2="480" stroke="#2e1f16" stroke-width="3" opacity=".5"/><line x1="0" x2="2400" y1="750" y2="750" stroke="#2e1f16" stroke-width="3" opacity=".5"/><line x1="0" x2="2400" y1="1020" y2="1020" stroke="#2e1f16" stroke-width="3" opacity=".5"/><line x1="0" x2="2400" y1="1290" y2="1290" stroke="#2e1f16" stroke-width="3" opacity=".5"/><rect width="2400" height="1350" fill="url(#win)"/>
+<g opacity=".18" filter="url(#b20)"><path d="M0 0 L900 0 L2400 900 L2400 1350 Z" fill="#fff3e0"/></g>
+<rect width="2400" height="1350" filter="url(#grain)" opacity=".1"/>
+</svg>
+<div class="book">
+ <div style="position:absolute;inset:-6px -10px -16px -10px;background:#e6d9ca;border-radius:8px;box-shadow:0 2px 0 #cbbba8,0 6px 0 #d8cab9,0 10px 0 #c6b6a2,0 40px 70px -10px rgba(20,8,6,.6),0 90px 120px -40px rgba(20,8,6,.5)"></div>
+ <div class="pg l">
+  <svg width="780" height="1020" viewBox="0 0 780 1020"><defs>
+   
+
+<filter id="lbvb" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.022 0.003" numOctaves="3" seed="11" result="n"/>
+<feDiffuseLighting in="n" surfaceScale="9" diffuseConstant="1.15" lighting-color="#fff" result="L"><feDistantLight azimuth="235" elevation="38"/></feDiffuseLighting>
+<feComponentTransfer in="L" result="C"><feFuncR type="table" tableValues="0.03 0.10 0.22 0.34 0.52 0.86"/><feFuncG type="table" tableValues="0.01 0.03 0.07 0.12 0.24 0.62"/><feFuncB type="table" tableValues="0.02 0.05 0.11 0.18 0.31 0.68"/></feComponentTransfer>
+<feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="18" result="g"/>
+<feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.9 0.62" result="ga"/>
+<feComposite in="ga" in2="C" operator="atop" result="CG"/>
+<feMerge><feMergeNode in="C"/><feMergeNode in="CG"/></feMerge>
+</filter>
+
+<filter id="lbvs" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.03 0.004" numOctaves="3" seed="5" result="n"/>
+<feDiffuseLighting in="n" surfaceScale="12" diffuseConstant="1.15" lighting-color="#fff" result="L"><feDistantLight azimuth="235" elevation="38"/></feDiffuseLighting>
+<feComponentTransfer in="L" result="C"><feFuncR type="table" tableValues="0.03 0.10 0.22 0.34 0.52 0.86"/><feFuncG type="table" tableValues="0.01 0.03 0.07 0.12 0.24 0.62"/><feFuncB type="table" tableValues="0.02 0.05 0.11 0.18 0.31 0.68"/></feComponentTransfer>
+<feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="12" result="g"/>
+<feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.9 0.62" result="ga"/>
+<feComposite in="ga" in2="C" operator="atop" result="CG"/>
+<feMerge><feMergeNode in="C"/><feMergeNode in="CG"/></feMerge>
+</filter>
+<linearGradient id="lbform" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".72"/><stop offset=".22" stop-color="#000" stop-opacity=".1"/><stop offset=".48" stop-color="#ffd9e2" stop-opacity=".10"/><stop offset=".7" stop-color="#000" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".78"/></linearGradient>
+<linearGradient id="lbvert" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".12" stop-color="#000" stop-opacity="0"/><stop offset=".85" stop-color="#000" stop-opacity=".05"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></linearGradient>
+<linearGradient id="lbwood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2c49a"/><stop offset=".5" stop-color="#b98d5c"/><stop offset="1" stop-color="#7a5532"/></linearGradient>
+<clipPath id="lbcb"><path d="M262 196 Q300 214 338 196 L424 214 Q446 226 450 256 L474 520 Q494 660 546 786 Q514 804 482 796 Q446 812 410 800 Q366 816 326 806 Q288 818 248 802 Q208 812 174 798 Q140 806 106 792 Q130 650 132 520 L150 256 Q154 226 176 214 Z"/></clipPath>
+<clipPath id="lbcl"><path d="M178 214 Q140 232 132 286 L98 566 Q114 582 152 578 L170 306 Z"/></clipPath>
+<clipPath id="lbcr"><path d="M422 214 Q464 232 474 290 L556 540 Q542 562 504 562 L438 306 Z"/></clipPath>
+<clipPath id="lbcll"><path d="M262 196 L300 446 L226 310 L240 226 Z"/></clipPath>
+<clipPath id="lbclr"><path d="M338 196 L300 446 L374 310 L360 226 Z"/></clipPath>
+<filter id="lbfb" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="9"/></filter>
+<filter id="lbmb" x="-20%" y="-5%" width="140%" height="110%"><feGaussianBlur stdDeviation="14 1"/></filter>
+<filter id="lbsh" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="22"/></filter>
+<g id="lbcoat">
+ <g clip-path="url(#lbcb)"><g transform="rotate(4 300 500)"><rect x="40" y="150" width="560" height="720" filter="url(#lbvb)"/></g><g filter="url(#lbfb)"><path d="M254 230 Q200 520 118 810" stroke="#0d0207" stroke-opacity=".55" stroke-width="28" fill="none"/><path d="M265 230 Q223 520 160 810" stroke="#f0b2c4" stroke-opacity=".30" stroke-width="22" fill="none"/><path d="M274 230 Q243 520 196 810" stroke="#0d0207" stroke-opacity=".55" stroke-width="28" fill="none"/><path d="M283 230 Q263 520 232 810" stroke="#f0b2c4" stroke-opacity=".30" stroke-width="22" fill="none"/><path d="M290 230 Q279 520 262 810" stroke="#0d0207" stroke-opacity=".55" stroke-width="28" fill="none"/><path d="M300 230 Q300 520 300 810" stroke="#f0b2c4" stroke-opacity=".30" stroke-width="22" fill="none"/><path d="M308 230 Q316 520 330 810" stroke="#0d0207" stroke-opacity=".55" stroke-width="28" fill="none"/><path d="M316 230 Q336 520 366 810" stroke="#f0b2c4" stroke-opacity=".30" stroke-width="22" fill="none"/><path d="M326 230 Q356 520 402 810" stroke="#0d0207" stroke-opacity=".55" stroke-width="28" fill="none"/><path d="M335 230 Q377 520 440 810" stroke="#f0b2c4" stroke-opacity=".30" stroke-width="22" fill="none"/><path d="M344 230 Q398 520 478 810" stroke="#0d0207" stroke-opacity=".55" stroke-width="28" fill="none"/><path d="M353 230 Q417 520 512 810" stroke="#f0b2c4" stroke-opacity=".30" stroke-width="22" fill="none"/><path d="M360 230 Q432 520 540 810" stroke="#0d0207" stroke-opacity=".55" stroke-width="28" fill="none"/></g><rect x="100" y="190" width="460" height="640" fill="url(#lbform)"/><rect x="100" y="190" width="460" height="640" fill="url(#lbvert)"/>
+  <path d="M300 446 Q318 620 336 806" stroke="#000" stroke-opacity=".55" stroke-width="5" fill="none"/><path d="M304 446 Q322 620 340 806" stroke="#ffc9d6" stroke-opacity=".18" stroke-width="2" fill="none"/>
+  
+ </g>
+ <g clip-path="url(#lbcl)"><g transform="rotate(8 135 400)"><rect x="60" y="180" width="160" height="440" filter="url(#lbvs)"/></g><rect x="90" y="200" width="90" height="400" fill="url(#lbform)"/></g>
+ <g clip-path="url(#lbcr)"><g transform="rotate(-12 480 400)"><rect x="400" y="180" width="170" height="440" filter="url(#lbvs)"/></g><rect x="420" y="200" width="120" height="400" fill="url(#lbform)"/></g>
+ <g clip-path="url(#lbcll)"><rect x="200" y="190" width="110" height="270" filter="url(#lbvs)" transform="rotate(-18 260 300)"/><rect x="200" y="190" width="110" height="270" fill="#000" opacity=".28"/></g>
+ <g clip-path="url(#lbclr)"><rect x="290" y="190" width="110" height="270" filter="url(#lbvs)" transform="rotate(18 340 300)"/><rect x="290" y="190" width="110" height="270" fill="#ffd9e2" opacity=".06"/></g>
+ <path d="M262 196 L300 446 L226 310 L240 226 Z" fill="none" stroke="#000" stroke-opacity=".5" stroke-width="2.5"/><path d="M338 196 L300 446 L374 310 L360 226 Z" fill="none" stroke="#000" stroke-opacity=".45" stroke-width="2.5"/>
+ <path d="M152 300 L170 306 M448 300 L436 306" stroke="#000" stroke-opacity=".4" stroke-width="3"/>
+ <circle cx="312" cy="500" r="7" fill="#2a0c16" stroke="#7c3a4f" stroke-width="1.5"/><circle cx="317" cy="590" r="7" fill="#2a0c16" stroke="#7c3a4f" stroke-width="1.5"/>
+</g>
+<g id="lbhanger">
+ <path d="M300 186 L300 150 Q300 120 318 112 Q334 104 330 86 Q326 70 308 72" fill="none" stroke="#9aa0a3" stroke-width="5" stroke-linecap="round"/>
+ <path d="M170 222 Q236 186 300 180 Q364 186 430 222" fill="none" stroke="url(#lbwood)" stroke-width="16" stroke-linecap="round"/>
+</g>
+   
+<filter id="lbbg" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.008 0.0012" numOctaves="3" seed="33" result="n"/>
+<feDiffuseLighting in="n" surfaceScale="24" diffuseConstant="1.15" lighting-color="#fff" result="L"><feDistantLight azimuth="235" elevation="26"/></feDiffuseLighting>
+<feComponentTransfer in="L" result="C"><feFuncR type="table" tableValues="0.03 0.10 0.22 0.34 0.52 0.86"/><feFuncG type="table" tableValues="0.01 0.03 0.07 0.12 0.24 0.62"/><feFuncB type="table" tableValues="0.02 0.05 0.11 0.18 0.31 0.68"/></feComponentTransfer>
+<feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="40" result="g"/>
+<feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.9 0.62" result="ga"/>
+<feComposite in="ga" in2="C" operator="atop" result="CG"/>
+<feMerge><feMergeNode in="C"/><feMergeNode in="CG"/></feMerge>
+</filter>
+   <radialGradient id="lbspot" cx=".55" cy=".42" r=".6"><stop offset="0" stop-color="#ffd7c8" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+  </defs>
+   <rect x="-100" y="-100" width="1000" height="1200" filter="url(#lbbg)"/>
+   <rect width="780" height="1020" fill="url(#lbspot)"/>
+   <g transform="translate(90 150) scale(1.0)">
+    <g opacity=".6" filter="url(#lbsh)" transform="translate(50 40) rotate(9 300 80)" fill="#12040a"><path d="M262 196 L424 214 L546 786 L106 792 L150 256Z"/></g>
+    
+<g transform="rotate(9 300 80)">
+ <use href="#lbcoat" opacity=".28" filter="url(#lbmb)" transform="rotate(-6 300 80)"/><use href="#lbcoat" opacity=".18" filter="url(#lbmb)" transform="rotate(-11 300 80)"/>
+ <use href="#lbcoat"/>
+ <use href="#lbhanger"/>
+</g>
+   </g>
+   <defs><filter id="lbsh" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="30"/></filter></defs>
+   <text x="40" y="990" font-family="NM" font-size="13" letter-spacing="1.5" fill="#F3E7DD" opacity=".75">LOOK 04</text>
+  </svg>
+ </div>
+ <div class="pg r body">
+  <svg style="position:absolute;inset:0" width="780" height="1020"><rect width="780" height="1020" filter="url(#paper)" opacity=".5"/></svg>
+  <div style="position:absolute;left:80px;top:78px;right:70px;display:flex;justify-content:space-between;font-size:14px;letter-spacing:.18em;font-weight:500"><span>VELOUR</span><span>DROP 01 — AUTUMN / WINTER</span></div>
+  <div style="position:absolute;left:80px;top:200px;font-size:20px;letter-spacing:.2em;font-weight:500;color:#D9A5B3">LOOK 04</div>
+  <div style="position:absolute;left:76px;top:236px;font-family:Georgia;font-weight:700;font-size:118px;line-height:.95;letter-spacing:-.02em">The Long<br>Coat</div>
+  <div style="position:absolute;left:80px;top:500px;width:300px;font-size:20px;line-height:1.5">Cut from one length of cotton velvet in our Hackney studio. Forty hours from pattern to last stitch.</div>
+  <div style="position:absolute;left:420px;top:500px;width:290px;font-size:20px;line-height:1.5;opacity:.85">The colour was chosen by you — oxblood won the week-three vote with 61%.</div>
+  <div style="position:absolute;left:80px;top:720px;right:70px;border-top:1px solid rgba(74,28,44,.3)"></div>
+  <div style="position:absolute;left:80px;top:744px;right:70px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;font-size:15px;line-height:1.6">
+   <div><div style="letter-spacing:.14em;opacity:.6;font-size:12px">FABRIC</div>Cotton velvet,<br>cupro lining</div>
+   <div><div style="letter-spacing:.14em;opacity:.6;font-size:12px">RUN</div>36 pieces,<br>numbered</div>
+   <div><div style="letter-spacing:.14em;opacity:.6;font-size:12px">PRICE</div>£385</div></div>
+  <div style="position:absolute;left:80px;bottom:56px;font-style:italic;font-size:26px">Made slow. Sold out.</div>
+  <div style="position:absolute;right:70px;bottom:58px;font-size:16px;opacity:.7">14</div>
+ </div>
+ <div style="position:absolute;left:740px;top:0;width:80px;height:1020px;background:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.35) 46%,rgba(255,255,255,.12) 52%,rgba(0,0,0,.18) 56%,rgba(0,0,0,0) 100%)"></div>
+ <div style="position:absolute;left:780px;top:0;width:260px;height:1020px;background:linear-gradient(90deg,rgba(60,30,20,.18),rgba(60,30,20,0))"></div>
+ <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,245,230,.16),rgba(255,255,255,0) 50%,rgba(0,0,0,.08));pointer-events:none"></div>
+</div>
+<!-- swatch card: the colour vote -->
+<div style="position:absolute;left:1800px;top:790px;width:420px;height:470px;transform:rotate(9deg);background:#F3E7DD;border-radius:4px;box-shadow:0 30px 50px -10px rgba(20,8,6,.6),0 4px 8px rgba(0,0,0,.3);padding:28px 30px;font-family:'NM';color:#4A1C2C">
+ <div style="display:flex;justify-content:space-between;font-size:13px;letter-spacing:.16em;font-weight:500"><span>VELOUR · COLOUR VOTE</span><span>WK 3</span></div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px">
+ <div><div style="height:118px;border-radius:2px;background:radial-gradient(120% 90% at 30% 20%,#7a3346,#4A1C2C 60%,#000 140%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)"></div><div style="display:flex;justify-content:space-between;font-size:15px;margin-top:7px"><span>Oxblood</span><b style="font-weight:500">61%</b></div></div><div><div style="height:118px;border-radius:2px;background:radial-gradient(120% 90% at 30% 20%,#2f6656,#173d33 60%,#000 140%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)"></div><div style="display:flex;justify-content:space-between;font-size:15px;margin-top:7px"><span>Bottle</span><b style="font-weight:500">17%</b></div></div><div><div style="height:118px;border-radius:2px;background:radial-gradient(120% 90% at 30% 20%,#3a4370,#1d2340 60%,#000 140%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)"></div><div style="display:flex;justify-content:space-between;font-size:15px;margin-top:7px"><span>Ink</span><b style="font-weight:500">14%</b></div></div><div><div style="height:118px;border-radius:2px;background:radial-gradient(120% 90% at 30% 20%,#e0aebb,#b07a88 60%,#000 140%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)"></div><div style="display:flex;justify-content:space-between;font-size:15px;margin-top:7px"><span>Rose</span><b style="font-weight:500">8%</b></div></div>
+ </div>
+ <div style="font-size:13px;opacity:.6;margin-top:16px">8,214 votes · winner goes into Drop 01</div>
+</div>
+<div style="position:absolute;inset:0;background:radial-gradient(85% 80% at 45% 45%,transparent 55%,rgba(10,4,2,.5) 100%)"></div></body></html>

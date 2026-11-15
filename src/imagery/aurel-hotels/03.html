@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#2a1218;font-family:Georgia,serif}
+.abs{position:absolute}
+.door{left:330px;top:-40px;width:1300px;height:2100px;background:linear-gradient(90deg,#4a2230,#5A2E3A 30%,#5e3040 60%,#4a2230)}
+.mould{position:absolute;border-radius:4px;box-shadow:
+  inset 6px 6px 0 rgba(255,210,210,.10),inset -6px -6px 0 rgba(0,0,0,.35),
+  inset 14px 14px 0 rgba(0,0,0,.22),inset -14px -14px 0 rgba(255,210,210,.07),
+  inset 22px 22px 30px rgba(0,0,0,.25)}
+.brass{background:linear-gradient(160deg,#fff1c4 0%,#e0bd6c 18%,#a77a2c 42%,#d9b462 58%,#fff0c0 66%,#b68c3e 80%,#6a4a18 100%)}
+.screw{position:absolute;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3cc,#b89040 50%,#5a3c12);box-shadow:1px 2px 2px rgba(0,0,0,.5)}
+.screw::after{content:"";position:absolute;left:3px;right:3px;top:9.5px;height:3px;background:rgba(60,40,10,.7);transform:rotate(35deg)}
+</style></head>
+<body>
+<!-- corridor wall, left -->
+<div class="abs" style="left:0;top:0;width:360px;height:2000px;background:linear-gradient(90deg,#3a1c22,#6a3a3a 70%,#4a2228)"></div>
+<svg class="abs" style="left:0;top:0;opacity:.18" width="360" height="2000"><defs><pattern id="wp" width="90" height="120" patternUnits="userSpaceOnUse"><path d="M45 10 a30 30 0 0 1 30 30 v70 h-60 v-70 a30 30 0 0 1 30 -30z" fill="none" stroke="#D8B26E" stroke-width="2"/></pattern></defs><rect width="360" height="2000" fill="url(#wp)"/></svg>
+<!-- sconce -->
+<div class="abs" style="left:-200px;top:-120px;width:1100px;height:1000px;background:radial-gradient(closest-side,rgba(255,210,150,.55),rgba(255,170,110,.18) 50%,rgba(255,170,110,0));mix-blend-mode:screen;z-index:3"></div>
+<div class="abs brass" style="left:150px;top:520px;width:60px;height:140px;border-radius:10px;box-shadow:6px 10px 14px rgba(0,0,0,.5)"></div>
+<div class="abs" style="left:80px;top:300px;width:200px;height:230px;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);background:linear-gradient(90deg,#f7d9a6,#fff1d6 45%,#e8b880);box-shadow:0 0 80px rgba(255,200,130,.9);z-index:4"></div>
+<div class="abs" style="left:96px;top:300px;width:168px;height:20px;border-radius:50%;background:#fff6e0;z-index:4;opacity:.8"></div>
+
+<!-- door -->
+<div class="abs door">
+  <svg class="abs" style="inset:0;mix-blend-mode:overlay;opacity:.5" width="1300" height="2100"><filter id="wood"><feTurbulence type="fractalNoise" baseFrequency="0.004 0.12" numOctaves="4" seed="7"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .4  0 0 0 0 .4  0 0 0 .9 0"/></filter><rect width="1300" height="2100" filter="url(#wood)"/></svg>
+  <div class="mould" style="left:110px;top:150px;width:1080px;height:820px"></div>
+  <div class="mould" style="left:110px;top:1060px;width:1080px;height:1100px"></div>
+  <!-- satin sheen from sconce -->
+  <div class="abs" style="inset:0;background:radial-gradient(ellipse 60% 45% at 0% 18%,rgba(255,200,170,.28),rgba(255,200,170,0) 70%)"></div>
+</div>
+<!-- door frame edge / architrave -->
+<div class="abs" style="left:300px;top:0;width:44px;height:2000px;background:linear-gradient(90deg,#1a0a0e,#3a1a22 40%,#6a3a44 60%,#2a1218);box-shadow:8px 0 20px rgba(0,0,0,.5)"></div>
+
+<!-- number plaque -->
+<div class="abs" style="left:640px;top:330px;width:640px;height:420px;filter:drop-shadow(14px 22px 18px rgba(10,2,5,.6)) drop-shadow(2px 3px 2px rgba(10,2,5,.5))">
+  <div class="abs brass" style="inset:0;border-radius:320px 320px 18px 18px"></div>
+  <div class="abs" style="inset:14px;border-radius:306px 306px 10px 10px;box-shadow:inset 3px 4px 4px rgba(60,40,10,.6),inset -2px -2px 2px rgba(255,240,200,.6);background:linear-gradient(170deg,#f0d390,#c79b48 40%,#e6c578 55%,#9a7030)"></div>
+  <!-- engraved numerals: dark fill with highlight below edge -->
+  <div class="abs" style="left:0;right:0;top:118px;text-align:center;font-size:220px;font-weight:700;font-family:'Bodoni MT',Georgia,serif;line-height:1;color:#4a3210;text-shadow:0 2px 0 rgba(255,240,200,.75),0 -1px 0 rgba(0,0,0,.4);letter-spacing:-4px">214</div>
+  <div class="abs" style="left:0;right:0;top:350px;text-align:center;font-size:20px;letter-spacing:.42em;color:#4a3210;text-shadow:0 1px 0 rgba(255,240,200,.7)">AUREL PERA</div>
+  <svg class="abs" style="left:290px;top:52px" width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="#4a3210" stroke-width="6" stroke-linecap="round"><g><path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/></g></svg>
+  <!-- reflection streak -->
+  <div class="abs" style="inset:14px;border-radius:306px 306px 10px 10px;background:linear-gradient(105deg,rgba(255,255,255,0) 20%,rgba(255,255,240,.45) 26%,rgba(255,255,255,0) 32%,rgba(255,255,255,0) 70%,rgba(255,250,220,.25) 76%,rgba(255,255,255,0) 82%);mix-blend-mode:screen"></div>
+  <div class="screw" style="left:60px;top:370px"></div><div class="screw" style="right:60px;top:370px"></div>
+</div>
+
+<!-- do not disturb light indicator strip under plaque -->
+<div class="abs" style="left:760px;top:830px;width:400px;height:70px;border-radius:35px;background:#1e0c10;box-shadow:inset 0 2px 6px rgba(0,0,0,.8),0 1px 0 rgba(255,200,200,.15);display:flex;align-items:center;justify-content:center;gap:16px;font-size:16px;letter-spacing:.3em;color:rgba(246,238,227,.75)">
+  <span style="width:14px;height:14px;border-radius:50%;background:#e8b25e;box-shadow:0 0 12px #e8b25e"></span>LÜTFEN TEMİZLEYİN
+</div>
+
+<!-- escutcheon + lever + key -->
+<div class="abs" style="left:1020px;top:1150px;width:170px;height:560px;filter:drop-shadow(12px 18px 14px rgba(10,2,5,.6))">
+  <div class="abs brass" style="inset:0;border-radius:85px"></div>
+  <div class="abs" style="inset:10px;border-radius:75px;box-shadow:inset 2px 3px 4px rgba(60,40,10,.5),inset -2px -2px 2px rgba(255,240,200,.5)"></div>
+  <!-- lever rose -->
+  <div class="abs" style="left:35px;top:90px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3cc,#d9b462 40%,#8a6322 85%);box-shadow:3px 6px 8px rgba(0,0,0,.45)"></div>
+  <!-- keyhole -->
+  <div class="abs" style="left:70px;top:330px;width:30px;height:30px;border-radius:50%;background:#1a0c04"></div>
+  <div class="abs" style="left:76px;top:350px;width:18px;height:46px;background:#1a0c04;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)"></div>
+  <div class="screw" style="left:74px;top:20px"></div><div class="screw" style="left:74px;top:510px"></div>
+</div>
+<!-- lever handle (projects toward viewer, extends left) -->
+<div class="abs" style="left:700px;top:1220px;width:400px;height:60px;border-radius:30px 12px 12px 30px;background:linear-gradient(180deg,#fff3cc,#e0bd6c 25%,#9a6f28 60%,#d7b060 80%,#5a3c12);filter:drop-shadow(18px 40px 16px rgba(10,2,5,.55));transform:rotate(-2deg)"></div>
+<div class="abs" style="left:700px;top:1210px;width:40px;height:80px;border-radius:20px;background:linear-gradient(180deg,#fff3cc,#d9b462 40%,#7a5520);filter:drop-shadow(8px 14px 8px rgba(0,0,0,.5))"></div>
+
+<!-- key in keyhole: bow seen three-quarter, ring and leather tag hanging -->
+<svg class="abs" style="left:900px;top:1430px;overflow:visible;filter:drop-shadow(16px 22px 14px rgba(10,2,5,.6))" width="400" height="600">
+  <defs>
+    <linearGradient id="kb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6a4a18"/><stop offset=".35" stop-color="#e2be6e"/><stop offset=".5" stop-color="#fff0c0"/><stop offset=".7" stop-color="#b48a3c"/><stop offset="1" stop-color="#5d4012"/></linearGradient>
+    <linearGradient id="lt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a3a2a"/><stop offset=".55" stop-color="#6a2618"/><stop offset="1" stop-color="#3e120b"/></linearGradient>
+    <filter id="ltx"><feTurbulence type="fractalNoise" baseFrequency=".5" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 .15  0 0 0 0 .05  0 0 0 0 .03  0 0 0 .55 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+  </defs>
+  <!-- shank stub -->
+  <rect x="180" y="-6" width="28" height="40" rx="4" fill="url(#kb)"/>
+  <!-- bow, foreshortened -->
+  <ellipse cx="194" cy="74" rx="30" ry="50" fill="url(#kb)"/>
+  <ellipse cx="196" cy="74" rx="11" ry="22" fill="#2a1408"/>
+  <!-- ring -->
+  <ellipse cx="200" cy="146" rx="26" ry="34" fill="none" stroke="url(#kb)" stroke-width="7"/>
+  <!-- tag hanging -->
+  <g transform="translate(200 172) rotate(4)">
+    <path d="M-80 30 L-40 0 H40 L80 30 V330 Q80 350 60 350 H-60 Q-80 350 -80 330 Z" fill="url(#lt)"/>
+    <path d="M-80 30 L-40 0 H40 L80 30 V330 Q80 350 60 350 H-60 Q-80 350 -80 330 Z" filter="url(#ltx)"/>
+    <path d="M-66 36 L-34 12 H34 L66 36 V326 Q66 338 54 338 H-54 Q-66 338 -66 326 Z" fill="none" stroke="#e0b088" stroke-opacity=".55" stroke-width="2" stroke-dasharray="7 5"/>
+    <circle cx="0" cy="22" r="11" fill="#2a1408"/><circle cx="0" cy="22" r="11" fill="none" stroke="url(#kb)" stroke-width="4"/>
+    <g transform="translate(-22 80) scale(.44)" fill="none" stroke="#d8a47e" stroke-opacity=".8" stroke-width="7" stroke-linecap="round"><path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/></g>
+    <text x="0" y="220" text-anchor="middle" font-family="Bodoni MT" font-weight="700" font-size="76" fill="#3a0f08">214</text>
+    <text x="0" y="217" text-anchor="middle" font-family="Bodoni MT" font-weight="700" font-size="76" fill="none" stroke="rgba(230,170,140,.3)" stroke-width="1">214</text>
+    <text x="0" y="270" text-anchor="middle" font-family="Georgia" font-size="14" letter-spacing="5" fill="#d8a47e">AUREL PERA</text>
+    <path d="M-80 30 L-40 0 H40 L80 30 V330 Q80 350 60 350 H-60 Q-80 350 -80 330 Z" fill="url(#tagsheen)"/>
+    <linearGradient id="tagsheen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd0b0" stop-opacity=".18"/><stop offset=".4" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  </g>
+</svg>
+
+<!-- carpet edge / floor glow at bottom -->
+<div class="abs" style="left:0;right:0;bottom:0;height:260px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(10,2,5,.55))"></div>
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 80% 70% at 35% 30%,rgba(0,0,0,0) 45%,rgba(8,2,4,.65) 100%)"></div>
+<svg class="abs" style="inset:0;opacity:.18;mix-blend-mode:overlay" width="1600" height="2000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</body></html>

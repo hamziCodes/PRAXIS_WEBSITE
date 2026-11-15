@@ -1,0 +1,104 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Light.otf');font-weight:300}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+
+*{box-sizing:border-box;margin:0;padding:0}html,body{width:1600px;height:2000px;overflow:hidden}
+body{position:relative;font-family:'NM','Segoe UI',sans-serif;color:#0B3D3A;-webkit-font-smoothing:antialiased}
+
+.scr{position:absolute;inset:0;width:360px;height:780px;overflow:hidden;font-family:'NM','Segoe UI',sans-serif;color:#0B3D3A;background:#F2F4EF;-webkit-font-smoothing:antialiased}
+.ur{font-family:'Segoe UI','Tahoma',sans-serif;direction:rtl;unicode-bidi:isolate}
+.sb{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 20px 0 24px;font-size:13px;font-weight:500;letter-spacing:.01em}
+.sb .ic{display:flex;gap:5px;align-items:center}
+.btn{height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:500;gap:10px}
+.btn.y{background:#FFC857;color:#0B3D3A}
+.btn.g{background:#0B3D3A;color:#fff}
+.btn.o{border:1.5px solid rgba(11,61,58,.25);color:#0B3D3A}
+.steps{display:flex;gap:5px;padding:0 20px}
+.steps i{flex:1;height:4px;border-radius:2px;background:rgba(11,61,58,.14)}
+.steps i.on{background:#0B3D3A}
+.dark .steps i{background:rgba(255,255,255,.22)}.dark .steps i.on{background:#FFC857}
+.lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.6;font-weight:500}
+.chk{width:20px;height:20px;border-radius:50%;background:#0B3D3A;display:inline-flex;align-items:center;justify-content:center;flex:none}
+
+.ph{position:absolute;border-radius:calc(var(--k)*50px);background:linear-gradient(140deg,#3a3d40 0%,#1b1d1f 30%,#0e0f10 70%,#2b2e31 100%);
+ box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.14),inset 0 0 0 3px #0a0a0b,0 1px 1px rgba(0,0,0,.25),0 calc(var(--k)*8px) calc(var(--k)*14px) rgba(25,40,35,.16),0 calc(var(--k)*34px) calc(var(--k)*60px) calc(var(--k)*-6px) rgba(25,40,35,.28),0 calc(var(--k)*70px) calc(var(--k)*120px) calc(var(--k)*-30px) rgba(25,40,35,.3)}
+.ph .sc{position:absolute;left:calc(var(--k)*11px);top:calc(var(--k)*11px);width:360px;height:780px;transform-origin:0 0;border-radius:40px;overflow:hidden;background:#000}
+.ph .cam{position:absolute;left:50%;top:calc(var(--k)*23px);width:calc(var(--k)*11px);height:calc(var(--k)*11px);margin-left:calc(var(--k)*-5.5px);border-radius:50%;background:radial-gradient(circle at 35% 35%,#2b3a4a,#050607 60%);z-index:3}
+.ph .gl{position:absolute;inset:calc(var(--k)*11px);border-radius:calc(var(--k)*40px);background:linear-gradient(118deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.03) 28%,transparent 42%);z-index:2;pointer-events:none}
+.ph .bt{position:absolute;right:calc(var(--k)*-3px);width:calc(var(--k)*4px);border-radius:2px;background:linear-gradient(90deg,#26292c,#4a4e52)}
+
+.surf{position:absolute;inset:0;background:#d6d9cf}
+.plane{position:absolute;left:50%;top:50%;width:1px;height:1px;transform:perspective(2600px) rotateX(36deg) rotateZ(-16deg);transform-style:preserve-3d}
+.layer{position:absolute;border-radius:81px;background:#121314}
+</style></head><body><div class="surf"></div>
+<svg style="position:absolute;inset:0" width="1600" height="2000">
+<defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4"/><feColorMatrix values="0 0 0 0 .3  0 0 0 0 .32  0 0 0 0 .28  0 0 0 .55 0"/></filter>
+<filter id="mott" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".004 .006" numOctaves="4" seed="9"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .58  0 0 0 0 .5  0 0 0 .35 0"/></filter>
+<filter id="soft"><feGaussianBlur stdDeviation="60"/></filter>
+<linearGradient id="lt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff8e8" stop-opacity=".85"/><stop offset=".55" stop-color="#fff8e8" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="1600" height="2000" filter="url(#mott)"/>
+<rect width="1600" height="2000" filter="url(#grain)" opacity=".35"/>
+<g filter="url(#soft)"><path d="M-200 -100L1100 -100L1900 1300L600 2300Z" fill="url(#lt)"/></g>
+<g filter="url(#soft)" opacity=".22"><path d="M420 -200l120 0l760 2400l-120 0z" fill="#3b4a3c"/><path d="M820 -200l60 0l760 2400l-60 0z" fill="#3b4a3c"/></g>
+<rect width="1600" height="2000" fill="url(#vg)"/>
+<defs><radialGradient id="vg" cx=".45" cy=".4" r=".85"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#1d2a22" stop-opacity=".38"/></radialGradient></defs>
+</svg>
+<div class="plane" style="margin-left:40px;margin-top:-190px">
+ <!-- card shadow + card -->
+ <div style="position:absolute;left:-90px;top:250px;width:640px;height:403.7383177570093px;transform:rotate(11deg);transform-style:preserve-3d">
+  <div style="position:absolute;inset:0;border-radius:24px;background:rgba(20,30,24,.55);filter:blur(14px);transform:translate(26px,30px) translateZ(-5px)"></div>
+  <div style="position:absolute;inset:0;border-radius:24px;background:rgba(20,30,24,.6);filter:blur(3px);transform:translate(5px,6px) translateZ(-4px)"></div>
+  <div style="position:absolute;inset:0;border-radius:25.42056074766355px;background:#06201e;transform:translateZ(-1.2px)"></div><div style="position:absolute;inset:0;border-radius:25.42056074766355px;background:#06201e;transform:translateZ(-2.4px)"></div><div style="position:absolute;inset:0;border-radius:25.42056074766355px;background:#06201e;transform:translateZ(-3.5999999999999996px)"></div><div style="position:absolute;inset:0;border-radius:25.42056074766355px;overflow:hidden;background:linear-gradient(128deg,#155a54 0%,#0B3D3A 42%,#072c2a 100%)">
+<svg style="position:absolute;inset:0" width="100%" height="100%" viewBox="0 0 856 540" preserveAspectRatio="none">
+<defs><radialGradient id="cg" cx=".8" cy=".2" r=".9"><stop offset="0" stop-color="#2a7a70" stop-opacity=".55"/><stop offset="1" stop-color="#0B3D3A" stop-opacity="0"/></radialGradient></defs>
+<rect width="856" height="540" fill="url(#cg)"/>
+<g fill="none" stroke="#FFC857" stroke-opacity=".07" stroke-width="1.4"><circle cx="640" cy="300" r="40"/><circle cx="640" cy="300" r="58"/><circle cx="640" cy="300" r="76"/><circle cx="640" cy="300" r="94"/><circle cx="640" cy="300" r="112"/><circle cx="640" cy="300" r="130"/><circle cx="640" cy="300" r="148"/><circle cx="640" cy="300" r="166"/><circle cx="640" cy="300" r="184"/><circle cx="640" cy="300" r="202"/><circle cx="640" cy="300" r="220"/><circle cx="640" cy="300" r="238"/><circle cx="640" cy="300" r="256"/><circle cx="640" cy="300" r="274"/><circle cx="640" cy="300" r="292"/><circle cx="640" cy="300" r="310"/><circle cx="640" cy="300" r="328"/><circle cx="640" cy="300" r="346"/><circle cx="640" cy="300" r="364"/><circle cx="640" cy="300" r="382"/><circle cx="640" cy="300" r="400"/><circle cx="640" cy="300" r="418"/><circle cx="640" cy="300" r="436"/><circle cx="640" cy="300" r="454"/><circle cx="640" cy="300" r="472"/><circle cx="640" cy="300" r="490"/></g>
+<g fill="none" stroke="#FFC857" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" opacity=".95"><circle cx="560" cy="300" r="118"/><path d="M678 300H900"/><path d="M800 300V378"/></g>
+<rect x="74" y="190" width="118" height="92" rx="16" fill="url(#chip)"/>
+<defs><linearGradient id="chip" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e2a0"/><stop offset=".45" stop-color="#c9a24c"/><stop offset=".6" stop-color="#e8cd7d"/><stop offset="1" stop-color="#a5802f"/></linearGradient></defs>
+<g stroke="#8a6a26" stroke-width="2.2" fill="none" opacity=".7"><path d="M74 222h38v28H74M192 222h-38v28h38M112 190v32M154 190v32M112 250v32M154 250v32"/><rect x="112" y="222" width="42" height="28" rx="4"/></g>
+<g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".85"><path d="M236 214a40 40 0 0 1 0 56"/><path d="M254 200a62 62 0 0 1 0 84"/><path d="M272 186a84 84 0 0 1 0 112"/></g>
+</svg>
+<div style="position:absolute;left:55.32710280373831px;top:46.35514018691589px;color:#fff;font-weight:700;font-size:37.38317757009346px;letter-spacing:-.01em">Tarazu <span style="font-weight:400;opacity:.75">Bank</span></div>
+<div style="position:absolute;left:55.32710280373831px;bottom:68.78504672897196px;color:#fff;font-size:22.429906542056074px;letter-spacing:.14em;font-weight:500;opacity:.92">AREEBA KHAN</div>
+<div style="position:absolute;left:55.32710280373831px;bottom:40.373831775700936px;color:#FFC857;font-size:16.44859813084112px;letter-spacing:.2em;font-weight:500">DEBIT</div>
+<div style="position:absolute;right:52.336448598130836px;top:46.35514018691589px;color:#fff;opacity:.85"><span style="font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;unicode-bidi:isolate;font-size:29.906542056074766px">ترازو</span></div>
+<div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.13) 48%,rgba(255,255,255,0) 62%)"></div>
+<div style="position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1.4953271028037383px rgba(255,255,255,.12),inset 0 -2.2429906542056073px 4.485981308411215px rgba(0,0,0,.25)"></div></div>
+ </div>
+ <!-- phone shadow -->
+ <div style="position:absolute;left:-609.4200000000001px;top:-549.62px;width:618.84px;height:1299.24px;border-radius:90px;background:rgba(15,25,20,.55);filter:blur(40px);transform:translateZ(-22px)"></div>
+ <div style="position:absolute;left:-641.4200000000001px;top:-599.62px;width:618.84px;height:1299.24px;border-radius:80px;background:rgba(10,15,12,.7);filter:blur(6px);transform:translateZ(-21px)"></div>
+ <div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-1.6px);background:#4a4d50"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-3.2px);background:#4a4d50"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-4.800000000000001px);background:#1d1f21"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-6.4px);background:#1d1f21"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-8px);background:#1d1f21"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-9.600000000000001px);background:#1d1f21"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-11.200000000000001px);background:#1d1f21"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-12.8px);background:#1d1f21"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-14.4px);background:#1d1f21"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-16px);background:#1d1f21"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-17.6px);background:#08090a"></div><div class="layer" style="left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;transform:translateZ(-19.200000000000003px);background:#08090a"></div>
+ <div class="ph" style="--k:1.62;left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.2),inset 0 0 0 4px #0a0a0b">
+<div class="bt" style="top:243.00000000000003px;height:113.4px"></div><div class="bt" style="top:388.8px;height:71.28px"></div>
+<div class="sc" style="transform:scale(1.62)"><div class="scr" style="background:#fff">
+<div class="sb" style="color:#0B3D3A"><span>4:12</span><span class="ic"><svg width="17" height="11" viewBox="0 0 17 11"><rect x="0" y="7" width="3" height="4" rx=".6" fill="#0B3D3A"/><rect x="4.5" y="5" width="3" height="6" rx=".6" fill="#0B3D3A"/><rect x="9" y="2.5" width="3" height="8.5" rx=".6" fill="#0B3D3A"/><rect x="13.5" y="0" width="3" height="11" rx=".6" fill="#0B3D3A" opacity=".35"/></svg><svg width="15" height="11" viewBox="0 0 15 11"><path d="M7.5 10.5L.8 3.6a9.6 9.6 0 0 1 13.4 0z" fill="#0B3D3A"/></svg><svg width="24" height="12" viewBox="0 0 24 12"><rect x=".5" y=".5" width="20" height="11" rx="3" fill="none" stroke="#0B3D3A" opacity=".5"/><rect x="2.2" y="2.2" width="12" height="7.6" rx="1.6" fill="#0B3D3A"/><rect x="21.6" y="4" width="1.8" height="4" rx=".9" fill="#0B3D3A" opacity=".5"/></svg></span></div>
+<div style="display:flex;align-items:center;gap:12px;padding:10px 16px 6px"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M14 4l-7 7 7 7" fill="none" stroke="#0B3D3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:14px;opacity:.7">Send money</span></div>
+<div style="padding:12px 22px 0"><div style="font-size:26px;font-weight:500;letter-spacing:-.02em">Check before you send</div>
+<div class="ur" style="font-size:15px;opacity:.7;margin-top:4px;text-align:right">بھیجنے سے پہلے تصدیق کریں</div></div>
+<div style="margin:18px 16px 0;border-radius:18px;background:#F2F4EF;padding:18px">
+ <div style="display:flex;justify-content:space-between"><span class="lbl">To</span><span class="ur lbl" style="font-size:13px">کس کو</span></div>
+ <div style="display:flex;gap:12px;align-items:center;margin-top:10px"><div style="width:46px;height:46px;border-radius:50%;background:#0B3D3A;color:#FFC857;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px">NK</div>
+ <div><div style="font-size:21px;font-weight:500">Nasreen Khan</div><div style="font-size:13.5px;opacity:.65">Mobile wallet · 0300 •••• 4127</div></div></div>
+</div>
+<div style="margin:10px 16px 0;border-radius:18px;background:#F2F4EF;padding:18px">
+ <div style="display:flex;justify-content:space-between"><span class="lbl">Amount</span><span class="ur lbl" style="font-size:13px">رقم</span></div>
+ <div style="font-size:52px;font-weight:700;letter-spacing:-.035em;margin-top:2px;line-height:1.1">Rs 5,000</div>
+ <div style="display:flex;justify-content:space-between;font-size:13.5px;opacity:.7;margin-top:2px"><span>Five thousand rupees</span><span class="ur">پانچ ہزار روپے</span></div>
+</div>
+<div style="margin:10px 16px 0;border-radius:18px;background:#F2F4EF;padding:18px;display:flex;justify-content:space-between">
+ <div><div class="lbl">When <span class="ur" style="font-size:12px">· کب</span></div><div style="font-size:19px;font-weight:500;margin-top:4px">Now</div><div style="font-size:13px;opacity:.65">Tue 14 Oct, 4:12 pm</div></div>
+ <div style="text-align:right"><div class="lbl">Fee</div><div style="font-size:19px;font-weight:500;margin-top:4px">Rs 0</div><div style="font-size:13px;opacity:.65">Balance after: Rs 12,450</div></div>
+</div>
+<div style="position:absolute;left:16px;right:16px;bottom:30px">
+<div style="height:64px;border-radius:32px;background:#FFC857;position:relative;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;padding-left:62px">Slide to send <span class="ur" style="font-size:14px;margin-left:8px;opacity:.75">· بھیجنے کے لیے سلائیڈ کریں</span>
+<div style="position:absolute;left:5px;top:5px;width:54px;height:54px;border-radius:50%;background:#0B3D3A;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 11h13M12 5l6 6-6 6" fill="none" stroke="#FFC857" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+<div style="text-align:center;font-size:13px;opacity:.6;margin-top:12px">You can't undo a transfer once it's sent.</div></div>
+</div></div><div class="cam"></div><div class="gl"></div></div>
+ <div style="position:absolute;left:-649.4200000000001px;top:-609.62px;width:618.84px;height:1299.24px;border-radius:81px;background:linear-gradient(160deg,rgba(255,250,235,.22) 0%,rgba(255,250,235,.06) 30%,transparent 45%,transparent 70%,rgba(255,255,255,.05) 100%);pointer-events:none"></div>
+</div></body></html>

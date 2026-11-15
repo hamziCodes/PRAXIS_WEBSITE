@@ -1,0 +1,135 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#4a2430;font-family:Garamond,'Palatino Linotype',Georgia,serif;color:#2b1a1e}
+.abs{position:absolute}
+.caps{letter-spacing:.24em;text-transform:uppercase;font-family:Georgia,serif}
+.wm{font-family:Georgia,serif;font-weight:700}
+.sh{filter:drop-shadow(16px 22px 20px rgba(25,6,12,.6)) drop-shadow(2px 3px 2px rgba(25,6,12,.4))}
+.page{position:absolute;top:0;width:900px;height:1130px;overflow:hidden}
+.grain::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix values='0 0 0 0 .4  0 0 0 0 .3  0 0 0 0 .25  0 0 0 .16 0'/></filter><rect width='300' height='300' filter='url(%23f)'/></svg>");mix-blend-mode:multiply;pointer-events:none}
+.house{display:grid;grid-template-columns:52px 1fr auto;gap:0 18px;align-items:baseline;padding:17px 0;border-top:1px solid rgba(90,46,58,.18)}
+.n{font-family:Georgia;font-size:30px;font-weight:700;color:#5A2E3A}
+.hn{font-family:Georgia;font-size:30px;font-weight:700}
+.hd{font-size:19px;color:#6a5052;margin-top:4px;font-style:italic}
+.sw{width:30px;height:30px;border-radius:50%;box-shadow:inset 0 -2px 3px rgba(0,0,0,.2)}
+</style></head>
+<body>
+<svg class="abs" style="inset:0" width="2400" height="1350">
+  <defs>
+    <filter id="velvet" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0045 0.009" numOctaves="5" seed="21" result="t"/>
+      <feDiffuseLighting in="t" surfaceScale="16" lighting-color="#f0a0ae" diffuseConstant="1.25"><feDistantLight azimuth="225" elevation="30"/></feDiffuseLighting>
+      <feComposite in2="SourceGraphic" operator="arithmetic" k1="1"/>
+    </filter>
+    <filter id="pile"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 .2  0 0 0 0 .05  0 0 0 0 .08  0 0 0 .35 0"/></filter>
+  </defs>
+  <rect width="2400" height="1350" fill="#6a3443" filter="url(#velvet)"/>
+  <rect width="2400" height="1350" fill="#5A2E3A" opacity=".3"/>
+  <rect width="2400" height="1350" filter="url(#pile)"/>
+</svg>
+
+<!-- the guide, open -->
+<div class="abs sh" style="left:300px;top:110px;width:1810px;height:1140px;transform:rotate(-2deg)">
+  <!-- page block edges -->
+  <div class="abs" style="left:-8px;top:8px;width:910px;height:1130px;background:repeating-linear-gradient(90deg,#e6dac8 0 2px,#cfbfa8 2px 3px);border-radius:4px 0 0 4px"></div>
+  <div class="abs" style="right:-8px;top:8px;width:910px;height:1130px;background:repeating-linear-gradient(90deg,#cfbfa8 0 1px,#e6dac8 1px 3px);border-radius:0 4px 4px 0"></div>
+  <!-- left page: map -->
+  <div class="page grain" style="left:0;background:linear-gradient(90deg,#efe5d6 0%,#f6eee3 12%,#f5ece0 80%,#e2d2bb 94%,#c8b498 100%)">
+    <div class="abs caps" style="left:70px;top:64px;font-size:13px;color:#8a6a55">The Aurel guide · 2026–27</div>
+    <div class="abs caps" style="right:70px;top:64px;font-size:13px;color:#8a6a55">12</div>
+    <svg class="abs" style="left:40px;top:120px" width="820" height="760" viewBox="0 0 820 760">
+      <defs>
+        <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#8a6a55" stroke-opacity=".38" stroke-width="1.2"/></pattern>
+        <pattern id="wl" width="14" height="7" patternUnits="userSpaceOnUse"><path d="M0 4 q3.5 -3 7 0 t7 0" fill="none" stroke="#5A2E3A" stroke-opacity=".22" stroke-width="1"/></pattern>
+      </defs>
+      <!-- water: Black Sea strip, Bosphorus, Golden Horn, Marmara -->
+      <path d="M560 0 C 600 60 640 90 610 150 C 585 200 640 250 610 320 C 585 380 560 410 575 470 C 585 520 555 560 520 600 L 470 640 C 400 650 360 700 300 760 L 820 760 L 820 690 C 760 690 700 660 660 620 C 630 590 640 540 650 490 C 660 430 690 380 680 320 C 670 250 700 200 690 140 C 680 80 650 40 680 0 Z" fill="url(#wl)"/>
+      <path d="M520 600 C 470 590 430 560 380 545 C 330 530 300 500 250 470 C 230 460 215 470 230 482 C 280 512 320 545 370 568 C 420 590 460 620 470 640 Z" fill="url(#wl)"/>
+      <path d="M560 0 C 600 60 640 90 610 150 C 585 200 640 250 610 320 C 585 380 560 410 575 470 C 585 520 555 560 520 600 C 470 590 430 560 380 545 C 330 530 300 500 250 470 C 230 460 215 470 230 482 C 280 512 320 545 370 568 C 420 590 460 620 470 640 C 400 650 360 700 300 760" fill="none" stroke="#5A2E3A" stroke-opacity=".55" stroke-width="2"/>
+      <path d="M680 0 C 650 40 680 80 690 140 C 700 200 670 250 680 320 C 690 380 660 430 650 490 C 640 540 630 590 660 620 C 700 660 760 690 820 690" fill="none" stroke="#5A2E3A" stroke-opacity=".55" stroke-width="2"/>
+      <!-- land hatch, sparse -->
+      <path d="M0 0 H560 C 600 60 640 90 610 150 C 585 200 640 250 610 320 C 585 380 560 410 575 470 C 585 520 555 560 520 600 C 470 590 430 560 380 545 C 330 530 300 500 250 470 C 215 470 280 512 370 568 C 420 590 460 620 470 640 C 400 650 360 700 300 760 H0Z" fill="url(#hatch)" opacity=".55"/>
+
+      <g fill="none" stroke="#8a6a55" stroke-opacity=".45" stroke-width="2.2">
+        <path d="M0 610 C 120 600 200 640 300 700"/><path d="M80 760 C 140 650 180 560 230 482"/><path d="M380 0 C 400 120 450 220 470 330 C 480 420 470 480 470 520"/><path d="M200 0 C 230 140 260 260 300 350 C 330 420 400 470 470 520"/><path d="M820 300 C 760 330 720 380 690 430"/><path d="M820 520 C 760 560 720 600 700 650"/>
+      </g>
+      <path d="M500 610 C 560 640 620 660 690 660" fill="none" stroke="#5A2E3A" stroke-opacity=".6" stroke-width="2" stroke-dasharray="6 7"/>
+      <g font-family="Georgia" fill="#5e4334" font-size="15" letter-spacing="3">
+        <text x="130" y="590">FATİH</text><text x="300" y="180">ŞİŞLİ</text><text x="470" y="250">BEŞİKTAŞ</text><text x="720" y="380">ÜSKÜDAR</text><text x="720" y="720">KADIKÖY</text><text x="400" y="400">BEYOĞLU</text>
+      </g>
+      <g fill="#5A2E3A"><circle cx="440" cy="545" r="5"/><circle cx="400" cy="640" r="5"/><circle cx="660" cy="470" r="5"/></g>
+      <g font-family="Garamond" font-style="italic" fill="#5e4334" font-size="17"><text x="428" y="560" text-anchor="end">Galata Kulesi</text><text x="390" y="668" text-anchor="end">Ayasofya</text><text x="580" y="490">Kız Kulesi</text><text x="560" y="680" font-size="15">vapur · 20 dk</text></g>
+      <!-- bridges -->
+      <line x1="590" y1="430" x2="668" y2="436" stroke="#5A2E3A" stroke-width="3" stroke-opacity=".5"/>
+      <line x1="610" y1="250" x2="690" y2="246" stroke="#5A2E3A" stroke-width="3" stroke-opacity=".5"/>
+      <g font-family="Georgia" fill="#8a6a55" font-size="13" letter-spacing="4">
+        <text x="40" y="300">AVRUPA YAKASI</text><text x="700" y="560" transform="rotate(-80 700 560)">ANADOLU YAKASI</text>
+        <text x="610" y="740" font-style="italic" letter-spacing="1" font-size="18">Marmara Denizi</text>
+        <text x="618" y="190" font-style="italic" letter-spacing="1" font-size="16" transform="rotate(-82 618 190)">Boğaziçi</text>
+        <text x="270" y="520" font-style="italic" letter-spacing="1" font-size="15" transform="rotate(30 270 520)">Haliç</text>
+      </g>
+      <!-- houses -->
+      <g font-family="Georgia" font-weight="700" font-size="20">
+        <g transform="translate(330 505)"><circle r="17" fill="#2F6F6A"/><text y="7" text-anchor="middle" fill="#fff" font-size="17">3</text><text x="26" y="-14" fill="#2b1a1e">Balat</text></g>
+        <g transform="translate(470 520)"><circle r="17" fill="#D8B26E"/><text y="7" text-anchor="middle" fill="#2b1a1e" font-size="17">1</text><text x="-10" y="-26" fill="#2b1a1e">Pera</text></g>
+        <g transform="translate(548 555)"><circle r="17" fill="#B5573B"/><text y="7" text-anchor="middle" fill="#fff" font-size="17">2</text><text x="24" y="-12" fill="#2b1a1e">Cihangir</text></g>
+        <g transform="translate(700 650)"><circle r="17" fill="#3D6A8F"/><text y="7" text-anchor="middle" fill="#fff" font-size="17">4</text><text x="24" y="7" fill="#2b1a1e">Moda</text></g>
+      </g>
+      <!-- scale -->
+      <g transform="translate(40 720)" font-family="Georgia" font-size="12" fill="#8a6a55" letter-spacing="2"><rect width="120" height="6" fill="none" stroke="#8a6a55"/><rect width="60" height="6" fill="#8a6a55"/><text y="26">0 — 2 KM</text></g>
+    </svg>
+    <!-- insets -->
+    <div class="abs" style="left:70px;top:900px;width:360px;height:170px;border:1px solid rgba(90,46,58,.3);padding:16px 18px">
+      <div class="caps" style="font-size:11px;color:#8a6a55">Bodrum yarımadası</div>
+      <svg width="320" height="120"><path d="M10 70 C 60 30 120 40 160 60 C 200 80 250 60 300 70 L 300 120 L 10 120 Z" fill="url(#hatch)" stroke="#5A2E3A" stroke-opacity=".5"/><circle cx="70" cy="58" r="14" fill="#7A7F3A"/><text x="70" y="64" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="14" fill="#fff">5</text><circle cx="190" cy="66" r="14" fill="#D98466"/><text x="190" y="72" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="14" fill="#fff">6</text><text x="88" y="40" font-family="Georgia" font-size="16" font-weight="700">Gümüşlük</text><text x="208" y="48" font-family="Georgia" font-size="16" font-weight="700">Yalıkavak</text></svg>
+    </div>
+    <div class="abs" style="left:470px;top:900px;width:360px;height:170px;border:1px solid rgba(90,46,58,.3);padding:16px 18px">
+      <div class="caps" style="font-size:11px;color:#8a6a55">Kapadokya</div>
+      <svg width="320" height="120"><g fill="none" stroke="#5A2E3A" stroke-opacity=".5" stroke-width="1.5"><path d="M20 100 l14 -40 l12 40"/><path d="M50 100 l10 -30 l10 30"/><path d="M230 100 l16 -50 l14 50"/><path d="M262 100 l10 -28 l10 28"/><path d="M0 100 H320"/></g><circle cx="150" cy="70" r="14" fill="#B98A7A"/><text x="150" y="76" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="14" fill="#fff">7</text><text x="172" y="58" font-family="Georgia" font-size="16" font-weight="700">Ürgüp</text></svg>
+    </div>
+  </div>
+  <!-- right page: the seven houses -->
+  <div class="page grain" style="left:910px;background:linear-gradient(90deg,#c8b498 0%,#e4d6c2 5%,#f5ece0 18%,#f6eee3 85%,#ece1d1 100%);padding:64px 80px 0 90px">
+    <div style="display:flex;justify-content:space-between" class="caps"><span style="font-size:13px;color:#8a6a55">13</span><span style="font-size:13px;color:#8a6a55">Seven houses</span></div>
+    <div class="wm" style="font-size:72px;line-height:1;margin-top:60px;letter-spacing:-.01em">Seven houses.</div>
+    <div style="font-size:72px;line-height:1.05;font-style:italic;color:#5A2E3A;font-family:Georgia">One host.</div>
+    <div style="font-size:21px;line-height:1.55;margin-top:28px;max-width:640px;color:#4a3638">From a twelve-room house in Balat to the hundred and forty rooms of Pera, every Aurel keeps the same hours, the same welcome and the same breakfast bread. Each house has its own colour; the rest is family.</div>
+    <div style="margin-top:34px">
+      <script>
+      const H=[['Aurel Pera','Beyoğlu, İstanbul · 140 rooms','#D8B26E'],['Aurel Cihangir','Cihangir, İstanbul · 18 rooms','#B5573B'],['Aurel Balat','Fener–Balat, İstanbul · 12 rooms','#2F6F6A'],['Aurel Moda','Kadıköy, İstanbul · 24 rooms','#3D6A8F'],['Aurel Gümüşlük','Bodrum · 22 rooms','#7A7F3A'],['Aurel Yalıkavak','Bodrum · 36 rooms','#D98466'],['Aurel Ürgüp','Kapadokya · 16 cave rooms','#B98A7A']];
+      document.write(H.map((h,i)=>`<div class="house"><div class="n">${i+1}</div><div><div class="hn">${h[0]}</div><div class="hd">${h[1]}</div></div><div class="sw" style="background:${h[2]}"></div></div>`).join(''))
+      </script>
+    </div>
+  </div>
+  <!-- gutter shadow -->
+  <div class="abs" style="left:860px;top:0;width:100px;height:1130px;background:linear-gradient(90deg,rgba(60,30,30,0),rgba(60,30,30,.28) 48%,rgba(60,30,30,.4) 50%,rgba(60,30,30,.22) 53%,rgba(60,30,30,0))"></div>
+  <!-- ribbon -->
+  <div class="abs" style="left:892px;top:-30px;width:30px;height:1250px;background:linear-gradient(90deg,#9a7430,#e8c87e 40%,#b58e46 70%,#7a5a22);clip-path:polygon(0 0,100% 0,100% 100%,50% 97.5%,0 100%);filter:drop-shadow(4px 6px 4px rgba(40,10,10,.4));transform:rotate(-1.2deg)"></div>
+</div>
+
+<!-- tea glass on saucer, top-down -->
+<svg class="abs" style="left:2080px;top:820px;overflow:visible" width="300" height="300">
+  <defs><radialGradient id="tea" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#d0461c"/><stop offset=".6" stop-color="#8a1f0a"/><stop offset="1" stop-color="#4a0d04"/></radialGradient>
+  <filter id="b14"><feGaussianBlur stdDeviation="14"/></filter><filter id="b6"><feGaussianBlur stdDeviation="6"/></filter></defs>
+  <ellipse cx="170" cy="175" rx="150" ry="146" fill="#14030a" opacity=".5" filter="url(#b14)"/>
+  <circle cx="150" cy="150" r="140" fill="#f4ece0"/><circle cx="150" cy="150" r="140" fill="none" stroke="#D8B26E" stroke-width="5"/><circle cx="150" cy="150" r="124" fill="none" stroke="#D8B26E" stroke-width="1.5"/>
+  <circle cx="150" cy="150" r="100" fill="#e3d6c2"/>
+  <ellipse cx="178" cy="178" rx="80" ry="76" fill="#c8401a" opacity=".45" filter="url(#b6)"/>
+  <circle cx="150" cy="150" r="78" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.8)" stroke-width="3"/>
+  <circle cx="150" cy="150" r="64" fill="url(#tea)"/>
+  <path d="M100 120 A60 60 0 0 1 150 90" fill="none" stroke="rgba(255,230,210,.7)" stroke-width="4" stroke-linecap="round"/>
+  <rect x="210" y="60" width="10" height="120" rx="5" fill="#d9b462" transform="rotate(35 215 120)"/>
+</svg>
+
+<!-- room card peeking -->
+<div class="abs sh" style="left:40px;top:860px;width:300px;height:420px;transform:rotate(9deg);background:#2F6F6A;border-radius:6px;padding:40px 34px;color:#f6eee3">
+  <svg width="54" height="54" viewBox="0 0 100 100" fill="none" stroke="#D8B26E" stroke-width="5" stroke-linecap="round"><path d="M20 90 V45 a30 30 0 0 1 60 0 V90"/><path d="M36 90 V52 a14 14 0 0 1 28 0 V90"/><path d="M10 90 H90"/></svg>
+  <div style="font-family:Georgia;font-size:30px;font-weight:700;margin-top:30px">Room 07</div>
+  <div style="font-style:italic;font-size:19px;margin-top:6px;opacity:.85">Aurel Balat</div>
+  <div class="caps" style="font-size:10px;margin-top:70px;line-height:2;opacity:.8">Wi-Fi · aurel-balat<br>Kahvaltı 07:00–10:30</div>
+</div>
+
+<svg class="abs" style="inset:0;pointer-events:none" width="2400" height="1350"><radialGradient id="pool" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#fff2e0" stop-opacity=".16"/><stop offset=".55" stop-color="#fff2e0" stop-opacity="0"/><stop offset="1" stop-color="#12030a" stop-opacity=".6"/></radialGradient><rect width="2400" height="1350" fill="url(#pool)"/></svg>
+</body></html>

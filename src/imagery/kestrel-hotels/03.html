@@ -1,0 +1,124 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Kestrel — key card and in-room print</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf);font-weight:700}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Light.otf);font-weight:300}
+html,body{margin:0;padding:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#e9e6e0;font-family:NM;color:#23395B}
+.abs{position:absolute}
+.obj{position:absolute;box-shadow:4px 6px 4px rgba(30,30,50,.18),30px 40px 50px rgba(30,30,60,.28)}
+.lbl{font-size:13px;letter-spacing:2.4px;text-transform:uppercase}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="sheet" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0022 0.0032" numOctaves="3" seed="17" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="12" lighting-color="#fff" result="l"><feDistantLight azimuth="320" elevation="42"/></feDiffuseLighting>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 .2  0 0 0 0 .22  0 0 0 0 .3  -2.2 0 0 0 1.45" result="sh"/>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 1  0 0 0 0 .97  0 0 0 0 .92  1.6 0 0 0 -1.15" result="hi"/>
+    <feMerge><feMergeNode in="sh"/><feMergeNode in="hi"/></feMerge>
+  </filter>
+  <filter id="weave" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9 0.5" numOctaves="1" seed="2"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .3  0 0 0 0 .3  0 0 0 0 .35  0 0 0 -1.4 .8"/>
+  </filter>
+  <filter id="paper" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .3  0 0 0 0 .3  0 0 0 0 .35  0 0 0 -1.5 .85"/>
+  </filter>
+  <filter id="foil" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" result="n"/>
+    <feSpecularLighting in="n" surfaceScale="2" specularConstant="1.1" specularExponent="22" lighting-color="#fff2cc" result="s"><fePointLight x="200" y="-300" z="400"/></feSpecularLighting>
+    <feComposite in="s" in2="SourceAlpha" operator="in" result="sp"/>
+    <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="sp"/></feMerge>
+  </filter>
+</defs></svg>
+
+<!-- crisp white bed linen, top-down -->
+<div class="abs" style="inset:0;background:linear-gradient(135deg,#f6f4ef,#e8e5de 55%,#d6d3cc)"></div>
+<svg class="abs" style="left:0;top:0" width="1600" height="2000"><rect width="1600" height="2000" filter="url(#weave)" opacity=".5"/><rect width="1600" height="2000" filter="url(#sheet)"/></svg>
+<!-- navy bed runner across the top -->
+<div class="abs" style="left:-100px;top:-80px;width:1900px;height:430px;transform:rotate(-6deg);background:linear-gradient(#1c2e4c,#23395B 60%,#1a2b46);box-shadow:0 20px 30px rgba(20,30,60,.35)"></div>
+<svg class="abs" style="left:-100px;top:-80px;transform:rotate(-6deg)" width="1900" height="430"><rect width="1900" height="430" filter="url(#weave)" opacity=".6"/><g stroke="#E4B363" stroke-width="3" opacity=".8"><line x1="0" y1="400" x2="1900" y2="400"/><line x1="0" y1="410" x2="1900" y2="410"/></g></svg>
+<!-- warm dusk light raking from upper left -->
+<div class="abs" style="inset:0;background:linear-gradient(140deg,rgba(255,196,130,.30),rgba(255,196,130,.06) 45%,rgba(40,50,90,.18) 100%)"></div>
+
+<!-- welcome folder (open) with key card -->
+<div class="obj" style="left:170px;top:470px;width:860px;height:560px;transform:rotate(-5deg);background:linear-gradient(135deg,#2c4670,#23395B 55%,#1b2d4a);border-radius:4px">
+  <svg class="abs" style="left:0;top:0" width="860" height="560"><rect width="860" height="560" filter="url(#paper)" opacity=".35"/><line x1="430" y1="0" x2="430" y2="560" stroke="#0e1a2e" stroke-width="2" opacity=".6"/></svg>
+  <div class="abs" style="left:0;top:0;width:430px;height:560px;background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(0,0,0,.18))"></div>
+  <!-- left leaf: welcome -->
+  <div class="abs" style="left:46px;top:50px;width:340px;color:#F5F3EE">
+    <svg width="70" height="54" style="filter:url(#foil)"><path d="M4,50 L26,14 L36,30 L44,20 L64,50 Z" fill="none" stroke="#E4B363" stroke-width="4" stroke-linejoin="round"/><circle cx="58" cy="9" r="6" fill="none" stroke="#E4B363" stroke-width="3.5"/></svg>
+    <div class="lbl" style="color:#E4B363;margin-top:26px">Selamat datang</div>
+    <div style="font-size:38px;font-weight:500;letter-spacing:-.6px;margin-top:10px;line-height:1.1">Welcome,<br>Mrs Tan.</div>
+    <div style="font-size:17px;line-height:1.5;margin-top:22px;color:#c9d3e6">Your room is on the 34th floor, facing the towers. Breakfast is on 37 from 6:30. Check-out is Monday at 12:00.</div>
+  </div>
+  <!-- right leaf: card slot -->
+  <div class="abs" style="left:470px;top:300px;width:350px;height:220px;background:linear-gradient(#1b2d4a,#16263f);border-radius:4px;box-shadow:inset 0 3px 6px rgba(0,0,0,.4)"></div>
+  <div class="abs" style="left:490px;top:70px;width:320px;height:205px;border-radius:14px;background:linear-gradient(135deg,#F5F3EE,#e8e3d8);box-shadow:6px 10px 14px rgba(0,0,0,.35);transform:rotate(-3deg)">
+    <svg class="abs" style="left:24px;top:22px;filter:url(#foil)" width="70" height="54"><path d="M4,50 L26,14 L36,30 L44,20 L64,50 Z" fill="none" stroke="#C9963F" stroke-width="4" stroke-linejoin="round"/><circle cx="58" cy="9" r="6" fill="none" stroke="#C9963F" stroke-width="3.5"/></svg>
+    <div class="abs" style="left:24px;top:118px;font-size:38px;font-weight:700;letter-spacing:-1.2px;color:#23395B">Kestrel</div>
+    <div class="abs" style="left:24px;top:166px;font-size:14px;font-style:italic;color:#9a7a3a">Stay above the city.</div>
+    <div class="abs" style="right:22px;top:24px;width:44px;height:30px;border-radius:5px;border:2px solid #c9c3b8"></div>
+  </div>
+  <div class="abs" style="left:490px;top:330px;width:300px;color:#F5F3EE">
+    <div class="lbl" style="color:#E4B363">Room</div>
+    <div style="font-size:84px;font-weight:300;letter-spacing:-3px;line-height:1">3412</div>
+    <div style="font-size:15px;color:#c9d3e6;margin-top:8px">20 – 23 Nov · 2 guests · 1 cot</div>
+  </div>
+</div>
+
+<!-- amenity print card -->
+<div class="obj" style="left:840px;top:980px;width:600px;height:820px;transform:rotate(7deg);background:#F5F3EE">
+  <svg class="abs" style="left:0;top:0" width="600" height="820"><rect width="600" height="820" filter="url(#paper)" opacity=".5"/></svg>
+  <div class="abs" style="left:54px;top:56px;right:54px">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span class="lbl" style="color:#9a7a3a">Level 34 · Your floor</span><svg width="44" height="34" style="filter:url(#foil)"><path d="M3,31 L17,9 L23,19 L28,13 L41,31 Z" fill="none" stroke="#C9963F" stroke-width="3" stroke-linejoin="round"/><circle cx="37" cy="6" r="4" fill="none" stroke="#C9963F" stroke-width="2.5"/></svg></div>
+    <div style="font-size:48px;font-weight:500;letter-spacing:-1.4px;line-height:1.02;margin-top:26px">Your floor,<br>your city.</div>
+    <div style="height:2px;background:#23395B;margin:30px 0 8px"></div>
+    <div id="am"></div>
+    <div style="margin-top:28px;background:#23395B;color:#F5F3EE;border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:16px">
+      <div style="width:42px;height:42px;border-radius:50%;background:#E4B363;color:#23395B;display:grid;place-items:center;font-weight:700;font-size:19px">K</div>
+      <div><div style="font-size:18px;font-weight:500">Ask Kestrel, any hour</div><div style="font-size:14px;color:#c9d3e6;margin-top:2px">Text 'hi' to +60 3 2141 3412, or dial 0 from the room.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- wrapped soap -->
+<div class="obj" style="left:240px;top:1240px;width:330px;height:220px;transform:rotate(-14deg);border-radius:14px;background:linear-gradient(140deg,#2c4670,#23395B 50%,#18273f)">
+  <svg class="abs" style="left:0;top:0" width="330" height="220"><rect width="330" height="220" filter="url(#paper)" opacity=".4"/><path d="M0,40 L330,30 M0,180 L330,190" stroke="#0e1a2e" stroke-width="2" opacity=".5"/></svg>
+  <div class="abs" style="left:0;top:80px;width:330px;height:60px;background:linear-gradient(#f0d08a,#E4B363 50%,#b8873b)"></div>
+  <div class="abs" style="left:0;top:80px;width:330px;height:60px;text-align:center;line-height:60px;font-size:15px;letter-spacing:3px;color:#23395B;font-weight:500">PANDAN &amp; LIME · 40 G</div>
+  <div class="abs" style="inset:0;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0) 40%)"></div>
+</div>
+
+<!-- door hanger -->
+<div class="obj" style="left:120px;top:1560px;width:300px;height:620px;transform:rotate(9deg);background:#E4B363;border-radius:6px">
+  <svg class="abs" style="left:0;top:0" width="300" height="620"><rect width="300" height="620" filter="url(#paper)" opacity=".35"/></svg>
+  <div class="abs" style="left:85px;top:40px;width:130px;height:130px;border-radius:50%;background:#e9e6e0;box-shadow:inset 6px 8px 10px rgba(0,0,0,.25)"></div>
+  <div class="abs" style="left:150px;top:60px;width:0;height:120px;border-left:2px solid rgba(0,0,0,.15)"></div>
+  <div class="abs" style="left:34px;top:230px;right:34px;color:#23395B">
+    <div style="font-size:44px;font-weight:500;letter-spacing:-1px;line-height:1">Resting<br>above<br>the city.</div>
+    <div style="font-size:18px;margin-top:16px">Please do not disturb.</div>
+    <div style="font-size:18px;font-style:italic;margin-top:4px">Sila jangan ganggu.</div>
+  </div>
+</div>
+
+<!-- reading glasses shadow-shape for scale (top right) -->
+<svg class="abs" style="left:1130px;top:440px;transform:rotate(18deg)" width="380" height="160">
+  <g fill="none" stroke="#1b1d22" stroke-width="9"><ellipse cx="90" cy="80" rx="72" ry="58"/><ellipse cx="270" cy="80" rx="72" ry="58"/><path d="M162,72 Q180,58 198,72"/></g>
+  <g fill="rgba(200,220,255,.12)"><ellipse cx="90" cy="80" rx="68" ry="54"/><ellipse cx="270" cy="80" rx="68" ry="54"/></g>
+  <path d="M30,48 Q60,30 100,36" stroke="#fff" stroke-width="5" opacity=".35" fill="none"/>
+</svg>
+<svg class="abs" style="left:1150px;top:470px;transform:rotate(18deg);filter:blur(8px);opacity:.25;z-index:-1" width="380" height="160"><g fill="none" stroke="#000" stroke-width="10"><ellipse cx="90" cy="80" rx="72" ry="58"/><ellipse cx="270" cy="80" rx="72" ry="58"/></g></svg>
+
+<div class="abs" style="inset:0;background:radial-gradient(1100px 1400px at 45% 50%,rgba(0,0,0,0) 60%,rgba(20,25,45,.35) 100%)"></div>
+<script>
+window.__ready=false;
+document.getElementById('am').innerHTML=[['Rooftop pool','Level 36 · 7:00 – 22:00'],['Skyline Lounge','Level 38 · from 17:00'],['Breakfast','Level 37 · 6:30 – 10:30'],['Gym','Level 36 · open all hours'],['Ice &amp; laundry','Next to lift B, this floor']].map(r=>`<div style="display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid rgba(35,57,91,.18);font-size:19px"><span style="font-weight:500">${r[0]}</span><span style="color:#5a6a86">${r[1]}</span></div>`).join('');
+window.__ready=true;
+</script>
+</body></html>

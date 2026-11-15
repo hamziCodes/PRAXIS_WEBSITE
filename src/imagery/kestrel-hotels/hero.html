@@ -1,0 +1,219 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Kestrel — room 3412 at dusk</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf);font-weight:700}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Light.otf);font-weight:300}
+html,body{margin:0;padding:0}
+body{width:2400px;height:1350px;overflow:hidden;position:relative;background:#0b1220;font-family:NM}
+.abs{position:absolute}
+/* website */
+.site{position:absolute;left:0;top:0;width:1180px;height:820px;background:#F5F3EE;color:#1b2a44;font-family:NM;overflow:hidden;transform-origin:0 0}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:22px 34px}
+.nav a{color:#1b2a44;font-size:15px;margin-left:26px;text-decoration:none}
+.hero{position:relative;margin:0 34px;height:330px;border-radius:14px;overflow:hidden}
+.chatp{position:absolute;right:34px;top:96px;width:380px;height:690px;background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(20,30,60,.25);display:flex;flex-direction:column;overflow:hidden}
+.msg{padding:10px 13px;border-radius:14px;font-size:14px;line-height:1.38;max-width:86%}
+.g{align-self:flex-end;background:#23395B;color:#fff;border-bottom-right-radius:4px}
+.k{align-self:flex-start;background:#F5F3EE;border-bottom-left-radius:4px}
+.src{display:inline-flex;gap:6px;align-items:center;font-size:12px;color:#8a6a2a;background:#fbf3e2;border-radius:8px;padding:4px 8px;margin-top:8px}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="b2"><feGaussianBlur stdDeviation="1.2"/></filter>
+  <filter id="b4" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="b14" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+  <filter id="b40" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="40"/></filter>
+  <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="carpet" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.6 0 0 0 1.0"/></filter>
+  <filter id="woodd" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.003 0.08" numOctaves="3" seed="7"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2 0 0 0 1.25"/></filter>
+</defs></svg>
+
+<!-- ============ the city through the glass ============ -->
+<svg id="city" class="abs" style="left:0;top:0;filter:blur(.6px)" width="2400" height="1350"></svg>
+
+<!-- glass: reflections of the room -->
+<div class="abs" style="left:0;top:0;width:2400px;height:1010px;pointer-events:none">
+  <div class="abs" style="left:260px;top:430px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,196,120,.32),rgba(255,196,120,0));filter:blur(6px)"></div>
+  <div class="abs" style="left:330px;top:520px;width:120px;height:170px;border-radius:50% 50% 8px 8px;background:rgba(255,220,170,.12)"></div>
+  <div class="abs" style="left:0;top:0;width:2400px;height:1010px;background:linear-gradient(105deg,rgba(255,255,255,0) 30%,rgba(190,210,255,.05) 34%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 70%,rgba(190,210,255,.04) 74%,rgba(255,255,255,0) 80%)"></div>
+  <!-- downlights reflected -->
+  
+</div>
+<svg class="abs" style="left:0;top:0" width="2400" height="1010" id="refl"></svg>
+
+<!-- ============ room shell ============ -->
+<!-- ceiling -->
+<div class="abs" style="left:0;top:0;width:2400px;height:86px;background:linear-gradient(#1a1d24,#262a33)"></div>
+<div class="abs" style="left:0;top:86px;width:2400px;height:10px;background:#0c0e12"></div>
+<!-- mullions -->
+<div id="mull"></div>
+<!-- sill + floor -->
+<div class="abs" style="left:0;top:1000px;width:2400px;height:24px;background:linear-gradient(#3a3f4a,#15181e)"></div>
+<div class="abs" style="left:0;top:1024px;width:2400px;height:326px;background:linear-gradient(#1c1a1a,#120f0d 60%,#0a0807)"></div>
+<svg class="abs" style="left:0;top:1024px;mix-blend-mode:overlay;opacity:.6" width="2400" height="326"><rect width="2400" height="326" filter="url(#woodd)"/></svg>
+<!-- city reflected in polished floor -->
+<div class="abs" style="left:0;top:1024px;width:2400px;height:220px;background:linear-gradient(rgba(214,128,90,.32),rgba(80,70,110,.12) 50%,rgba(0,0,0,0));filter:blur(8px)"></div>
+<div class="abs" style="left:0;top:1024px;width:2400px;height:326px;background:repeating-linear-gradient(90deg,rgba(255,200,140,.05) 0 2px,transparent 2px 140px);filter:blur(3px)"></div>
+<!-- side walls -->
+<div class="abs" style="left:0;top:0;width:150px;height:1350px;background:linear-gradient(90deg,#14161b,#22252c);clip-path:polygon(0 0,100% 6.4%,100% 75%,0 100%)"></div>
+<div class="abs" style="left:2250px;top:0;width:150px;height:1350px;background:linear-gradient(270deg,#101216,#1d2026);clip-path:polygon(0 6.4%,100% 0,100% 100%,0 75%)"></div>
+<!-- sheer curtain bunched at right -->
+<div class="abs" style="left:2080px;top:96px;width:180px;height:930px;background:repeating-linear-gradient(90deg,rgba(235,228,214,.22) 0 14px,rgba(235,228,214,.08) 14px 30px,rgba(235,228,214,.3) 30px 38px,rgba(235,228,214,.1) 38px 52px);filter:blur(1.5px)"></div>
+
+<!-- ============ furniture & brand objects ============ -->
+<!-- daybed along the window, right -->
+<div class="abs" style="left:1340px;top:880px;width:820px;height:190px">
+  <div class="abs" style="left:-20px;top:150px;width:880px;height:60px;background:#000;opacity:.7;filter:blur(20px)"></div>
+  <div class="abs" style="left:0;top:50px;width:820px;height:120px;border-radius:12px;background:linear-gradient(#5d6a80,#3a4558 40%,#252c3a)"></div>
+  <div class="abs" style="left:0;top:20px;width:820px;height:50px;border-radius:14px;background:linear-gradient(#cfc7b8,#a39b8c);opacity:.95"></div>
+  <div class="abs" style="left:560px;top:-70px;width:200px;height:120px;border-radius:24px;background:linear-gradient(160deg,#E4B363,#b8873b);transform:rotate(-8deg);box-shadow:10px 14px 20px rgba(0,0,0,.4)"></div>
+  <div class="abs" style="left:640px;top:-50px;width:170px;height:110px;border-radius:24px;background:linear-gradient(160deg,#2f4b78,#23395B);transform:rotate(6deg);box-shadow:10px 14px 20px rgba(0,0,0,.4)"></div>
+</div>
+
+<!-- tablet on a stand on the coffee table -->
+<div class="abs" style="left:880px;top:1060px;width:820px;height:60px;border-radius:50%;background:#000;opacity:.6;filter:blur(24px)"></div>
+<div class="abs" style="left:820px;top:1060px;width:840px;height:300px;border-radius:50%/40%;background:radial-gradient(ellipse at 40% 30%,#3a2d24,#1d1612 70%);box-shadow:inset 0 6px 0 rgba(255,200,150,.15)"></div>
+<div class="abs" style="left:820px;top:1060px;width:840px;height:300px;border-radius:50%/40%;overflow:hidden"><svg width="840" height="300" style="mix-blend-mode:overlay;opacity:.7"><rect width="1040" height="330" filter="url(#woodd)"/></svg></div>
+<div id="tab" class="abs" style="left:880px;top:560px;width:720px;height:520px;transform:perspective(2200px) rotateY(-14deg) rotateX(6deg);transform-origin:50% 100%">
+  <div class="abs" style="inset:0;border-radius:34px;background:linear-gradient(135deg,#3a3c42,#151619);box-shadow:0 0 0 2px #6c6e74,30px 40px 60px rgba(0,0,0,.6)"></div>
+  <div class="abs" id="tabscreen" style="left:22px;top:22px;width:676px;height:476px;border-radius:14px;overflow:hidden;background:#F5F3EE"></div>
+  <div class="abs" style="left:22px;top:22px;width:676px;height:476px;border-radius:14px;background:linear-gradient(115deg,rgba(255,255,255,.14),rgba(255,255,255,0) 30%,rgba(255,255,255,0) 75%,rgba(255,255,255,.06))"></div>
+</div>
+<div class="abs" style="left:1180px;top:1050px;width:180px;height:40px;background:linear-gradient(#5a5c62,#26272b);border-radius:4px;transform:perspective(800px) rotateX(40deg)"></div>
+
+<!-- side table + lamp, left -->
+<div class="abs" style="left:150px;top:150px;width:700px;height:1200px">
+  <div class="abs" style="left:-200px;top:300px;width:900px;height:900px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,190,110,.35),rgba(255,190,110,0))"></div>
+  <!-- lamp -->
+  <div class="abs" style="left:130px;top:330px;width:400px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,226,170,.45),rgba(255,200,130,0))"></div>
+  <div class="abs" style="left:230px;top:420px;width:200px;height:230px;clip-path:polygon(18% 0,82% 0,100% 100%,0 100%);background:radial-gradient(ellipse at 50% 70%,#fff2d6,#f2cf95 50%,#c99a5a)"></div>
+  <div class="abs" style="left:322px;top:650px;width:16px;height:200px;background:linear-gradient(90deg,#8a6a3a,#E4B363,#7a5a2a)"></div>
+  <div class="abs" style="left:280px;top:840px;width:100px;height:22px;border-radius:50%;background:linear-gradient(#E4B363,#7a5a2a)"></div>
+  <!-- table top -->
+  <div class="abs" style="left:40px;top:850px;width:580px;height:120px;border-radius:50%;background:radial-gradient(ellipse at 40% 35%,#5a4636,#2a2019 75%);box-shadow:0 30px 40px rgba(0,0,0,.6),inset 0 4px 0 rgba(255,210,160,.3)"></div>
+  <div class="abs" style="left:40px;top:908px;width:580px;height:40px;border-radius:0 0 50% 50%/0 0 100% 100%;background:linear-gradient(#2a2019,#120d0a)"></div>
+  <div class="abs" style="left:300px;top:940px;width:60px;height:300px;background:linear-gradient(90deg,#120d0a,#2a2019,#0b0806)"></div>
+  <!-- key card folder + card lying on table -->
+  <div class="abs" style="left:150px;top:820px;width:300px;height:190px;transform:perspective(700px) rotateX(64deg) rotateZ(-16deg)">
+    <div class="abs" style="inset:0;background:#000;opacity:.5;filter:blur(6px);transform:translate(6px,8px)"></div>
+    <div class="abs" style="inset:0;background:#F5F3EE;border-radius:4px"></div>
+    <div class="abs" style="left:14px;top:14px;font-size:13px;letter-spacing:2px;color:#23395B">ROOM</div>
+    <div class="abs" style="left:14px;top:30px;font-size:52px;font-weight:500;color:#23395B">3412</div>
+    <div class="abs" style="left:14px;top:150px;font-size:12px;color:#23395B">Wi-Fi: Kestrel-Guest · Ask Kestrel 24/7</div>
+  </div>
+  <div class="abs" style="left:250px;top:806px;width:250px;height:158px;transform:perspective(700px) rotateX(62deg) rotateZ(10deg)">
+    <div class="abs" style="inset:0;background:#000;opacity:.55;filter:blur(5px);transform:translate(6px,8px)"></div>
+    <div class="abs" style="inset:0;border-radius:12px;background:linear-gradient(135deg,#2c4670,#23395B 60%,#1a2b46);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)"></div>
+    <svg class="abs" style="left:20px;top:18px" width="80" height="60"><path d="M4,52 L26,16 L36,32 L44,22 L64,52 Z" fill="none" stroke="#E4B363" stroke-width="4" stroke-linejoin="round"/><circle cx="58" cy="10" r="6" fill="none" stroke="#E4B363" stroke-width="3.5"/></svg>
+    <div class="abs" style="left:20px;top:96px;font-size:30px;font-weight:700;letter-spacing:-1px;color:#fff">Kestrel</div>
+    <div class="abs" style="left:150px;top:108px;font-size:12px;font-style:italic;color:#E4B363">Stay above the city.</div>
+  </div>
+</div>
+
+<!-- armchair silhouette, far right foreground -->
+<div class="abs" style="left:1960px;top:840px;width:560px;height:600px;filter:blur(5px);border-radius:120px 60px 0 0;background:linear-gradient(110deg,#2a3242,#141820 55%,#0a0c10);box-shadow:inset 6px 0 0 rgba(228,179,99,.18)"></div>
+<div class="abs" style="left:1900px;top:1050px;width:200px;height:320px;filter:blur(5px);border-radius:60px 40px 0 0;background:linear-gradient(110deg,#323b4d,#151a23)"></div>
+
+<!-- grade -->
+<div class="abs" style="inset:0;background:radial-gradient(1900px 1100px at 52% 42%,rgba(0,0,0,0) 55%,rgba(2,4,10,.6) 100%)"></div>
+
+<script>
+window.__ready=false;
+function rnd(seed){let s=seed;return()=>((s=(s*16807)%2147483647)/2147483647)}
+const R=rnd(11);
+const H=720; // horizon
+let g=`<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#0d1730"/><stop offset=".3" stop-color="#1d3156"/><stop offset=".55" stop-color="#4a4f78"/><stop offset=".72" stop-color="#a8687a"/><stop offset=".84" stop-color="#e6905e"/><stop offset=".93" stop-color="#f3b86e"/><stop offset="1" stop-color="#f0c27e"/>
+ </linearGradient>
+ <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e59a6a" stop-opacity="0"/><stop offset=".6" stop-color="#d48a6a" stop-opacity=".35"/><stop offset="1" stop-color="#3a3550" stop-opacity=".6"/></linearGradient>
+ <linearGradient id="twr" x1="0" x2="1"><stop offset="0" stop-color="#3a4258"/><stop offset=".35" stop-color="#8590a8"/><stop offset=".5" stop-color="#c9cfdc"/><stop offset=".7" stop-color="#5a6278"/><stop offset="1" stop-color="#262c3c"/></linearGradient>
+ <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3048"/><stop offset="1" stop-color="#151a2a"/></linearGradient>
+</defs>
+<rect width="2400" height="1010" fill="url(#sky)" transform="translate(0 -${1010-H-120})" />
+<rect y="${H-10}" width="2400" height="${1010-H+10}" fill="#2a2b40"/>`;
+// sun glow
+g+=`<ellipse cx="1750" cy="${H+20}" rx="700" ry="160" fill="#ffd08a" opacity=".45" filter="url(#b40)"/>`;
+// clouds
+for(let i=0;i<9;i++){const x=R()*2400,y=200+R()*360,w=200+R()*500;g+=`<ellipse cx="${x}" cy="${y}" rx="${w}" ry="${8+R()*14}" fill="${y>420?'#e7a07a':'#8a7a9a'}" opacity="${.18+R()*.2}" filter="url(#b14)"/>`}
+// far hills
+g+=`<path d="M0,${H-30} C200,${H-70} 380,${H-40} 560,${H-60} S900,${H-80} 1100,${H-45} S1500,${H-70} 1700,${H-50} S2100,${H-75} 2400,${H-40} L2400,${H+10} L0,${H+10} Z" fill="#5d5370" opacity=".85"/>`;
+// back layer buildings (hazy)
+function layer(n,minH,maxH,yBase,col,winOp,seedShift){
+  let s='';for(let i=0;i<n;i++){const w=30+R()*90,x=R()*2400,h=minH+R()*(maxH-minH),y=yBase-h;
+    s+=`<rect x="${x}" y="${y}" width="${w}" height="${h+40}" fill="${col}"/>`;
+    if(R()<.4)s+=`<rect x="${x+w*.3}" y="${y-14}" width="${w*.4}" height="14" fill="${col}"/>`;
+    // windows
+    const cols=Math.floor((w-4)/6),rows=Math.floor(h/8);const warmB=R()<.65;
+    for(let r=0;r<rows;r++){const floorLit=R()<winOp*2.2;for(let c=0;c<cols;c++){if(floorLit?R()<.7:R()<winOp*.25){s+=`<rect x="${x+3+c*6}" y="${y+5+r*8}" width="3.6" height="4.2" fill="${(warmB?R()<.85:R()<.2)?'#ffd596':'#d2e4ff'}" opacity="${.35+R()*.55}"/>`}}}
+  }return s;}
+g+=`<g opacity=".75">${layer(70,40,160,H+40,'#3a3a55',.12)}</g>`;
+g+=`<rect y="${H-40}" width="2400" height="200" fill="url(#haze)"/>`;
+// KL-style TV tower (suggested): left
+const tx=640;
+g+=`<g><path d="M${tx-10},${H+60} L${tx-6},${H-240} L${tx+6},${H-240} L${tx+10},${H+60} Z" fill="#2c3248"/>
+ <ellipse cx="${tx}" cy="${H-262}" rx="44" ry="20" fill="#2c3248"/><rect x="${tx-40}" y="${H-262}" width="80" height="22" fill="#343b54"/>
+ <rect x="${tx-38}" y="${H-258}" width="76" height="5" fill="#ffd79a" opacity=".85" filter="url(#glow)"/>
+ <path d="M${tx-14},${H-282} L${tx},${H-300} L${tx+14},${H-282} Z" fill="#2c3248"/><rect x="${tx-1.5}" y="${H-420}" width="3" height="120" fill="#2c3248"/>
+ <circle cx="${tx}" cy="${H-420}" r="3" fill="#ff5a4a" filter="url(#glow)"/></g>`;
+// twin towers (suggested, not copied): stepped, tapering, with a skybridge
+function tower(cx,top,base){let s='',w=96,y=base,steps=[[96,170],[88,140],[80,120],[70,90],[60,70],[48,50],[36,36],[24,26]];
+  for(const [sw,sh] of steps){y-=sh;s+=`<rect x="${cx-sw/2}" y="${y}" width="${sw}" height="${sh+1}" fill="url(#twr)"/>`;
+    for(let k=0;k<sh;k+=7)s+=`<rect x="${cx-sw/2+3}" y="${y+k}" width="${sw-6}" height="1.2" fill="#ffe7c0" opacity=".35"/>`;}
+  s+=`<rect x="${cx-2}" y="${y-110}" width="4" height="110" fill="#b9c0d0"/><circle cx="${cx}" cy="${y-110}" r="3" fill="#fff" filter="url(#glow)"/>`;
+  return s;}
+g+=tower(1520,0,H+40)+tower(1660,0,H+40);
+g+=`<rect x="1560" y="${H-330}" width="64" height="10" fill="#9aa3b8"/><path d="M1568,${H-320} L1590,${H-250} M1616,${H-320} L1594,${H-250}" stroke="#7a8398" stroke-width="3"/>`;
+// glow on the towers' sunward edge
+g+=`<rect x="1500" y="${H-560}" width="240" height="560" fill="#ffd8a0" opacity=".08" filter="url(#b14)"/>`;
+// mid towers
+g+=layer(26,180,420,H+80,'url(#bld)',.22);
+// near layer, darker, bigger
+g+=layer(16,80,240,H+260,'#121626',.3);
+// streets: light trails
+for(let i=0;i<5;i++){const y=H+150+i*40;g+=`<path d="M0,${y} C600,${y-10} 1400,${y+20} 2400,${y-5}" stroke="${i%2?'#ff8a5a':'#fff1c8'}" stroke-width="${2+i}" fill="none" opacity=".55" filter="url(#b2)"/>`}
+// tiny aircraft light
+g+=`<circle cx="1100" cy="250" r="2.5" fill="#fff" filter="url(#glow)"/><circle cx="1112" cy="252" r="1.6" fill="#ff5a4a"/>`;
+document.getElementById('city').innerHTML=g;
+
+// mullions and transom
+let m='';for(const x of [150,750,1350,1950,2250]){m+=`<div class="abs" style="left:${x-9}px;top:96px;width:18px;height:910px;background:linear-gradient(90deg,#0c0e12,#2c313b 40%,#0e1014)"></div>`}
+document.getElementById('mull').innerHTML=m;
+// downlights + reflections
+let rf='';for(const x of [420,1050,1650]){rf+=`<ellipse cx="${x}" cy="150" rx="40" ry="10" fill="#ffe2b0" opacity=".35" filter="url(#b14)"/>`}
+document.getElementById('refl').innerHTML=rf;
+document.body.insertAdjacentHTML('beforeend',[420,1050,1650].map(x=>`<div class="abs" style="left:${x-24}px;top:80px;width:48px;height:10px;border-radius:50%;background:#fff1d6;box-shadow:0 0 30px 10px rgba(255,220,170,.35)"></div>`).join(''));
+
+// tablet: kestrel.com with the concierge
+document.getElementById('tabscreen').innerHTML=`<div class="site" style="transform:scale(${676/1180})">
+ <div class="nav"><div style="display:flex;align-items:center;gap:12px"><svg width="44" height="34"><path d="M3,30 L16,9 L22,18 L27,12 L40,30 Z" fill="none" stroke="#E4B363" stroke-width="3" stroke-linejoin="round"/><circle cx="36" cy="6" r="4" fill="none" stroke="#E4B363" stroke-width="2.5"/></svg><span style="font-weight:700;font-size:24px;letter-spacing:-.6px">Kestrel Hotels</span></div>
+  <div><a>Hotels</a><a>Rooms</a><a>Dining</a><a>Offers</a><a style="background:#23395B;color:#fff;padding:10px 18px;border-radius:22px">Book a stay</a></div></div>
+ <div class="hero" style="margin-right:440px;background:linear-gradient(#1d3156,#a8687a 70%,#f0b06e)">
+  <svg width="706" height="330" style="position:absolute;left:0;top:0"><g fill="#1b2238"><rect x="300" y="60" width="26" height="270"/><rect x="340" y="60" width="26" height="270"/><rect x="60" y="200" width="60" height="130"/><rect x="140" y="160" width="50" height="170"/><rect x="420" y="190" width="70" height="140"/><rect x="520" y="140" width="60" height="190"/><rect x="600" y="210" width="80" height="120"/></g></svg>
+  <div style="position:absolute;left:28px;bottom:28px;color:#fff"><div style="font-size:13px;letter-spacing:2px;color:#E4B363">KESTREL KUALA LUMPUR · BUKIT BINTANG</div><div style="font-size:44px;font-weight:500;letter-spacing:-1px;margin-top:6px">Stay above the city.</div></div>
+ </div>
+ <div style="margin:18px 474px 0 34px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+  ${[['Check in','Fri 20 Nov'],['Check out','Mon 23 Nov'],['Guests','2 adults']].map(r=>`<div style="background:#fff;border-radius:12px;padding:12px 14px"><div style="font-size:11px;letter-spacing:1px;color:#7a8396">${r[0].toUpperCase()}</div><div style="font-size:17px;font-weight:500;margin-top:4px">${r[1]}</div></div>`).join('')}
+ </div>
+ <div style="margin:12px 474px 0 34px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+  <div style="background:#fff;border-radius:12px;padding:14px"><div style="font-size:16px;font-weight:500">Skyline King</div><div style="font-size:13px;color:#7a8396;margin-top:2px">Floors 30–38 · 42 m² · tower view</div><div style="font-size:20px;font-weight:500;margin-top:10px">RM 980 <span style="font-size:12px;color:#7a8396;font-weight:400">/ night</span></div></div>
+  <div style="background:#fff;border-radius:12px;padding:14px"><div style="font-size:16px;font-weight:500">Deluxe Twin</div><div style="font-size:13px;color:#7a8396;margin-top:2px">Floors 12–29 · 34 m² · city view</div><div style="font-size:20px;font-weight:500;margin-top:10px">RM 720 <span style="font-size:12px;color:#7a8396;font-weight:400">/ night</span></div></div>
+ </div>
+ <div class="chatp">
+  <div style="background:#23395B;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px"><div style="width:30px;height:30px;border-radius:50%;background:#E4B363;display:grid;place-items:center;color:#23395B;font-weight:700">K</div><div><div style="font-weight:500">Ask Kestrel</div><div style="font-size:12px;color:#c9d3e6">Replies in seconds · a person is always nearby</div></div></div>
+  <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:10px">
+   <div class="msg g">We land at KLIA at 6 am. Can we check in early?</div>
+   <div class="msg k">Welcome early! Rooms are guaranteed from 15:00, but if you book an early check-in for RM 150 your Skyline King is ready from 08:00. Our airport car takes about 55 minutes.<div class="src">↗ From: Kestrel KL · Arrivals &amp; check-in</div></div>
+   <div class="msg g">Is parking included?</div>
+   <div class="msg k">Yes, for one car, in the basement on levels B2–B3. Valet is at the Jalan Sultan Ismail entrance.<div class="src">↗ From: Kestrel KL · Getting here</div></div>
+   <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1.5px solid #23395B;border-radius:14px;padding:5px 10px;font-size:12.5px">Add early check-in</span><span style="border:1.5px solid #23395B;border-radius:14px;padding:5px 10px;font-size:12.5px">Book the airport car</span></div>
+  </div>
+  <div style="margin:0 12px 12px;height:44px;border-radius:22px;background:#F5F3EE;display:flex;align-items:center;padding:0 16px;color:#8a93a6;font-size:14px">Ask about rooms, parking, the pool…</div>
+ </div>
+</div>`;
+window.__ready=true;
+</script>
+</body></html>

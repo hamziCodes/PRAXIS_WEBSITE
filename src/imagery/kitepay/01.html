@@ -1,0 +1,110 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Light.otf');font-weight:300}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;font-family:'NM',sans-serif;color:#fff;
+  background:radial-gradient(ellipse 90% 50% at 70% 88%,#f0b383 0%,#c27a73 25%,#5a4766 55%,rgba(20,33,61,0) 80%),linear-gradient(180deg,#0b1430 0%,#14213D 35%,#2e3359 70%,#4c4060 100%)}
+.abs{position:absolute}
+.tnum{font-variant-numeric:tabular-nums}
+.muted{color:rgba(255,255,255,.58)}
+.mint{color:#9EF0C8}
+#bokeh{position:absolute;inset:0;filter:blur(14px)}
+.stage{position:absolute;left:330px;top:150px;width:860px;height:1720px;transform:perspective(3000px) rotateY(-16deg) rotateX(9deg) rotateZ(5deg);transform-style:preserve-3d}
+.frame{position:absolute;inset:0;border-radius:128px;
+  background:linear-gradient(120deg,#c9ccd2 0%,#8b9099 18%,#5a5f69 40%,#9aa0a9 62%,#e9ebee 80%,#7c818a 100%);
+  box-shadow:1px 2px 0 #6e737c,3px 4px 0 #5a5f68,5px 7px 0 #4a4e57,7px 10px 0 #3c4048,9px 13px 0 #30333b,11px 15px 0 #262930,60px 120px 160px rgba(5,8,25,.65),20px 40px 60px rgba(5,8,25,.4)}
+.bezel{position:absolute;inset:10px;border-radius:118px;background:#05070d}
+.screen{position:absolute;inset:26px;border-radius:102px;overflow:hidden;background:linear-gradient(180deg,#14213D 0%,#101a33 100%)}
+.island{position:absolute;left:50%;top:30px;width:230px;height:66px;border-radius:40px;background:#000;transform:translateX(-50%)}
+.btn{position:absolute;right:-7px;width:8px;border-radius:4px;background:linear-gradient(90deg,#9aa0a9,#5a5f69)}
+.spec{position:absolute;inset:26px;border-radius:102px;background:linear-gradient(118deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.13) 38%,rgba(255,255,255,.03) 46%,rgba(255,255,255,0) 60%,rgba(255,230,200,.06) 90%);pointer-events:none}
+.row{display:flex;justify-content:space-between;padding:22px 0;border-top:1px solid rgba(255,255,255,.09);font-size:27px}
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.06));-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);border:1.5px solid rgba(255,255,255,.32);box-shadow:inset 0 2px 0 rgba(255,255,255,.5),0 50px 100px rgba(5,8,25,.5)}
+</style></head>
+<body>
+<script>window.__ready=false</script>
+<svg id="bokeh" width="1600" height="2000"></svg>
+
+<div class="stage">
+  <div class="frame"></div>
+  <div class="btn" style="top:330px;height:120px"></div>
+  <div class="btn" style="top:520px;height:200px;left:-7px;right:auto"></div>
+  <div class="bezel"></div>
+  <div class="screen">
+    <div class="abs tnum" style="left:84px;top:44px;font-size:30px;font-weight:500">14:06</div>
+    <svg class="abs" style="right:84px;top:48px" width="110" height="26" viewBox="0 0 110 26"><rect x="0" y="16" width="6" height="9" fill="#fff"/><rect x="10" y="12" width="6" height="13" fill="#fff"/><rect x="20" y="7" width="6" height="18" fill="#fff"/><rect x="30" y="2" width="6" height="23" fill="#fff"/><rect x="58" y="2.5" width="44" height="21" rx="6" fill="none" stroke="#fff" stroke-opacity=".6"/><rect x="62" y="6" width="32" height="14" rx="3" fill="#fff"/></svg>
+    <div class="island"></div>
+    <div class="abs" style="left:70px;right:70px;top:150px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <svg width="46" height="46" viewBox="0 0 46 46"><path d="M28 10L16 23l12 13" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-size:28px;font-weight:500">Transfer receipt</div>
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M23 8v20M15 16l8-8 8 8M10 26v10h26V26"/></svg>
+      </div>
+      <div style="margin-top:80px;display:flex;justify-content:center">
+        <div style="position:relative;width:200px;height:200px">
+          <div class="abs" style="inset:-40px;border-radius:50%;background:radial-gradient(closest-side,rgba(158,240,200,.35),rgba(158,240,200,0))"></div>
+          <svg class="abs" width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="88" fill="#9EF0C8"/><path d="M62 102l26 26 52-56" fill="none" stroke="#14213D" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:46px;font-size:36px;font-weight:500">In Nasreen’s account</div>
+      <div class="tnum" style="text-align:center;margin-top:18px;font-size:104px;font-weight:500;letter-spacing:-.035em;line-height:1">PKR 113,940</div>
+      <div class="tnum mint" style="text-align:center;margin-top:22px;font-size:28px">Arrived 14:06 · promised by 14:22</div>
+      <!-- tracker -->
+      <div style="margin-top:62px;position:relative;height:110px">
+        <div class="abs" style="left:24px;right:24px;top:22px;height:6px;border-radius:3px;background:#9EF0C8"></div>
+        <div class="abs" style="left:0;top:0;width:50px;height:50px;border-radius:50%;background:#9EF0C8;box-shadow:0 0 0 8px rgba(158,240,200,.18)"></div>
+        <div class="abs" style="left:50%;top:0;width:50px;height:50px;margin-left:-25px;border-radius:50%;background:#9EF0C8;box-shadow:0 0 0 8px rgba(158,240,200,.18)"></div>
+        <div class="abs" style="right:0;top:0;width:50px;height:50px;border-radius:50%;background:#9EF0C8;box-shadow:0 0 0 8px rgba(158,240,200,.18)"></div>
+        <div class="abs tnum" style="left:0;top:70px;font-size:22px"><b style="font-weight:500">14:02</b> <span class="muted">Sent</span></div>
+        <div class="abs tnum" style="left:50%;top:70px;transform:translateX(-50%);font-size:22px;white-space:nowrap"><b style="font-weight:500">14:03</b> <span class="muted">Bank</span></div>
+        <div class="abs tnum" style="right:0;top:70px;font-size:22px;white-space:nowrap"><b style="font-weight:500">14:06</b> <span class="muted">Paid</span></div>
+      </div>
+      <div class="tnum" style="margin-top:40px">
+        <div class="row"><span class="muted">You sent</span><span>AED 1,500.00</span></div>
+        <div class="row"><span class="muted">Transfer fee</span><span class="mint">AED 0.00</span></div>
+        <div class="row"><span class="muted">Rate, locked</span><span>1 AED = 75.96 PKR</span></div>
+        <div class="row"><span class="muted">To</span><span>Meezan Bank •••• 0193</span></div>
+        <div class="row"><span class="muted">Delivery time</span><span>4 min 12 s</span></div>
+        <div class="row"><span class="muted">Reference</span><span>KP-88213-DX</span></div>
+      </div>
+    </div>
+    <div class="abs" style="left:70px;right:70px;bottom:120px;display:flex;gap:20px">
+      <div style="flex:1;height:104px;border-radius:34px;border:2px solid rgba(255,255,255,.25);display:grid;place-items:center;font-size:30px;font-weight:500">Done</div>
+      <div style="flex:1.4;height:104px;border-radius:34px;background:#9EF0C8;color:#14213D;display:grid;place-items:center;font-size:30px;font-weight:700">Send again</div>
+    </div>
+    <div class="abs" style="left:50%;bottom:30px;width:260px;height:9px;border-radius:5px;background:rgba(255,255,255,.75);transform:translateX(-50%)"></div>
+  </div>
+  <div class="spec"></div>
+</div>
+
+<!-- Nasreen's SMS, frosted, floating in front -->
+<div class="abs glass" style="left:820px;top:1340px;width:700px;border-radius:44px;padding:34px 38px;transform:perspective(2000px) rotateY(-10deg) rotateX(6deg) rotateZ(-3deg)">
+  <div style="display:flex;align-items:center;gap:16px">
+    <div style="width:54px;height:54px;border-radius:14px;background:#14213D;display:grid;place-items:center"><svg width="32" height="32" viewBox="0 0 200 200" fill="none" stroke="#9EF0C8" stroke-width="18" stroke-linejoin="round"><path d="M112 12 L52 112 h32 L78 188 L152 82 h-34 Z"/></svg></div>
+    <div style="font-size:24px;font-weight:700">Kitepay</div>
+    <div class="muted tnum" style="font-size:22px;margin-left:auto">Lahore · 15:06</div>
+  </div>
+  <div dir="rtl" style="font-family:'Segoe UI';font-size:34px;line-height:1.55;margin-top:20px">آپ کے میزان بینک اکاؤنٹ میں ۱۱۳٬۹۴۰ روپے پہنچ گئے ہیں۔ بھیجنے والے: ناصر حسین، دبئی</div>
+  <div class="muted tnum" style="font-size:22px;margin-top:12px">PKR 113,940 received from Nasir Hussain, Dubai. Ref KP-88213-DX</div>
+</div>
+
+<!-- small glass chip, top left -->
+<div class="abs glass tnum" style="left:120px;top:250px;border-radius:999px;padding:22px 34px;display:flex;gap:16px;align-items:center;font-size:28px;font-weight:500;transform:perspective(1600px) rotateY(16deg) rotateZ(-4deg)"><span style="width:16px;height:16px;border-radius:50%;background:#9EF0C8;box-shadow:0 0 16px #9EF0C8"></span>Salary sent · 14:02</div>
+
+<svg class="abs" style="inset:0;opacity:.2;mix-blend-mode:overlay" width="1600" height="2000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 75% 70% at 50% 48%,rgba(0,0,0,0) 55%,rgba(4,8,24,.6) 100%)"></div>
+<script>
+let s=3;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+const b=document.getElementById('bokeh');
+const cols=['#ffd49a','#ffb27a','#cfe2ff','#ffe9c4','#9EF0C8'];
+for(let i=0;i<120;i++){const y=1100+R()*900,x=R()*1600,r=6+R()*R()*60;const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',r);c.setAttribute('fill',cols[Math.floor(R()*R()*5)]);c.setAttribute('opacity',(.15+R()*.55)*(y>1300?1:.5));b.appendChild(c)}
+// a tower silhouette far back, defocused
+const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d','M1290 1450 L1290 900 L1310 900 L1310 700 L1325 700 L1325 520 L1336 520 L1340 300 L1344 520 L1355 520 L1355 700 L1370 700 L1370 900 L1390 900 L1390 1450Z');p.setAttribute('fill','#241f3d');p.setAttribute('opacity','.7');b.insertBefore(p,b.firstChild);
+window.__ready=true;
+</script>
+</body></html>

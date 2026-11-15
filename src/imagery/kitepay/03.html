@@ -1,0 +1,95 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Regular.otf');font-weight:400}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Medium.otf');font-weight:500}
+@font-face{font-family:'NM';src:url('../../../briefs/v6/fonts/NeueMontreal-Bold.otf');font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;font-family:'NM',sans-serif;color:#fff;
+  background:linear-gradient(180deg,#0a1028 0%,#101a36 46%,#0b1124 46.2%,#070b19 100%)}
+.abs{position:absolute}
+/* wall: soft dusk light through a window */
+.wall{left:0;top:0;width:1600px;height:925px;background:radial-gradient(ellipse 60% 70% at 78% 40%,rgba(240,170,120,.38),rgba(160,90,110,.15) 45%,rgba(20,33,61,0) 75%)}
+.winlight{left:860px;top:120px;width:560px;height:700px;background:linear-gradient(180deg,rgba(255,200,150,.25),rgba(255,170,130,.12));filter:blur(18px);transform:skewX(-8deg)}
+/* table surface */
+.surface{left:0;top:925px;width:1600px;height:1075px;background:
+  radial-gradient(ellipse 70% 40% at 62% 18%,rgba(255,190,140,.22),rgba(0,0,0,0) 70%),
+  linear-gradient(180deg,#1a2140 0%,#0d1329 40%,#060914 100%)}
+.lightpatch{left:520px;top:1000px;width:1300px;height:620px;background:linear-gradient(100deg,rgba(255,196,140,0),rgba(255,196,140,.32) 30%,rgba(255,180,130,.22) 60%,rgba(255,180,130,0));filter:blur(26px);transform:skewX(-38deg)}
+.scene{position:absolute;left:0;top:0;width:1600px;height:2000px;perspective:2600px;perspective-origin:50% 30%}
+.card{position:absolute;width:856px;height:540px;border-radius:44px;transform-style:preserve-3d}
+.face{position:absolute;inset:0;border-radius:44px;overflow:hidden}
+.metal{background:linear-gradient(112deg,#0e1834 0%,#1a2a52 22%,#24365f 34%,#9fb0cf 41%,#e9eef8 43.5%,#8a9bbd 46%,#22335a 54%,#14213D 70%,#1d2d55 88%,#0f1a36 100%)}
+.etch{color:rgba(190,210,240,.55);text-shadow:0 1px 0 rgba(255,255,255,.18),0 -1px 0 rgba(0,0,0,.45)}
+</style></head>
+<body>
+<div class="abs wall"></div>
+<div class="abs winlight"></div>
+<!-- window mullion shadows on wall -->
+<div class="abs" style="left:1010px;top:110px;width:18px;height:720px;background:rgba(10,16,40,.45);filter:blur(4px);transform:skewX(-8deg)"></div>
+<div class="abs" style="left:860px;top:450px;width:560px;height:14px;background:rgba(10,16,40,.4);filter:blur(4px);transform:skewX(-8deg)"></div>
+<!-- skyline seen faintly in the wall glass -->
+<svg class="abs" style="left:0;top:520px;opacity:.35;filter:blur(3px)" width="1600" height="405" id="sk"></svg>
+<div class="abs surface"></div>
+<div class="abs lightpatch"></div>
+
+<div class="scene">
+  <!-- second card: frosted mint glass, leaning upright behind -->
+  <div class="card" style="left:200px;top:330px;transform:rotateY(22deg) rotateX(-6deg) rotateZ(-8deg) scale(.9)">
+    <div class="face" style="background:linear-gradient(135deg,rgba(158,240,200,.34),rgba(255,255,255,.08) 55%,rgba(158,240,200,.2));backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border:2px solid rgba(255,255,255,.35);box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 60px 80px rgba(0,0,0,.45)">
+      <div class="abs" style="left:56px;top:52px;display:flex;align-items:center;gap:18px"><svg width="54" height="54" viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"><path d="M112 12 L52 112 h32 L78 188 L152 82 h-34 Z"/></svg><span style="font-size:52px;font-weight:700;letter-spacing:-.02em">kitepay</span></div>
+      <div class="abs" style="left:58px;bottom:56px;font-size:26px;letter-spacing:.18em;font-weight:500">NASIR HUSSAIN</div>
+      <div class="abs" style="right:56px;bottom:52px;font-size:30px;font-style:italic;font-weight:700">debit</div>
+    </div>
+  </div>
+
+  <!-- reflection of metal card on the polished surface -->
+  <div class="card" style="left:440px;top:1260px;transform:rotateX(64deg) rotateZ(-24deg) translateZ(-4px) scale(1,-1);opacity:.18;filter:blur(8px)">
+    <div class="face metal"></div>
+  </div>
+  <!-- contact shadow -->
+  <div class="abs" style="left:430px;top:1270px;width:900px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.75),rgba(0,0,0,0));transform:rotate(-14deg) translateY(40px);filter:blur(10px)"></div>
+
+  <!-- the metal card lying on the table -->
+  <div class="card" style="left:420px;top:1080px;transform:rotateX(60deg) rotateZ(-24deg)">
+    <!-- thickness -->
+    <div class="face" style="transform:translateZ(-9px);background:#4a5a7c"></div>
+    <div class="face" style="transform:translateZ(-6px);background:#7d8cab"></div>
+    <div class="face" style="transform:translateZ(-3px);background:#5e6e90"></div>
+    <div class="face metal" style="box-shadow:inset 0 0 0 2px rgba(220,230,250,.35)">
+      <svg class="abs" width="856" height="540" style="mix-blend-mode:overlay;opacity:.75"><filter id="brush"><feTurbulence type="fractalNoise" baseFrequency="0.002 0.9" numOctaves="3" seed="4"/><feColorMatrix values="0 0 0 0 .6  0 0 0 0 .65  0 0 0 0 .75  0 0 0 1.2 -.1"/></filter><rect width="856" height="540" filter="url(#brush)"/></svg>
+      <!-- engraved bolt, large, laser etched -->
+      <svg class="abs" style="left:520px;top:-60px;opacity:.5" width="420" height="420" viewBox="0 0 200 200" fill="none" stroke="rgba(10,18,40,.55)" stroke-width="2.5" stroke-linejoin="round"><path d="M112 12 L52 112 h32 L78 188 L152 82 h-34 Z"/><path d="M112 12 L52 112 h32 L78 188 L152 82 h-34 Z" transform="translate(1.2 1.2)" stroke="rgba(220,235,255,.35)"/></svg>
+      <div class="abs" style="left:62px;top:58px;display:flex;align-items:center;gap:18px">
+        <svg width="58" height="58" viewBox="0 0 200 200"><path d="M112 12 L52 112 h32 L78 188 L152 82 h-34 Z" fill="#9EF0C8" stroke="#9EF0C8" stroke-width="10" stroke-linejoin="round"/></svg>
+        <span class="etch" style="font-size:54px;font-weight:700;letter-spacing:-.02em;color:rgba(230,238,250,.9)">kitepay</span>
+      </div>
+      <div class="abs" style="left:66px;top:200px;width:112px;height:86px;border-radius:16px;background:linear-gradient(135deg,#d9dee8,#8e98ab 50%,#c9d0dc);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)">
+        <svg width="112" height="86"><path d="M0 29h38M0 57h38M74 29h38M74 57h38M38 0v86M74 0v86M38 43h36" stroke="rgba(40,50,70,.45)" stroke-width="2" fill="none"/></svg></div>
+      <svg class="abs" style="left:200px;top:220px" width="40" height="48" viewBox="0 0 40 48" fill="none" stroke="rgba(230,238,250,.75)" stroke-width="3.5" stroke-linecap="round"><path d="M6 12c6 7 6 17 0 24M15 7c9 10 9 24 0 34M24 2c12 13 12 31 0 44"/></svg>
+      <div class="abs etch" style="left:66px;top:350px;font-size:38px;letter-spacing:.16em;font-weight:500;font-variant-numeric:tabular-nums">4821 0067 3310 4821</div>
+      <div class="abs etch" style="left:66px;bottom:52px;font-size:24px;letter-spacing:.2em;font-weight:500">NASIR HUSSAIN</div>
+      <div class="abs etch" style="left:430px;bottom:52px;font-size:22px;letter-spacing:.12em;font-weight:500">VALID 11/30</div>
+      <div class="abs" style="right:60px;bottom:46px;font-size:34px;font-style:italic;font-weight:700;color:rgba(230,238,250,.85)">debit</div>
+      <!-- specular sweep -->
+      <div class="abs" style="inset:0;background:linear-gradient(112deg,rgba(255,255,255,0) 36%,rgba(255,255,255,.55) 42.5%,rgba(255,255,255,0) 49%);mix-blend-mode:screen"></div>
+      <div class="abs" style="inset:0;border-radius:44px;box-shadow:inset 0 3px 0 rgba(255,255,255,.55),inset 0 -2px 0 rgba(0,0,0,.4)"></div>
+    </div>
+  </div>
+</div>
+
+<!-- small receipt-like glass slip -->
+<div class="abs" style="left:90px;top:1680px;width:520px;padding:30px 34px;border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid rgba(255,255,255,.28);box-shadow:inset 0 2px 0 rgba(255,255,255,.45),0 40px 80px rgba(0,0,0,.5);transform:perspective(1800px) rotateX(18deg) rotateZ(4deg);font-variant-numeric:tabular-nums">
+  <div style="font-size:18px;letter-spacing:.1em;color:rgba(255,255,255,.55)">CARD · DUBAI MALL · 18:41</div>
+  <div style="font-size:44px;font-weight:500;margin-top:10px;letter-spacing:-.02em">AED 86.50</div>
+  <div style="font-size:21px;margin-top:8px;color:#9EF0C8">Approved · balance AED 3,914.25</div>
+</div>
+
+<div class="abs" style="inset:0;background:radial-gradient(ellipse 80% 70% at 55% 55%,rgba(0,0,0,0) 50%,rgba(3,6,18,.7) 100%)"></div>
+<svg class="abs" style="inset:0;opacity:.2;mix-blend-mode:overlay" width="1600" height="2000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<script>
+const sk=document.getElementById('sk');let s=9;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+let x=820;while(x<1600){const w=30+R()*60,h=60+R()*R()*300;const r=document.createElementNS('http://www.w3.org/2000/svg','rect');r.setAttribute('x',x);r.setAttribute('y',405-h);r.setAttribute('width',w);r.setAttribute('height',h);r.setAttribute('fill','#2a2846');sk.appendChild(r);x+=w+4}
+const b=document.createElementNS('http://www.w3.org/2000/svg','path');b.setAttribute('d','M1180 405 V240 h10 V170 h7 V110 h5 l3 -100 l3 100 h5 V170 h7 V240 h10 V405Z');b.setAttribute('fill','#2a2846');sk.appendChild(b);
+</script>
+</body></html>

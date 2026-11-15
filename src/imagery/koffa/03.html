@@ -1,0 +1,191 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>KOFFA — stamp and stationery set</title>
+<style>
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Bold.otf);font-weight:700}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Medium.otf);font-weight:500}
+@font-face{font-family:NM;src:url(../../../briefs/v6/fonts/NeueMontreal-Regular.otf);font-weight:400}
+html,body{margin:0;padding:0}
+body{width:1600px;height:2000px;overflow:hidden;position:relative;background:#2a1d14;font-family:NM}
+.abs{position:absolute}
+.obj{position:absolute;box-shadow:-2px -2px 0 rgba(255,235,200,.05),6px 8px 6px rgba(0,0,0,.35),26px 34px 40px rgba(0,0,0,.45)}
+.cream{background:linear-gradient(120deg,#f6ecd7,#efe3c9 50%,#e2d2b2)}
+.kraft{background:linear-gradient(120deg,#c99a67,#bb8b58 50%,#a77848)}
+.lp{color:#2B1D14}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="linen" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9 0.012" numOctaves="2" seed="2" result="a"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.9" numOctaves="2" seed="5" result="b"/>
+    <feComposite in="a" in2="b" operator="arithmetic" k2=".5" k3=".5"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .05  0 0 0 0 .03  0 0 0 0 .01  -3 0 0 0 1.9"/>
+  </filter>
+  <filter id="linenL" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.004" numOctaves="3" seed="8" result="n"/>
+    <feDiffuseLighting in="n" surfaceScale="9" lighting-color="#fff" result="l"><feDistantLight azimuth="225" elevation="40"/></feDiffuseLighting>
+    <feColorMatrix in="l" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2 0 0 0 1.25"/>
+  </filter>
+  <filter id="paperN" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="4"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .12  0 0 0 -1.6 .92"/>
+  </filter>
+  <filter id="fiber" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.7 0.12" numOctaves="2" seed="11"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .25  0 0 0 0 .15  0 0 0 0 .06  0 0 0 -2.2 1.3"/>
+  </filter>
+  <filter id="bite" x="-3%" y="-3%" width="106%" height="106%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="7" result="t1"/>
+    <feDisplacementMap in="SourceGraphic" in2="t1" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" seed="3" result="t2"/>
+    <feColorMatrix in="t2" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.4 0 0 0 2.1" result="m"/>
+    <feComposite in="d" in2="m" operator="in" result="ink"/>
+    <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="b"/>
+    <feOffset in="b" dx="1.4" dy="1.4" result="o1"/><feComposite in="SourceAlpha" in2="o1" operator="out" result="e1"/>
+    <feFlood flood-color="#000" flood-opacity=".5"/><feComposite in2="e1" operator="in" result="sh"/>
+    <feMerge><feMergeNode in="ink"/><feMergeNode in="sh"/></feMerge>
+  </filter>
+  <filter id="rubber" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="19" result="t1"/>
+    <feDisplacementMap in="SourceGraphic" in2="t1" scale="3" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="3" seed="23" result="t2"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="2" seed="4" result="t3"/>
+    <feComposite in="t2" in2="t3" operator="arithmetic" k2="1" k3="1" k4="-0.5" result="t4"/>
+    <feColorMatrix in="t4" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.25" result="m"/>
+    <feComposite in="d" in2="m" operator="in"/>
+  </filter>
+  <filter id="woodg" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.004 0.12" numOctaves="3" seed="6"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 .2  0 0 0 0 .1  0 0 0 0 .03  -2 0 0 0 1.25"/>
+  </filter>
+  <filter id="inkwet" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="2" result="n"/>
+    <feSpecularLighting in="n" surfaceScale="3" specularConstant=".9" specularExponent="18" lighting-color="#ffd2a0" result="s"><fePointLight x="100" y="-200" z="300"/></feSpecularLighting>
+    <feComposite in="s" in2="SourceAlpha" operator="in"/>
+  </filter>
+  <radialGradient id="bean" cx="38%" cy="35%" r="70%"><stop offset="0" stop-color="#8a5a35"/><stop offset=".35" stop-color="#5b3519"/><stop offset=".8" stop-color="#2e1a0c"/><stop offset="1" stop-color="#1c0f06"/></radialGradient>
+</defs></svg>
+
+<!-- linen surface -->
+<div class="abs" style="inset:0;background:radial-gradient(1500px 1700px at 25% 20%,#4a3324,#2B1D14 60%,#1a110a)"></div>
+<svg class="abs" style="left:0;top:0" width="1600" height="2000"><rect width="1600" height="2000" filter="url(#linenL)"/><rect width="1600" height="2000" filter="url(#linen)" opacity=".8"/></svg>
+
+<!-- letterhead with letter -->
+<div class="obj cream" style="left:150px;top:150px;width:780px;height:1100px;transform:rotate(-4deg)">
+  <svg class="abs" style="left:0;top:0" width="780" height="1100"><rect width="780" height="1100" filter="url(#paperN)" opacity=".7"/>
+    <g filter="url(#bite)">
+      <g fill="none" stroke="#C9772B" stroke-width="5"><rect x="70" y="70" width="54" height="20" rx="7"/><rect x="70" y="90" width="54" height="20" rx="7"/><rect x="70" y="110" width="54" height="20" rx="7"/></g>
+      <text x="140" y="128" font-family="NM" font-weight="700" font-size="58" letter-spacing="-2" fill="#2B1D14">KOFFA</text>
+      <text x="710" y="86" text-anchor="end" font-family="NM" font-weight="500" font-size="13" letter-spacing="2.5" fill="#2B1D14">14 PRINTERS STREET</text>
+      <text x="710" y="106" text-anchor="end" font-family="NM" font-weight="500" font-size="13" letter-spacing="2.5" fill="#2B1D14">LAHORE 54000 · PAKISTAN</text>
+      <text x="710" y="126" text-anchor="end" font-family="NM" font-weight="500" font-size="13" letter-spacing="2.5" fill="#C9772B">HELLO@KOFFA.PK</text>
+      <rect x="70" y="156" width="640" height="2.5" fill="#2B1D14"/>
+      <text x="70" y="1040" font-family="NM" font-style="italic" font-size="18" fill="#C9772B">Roasted on Printers Street.</text>
+      <text x="710" y="1040" text-anchor="end" font-family="Dubai,'Segoe UI'" font-size="18" fill="#2B1D14">کوفا · پرنٹرز اسٹریٹ، لاہور</text>
+    </g>
+  </svg>
+  <div class="abs" style="left:70px;top:210px;width:640px;font-family:Georgia,serif;font-size:19px;line-height:1.62;color:#2d2621">
+    <div style="font-family:NM;font-size:14px;letter-spacing:2px;color:#5a4a3c;margin-bottom:26px">7 NOVEMBER 2026</div>
+    <div>Mr Imran Qureshi<br>Qureshi General Store, Gulberg III</div>
+    <p style="margin:26px 0 0">Dear Imran,</p>
+    <p style="margin:14px 0 0">Thank you for taking KOFFA onto your shelf. Your first case is packed: twelve bags of Sidama (Orange roast) and twelve of Huila (Carbon), all roasted on 3 November.</p>
+    <p style="margin:14px 0 0">Each bag carries its roast date stamped by hand. Please keep them out of the sun, and send back any bag older than six weeks; we will replace it.</p>
+    <p style="margin:14px 0 0">Our café is two doors from the old Ittefaq press. Come by for a cup on us.</p>
+    <p style="margin:26px 0 0">With thanks,</p>
+  </div>
+  <svg class="abs" style="left:70px;top:740px" width="300" height="90"><path d="M8,60 C30,10 50,10 46,52 C44,70 60,30 78,34 C92,38 84,62 100,58 C120,52 128,20 150,30 C166,38 150,66 176,56 C196,48 210,40 236,46" stroke="#1f2a52" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+  <div class="abs" style="left:70px;top:830px;font-family:NM;font-size:15px;color:#2d2621">Sana Mirza, Co-founder</div>
+</div>
+
+<!-- kraft envelope, stamped -->
+<div class="obj kraft" style="left:760px;top:1020px;width:760px;height:400px;transform:rotate(6deg)">
+  <svg class="abs" style="left:0;top:0" width="760" height="400"><rect width="760" height="400" filter="url(#fiber)" opacity=".7"/>
+    <path d="M0,0 L380,210 L760,0" fill="none" stroke="#7a5230" stroke-width="2" opacity=".5"/>
+    <path d="M0,400 L300,190 M760,400 L460,190" stroke="#7a5230" stroke-width="2" opacity=".35"/>
+    <g filter="url(#rubber)" style="mix-blend-mode:multiply">
+      <g fill="none" stroke="#2B1D14" stroke-width="6"><rect x="48" y="44" width="62" height="22" rx="7"/><rect x="48" y="66" width="62" height="22" rx="7"/><rect x="48" y="88" width="62" height="22" rx="7"/></g>
+      <text x="124" y="106" font-family="NM" font-weight="700" font-size="50" letter-spacing="-2" fill="#2B1D14">KOFFA</text>
+      <text x="50" y="140" font-family="NM" font-weight="500" font-size="12" letter-spacing="2.5" fill="#2B1D14">14 PRINTERS STREET, LAHORE</text>
+    </g>
+    <g font-family="Georgia,serif" font-size="22" fill="#2a2018"><text x="400" y="270">Qureshi General Store</text><text x="400" y="300">72-E Main Boulevard, Gulberg III</text><text x="400" y="330">Lahore</text></g>
+    <text x="700" y="372" text-anchor="end" font-family="Dubai,'Segoe UI'" font-size="22" fill="#2a2018">قریشی جنرل سٹور</text>
+    <!-- roast-date stamp, crooked, in red -->
+    <g filter="url(#rubber)" transform="rotate(-11 590 90)" opacity=".85" style="mix-blend-mode:multiply"><circle cx="600" cy="92" r="62" fill="none" stroke="#9a3420" stroke-width="5"/><circle cx="600" cy="92" r="50" fill="none" stroke="#9a3420" stroke-width="2"/><text x="600" y="84" text-anchor="middle" font-family="Consolas,monospace" font-size="13" letter-spacing="3" fill="#9a3420">ROASTED</text><text x="600" y="106" text-anchor="middle" font-family="Consolas,monospace" font-weight="700" font-size="18" fill="#9a3420">03.11.26</text></g>
+  </svg>
+</div>
+
+<!-- business cards: front and back -->
+<div class="obj cream" style="left:1050px;top:330px;width:420px;height:240px;transform:rotate(9deg)">
+  <svg class="abs" style="left:0;top:0" width="420" height="240"><rect width="420" height="240" filter="url(#paperN)" opacity=".7"/><g filter="url(#bite)">
+    <text x="34" y="62" font-family="NM" font-weight="700" font-size="28" letter-spacing="-1" fill="#2B1D14">KOFFA</text>
+    <text x="34" y="140" font-family="NM" font-weight="500" font-size="22" fill="#2B1D14">Sana Mirza</text>
+    <text x="34" y="166" font-family="NM" font-size="15" fill="#2B1D14">Co-founder &amp; head roaster</text>
+    <text x="34" y="206" font-family="NM" font-size="13" letter-spacing="1.5" fill="#2B1D14">+92 42 3571 0414 · SANA@KOFFA.PK</text>
+    <g fill="none" stroke="#C9772B" stroke-width="4"><rect x="340" y="34" width="46" height="17" rx="6"/><rect x="340" y="51" width="46" height="17" rx="6"/><rect x="340" y="68" width="46" height="17" rx="6"/></g>
+  </g></svg>
+</div>
+<div class="obj" style="left:1110px;top:600px;width:420px;height:240px;transform:rotate(-5deg);background:linear-gradient(120deg,#d2843a,#C9772B 50%,#b0631f)">
+  <svg class="abs" style="left:0;top:0" width="420" height="240"><rect width="420" height="240" filter="url(#paperN)" opacity=".55"/><g filter="url(#bite)">
+    <g fill="none" stroke="#2B1D14" stroke-width="9"><rect x="150" y="54" width="120" height="44" rx="14"/><rect x="150" y="98" width="120" height="44" rx="14"/><rect x="150" y="142" width="120" height="44" rx="14"/></g>
+  </g></svg>
+</div>
+
+<!-- roast-level ink swatches -->
+<div class="obj cream" style="left:100px;top:1360px;width:560px;height:300px;transform:rotate(3deg)">
+  <svg class="abs" style="left:0;top:0" width="560" height="300"><rect width="560" height="300" filter="url(#paperN)" opacity=".7"/>
+    <g filter="url(#bite)">
+      <text x="30" y="46" font-family="NM" font-weight="500" font-size="13" letter-spacing="3" fill="#2B1D14">ROAST LEVELS · ONE INK EACH</text>
+      <rect x="30" y="70" width="156" height="150" fill="#D6A21E"/><rect x="202" y="70" width="156" height="150" fill="#C9772B"/><rect x="374" y="70" width="156" height="150" fill="#1b130d"/>
+      <g font-family="NM" font-weight="700" font-size="17" fill="#2B1D14"><text x="30" y="252">YELLOW</text><text x="202" y="252">ORANGE</text><text x="374" y="252">CARBON</text></g>
+      <g font-family="NM" font-size="13" fill="#2B1D14"><text x="30" y="274">Light · filter</text><text x="202" y="274">Medium · all-round</text><text x="374" y="274">Dark · milk, doodh</text></g>
+    </g>
+  </svg>
+</div>
+
+<!-- ink pad, open -->
+<div class="abs" style="left:290px;top:1700px;width:340px;height:220px;transform:rotate(-8deg)">
+  <div class="abs" style="inset:0;border-radius:16px;background:linear-gradient(135deg,#9a9890,#5e5c56 50%,#3c3a36);box-shadow:20px 28px 34px rgba(0,0,0,.55),inset 0 2px 0 rgba(255,255,255,.4)"></div>
+  <div class="abs" style="left:20px;top:20px;width:300px;height:180px;border-radius:8px;background:#b45d1c;box-shadow:inset 3px 4px 8px rgba(0,0,0,.6)"></div>
+  <svg class="abs" style="left:20px;top:20px" width="300" height="180"><rect width="300" height="180" rx="8" fill="#000" filter="url(#inkwet)" opacity=".6"/></svg>
+</div>
+
+<!-- rubber stamps, top view -->
+<div id="stamps"></div>
+
+<!-- beans and a pencil -->
+<svg class="abs" style="left:0;top:0" width="1600" height="2000" id="loose"></svg>
+
+<div class="abs" style="inset:0;background:linear-gradient(135deg,rgba(255,210,150,.14),rgba(255,210,150,0) 45%,rgba(0,0,0,.25) 100%)"></div>
+<div class="abs" style="inset:0;background:radial-gradient(1100px 1400px at 45% 45%,rgba(0,0,0,0) 60%,rgba(8,4,1,.5) 100%)"></div>
+<script>
+window.__ready=false;
+const st=document.getElementById('stamps');
+function stamp(x,y,w,h,rot,label){
+  st.insertAdjacentHTML('beforeend',`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;transform:rotate(${rot}deg)">
+   <div class="abs" style="inset:0;border-radius:6px;background:linear-gradient(135deg,#c99766,#a87246 50%,#7c5230);box-shadow:-1px -1px 0 rgba(255,230,190,.3) inset,22px 30px 30px rgba(0,0,0,.55),6px 8px 6px rgba(0,0,0,.4)"></div>
+   <svg class="abs" style="left:0;top:0;mix-blend-mode:multiply" width="${w}" height="${h}"><rect width="${w}" height="${h}" filter="url(#woodg)"/></svg>
+   <div class="abs" style="left:${w*.12}px;top:${h*.18}px;width:${w*.76}px;height:${h*.64}px;background:#efe4d0;opacity:.92"></div>
+   <svg class="abs" style="left:${w*.12}px;top:${h*.18}px" width="${w*.76}" height="${h*.64}"><g filter="url(#bite)">${label(w*.76,h*.64)}</g></svg>
+   <div class="abs" style="left:${w/2-34}px;top:${h/2-34}px;width:68px;height:68px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d9a874,#94623a 55%,#5a3820);box-shadow:16px 20px 18px rgba(0,0,0,.5)"></div>
+  </div>`);
+}
+stamp(700,1480,300,190,-14,(w,h)=>`<text x="10" y="22" font-family="NM" font-weight="700" font-size="16" fill="#2B1D14">KOFFA</text><text x="${w-10}" y="${h-10}" text-anchor="end" font-family="NM" font-size="11" fill="#C9772B">WORDMARK</text>`);
+stamp(1010,1500,220,220,8,(w,h)=>`<g fill="none" stroke="#C9772B" stroke-width="3"><rect x="10" y="10" width="30" height="11" rx="4"/><rect x="10" y="21" width="30" height="11" rx="4"/><rect x="10" y="32" width="30" height="11" rx="4"/></g>`);
+// one stamp tipped over: rubber face up, mirrored artwork
+st.insertAdjacentHTML('beforeend',`<div class="abs" style="left:1130px;top:1760px;width:340px;height:170px;transform:rotate(-6deg)">
+  <div class="abs" style="inset:-14px;border-radius:8px;background:linear-gradient(135deg,#b88552,#8a5b34);box-shadow:24px 30px 30px rgba(0,0,0,.55)"></div>
+  <div class="abs" style="inset:0;border-radius:4px;background:radial-gradient(circle at 30% 30%,#3a2c26,#1e1612);box-shadow:inset 0 0 0 3px #4a3a30"></div>
+  <svg class="abs" style="left:0;top:0" width="340" height="170"><g transform="translate(340 0) scale(-1 1)">
+    <text x="170" y="108" text-anchor="middle" font-family="NM" font-weight="700" font-size="74" letter-spacing="-2" fill="#3c2c24" stroke="#a24d16" stroke-width="2.5" opacity=".95">KOFFA</text>
+    <text x="170" y="142" text-anchor="middle" font-family="NM" font-weight="500" font-size="14" letter-spacing="4" fill="#a24d16" opacity=".8">PRINTERS STREET</text></g>
+    <rect width="340" height="170" fill="url(#none)"/></svg>
+</div>`);
+// loose beans + pencil
+function rnd(seed){let s=seed;return()=>((s=(s*16807)%2147483647)/2147483647)}
+const R=rnd(9);let sh='',bb='';
+for(let i=0;i<22;i++){const x=1240+R()*260,y=80+R()*200,r=R()*360,s=1.5+R()*.3;sh+=`<ellipse cx="${x+10}" cy="${y+12}" rx="${15*s}" ry="${10*s}" transform="rotate(${r} ${x} ${y})"/>`;bb+=`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><ellipse rx="15" ry="10.5" fill="url(#bean)"/><path d="M-12,1 C-6,-3 -1,4 4,0 S10,-1 12,1" stroke="#120803" stroke-width="2.2" fill="none"/><ellipse cx="-5" cy="-5" rx="5" ry="2.2" fill="#d9a776" opacity=".35"/></g>`}
+document.getElementById('loose').innerHTML=`<g fill="#000" opacity=".5" style="filter:blur(5px)">${sh}</g>${bb}
+<g transform="translate(330 1080) rotate(-16)"><rect x="0" y="0" width="560" height="24" fill="#000" opacity=".45" transform="translate(14 18)" style="filter:blur(6px)"/><rect x="0" y="0" width="470" height="22" fill="#C9772B"/><rect x="0" y="0" width="470" height="7" fill="#e39a55"/><rect x="470" y="0" width="70" height="22" fill="#e8cfa5"/><path d="M540,0 L580,11 L540,22 Z" fill="#d9b88a"/><path d="M566,7 L580,11 L566,15 Z" fill="#333"/><text x="30" y="17" font-family="NM" font-weight="700" font-size="14" fill="#2B1D14" letter-spacing="2">KOFFA · HB</text></g>`;
+window.__ready=true;
+</script>
+</body></html>
