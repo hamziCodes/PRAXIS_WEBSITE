@@ -4,7 +4,7 @@
 **From:** Hamzi + Kai, 2026-11-15. **Status: FINAL — approved by Hamzi, 2026-11-15. Synced the same evening: every asset is in this repo (§6), and the reel is the finished studio trailer (§5).**
 **Base document:** *Praxis Rework Report v6 (amended)* — Appa's walkthrough, the change list C1–C19, the reference breakdown, the phases. This plan does not replace it. It closes the three asset questions the report left open, and it corrects three things after Hamzi reviewed Kai's first placeholder assets tonight.
 
-**Reading rule (unchanged, vision-first):** the vision in the report governs. Where a mechanic in this plan and a better idea inside the brand system disagree, the better idea wins — flag it in the report-back. The hard lines do not move: `docs/` untouched, brand system fixed, homepage = four sections, no people's names, no serif accents (Handjet does accents), vanilla stack, the speak-line verbatim.
+**Reading rule (unchanged, vision-first):** the vision in the report governs. Where a mechanic in this plan and a better idea inside the brand system disagree, the better idea wins — flag it in the report-back. The hard lines do not move: `docs/` untouched, brand system fixed, homepage = four sections, people's names only on About (§7.1), no serif accents (Handjet does accents), vanilla stack, the speak-line verbatim.
 
 ---
 
@@ -87,9 +87,9 @@ Play them the way Uncommon does — subtle, constant, single-colour line work; n
 
 **References:** OuiWill (ouiwill.com/work, /about) · Uncommon (uncommondesign.group) · iVentions (iventions.com/about) — full breakdown in the report, §4.
 
-## 7. Open items — unchanged, none block the build
+## 7. Open items & the About decision — none block the build
 
-1. **About page** — Hamzi's flag: no faces, no big names; OuiWill's About is the liked reference; he and Appa discuss. Don't touch About on this pass.
+1. **About page — DECIDED (Hamzi, 2026-11-15).** In scope on this pass. Model it on OuiWill's About *habits* (report §4.1) at a restrained scale: manifesto-led, editorial, studio first — **without** the spectacle: no full-screen words, no giant type moments, nothing that takes over the screen or unsettles. Normal industry structure: manifesto statement → how we work → the four services → people → the 3/16/4 stats → contact CTA; the Islamabad + live-clock detail stays. People: **no faces, no photos** — names only, plain and modest; if names are used, the full forms: **Syed M. Hamza Sultan · Laiba Hamid · Muhammad Shahzaib**. This is an adjustment of the current page, not a rebuild — its copy and structure are already close; refine it against the reference.
 2. **Homepage 4–5 works** — default five named in C5; Appa confirms.
 3. **"Islamabad" by the clock** — stays, unless Hamzi says otherwise.
 4. **Neue Montreal web licence** — a studio-side check before public launch (the font is commercial; files supplied by Appa).
@@ -99,14 +99,14 @@ Play them the way Uncommon does — subtle, constant, single-colour line work; n
 - **Phase 0 — DONE (2026-11-15)** — assets in hand: the complete pack is in this repo (§6); the two Drive-only videos are linked in the manifest.
 - **Phase 1** — foundation: Neue Montreal sitewide · spacing system · Services-page quick wins (C17, C18).
 - **Phase 2** — homepage: hero + trailer (§5) · works (C5–C8, imagery per §3) · services formation (C10–C12, icons per §4) · contact.
-- **Phase 3** — Work page: immersive index + List View (C13–C16), imagery per §3.
+- **Phase 3** — Work page: immersive index + List View (C13–C16), imagery per §3 · About page adjustment (§7.1).
 - **Phase 4** — QA: 1440px + 390px, reduced-motion and no-JS fallbacks, build passes, live sighting, judgment calls flagged per the reading rule.
 
 ## 9. The prompt (Hamzi sends this with the repo link)
 
 > Pull the PRAXIS_WEBSITE repo, `main` branch. Everything you need is inside it — assets, fonts, videos, instructions; ask for nothing and wait for nothing. Start with `briefs/v6/Praxis-Game-Plan-FINAL-2026-11-15.md` — it is the governing document — then the amended v6 report next to it (the evidence base: Appa's walkthrough, change list C1–C19, the reference breakdown), then `docs/` (the brand package — never overwrite it). Branch `version-2` is the frozen pre-rework site; do not build on it. Build the site in the repo root on the existing vanilla stack, phase by phase per §8, and commit to `main` as you go.
 >
-> The plan's reading rule applies throughout: vision first, mechanics are best-guesses, the hard lines (brand system, four homepage sections, no people's names, no serif accents, speak-line verbatim, `docs/` untouched) do not move. Inside the build there are three production jobs, and they matter most:
+> The plan's reading rule applies throughout: vision first, mechanics are best-guesses, the hard lines (brand system, four homepage sections, names only on About per §7.1, no serif accents, speak-line verbatim, `docs/` untouched) do not move. Inside the build there are three production jobs, and they matter most:
 >
 > 1. **Work imagery (§3).** The 16 covers in `briefs/v6/covers/` are inspiration only — they fix each project's palette, name, tagline and finish level. Create the real portfolio visuals by designing and composing real elements — genuine product UI drawn properly, typography, renders and mockups assembled piece by piece, information and reference photography researched from the web to ground each piece. One visual formula per project, never repeated; no one-shot AI imagery shipped as portfolio work.
 > 2. **The trailer (§5).** Edit the finished studio trailer from the Reel Library — trailer-grade, immersive, brand-true; this is the studio's calling card, not a placeholder. 17 clips are in `briefs/v6/reel-library/`; the two oversized ones are linked from its manifest (one is the only native 16:9 material). Kai's reference stitch in `briefs/v6/reel/` is the pacing reference. Spec and quality bar in §5.
