@@ -38,7 +38,7 @@
 
   // ── header: hide on scroll down, show on up; dark mode over dark panels
   const hdr = $('[data-hdr]');
-  const darks = $$('.svc-panel, .gallery, .closing, .ftr');
+  const darks = $$('.svc-panel, .gallery, .closing, .ftr, .wx, .proj-cover');
   let lastY = scrollY, ticking = false;
   const onScroll = () => {
     const y = scrollY;
@@ -152,19 +152,37 @@
     rail.addEventListener('dragstart', (e) => e.preventDefault());
   });
 
-  // ── work filters (?cat=slug)
-  const filters = $('[data-filters]');
-  if (filters) {
-    const cards = $$('[data-grid] .wcard'); const status = $('[data-filter-status]');
-    const apply = (cat, push) => {
-      $$('[data-filter]', filters).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === cat)));
-      let n = 0; cards.forEach((c) => { const show = cat === 'all' || c.dataset.cat === cat; c.classList.toggle('is-hid', !show); if (show) { n++; c.style.animationDelay = (n * 40) + 'ms'; } });
-      status.textContent = `${n} projects shown`;
-      if (push) { const u = new URL(location.href); if (cat === 'all') u.searchParams.delete('cat'); else u.searchParams.set('cat', cat); history.replaceState(null, '', u); }
+  // ── WORK INDEX (C13–C15): scroll moves the highlight and swaps the full-screen work; List View toggle
+  const wx = $('[data-wx]');
+  if (wx) {
+    const links = $$('[data-wx-i]', wx), bgs = $$('[data-wx-bg]', wx), names = $('[data-wx-names]', wx), count = $('[data-wx-count]', wx);
+    const n = links.length; let cur = -1;
+    const load = (k) => { const b = bgs[k]; if (!b || b._ok) return; b._ok = true; $$('[data-srcset]', b).forEach((s) => { s.srcset = s.dataset.srcset; }); $$('img[data-src]', b).forEach((im) => { im.src = im.dataset.src; }); };
+    const set = (k) => {
+      if (k === cur) return; cur = k;
+      for (let d = -2; d <= 2; d++) load(k + d);
+      links.forEach((a, i) => { const li = a.parentElement; li.classList.toggle('on', i === k); li.style.setProperty('--d', Math.abs(i - k)); });
+      bgs.forEach((b, i) => { b.classList.toggle('on', i === k); const im = $('img', b); if (im) im.style.viewTransitionName = i === k ? 'work-cover' : 'none'; });
+      names.style.setProperty('--a', k); count.textContent = String(k + 1).padStart(2, '0');
     };
-    $$('[data-filter]', filters).forEach((b) => b.addEventListener('click', () => apply(b.dataset.filter, true)));
-    const q = new URLSearchParams(location.search).get('cat');
-    if (q && $(`[data-filter="${CSS.escape(q)}"]`, filters)) apply(q, false);
+    const span = () => Math.max(1, wx.offsetHeight - innerHeight);
+    const onS = () => { if (doc.classList.contains('wx-list')) return; const p = Math.min(0.9999, Math.max(0, -wx.getBoundingClientRect().top / span())); set(Math.floor(p * n)); };
+    addEventListener('scroll', () => requestAnimationFrame(onS), { passive: true }); addEventListener('resize', onS);
+    const jump = (i) => { const y = wx.offsetTop + ((i + 0.5) / n) * span(); if (lenis) lenis.scrollTo(y, { immediate: true }); else scrollTo(0, y); };
+    links.forEach((a, i) => {
+      a.addEventListener('focus', () => { jump(i); set(i); });
+      if (FINE) a.addEventListener('pointerenter', () => set(i));
+      a.addEventListener('click', () => set(i)); // the picture the visitor chose carries over into the case study
+    });
+    set(0);
+    const view = (v, push) => {
+      doc.classList.toggle('wx-list', v === 'list');
+      if (push) history.replaceState(null, '', v === 'list' ? '#list' : location.pathname);
+      if (lenis) lenis.scrollTo(0, { immediate: true }); else scrollTo(0, 0);
+      if (v !== 'list') onS();
+    };
+    $$('[data-view]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); e.stopImmediatePropagation(); view(a.dataset.view, true); }));
+    if (location.hash === '#list') view('list', false);
   }
 
   // ── manifesto words light up with scroll

@@ -29,9 +29,15 @@ const fmtDate = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-GB', { 
 const pad = (n) => String(n).padStart(2, '0');
 const imgs = (p) => {
   const base = `assets/img/work/${p.slug}/`;
-  if (p.images) return { hero: base + p.images[0], gallery: p.images.slice(1).map((f) => base + f) };
-  return { hero: base + 'hero.svg', gallery: p.gallery.map((_, i) => `${base}${pad(i + 1)}.svg`) };
+  if (p.images) return { hero: base + p.images[0], heroP: null, gallery: p.images.slice(1).map((f) => base + f), designed: false };
+  if (existsSync(join(ROOT, base, 'hero.webp'))) { // the designed set (src/imagery/<slug>/ → render.mjs)
+    const g = ['01.webp', '02.webp', '03.webp'].filter((f) => existsSync(join(ROOT, base, f)));
+    return { hero: base + 'hero.webp', heroP: existsSync(join(ROOT, base, 'hero-p.webp')) ? base + 'hero-p.webp' : null, gallery: g.map((f) => base + f), designed: true };
+  }
+  return { hero: base + 'hero.svg', heroP: null, gallery: p.gallery.map((_, i) => `${base}${pad(i + 1)}.svg`), designed: false };
 };
+// <picture> for full-screen use: the portrait composition on portrait screens
+const pic = (p, R, attrs = '') => { const i = imgs(p); return `<picture>${i.heroP ? `<source media="(orientation: portrait)" srcset="${R}${i.heroP}">` : ''}<img src="${R}${i.hero}" alt="${esc(alt(p, 'identity'))}" width="2400" height="1350"${attrs}></picture>`; };
 const KIND_ALT = { identity: 'identity', bag: 'coffee bags in three roasts', cups: 'takeaway cups and a cup on its saucer', phone: 'app screen', phones: 'three app screens', laptop: 'website on a laptop', browser: 'website in a browser', poster: 'poster series on a wall', cards: 'stationery and business cards', social: 'social media grid and post', billboard: 'billboard on the street', deck: 'strategy document spread', report: 'results dashboard', pattern: 'brand pattern', sign: 'storefront signage', tote: 'tote bag', bottle: 'bottles and balm', pass: 'festival passes and wristband', chat: 'assistant conversation on the website', search: 'search answer and results', radio: 'radio script and spot', swatch: 'colour palette and typeface' };
 const alt = (p, k) => `${p.name}: ${KIND_ALT[k] || 'project visual'}`;
 const tags = (p) => `<ul class="tags"><li>${esc(p.sub)}</li><li>${esc(p.location)}</li><li class="tag-svc">${star('s-' + p.service)}${esc(svcName(p.service))}</li></ul>`;
@@ -128,7 +134,7 @@ function footer(R, isHome = false) {
       <nav class="ftr-col" aria-label="Studio"><h2 class="tag">Studio</h2><ul><li><a href="${R}work/">Work</a></li><li><a href="${R}about/">About</a></li><li><a href="${R}journal/">Journal</a></li><li><a href="${R}glossary/">Glossary</a></li><li><a href="${R}contact/">Contact</a></li></ul></nav>
     </div>
     <a class="ftr-word" href="${R}" aria-label="Praxis Studio, home">${use('px-word', 'ftr-word-svg')}</a>
-    <div class="ftr-base"><span>© ${YEAR} Praxis Studio</span><span>${isHome ? "Islamabad · working worldwide" : "Hamza · Laiba · Shahzaib"}</span><a href="#main" data-top>Back to top</a></div>
+    <div class="ftr-base"><span>© ${YEAR} Praxis Studio</span><span>Islamabad · working worldwide</span><a href="#main" data-top>Back to top</a></div>
   </div>
 </footer>`;
 }
@@ -326,22 +332,40 @@ ${closing(R)}`;
 // ───────── WORK
 function workIndex() {
   const R = '../';
+  const n = projects.length;
+  const chips = (p) => p.credits.slice(0, 3).map((c) => `<li>${esc(c)}</li>`).join('');
   const body = `
-<section class="phero" aria-labelledby="ph">
-  <div class="wrap">
-    <h1 class="d1 phero-h" id="ph" data-enter>Sixteen projects, ${sf('made')} real.</h1>
-    <p class="lead phero-lead" data-enter>Every project starts with the client's question. Here is how we answered each one.</p>
-    <div class="filters" role="group" aria-label="Filter by service" data-filters>
-      <button type="button" class="fbtn" aria-pressed="true" data-filter="all">All <span>${projects.length}</span></button>
-      ${services.map((s) => `<button type="button" class="fbtn" aria-pressed="false" data-filter="${s.slug}">${star('s-' + s.slug)}${s.name} <span>${projects.filter((p) => p.service === s.slug).length}</span></button>`).join('')}
+<h1 class="sr">Work: sixteen projects</h1>
+<section class="wx" data-wx aria-label="Work index" style="--n:${n}">
+  <div class="wx-stage">
+    <div class="wx-bgs" aria-hidden="true">
+      ${projects.map((p, i) => { let h = pic(p, R, i ? ' decoding="async"' : ' fetchpriority="high"').replace(/ alt="[^"]*"/, ' alt=""'); if (i) h = h.replace(' srcset=', ' data-srcset=').replace(' src=', ' data-src='); return `<div class="wx-bg${i ? '' : ' on'}" data-wx-bg>${h}</div>`; }).join('')}
+    </div>
+    <div class="wx-shade" aria-hidden="true"></div>
+    <ol class="wx-names" data-wx-names>
+      ${projects.map((p, i) => `<li class="wx-i${i ? '' : ' on'}" style="--i:${i}"><a href="${R}work/${p.slug}/" data-wx-i="${i}"><span class="wx-name">${esc(p.name)}</span><span class="wx-sub">${esc(p.sub)} · ${esc(p.location)}</span></a></li>`).join('')}
+    </ol>
+    <div class="wx-bar">
+      <p class="tag wx-count" aria-hidden="true"><span data-wx-count>01</span> / ${pad(n)}</p>
+      <a class="wx-toggle" href="#list" data-view="list"><span class="wx-toggle-i" aria-hidden="true"></span>List view</a>
     </div>
   </div>
 </section>
-<section class="work-all" aria-label="All projects">
-  <div class="wrap"><div class="wgrid" data-grid>${projects.map((p) => workCard(p, R)).join('')}</div><p class="sr" aria-live="polite" data-filter-status></p></div>
+<section class="wl" id="list" aria-labelledby="wl-h" data-wl>
+  <div class="wrap">
+    <div class="wl-head"><h2 class="d1 wl-h" id="wl-h">Selected <span class="acc">work</span></h2><a class="wx-toggle wx-toggle-ink" href="#index" data-view="index"><span class="wx-toggle-i" aria-hidden="true"></span>Full view</a></div>
+    <div class="wl-grid">
+      ${projects.map((p, i) => `<article class="wl-card${i % 3 === 2 ? ' wl-full' : ''}">
+        <a href="${R}work/${p.slug}/">
+          <div class="wl-img"><img src="${R}${imgs(p).hero}" alt="${esc(alt(p, 'identity'))}" width="2400" height="1350" loading="lazy" decoding="async"></div>
+          <div class="wl-meta"><h3 class="wl-name">${esc(p.name)}</h3><ul class="wl-chips">${chips(p)}</ul></div>
+        </a>
+      </article>`).join('')}
+    </div>
+  </div>
 </section>
 ${closing(R)}`;
-  out('work/index.html', page({ depth: 1, path: '/work/', title: 'Work', desc: 'Sixteen projects across strategy, brand, web and campaigns, each built around the client\'s question.', body }));
+  out('work/index.html', page({ depth: 1, path: '/work/', title: 'Work', desc: 'Sixteen projects across strategy, brand, web and campaigns, each built around the client\'s question.', body, cls: 'is-work' }));
 }
 
 function projectPage(p, idx) {
@@ -351,7 +375,16 @@ function projectPage(p, idx) {
   const pal = [b.bg, b.accent, b.paper, b.ink].filter((c, k, a) => a.indexOf(c) === k);
   const body = `
 <article class="proj">
-<header class="proj-hero">
+<section class="proj-cover" aria-label="${esc(p.name)}">
+  <div class="proj-cover-img">${pic(p, R, ' fetchpriority="high"')}</div>
+  <div class="proj-cover-shade" aria-hidden="true"></div>
+  <div class="proj-cover-in">
+    <p class="proj-cover-name">${esc(p.name)}</p>
+    <ul class="proj-cover-credits">${p.credits.map((c) => `<li>${esc(c)}</li>`).join('')}</ul>
+    <a class="proj-cover-down tag" href="#study">Case study<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+<header class="proj-hero" id="study">
   <div class="wrap">
     <p class="proj-name" data-enter><span>${esc(p.name)}</span></p>
     <div class="proj-top">
@@ -368,7 +401,6 @@ function projectPage(p, idx) {
         <div class="meta-brand"><dt class="tag">Identity</dt><dd><img src="${R}assets/img/clients/${p.slug}.svg" alt="${esc(p.name)} logo" width="200" height="40"><span class="pal">${pal.map((c) => `<span style="background:${c}" title="${c}"></span>`).join('')}</span></dd></div>
       </dl>
     </div>
-    <div class="proj-visual" data-px><img src="${R}${i.hero}" alt="${esc(alt(p, 'identity'))}" width="1600" height="1100" fetchpriority="high"></div>
   </div>
 </header>
 <section class="proj-body" aria-label="Case study">
@@ -382,7 +414,9 @@ function projectPage(p, idx) {
 <section class="gallery" aria-labelledby="g-h">
   <div class="wrap">
     <h2 class="d3" id="g-h">Gallery</h2>
-    <div class="gal">${i.gallery.map((src, k) => `<figure class="gal-i" data-px><img src="${R}${src}" alt="${esc(alt(p, p.gallery ? p.gallery[k] : ''))}" width="1600" height="1100" loading="lazy"></figure>`).join('')}</div>
+    ${i.designed
+      ? `<div class="gal gal-v6">${i.gallery.map((src) => { const wide = /02\.webp$/.test(src); return `<figure class="gal-i${wide ? ' gal-wide' : ' gal-tall'}"><img src="${R}${src}" alt="${esc(p.name)}: ${wide ? 'a second touchpoint' : 'detail'}" width="${wide ? 2400 : 1600}" height="${wide ? 1350 : 2000}" loading="lazy" decoding="async"></figure>`; }).join('')}</div>`
+      : `<div class="gal">${i.gallery.map((src, k) => `<figure class="gal-i" data-px><img src="${R}${src}" alt="${esc(alt(p, p.gallery ? p.gallery[k] : ''))}" width="1600" height="1100" loading="lazy"></figure>`).join('')}</div>`}
   </div>
 </section>
 <section class="proj-quote" aria-label="Client testimonial">
@@ -403,8 +437,8 @@ function projectPage(p, idx) {
 </nav>
 ${closing(R, `Ready to take your project ${sf('further')}?`)}`;
   out(`work/${p.slug}/index.html`, page({ depth: 2, path: `/work/${p.slug}/`, title: `${p.name}: ${p.sub}`, desc: `${p.question} ${p.summary}`, body }));
-  // artwork
-  if (!p.images) {
+  // artwork (generated SVGs only for projects that have no designed set yet)
+  if (!p.images && !i.designed) {
     out(`assets/img/work/${p.slug}/hero.svg`, heroArt(p));
     p.gallery.forEach((k, n) => out(`assets/img/work/${p.slug}/${pad(n + 1)}.svg`, artFor(p, k, n)));
   }
@@ -421,40 +455,47 @@ function about() {
     ['Measured', 'We agree what success looks like at the start, and we check it at the end.'],
   ];
   const body = `
-<section class="phero" aria-labelledby="ph">
+<section class="phero about-hero" aria-labelledby="ph">
   <div class="wrap">
-    <h1 class="d1 phero-h" id="ph" data-enter>A studio of ${sf('three.')}</h1>
-    <p class="lead phero-lead" data-enter>Praxis is a new, design-first studio in Islamabad. We work with clients worldwide on strategy, brand, web and campaigns, and we do all of it ourselves.</p>
+    <h1 class="d2 phero-h" id="ph" data-enter>A studio of ${sf('three')}, in Islamabad.</h1>
+    <p class="lead phero-lead" data-enter>Praxis is a design-first studio. We work with clients worldwide on strategy, brand, web and campaigns, and we do all of it ourselves.</p>
   </div>
 </section>
 <section class="manifesto" aria-label="What Praxis means">
   <div class="wrap mani-in">
     <p class="mani-text" data-words>Praxis is the old word for the moment an idea becomes an act. Theory made real. It is the name of the studio and the way we work: think it through, then make it, then check that it worked.</p>
-    <div class="mani-px" aria-hidden="true" data-bigmark></div>
-  </div>
-</section>
-<section class="people people-about" aria-labelledby="people-h">
-  <div class="wrap">
-    <h2 class="d2" id="people-h" data-reveal>The people behind the ${sf('work')}.</h2>
-    <ul class="names">${['Hamza', 'Laiba', 'Shahzaib'].map((n) => `<li><span class="name">${n}</span></li>`).join('')}</ul>
-    <p class="lead people-note">Strategy, design, web and growth, shared between three people who sit in your first meeting and deliver your last file.</p>
   </div>
 </section>
 <section class="principles" aria-labelledby="pr-h">
   <div class="wrap">
-    <h2 class="d2" id="pr-h" data-reveal>How we ${sf('work')}.</h2>
+    <h2 class="d3" id="pr-h">How we work</h2>
     <ol class="steps steps-4">${principles.map(([t, d], i) => `<li><span class="tag">${pad(i + 1)}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+  </div>
+</section>
+<section class="ab-svc" aria-labelledby="as-h">
+  <div class="wrap">
+    <h2 class="d3" id="as-h">What we do</h2>
+    <ol class="ab-svc-list">${services.map((s, i) => `<li><a href="${R}services/#${s.slug}"><span class="ab-n">${String(i + 1).padStart(3, '0')}</span><span class="ab-t">${s.name}</span><span class="ab-l">${esc(s.line)}</span></a></li>`).join('')}</ol>
+  </div>
+</section>
+<section class="ab-people" aria-labelledby="ap-h">
+  <div class="wrap ab-people-in">
+    <h2 class="d3" id="ap-h">The studio</h2>
+    <div>
+      <ul class="ab-names">${['Syed M. Hamza Sultan', 'Laiba Hamid', 'Muhammad Shahzaib'].map((n) => `<li>${n}</li>`).join('')}</ul>
+      <p class="ab-note">Strategy, design, web and growth, shared between three people who sit in your first meeting and deliver your last file.</p>
+    </div>
   </div>
 </section>
 <section class="about-strip" aria-label="Studio in numbers">
   <div class="wrap about-in">
-    <div><h2 class="d2" data-reveal>Small on ${sf('purpose')}.</h2><p class="lead">Three people means fewer projects, more attention, and no one between you and the work. It is a choice we intend to keep.</p>${link(R + 'work/', 'See the work')}</div>
+    <div><h2 class="d3">Small on purpose.</h2><p class="lead">Three people means fewer projects, more attention, and no one between you and the work. It is a choice we intend to keep.</p>${link(R + 'work/', 'See the work')}</div>
     <dl class="stats"><div><dt class="tag">People</dt><dd>3</dd></div><div><dt class="tag">Projects</dt><dd>16</dd></div><div><dt class="tag">Service areas</dt><dd>4</dd></div></dl>
   </div>
 </section>
 ${studio(R)}
 ${closing(R)}`;
-  out('about/index.html', page({ depth: 1, path: '/about/', title: 'About', desc: 'Praxis is a design-first studio of three in Islamabad: Hamza, Laiba and Shahzaib. Theory made real.', body }));
+  out('about/index.html', page({ depth: 1, path: '/about/', title: 'About', desc: 'Praxis is a design-first studio of three in Islamabad: Syed M. Hamza Sultan, Laiba Hamid and Muhammad Shahzaib. Theory made real.', body }));
 }
 
 // ───────── JOURNAL
